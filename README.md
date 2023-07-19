@@ -11,10 +11,10 @@
 ![Figma](https://img.shields.io/badge/figma-%23F24E1E.svg?style=for-the-badge&logo=figma&logoColor=white)
 ![Git](https://img.shields.io/badge/git-%23F05033.svg?style=for-the-badge&logo=git&logoColor=white)
 ![NodeJS](https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white)
-![Repo size](https://img.shields.io/github/repo-size/masiuk-mykola/team-project-filmoteka?style=flat-square)
-![Lines of code](https://img.shields.io/tokei/lines/github/masiuk-mykola/team-project-filmoteka?style=flat-square&color=orange)
-![GitHub top language](https://img.shields.io/github/languages/top/masiuk-mykola/team-project-filmoteka?style=flat-square)
-![GitHub contributors](https://img.shields.io/github/contributors/masiuk-mykola/team-project-filmoteka?style=flat-square)
+![Repo size](https://img.shields.io/github/repo-size/MaksymBora/Palate-Paradise?style=flat-square)
+![Lines of code](https://img.shields.io/tokei/lines/github/MaksymBora/Palate-Paradise?style=flat-square&color=orange)
+![GitHub top language](https://img.shields.io/github/languages/top/MaksymBora/Palate-Paradise?style=flat-square)
+![GitHub contributors](https://img.shields.io/github/contributors/MaksymBora/Palate-Paradise?style=flat-square)
 
 ### Technologies
 
