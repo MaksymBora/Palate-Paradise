@@ -1,5 +1,5 @@
 function displayEvents(eventsData) {
-  const eventsContainer = document.getElementById('eventsContainer');
+  const eventsContainer = document.querySelector('.eventsContainer');
 
   eventsContainer.innerHTML = '';
 
@@ -17,9 +17,9 @@ function displayEvents(eventsData) {
     dishPreviewImage.alt = event.topic.name;
     eventCard.appendChild(dishPreviewImage);
 
-    const eventName = document.createElement('h2');
+    const eventTitle = document.createElement('h2');
     eventName.textContent = event.topic.name;
-    eventCard.appendChild(eventName);
+    eventCard.appendChild(eventTitle);
 
     const eventRegion = document.createElement('p');
     eventRegion.textContent = `Region: ${event.topic.area}`;
