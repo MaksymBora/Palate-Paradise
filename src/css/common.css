@@ -65,6 +65,25 @@ button {
   cursor: pointer;
 }
 
+.visually-hidden {
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  border: 0;
+  padding: 0;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  margin: -1px;
+}
+
+.is-hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
 .container {
   margin: 0 auto;
 }
@@ -105,7 +124,6 @@ button {
 @media screen and (min-width: 1280px) {
   .container {
     width: 1110px;
-
     padding: 0 15px;
   }
 

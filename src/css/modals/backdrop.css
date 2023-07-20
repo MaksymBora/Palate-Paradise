@@ -1,3 +1,5 @@
+@import '../common.css';
+
 /* Background */
 .backdrop {
   position: fixed;
@@ -16,10 +18,9 @@
   transition: opacity 250ms linear, visibility 250ms linear;
 }
 
-.is-hidden {
+.backdrop.is-hidden {
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
-
   transition: opacity 250ms linear, visibility 250ms linear;
 }
