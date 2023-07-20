@@ -87,7 +87,15 @@
             <br />
             <sub><b>🇺🇦</b></sub>
         </a>
-    </td></tr>
+    </td>
+    <td align="center">
+        <a href="https://github.com/penadine">
+            <img src="https://avatars.githubusercontent.com/u/105946746?v=4" width="100;" alt="Maryna-Korbet"/>
+            <br />
+            <sub><b>Надія Риченко</b></sub>
+            <br />
+            <sub><b>🇺🇦</b></sub>
+        </a></tr>
 	
 <tr>
     </tr>
