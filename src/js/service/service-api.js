@@ -9,6 +9,7 @@ export default class RecipeApiService {
     this.time = 0;
     this.area = '';
     this.ingredients = '';
+    this.recipeId = '';
   }
 
   async getCooksEvents() {
@@ -52,9 +53,51 @@ export default class RecipeApiService {
   }
 
   async getRecipeById() {
-    const url = `${this.BASE_URL}/recipes?page=${this.page}&limit=${this.limit}`;
+    const url = `${this.BASE_URL}/recipes/${this.recipeId}`;
     try {
       const response = await axios.get(url);
+      return response.data;
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  // !!! PATCH RATING  !!!//
+  async patchRatingById() {
+    const url = `${this.BASE_URL}/recipes/${this.recipeId}/rating`;
+    try {
+      const response = await axios.patch(url);
+      return response.data;
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  async getIngredients() {
+    const url = `${this.BASE_URL}/ingredients`;
+    try {
+      const response = await axios.get(url);
+      return response.data;
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  async getAreas() {
+    const url = `${this.BASE_URL}/areas`;
+    try {
+      const response = await axios.get(url);
+      return response.data;
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  // !!! POST ORDER  CHECK DOCS!!!//
+  async postOrder() {
+    const url = `${this.BASE_URL}/recipes/${this.recipeId}/orders/add`;
+    try {
+      const response = await axios.post(url);
       return response.data;
     } catch (error) {
       console.log(error);
