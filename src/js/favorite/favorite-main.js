@@ -30,8 +30,10 @@ function renderingFavRec() {
   console.log(data);
 
   const { _id, title, category, rating, preview, description } = data[0];
-  console.log(_id);
-  //
+
+  const markup = `<div>${_id}</div>`;
+
+  favList.insertAdjacentHTML('beforeend', markup);
 }
 
 renderingFavRec();
