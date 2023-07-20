@@ -2,46 +2,52 @@
   <div class="container">
     <nav class="header-nav">
       <ul class="nav-list">
-        <a href="../index.html">
-          <li>Home</li>
+        <a href="">
+          <li class="nav-point">Home</li>
         </a>
-        <a href="./favorites-page/fav-list.html"><li>Favorite</li>
+        <a href=""><li class="nav-point">Favorite</li>
         </a>
       </ul>
-      <a class="header-logo" href="../index.html">tasty<span>treats.</span></a>
     </nav>
 
+    <a class="header-logo" href="">tasty<span class="logo">treats.</span></a>
     
-
+    <ul class="btn">
     <button class="buy-now">
         <a href="tel:+380730000000">
-      <svg width="24px" height="24px">
+      <svg width="24px" height="24px" class="buy-btn">
         <use href="/src/images/sprite.svg#icon-cart"></use>
       </svg></a>
     </button>
+    <label class="switch" > 
+      <input class="switcher" type="checkbox" id="theme-switch" />
+      <span></span>
+    </label>
+   
 
     <button class="open-mobile">
-      <svg width="24px" height="24px">
+      <svg width="32px" height="32px">
         <use href="/src/images/sprite.svg#icon-menu"></use>
       </svg>
     </button>
+  </ul>
 
     
-    <input class="switch" type="checkbox" id="theme-switch" />
+   
   </div>
 
-  <div class="mobile-menu">
+  <div class="mobile-menu container is-hidden">
     <div class="mobile">
       <button class="close-mobile">
-        <svg>
+        <svg widht="32px" height="32px">
             <use href="/src/images/sprite.svg#icon-x"></use>
         </svg>
       </button>
       <ul>
-        <a href="../index.html">
+        <a href="">
             <li>Home</li>
           </a>
-          <a href="./favorites-page/fav-list.html"><li>Favorite</li>
+          <a href=""><li>Favorite</li>
           </a> 
     </ul>
 

@@ -1,43 +1,117 @@
 .mobile-menu {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.7);
-  }
-
-  .mobile {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color:#9BB537;
-    padding: 20px;
-   
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-  }
+    display: none; 
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 200px;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
   
-  .close-mobile{
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    font-size: 20px;
-    cursor: pointer;
-  }
+}
 
-  .container{
+.mobile {
+  position: absolute;
+  top: 50%;
+  left: 100%;
+  transform: translate(-50%, -50%);
+  background-color: #9bb537;
+  padding: 20px;
+
+  height: 100%;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+    opacity 0.25s cubic-bezier(0.4, 0, 0.2, 1),
+    visibility 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.close-mobile {
+  position: fixed;
+  font-size: 20px;
+  cursor: pointer;
+  
+}
+
+.buy-btn{
+    fill: #050505;
     display: flex;
-  }
-  .header-logo{
-    color: #9BB537;
-  }
+    justify-content: center;
+}
 
-  .buy-now{
-    border: none;
-  }
+.container {
+  display: flex;
+  margin-top: 28px;
+  justify-content: space-between;
+  align-items: center;
+}
+.header-logo {
+  color: #9bb537;
 
-  a {
-    text-decoration: none;
-  }
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 18px;
+  letter-spacing: -0.04em;
+  text-align: center;
+}
+
+.logo {
+  color: #050505;
+
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 18px;
+  letter-spacing: -0.04em;
+}
+
+.buy-now {
+  border: none;
+  background: none;
+ 
+ 
+}
+
+.open-mobile {
+  border: none;
+  background: none;
+}
+a {
+  text-decoration: none;
+}
+
+.header-nav {
+  display: none;
+}
+.nav-list {
+  display: flex;
+}
+
+.switcher {
+  display: none;
+}
+
+
+@media screen and (min-width: 768px){
+.header-nav{
+    display: flex;
+    gap: 16px;
+}
+
+.nav-point{
+  color: #9BB537;
+font-size: 12px;
+font-weight: 500;
+line-height: 15px;
+letter-spacing: 0em;
+text-align: left;
+
+}
+
+.open-mobile{
+    display: none;
+}
+
+.switcher{display: block;}
+
+.btn{
+    display: flex;
+}
+}
