@@ -95,15 +95,26 @@ a {
     gap: 16px;
 }
 
-.nav-point{
+.nav-point-home{
   color: #9BB537;
 font-size: 12px;
 font-weight: 500;
 line-height: 15px;
 letter-spacing: 0em;
 text-align: left;
+margin-right: 16px;
 
 }
+
+.nav-point-favorite{
+    color: #050505;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 15px;
+  letter-spacing: 0em;
+  text-align: left;
+  
+  }
 
 .open-mobile{
     display: none;
