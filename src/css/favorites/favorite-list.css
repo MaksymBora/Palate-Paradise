@@ -101,7 +101,8 @@
 }
 
 .heart-btn.active .icon-heart {
-  fill: var(--text-white-color);
+  /* fill: var(--text-white-color); */
+  fill: red;
 }
 
 @media screen and (max-width: 1279px) {

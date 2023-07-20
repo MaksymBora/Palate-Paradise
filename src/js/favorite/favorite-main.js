@@ -25,7 +25,7 @@ recipeApiSerive.getRecipe().then(response => {
 function renderingFavRec() {
   const favList = document.querySelector('.fav-list');
   const empty = document.querySelector('.fav-empty');
-  const heart = document.querySelector('.hear-icon');
+
   const hero = document.querySelector('.fav-hero');
 
   const arrData = localStorage.getItem('favotires-data');
@@ -65,7 +65,9 @@ function renderingFavRec() {
   // empty.classList.add('visually-hidden');
   hero.classList.remove('visually-hidden');
   favList.insertAdjacentHTML('beforeend', markup);
-  heart.classList.add('.active');
+
+  const heart = document.querySelector('.heart-btn');
+  heart.classList.add('active');
 }
 
 renderingFavRec();
