@@ -5,9 +5,9 @@ export default class RecipeApiService {
   constructor() {
     this.BASE_URL = 'https://tasty-treats-backend.p.goit.global/api';
     this.category = '';
-    this.page = '';
-    this.limit = 1;
-    this.time = 0;
+    this.page = 1;
+    this.limit = 6;
+    this.time = '';
     this.area = '';
     this.ingredients = '';
     this.recipeId = '';
