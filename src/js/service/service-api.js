@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { notifyError } from '../notifications';
 
 export default class RecipeApiService {
   constructor() {
@@ -18,7 +19,7 @@ export default class RecipeApiService {
       const response = await axios.get(url);
       return response.data;
     } catch (error) {
-      console.log(error);
+      notifyError(error);
     }
   }
 
@@ -28,7 +29,7 @@ export default class RecipeApiService {
       const response = await axios.get(url);
       return response.data;
     } catch (error) {
-      console.log(error);
+      notifyError(error);
     }
   }
 
@@ -38,7 +39,7 @@ export default class RecipeApiService {
       const response = await axios.get(url);
       return response.data;
     } catch (error) {
-      console.log(error);
+      notifyError(error);
     }
   }
 
@@ -48,7 +49,7 @@ export default class RecipeApiService {
       const response = await axios.get(url);
       return response.data;
     } catch (error) {
-      console.log(error);
+      notifyError(error);
     }
   }
 
@@ -58,7 +59,7 @@ export default class RecipeApiService {
       const response = await axios.get(url);
       return response.data;
     } catch (error) {
-      console.log(error);
+      notifyError(error);
     }
   }
 
@@ -69,7 +70,7 @@ export default class RecipeApiService {
       const response = await axios.patch(url);
       return response.data;
     } catch (error) {
-      console.log(error);
+      notifyError(error);
     }
   }
 
@@ -79,7 +80,7 @@ export default class RecipeApiService {
       const response = await axios.get(url);
       return response.data;
     } catch (error) {
-      console.log(error);
+      notifyError(error);
     }
   }
 
@@ -89,7 +90,7 @@ export default class RecipeApiService {
       const response = await axios.get(url);
       return response.data;
     } catch (error) {
-      console.log(error);
+      notifyError(error);
     }
   }
 
@@ -100,7 +101,7 @@ export default class RecipeApiService {
       const response = await axios.post(url);
       return response.data;
     } catch (error) {
-      console.log(error);
+      notifyError(error);
     }
   }
 }
