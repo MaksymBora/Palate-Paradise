@@ -18,7 +18,7 @@ function displayEvents(eventsData) {
     eventCard.appendChild(dishPreviewImage);
 
     const eventTitle = document.createElement('h2');
-    eventName.textContent = event.topic.name;
+    eventTitle.textContent = event.topic.name;
     eventCard.appendChild(eventTitle);
 
     const eventRegion = document.createElement('p');
