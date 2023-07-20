@@ -11,17 +11,19 @@
       <a class="header-logo" href="../index.html">tasty<span>treats.</span></a>
     </nav>
 
-    <button class="burger-menu">
-      <svg>
-        <use href="/src/images/sprite.svg#icon-menu"></use>
-      </svg>
-    </button>
+    
 
     <button class="buy-now">
         <a href="tel:+380730000000">
-      <svg>
+      <svg width="24px" height="24px">
         <use href="/src/images/sprite.svg#icon-cart"></use>
       </svg></a>
+    </button>
+
+    <button class="open-mobile">
+      <svg width="24px" height="24px">
+        <use href="/src/images/sprite.svg#icon-menu"></use>
+      </svg>
     </button>
 
     
@@ -29,20 +31,23 @@
   </div>
 
   <div class="mobile-menu">
-    <button class="close-mobile-menu">
+    <div class="mobile">
+      <button class="close-mobile">
         <svg>
             <use href="/src/images/sprite.svg#icon-x"></use>
         </svg>
-    </button>
-    <ul>
+      </button>
+      <ul>
         <a href="../index.html">
             <li>Home</li>
           </a>
           <a href="./favorites-page/fav-list.html"><li>Favorite</li>
           </a> 
     </ul>
-<input class="switch" type="checkbox" id="theme-switch" />
+
+    <input class="switch" type="checkbox" id="theme-switch" />
+    </div>
   </div>
 </header>
 
-<!-- Test comments -->
+
