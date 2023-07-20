@@ -11,7 +11,7 @@
   margin-bottom: 24px;
 }
 
-.favorite-categories {
+.fav-categories {
   margin-top: 64px;
   margin-bottom: 24px;
   display: flex;
@@ -30,6 +30,17 @@
   border: 1px solid rgba(5, 5, 5, 0.2);
   outline: none;
   cursor: pointer;
+}
+
+.fav-button {
+  color: var(--accent-color);
+  border-color: var(--accent-color);
+}
+
+.fav-button:hover {
+  background-color: var(--accent-color);
+  color: var(--primary-white-color);
+  border-color: var(--accent-color);
 }
 
 @media screen and (min-width: 768px) {
