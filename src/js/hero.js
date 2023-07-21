@@ -62,14 +62,3 @@ function displayEvents(eventsData) {
     eventsContainer.appendChild(eventCard);
   });
 }
-
-//const swiper = new Swiper('.swiper-container', {
-//     slidesPerView: 1, // Кількість видимих слайдів
-//     spaceBetween: 20, // Відстань між слайдами
-//     loop: true, // Циклічний режим слайдера (можна вимкнути, якщо не потрібен)
-//     pagination: {
-//       el: '.swiper-pagination', // Створення пагінації для переключення між слайдами
-//       clickable: true, // Дозволяє переключати слайди, натискаючи на пагінацію
-//     },
-//   });
-// })
