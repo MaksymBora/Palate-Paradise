@@ -23,19 +23,19 @@
   // відкриття модалки
   const openModalBtn = document.querySelector('open-mobile');
   const closeModalBtn = document.querySelector('close-mobile');
-  const modal = document.querySelector('mobile-menu');
+  const modal = document.querySelector('mobile');
 
 
   openModalBtn.addEventListener('click', openModal);
   closeModalBtn.addEventListener('click', closeModal);
   
   function openModal() {
-    modal.style.display = 'block';
+    modal.classList.remove('is-hidden');
   }
 
   
   function closeModal() {
-    modal.style.display = 'none';
+    modal.classList.add("is-hidden");
   }
 
   
