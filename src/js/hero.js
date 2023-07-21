@@ -1,3 +1,25 @@
+// fetch('https://tasty-treats-backend.p.goit.global/api/events')
+//   .then(response => {
+//     if (!response.ok) {
+//       throw new Error('Network response was not ok');
+//     }
+//     return response.json();
+//   })
+//   .then(data => {
+//     displayEvents(data);
+//   })
+//   .catch(error => {
+//     console.error('Error fetching data:', error);
+//   });
+
+// function displayEvents(eventsData) {
+//   const eventsContainer = document.querySelector('.eventsContainer');
+
+//   eventsContainer.innerHTML = '';
+
+// Зробимо запит до бекенду та обробимо дані
+import Swiper from 'swiper';
+
 fetch('https://tasty-treats-backend.p.goit.global/api/events')
   .then(response => {
     if (!response.ok) {
@@ -7,6 +29,16 @@ fetch('https://tasty-treats-backend.p.goit.global/api/events')
   })
   .then(data => {
     displayEvents(data);
+
+    // Ініціалізуємо Swiper після того, як дані будуть відображені
+    const swiper = new Swiper('.swiper-container', {
+      // Опції Swiper (приклад, ви можете змінити тип ефекту переходу)
+      effect: 'cube', // Тут ви можете вибрати тип ефекту, наприклад, 'fade', 'slide', 'cube' і т.д.
+      grabCursor: true, // Змінює курсор під час перетягування слайдера
+      loop: true, // Циклічний режим слайдера (можна вимкнути, якщо не потрібен)
+
+      // Подальші опції можна змінити залежно від ваших потреб
+    });
   })
   .catch(error => {
     console.error('Error fetching data:', error);

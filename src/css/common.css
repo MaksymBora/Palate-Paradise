@@ -1,5 +1,5 @@
 @import '~node_modules/modern-normalize/modern-normalize.css';
-
+@import '/node_modules/swiper/swiper.css';
 @font-face {
   font-family: 'Inter';
   src: url('../fonts/Inter-Regular.woff2'), url('../fonts/Inter-Regular.woff');
