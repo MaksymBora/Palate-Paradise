@@ -1,15 +1,6 @@
-.fav-empty {
-  display: block;
-  text-align: center;
-  margin-top: 164px;
-  font-size: 14px;
-}
-
-.hat {
-  width: 68px;
-  height: 58px;
-  margin-bottom: 24px;
-}
+/*============================*/
+/* FAVORITES CATEGOTY BUTTONS */
+/*============================*/
 
 .fav-categories {
   margin-top: 64px;
@@ -32,7 +23,8 @@
   cursor: pointer;
 }
 
-.fav-button {
+.fav-button.is-active,
+.common-btn.is-active {
   color: var(--accent-color);
   border-color: var(--accent-color);
 }
@@ -42,8 +34,9 @@
   color: var(--primary-white-color);
   border-color: var(--accent-color);
 }
-
-/* Rec card */
+/*============================*/
+/* Rec Card */
+/*============================*/
 
 #fav-container .rec-item {
   margin-bottom: 24px;
@@ -171,6 +164,19 @@
   color: var(--text-white-color);
   border: none;
   border-radius: 8px;
+}
+
+.fav-empty {
+  display: block;
+  text-align: center;
+  margin-top: 164px;
+  font-size: 14px;
+}
+
+.hat {
+  width: 68px;
+  height: 58px;
+  margin-bottom: 24px;
 }
 
 @media screen and (max-width: 1279px) {

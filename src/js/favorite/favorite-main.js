@@ -7,25 +7,26 @@ const favList = document.querySelector('.fav-list');
 const empty = document.querySelector('.fav-empty');
 const hero = document.querySelector('.fav-hero');
 
-// recipeApiSerive.getRecipe().then(response => {
-//   const arr = response.results;
+recipeApiSerive.getRecipe().then(response => {
+  const arr = response.results;
 
-//   const FAV_DATA = 'favotires-data';
-//   const { _id, title, category, rating, preview, description } = arr[0];
+  const FAV_DATA = 'favotires-data';
+  const toStorage = [];
 
-//   const toStorage = [
-//     {
-//       _id,
-//       title,
-//       category,
-//       rating,
-//       preview,
-//       description,
-//     },
-//   ];
+  for (let i = 0; i < 6; i++) {
+    const { _id, title, category, rating, preview, description } = arr[i];
+    toStorage.push({
+      _id,
+      title,
+      category,
+      rating,
+      preview,
+      description,
+    });
+  }
 
-//   localStorage.setItem(FAV_DATA, JSON.stringify(toStorage));
-// });
+  localStorage.setItem(FAV_DATA, JSON.stringify(toStorage));
+});
 
 function getRating(rating) {
   return `<ul class='stars-list'>
