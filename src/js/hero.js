@@ -1,3 +1,5 @@
+import Swiper from 'swiper';
+
 fetch('https://tasty-treats-backend.p.goit.global/api/events')
   .then(response => {
     if (!response.ok) {
@@ -7,6 +9,15 @@ fetch('https://tasty-treats-backend.p.goit.global/api/events')
   })
   .then(data => {
     displayEvents(data);
+
+    const swiper = new Swiper('.swiper-container', {
+      effect: 'slide',
+      grabCursor: true,
+      loop: true,
+      pagination: {
+        el: '.swiper-pagination',
+      },
+    });
   })
 
   .catch(error => {
