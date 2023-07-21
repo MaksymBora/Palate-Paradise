@@ -3,25 +3,29 @@ import sprite from '../../images/sprite.svg';
 
 const recipeApiSerive = new RecipeApiService();
 
-recipeApiSerive.getRecipe().then(response => {
-  const arr = response.results;
+const favList = document.querySelector('.fav-list');
+const empty = document.querySelector('.fav-empty');
+const hero = document.querySelector('.fav-hero');
 
-  const FAV_DATA = 'favotires-data';
-  const { _id, title, category, rating, preview, description } = arr[0];
+// recipeApiSerive.getRecipe().then(response => {
+//   const arr = response.results;
 
-  const toStorage = [
-    {
-      _id,
-      title,
-      category,
-      rating,
-      preview,
-      description,
-    },
-  ];
+//   const FAV_DATA = 'favotires-data';
+//   const { _id, title, category, rating, preview, description } = arr[0];
 
-  localStorage.setItem(FAV_DATA, JSON.stringify(toStorage));
-});
+//   const toStorage = [
+//     {
+//       _id,
+//       title,
+//       category,
+//       rating,
+//       preview,
+//       description,
+//     },
+//   ];
+
+//   localStorage.setItem(FAV_DATA, JSON.stringify(toStorage));
+// });
 
 function getRating(rating) {
   return `<ul class='stars-list'>
@@ -60,25 +64,12 @@ function obtainRating(star, rating) {
   return 'star-item';
 }
 
-function renderingFavRec() {
-  const favList = document.querySelector('.fav-list');
-  const empty = document.querySelector('.fav-empty');
+// Rendering cards
+function renderingFavRec(arr) {
+  const { title, description, preview, rating, _id, category } = arr;
 
-  const hero = document.querySelector('.fav-hero');
-
-  const arrData = localStorage.getItem('favotires-data');
-  const data = JSON.parse(arrData);
-  console.log(data);
-
-  const { _id, title, category, rating, preview, description } = data[0];
-
-  let setRating = 1;
-
-  if (rating > 5) {
-    setRating = Number(5).toFixed(1);
-  } else {
-    setRating = rating.toFixed(1);
-  }
+  const parsedRating = parseFloat(rating);
+  let setRating = parsedRating > 5 ? 5 : parsedRating.toFixed(1);
 
   function ifRecInFavor(id) {
     const data = JSON.parse(localStorage.getItem('favotires-data') || '[]');
@@ -112,10 +103,43 @@ function renderingFavRec() {
           </div>
         </div>
       </div>`;
-
+  return markup;
   // empty.classList.add('visually-hidden');
   hero.classList.remove('visually-hidden');
   favList.insertAdjacentHTML('beforeend', markup);
 }
 
-renderingFavRec();
+function groupArrayIntoChunks(array, chunkSize) {
+  const groupedChunks = {};
+
+  for (let i = 0; i < array.length; i += chunkSize) {
+    const chunkNumber = Math.ceil((i + 1) / chunkSize);
+    groupedChunks[chunkNumber] = array.slice(i, i + chunkSize);
+  }
+
+  return groupedChunks;
+}
+
+// Create favorires cards
+function createFavoritesList(objNum = 1) {
+  const data = JSON.parse(localStorage.getItem('favotires-data') ?? '[]');
+
+  if (data && data.length) {
+    const objData = groupArrayIntoChunks(data, 9);
+
+    const favCardsMarkup = objData[objNum]
+      .map(item => renderingFavRec(item))
+      .join('');
+
+    favList.innerHTML = favCardsMarkup;
+    empty.classList.add('visually-hidden');
+  } else {
+    empty.classList.remove('visually-hidden');
+
+    if (window.innerWidth < 768) {
+      hero.classList.add('visually-hidden');
+    }
+  }
+}
+
+createFavoritesList();
