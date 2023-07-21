@@ -38,6 +38,10 @@
 /* slider */
 .eventsContainer {
   display: flex;
+  display: flex;
+  max-width: 700px; /* Задайте максимальну ширину контейнера */
+  margin: 0 auto; /* Вирівняйте контейнер по центру */
+  overflow: hidden;
 }
 
 /* slider card */
