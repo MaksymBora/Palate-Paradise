@@ -47,14 +47,12 @@
 /* the first card in the slider */
 .schef-image-wrapper {
   margin-right: 16px;
-  perspective: 800px;
 }
 .chef-img {
   width: 80px;
   height: 302px;
   object-fit: cover;
   border-radius: 15px;
-  transform: rotateY(20deg);
 
   /* transform: scale(1.2); */
 }
