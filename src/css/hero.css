@@ -2,38 +2,125 @@
 }
 .hero {
 }
-.container {
-}
+
 .hero-title {
+  color: #050505;
+  font-size: 36px;
 }
 .title {
+  color: #9bb537;
+  font-size: 36px;
+  margin-bottom: 16px;
 }
 .hero-description {
+  counter-reset: #050505;
+  font-size: 16px;
+  margin-bottom: 32px;
 }
 .hero-btn {
+  padding: 14px 28px;
+  color: #050505;
+  height: 45px;
+  border: 1px solid #9bb537;
+  border-radius: 15px;
+  background-color: #fff;
+  margin-bottom: 64px;
 }
+
+/* slider */
 .eventsContainer {
+  display: flex;
 }
+
+/* slider card */
 .event-card {
+  display: flex;
 }
-.event-name {
-}
-.event-region {
+
+/* the first card in the slider */
+.schef-image-wrapper {
+  margin-right: 16px;
 }
 .chef-img {
+  width: 80px;
+  height: 302px;
+  object-fit: cover;
+  border-radius: 15px;
+
+  /* transform: scale(1.2); */
+}
+
+/* the second card in the slider */
+
+.dish-Preview-image-wrapper {
+  background-color: #050505;
+  margin-right: 16px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  text-align: center;
+  width: 200px;
+  height: 302px;
+  border-radius: 15px;
+  background-image: radial-gradient(
+    circle at center,
+    rgba(155, 181, 55, 0.3),
+    transparent
+  );
+  /* background-color: #050505;
+  margin-right: 16px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  text-align: center;
+
+  width: 200px;
+  height: 302px;
+  border-radius: 15px;
+  background-image: radial-gradient(
+    circle at center,
+    rgba(155, 181, 55, 0.3),
+    transparent
+  ); */
 }
 .dishPreview-img {
+  width: 100%;
+  height: auto;
+  max-height: 100%;
+  object-fit: cover;
+  margin-top: 50px;
+}
+.event-name {
+  font-size: medium;
+
+  color: rgba(248, 248, 248, 0.6);
+}
+.event-region {
+  font-size: small;
+  color: rgba(248, 248, 248, 0.2);
+}
+
+/* the third card in the slider */
+.dish-image-wrapper {
+  display: flex;
+  overflow: hidden;
+  width: 185px;
+  height: 302px;
+  border-radius: 15px;
+  background-color: #050505;
 }
 .dish-img {
 }
 
 /* Загальні стилі для всіх розмірів пристроїв */
 
-/* .container {
+.container {
   max-width: 1200px;
   margin: 0 auto;
 }
-
+/*
 .hero {
   background-color: #f0f0f0;
   padding: 40px 0;
@@ -102,7 +189,7 @@
 } */
 
 /* Стилі для мобільних пристроїв з шириною 375 пікселів і менше */
-/* @media (max-width: 375px) {
+@media (max-width: 375px) {
   .hero-title {
     font-size: 24px;
   }
@@ -114,4 +201,4 @@
   .event-card {
     width: 100%;
   }
-} */
+}

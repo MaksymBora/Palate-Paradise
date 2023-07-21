@@ -27,6 +27,7 @@ function displayEvents(eventsData) {
     const chefImage = document.createElement('img');
     chefImage.src = event.cook.imgUrl;
     chefImage.alt = event.cook.name;
+    chefImage.classList.add('chef-img');
     chefImageWrapper.appendChild(chefImage);
     eventCard.appendChild(chefImageWrapper);
 
@@ -38,7 +39,7 @@ function displayEvents(eventsData) {
     dishPreviewImageWrapper.appendChild(dishPreviewImage);
     dishPreviewImage.classList.add('dishPreview-img');
 
-    const eventName = document.createElement('h2');
+    const eventName = document.createElement('p');
     eventName.textContent = event.topic.name;
     dishPreviewImageWrapper.appendChild(eventName);
     eventName.classList.add('event-name');
