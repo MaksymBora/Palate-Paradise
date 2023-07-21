@@ -1,6 +1,3 @@
-import Swiper from 'swiper'; // Змінено імпорт, використовуючи 'swiper/bundle'
-import 'swiper/swiper-bundle.min.css';
-
 fetch('https://tasty-treats-backend.p.goit.global/api/events')
   .then(response => {
     if (!response.ok) {
@@ -10,17 +7,8 @@ fetch('https://tasty-treats-backend.p.goit.global/api/events')
   })
   .then(data => {
     displayEvents(data);
-
-    const swiper = new Swiper('.swiper-container', {
-      slidesPerView: 1, // Кількість видимих слайдів
-      spaceBetween: 20, // Відстань між слайдами
-      loop: true, // Циклічний режим слайдера (можна вимкнути, якщо не потрібен)
-      pagination: {
-        el: '.swiper-pagination', // Створення пагінації для переключення між слайдами
-        clickable: true, // Дозволяє переключати слайди, натискаючи на пагінацію
-      },
-    });
   })
+
   .catch(error => {
     console.error('Error fetching data:', error);
   });
@@ -31,37 +19,56 @@ function displayEvents(eventsData) {
   eventsContainer.innerHTML = '';
 
   eventsData.forEach(event => {
-    const eventCard = document.createElement('div');
+    const eventCard = document.createElement('li');
     eventCard.classList.add('event-card');
 
+    const chefImageWrapper = document.createElement('div');
+    chefImageWrapper.classList.add('schef-image-wrapper');
     const chefImage = document.createElement('img');
     chefImage.src = event.cook.imgUrl;
     chefImage.alt = event.cook.name;
-    eventCard.appendChild(chefImage);
-    chefImage.classList.add('chef-img');
+    chefImageWrapper.appendChild(chefImage);
+    eventCard.appendChild(chefImageWrapper);
 
+    const dishPreviewImageWrapper = document.createElement('div');
+    dishPreviewImageWrapper.classList.add('dish-Preview-image-wrapper');
     const dishPreviewImage = document.createElement('img');
     dishPreviewImage.src = event.topic.previewUrl;
     dishPreviewImage.alt = event.topic.name;
-    eventCard.appendChild(dishPreviewImage);
+    dishPreviewImageWrapper.appendChild(dishPreviewImage);
     dishPreviewImage.classList.add('dishPreview-img');
 
     const eventName = document.createElement('h2');
     eventName.textContent = event.topic.name;
-    eventCard.appendChild(eventName);
+    dishPreviewImageWrapper.appendChild(eventName);
     eventName.classList.add('event-name');
 
     const eventRegion = document.createElement('p');
     eventRegion.textContent = event.topic.area;
-    eventCard.appendChild(eventRegion);
+    dishPreviewImageWrapper.appendChild(eventRegion);
     eventRegion.classList.add('event-region');
+    eventCard.appendChild(dishPreviewImageWrapper);
 
+    const dishImageWrapper = document.createElement('div');
+    dishImageWrapper.classList.add('dish-image-wrapper');
     const dishImage = document.createElement('img');
     dishImage.src = event.topic.imgUrl;
     dishImage.alt = event.topic.name;
-    eventCard.appendChild(dishImage);
     dishImage.classList.add('dish-img');
+    dishImageWrapper.appendChild(dishImage);
+    eventCard.appendChild(dishImageWrapper);
 
     eventsContainer.appendChild(eventCard);
   });
 }
+
+//const swiper = new Swiper('.swiper-container', {
+//     slidesPerView: 1, // Кількість видимих слайдів
+//     spaceBetween: 20, // Відстань між слайдами
+//     loop: true, // Циклічний режим слайдера (можна вимкнути, якщо не потрібен)
+//     pagination: {
+//       el: '.swiper-pagination', // Створення пагінації для переключення між слайдами
+//       clickable: true, // Дозволяє переключати слайди, натискаючи на пагінацію
+//     },
+//   });
+// })
