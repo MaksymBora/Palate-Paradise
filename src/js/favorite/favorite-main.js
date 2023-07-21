@@ -23,6 +23,43 @@ recipeApiSerive.getRecipe().then(response => {
   localStorage.setItem(FAV_DATA, JSON.stringify(toStorage));
 });
 
+function getRating(rating) {
+  return `<ul class='stars-list'>
+             <li class=${obtainRating(1, rating)}>
+              <svg class='star-icon' width='18' height='18'>
+                <use href='${sprite}#rate-star'></use>
+              </svg>
+            </li>
+            <li class=${obtainRating(2, rating)}>
+              <svg class='star-icon' width='18' height='18'>
+                <use href='${sprite}#rate-star'></use>
+              </svg>
+            </li>
+            <li class=${obtainRating(3, rating)}>
+              <svg class='star-icon' width='18' height='18'>
+                <use href='${sprite}#rate-star'></use>
+              </svg>
+            </li>
+            <li class=${obtainRating(4, rating)}>
+              <svg class='star-icon' width='18' height='18'>
+                <use href='${sprite}#rate-star'></use>
+              </svg>
+            </li>
+            <li class=${obtainRating(5, rating)}>
+              <svg class='star-icon' width='18' height='18'>
+                <use href='${sprite}#rate-star'></use>
+              </svg>
+            </li>
+          </ul>`;
+}
+
+function obtainRating(star, rating) {
+  if (star <= rating) {
+    return 'star-rated-item';
+  }
+  return 'star-item';
+}
+
 function renderingFavRec() {
   const favList = document.querySelector('.fav-list');
   const empty = document.querySelector('.fav-empty');
@@ -34,6 +71,14 @@ function renderingFavRec() {
   console.log(data);
 
   const { _id, title, category, rating, preview, description } = data[0];
+
+  let setRating = 1;
+
+  if (rating > 5) {
+    setRating = Number(5).toFixed(1);
+  } else {
+    setRating = rating.toFixed(1);
+  }
 
   const markup = `
    <div class="rec-item" style="background: linear-gradient(0deg, rgba(5, 5, 5, 0.6),
@@ -50,16 +95,15 @@ function renderingFavRec() {
           </button>
   
 
-          <h2 class="rec-card-title">BANANA PANCAKES</h2>
-          <p class="rec-card-desc">
-            Banana pancakes are a fluffy and sweet breakfast dish made with
-            mashed ripe bananas, eggs, flour, and a touch of cinnamon, cooked to
-            perfection on a
+          <h2 class="rec-card-title title-cut">${title}</h2>
+          <p class="rec-card-desc desc-cut">
+            ${description}
           </p>
-
+          
           <div class="rec-rate">
-            <p class="rate">5</p>
-            <button type="button" class="rec-btn-open rec-btn">See recipe</button>
+            <p class="rate">${setRating}</p>
+            ${getRating(setRating)}
+            <button type="button" class="rec-btn-open rec-btn" data-id="${_id}">See recipe</button>
           </div>
         </div>
       </div>`;
