@@ -1,35 +1,34 @@
-
+.dark-theme {
+  background-color: #161616;
+  color: #fff;
+}
 
 .mobile {
   position: absolute;
-  
 
-    top: 0;
-    right: 0;
-    z-index: 1000;
-  
-    height: 100%;
-    width: 200px;
-  
- 
-    background-color:#9bb537;
-    
-  
-    overflow: auto;
-/*   
+  top: 0;
+  right: 0;
+  z-index: 1000;
+
+  height: 100%;
+  width: 200px;
+
+  background-color: #9bb537;
+
+  /* overflow: auto; */
+  /*   
    
     opacity: 1;
     visibility: visible;
     pointer-events: auto;
   
     /* transform: translateX(100%); */
-  
-    /* transition: transform 500ms cubic-bezier(0.4, 0, 0.2, 1),
+
+  /* transition: transform 500ms cubic-bezier(0.4, 0, 0.2, 1),
       opacity 250ms cubic-bezier(0.4, 0, 0.2, 1),
       visibility 250ms cubic-bezier(0.4, 0, 0.2, 1);
    */
 }
-
 
 .close-mobile {
   position: fixed;
@@ -47,20 +46,15 @@
 .mob-menu-list {
   color: #ffffff;
   padding-top: 200px;
-  margin-left: auto;
-  margin-right: auto;
+
   text-align: center;
   font-weight: 500;
   font-size: 12px;
- 
- 
 }
 
-.mob-menu-link{
-    margin-bottom: 16px;
+.mob-menu-item {
+  margin-bottom: 16px;
 }
-
-
 
 .buy-btn {
   fill: #050505;
@@ -70,23 +64,20 @@
 
 .container {
   display: flex;
-  margin-top: 20px; 
+  margin-top: 20px;
   justify-content: space-between;
   align-items: center;
 }
 .header-logo {
-  color: #9bb537;
-
+  color: #050505;
   font-size: 16px;
   font-weight: 600;
   line-height: 18px;
-  letter-spacing: -0.04em;
   text-align: center;
 }
 
 .logo {
-  color: #050505;
-
+  color: #9bb537;
   font-size: 16px;
   font-weight: 600;
   line-height: 18px;
@@ -98,13 +89,12 @@
   background: none;
 }
 
-.header-buttons{
-    display: flex;
+.header-buttons {
+  display: flex;
 }
 
-.buttons-wrapper{
-    display: flex;
-    
+.buttons-wrapper {
+  display: flex;
 }
 
 .open-mobile {
@@ -119,37 +109,26 @@ a {
   display: flex;
 }
 
-
-.switch-mobile{
-    margin-top: 772px;
-    position: fixed;
+.switch-mobile {
+  margin-top: 772px;
+  position: fixed;
 }
 
-.slider{   
+.slider {
 }
 
+.switcher {
+  display: none;
+}
 
-
-
-@media screen and (max-width: 767px){
-
-    .switcher {
-  
-        display: none;
-            
-        
-        }
-
-        .header-nav{
-            display: none;
-        }
-   
+.header-nav {
+  display: none;
 }
 
 @media screen and (min-width: 768px) {
-   .open-mobile{
+  .open-mobile {
     display: none;
-   }
+  }
 
   .header-nav {
     display: flex;
@@ -160,7 +139,7 @@ a {
     color: #9bb537;
     font-size: 12px;
     font-weight: 500;
-    
+
     text-align: left;
     margin-right: 16px;
   }
@@ -169,20 +148,11 @@ a {
     color: #050505;
     font-size: 12px;
     font-weight: 400;
-    
+
     text-align: left;
   }
-
 
   .switcher {
     display: block;
   }
-
-  .btn {
-    display: flex;
-  }
-}
-
-.mobile{
-    display: none;
 }
