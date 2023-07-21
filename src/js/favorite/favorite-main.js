@@ -59,7 +59,7 @@ function renderingFavRec() {
 
           <div class="rec-rate">
             <p class="rate">5</p>
-            <button type="button" class="rec-btn-open">See recipe</button>
+            <button type="button" class="rec-btn-open rec-btn">See recipe</button>
           </div>
         </div>
       </div>`;
