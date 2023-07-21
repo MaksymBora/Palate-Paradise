@@ -101,6 +101,7 @@ button {
   .container {
     min-width: 375px;
     padding: 0 20px;
+    width: 375px;
   }
 }
 

@@ -104,9 +104,6 @@ function renderingFavRec(arr) {
         </div>
       </div>`;
   return markup;
-  // empty.classList.add('visually-hidden');
-  hero.classList.remove('visually-hidden');
-  favList.insertAdjacentHTML('beforeend', markup);
 }
 
 function groupArrayIntoChunks(array, chunkSize) {
