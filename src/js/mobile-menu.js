@@ -23,7 +23,7 @@
   // відкриття модалки
   const openModalBtn = document.querySelector('open-mobile');
   const closeModalBtn = document.querySelector('close-mobile');
-  const modal = document.querySelector('mobile');
+  const modal = document.querySelector('backdrop');
 
 
   openModalBtn.addEventListener('click', openModal);

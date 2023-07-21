@@ -69,7 +69,7 @@
   align-items: center;
 }
 .header-logo {
-  color: #050505;
+  /* color: #050505; */
   font-size: 16px;
   font-weight: 600;
   line-height: 18px;
@@ -154,5 +154,9 @@ a {
 
   .switcher {
     display: block;
+  }
+
+  .backdrop{
+    display: none;
   }
 }
