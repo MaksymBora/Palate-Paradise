@@ -40,7 +40,7 @@
 }
 
 /* slider card */
-.event-card {
+.swiper-slide {
   display: flex;
 }
 

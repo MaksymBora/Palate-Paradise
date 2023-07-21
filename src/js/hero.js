@@ -31,7 +31,7 @@ function displayEvents(eventsData) {
 
   eventsData.forEach(event => {
     const eventCard = document.createElement('li');
-    eventCard.classList.add('event-card');
+    eventCard.classList.add('swiper-slide');
 
     const chefImageWrapper = document.createElement('div');
     chefImageWrapper.classList.add('schef-image-wrapper');
