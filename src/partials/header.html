@@ -2,59 +2,59 @@
   <div class="container">
     <nav class="header-nav">
       <ul class="nav-list">
-        <a href="">
-          <li class="nav-point-home">Home</li>
-        </a>
-        <a href="">
-          <li class="nav-point-favorite">Favorite</li>
-        </a>
+        <li class="nav-point">
+          <a class="nav-link">Home</a>
+        </li>
+
+        <li class="nav-point"><a class="nav-link">Favorites</a>></li>
       </ul>
     </nav>
+    <div>
+      <a class="header-logo" href="">tasty<span class="logo">treats.</span></a>
+    </div>
 
-    <a class="header-logo" href="">tasty<span class="logo">treats.</span></a>
-    
-    <ul class="btn">
-    <button class="buy-now">
-        <a href="tel:+380730000000">
-      <svg width="24px" height="24px" class="buy-btn">
-        <use href="/src/images/sprite.svg#icon-cart"></use>
-      </svg></a>
-    </button>
-    <label class="switch" > 
-      <input class="switcher" type="checkbox" id="theme-switch" />
-      <span></span>
-    </label>
-   
+    <div class="header-buttons">
+      <div class="buttons-wrapper">
+        <button class="cart">
+          <svg class="buy-btn" width="24" height="24">
+            <use href="./images/sprite.svg#icon-cart"></use>
+          </svg>
+        </button>
+        <label class="switch">
+          <input class="switcher" type="checkbox" id="theme-switch" />
+          <span></span>
+          <span></span>
+        </label>
+      </div>
 
-    <button class="open-mobile">
-      <svg width="32px" height="32px">
-        <use href="/src/images/sprite.svg#icon-menu"></use>
-      </svg>
-    </button>
-  </ul>
-
-    
-   
-  </div>
-
-  <div class="mobile-menu container is-hidden">
-    <div class="mobile">
-      <button class="close-mobile">
-        <svg widht="32px" height="32px">
-            <use href="/src/images/sprite.svg#icon-x"></use>
+      <button class="open-mobile">
+        <svg width="32" height="32">
+          <use href="./images/sprite.svg#icon-menu"></use>
         </svg>
       </button>
-      <ul>
-        <a href="">
-            <li>Home</li>
-          </a>
-          <a href=""><li>Favorite</li>
-          </a> 
-    </ul>
+    </div>
 
-    <input class="switch" type="checkbox" id="theme-switch" />
+    <!-- Mobile Menu -->
+    <div class="mobile-menu container is-hidden">
+      <div class="container-mob-menu">
+        <div class="mobile">
+          <button class="close-mobile">
+            <svg widht="32" height="32">
+              <use href="./images/sprite.svg#icon-x"></use>
+            </svg>
+          </button>
+          <ul class="mob-menu-list">
+            <li><a class="mob-menu-link">Home</a></li>
+            <li><a class="mob-menu-link">Favorite</a></li>
+          </ul>
+        </div>
+        <label class="switch">
+          <input class="switcher" type="checkbox" id="theme-switch" />
+          <span></span>
+          <span></span>
+        </label>
+      </div>
     </div>
   </div>
 </header>
-
 
