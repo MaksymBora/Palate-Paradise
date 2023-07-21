@@ -80,6 +80,11 @@ function renderingFavRec() {
     setRating = rating.toFixed(1);
   }
 
+  function ifRecInFavor(id) {
+    const data = JSON.parse(localStorage.getItem('favotires-data') || '[]');
+    return data.some(el => el._id === id) ? 'active' : '';
+  }
+
   const markup = `
    <div class="rec-item" style="background: linear-gradient(0deg, rgba(5, 5, 5, 0.6),
                       rgba(5, 5, 5, 0)),
@@ -88,7 +93,7 @@ function renderingFavRec() {
                       background-size: cover;">
         <div class="upper-part">
           
-          <button class="heart-btn" type="button">
+          <button class="heart-btn ${ifRecInFavor(_id)}" type="button">
             <svg class="icon-heart" width="18" height="16">
               <use href="${sprite}#heart"></use>
             </svg>
@@ -111,9 +116,6 @@ function renderingFavRec() {
   // empty.classList.add('visually-hidden');
   hero.classList.remove('visually-hidden');
   favList.insertAdjacentHTML('beforeend', markup);
-
-  const heart = document.querySelector('.heart-btn');
-  heart.classList.add('active');
 }
 
 renderingFavRec();
