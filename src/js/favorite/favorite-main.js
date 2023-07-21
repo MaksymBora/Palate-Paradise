@@ -1,4 +1,5 @@
 import RecipeApiService from '../service/service-api';
+import sprite from '../../images/sprite.svg';
 
 const recipeApiSerive = new RecipeApiService();
 
@@ -44,9 +45,10 @@ function renderingFavRec() {
           
           <button class="heart-btn" type="button">
             <svg class="icon-heart" width="18" height="16">
-              <use href="./images/sprite.svg#heart"></use>
+              <use href="${sprite}#heart"></use>
             </svg>
           </button>
+  
 
           <h2 class="rec-card-title">BANANA PANCAKES</h2>
           <p class="rec-card-desc">
