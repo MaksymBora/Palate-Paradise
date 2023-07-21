@@ -1,6 +1,7 @@
 .container {
 }
 .hero {
+  margin-top: 90px;
 }
 
 .hero-title {
@@ -27,6 +28,12 @@
   margin-bottom: 64px;
 }
 
+.hero-btn:hover,
+.hero-btn-focus {
+  background-color: #9bb537;
+  color: #f8f8f8;
+}
+
 /* slider */
 .eventsContainer {
   display: flex;
@@ -40,12 +47,14 @@
 /* the first card in the slider */
 .schef-image-wrapper {
   margin-right: 16px;
+  perspective: 800px;
 }
 .chef-img {
   width: 80px;
   height: 302px;
   object-fit: cover;
   border-radius: 15px;
+  transform: rotateY(20deg);
 
   /* transform: scale(1.2); */
 }
@@ -90,7 +99,7 @@
   height: auto;
   max-height: 100%;
   object-fit: cover;
-  margin-top: 50px;
+  margin-top: 25px;
 }
 .event-name {
   font-size: medium;
@@ -110,6 +119,11 @@
   height: 302px;
   border-radius: 15px;
   background-color: #050505;
+  background-image: radial-gradient(
+    circle at center,
+    rgba(155, 181, 55, 0.3),
+    transparent
+  );
 }
 .dish-img {
 }
