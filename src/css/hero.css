@@ -14,6 +14,7 @@
   margin-bottom: 16px;
 }
 .hero-description {
+  max-width: 408px;
   counter-reset: #050505;
   font-size: 16px;
   margin-bottom: 32px;
@@ -41,6 +42,7 @@
 
 /* slider card */
 .swiper-slide {
+  max-width: 700px;
   display: flex;
 }
 
@@ -97,7 +99,7 @@
 .dish-image-wrapper {
   display: flex;
   overflow: hidden;
-  width: 185px;
+
   height: 302px;
   border-radius: 15px;
   background-color: #050505;
@@ -129,5 +131,23 @@
 
   .event-card {
     width: 100%;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .container {
+    max-width: 480px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .container {
+    max-width: 768px;
+  }
+}
+@media screen and (min-width: 1200px) {
+  .container {
+    display: flex;
+    max-width: 1170px;
   }
 }
