@@ -158,10 +158,8 @@ a {
 }
 
 .switcher {
-    width: 45px;
-    height: 21px;
-    margin-left: 48%;
-    display: inline-block;
+  
+display: none;
     
 
 }
