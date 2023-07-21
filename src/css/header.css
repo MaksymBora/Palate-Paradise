@@ -2,33 +2,8 @@
 
 .mobile {
   position: absolute;
-  /* top: 50%;
-  left: 100%;
-  transform: translate(-0%, -100%);
-  background-color: #9bb537;
-  padding: 20px;
-
-  height: 100%;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1),
-    opacity 0.25s cubic-bezier(0.4, 0, 0.2, 1),
-    visibility 0.25s cubic-bezier(0.4, 0, 0.2, 1); */
-
-
-/* 
-    top: 0;
-    right: 0;
-    bottom: 0;
-    width: 200px; /* Ширина модального окна, можете настроить по вашему желанию */
-    /* background-color: #9bb537;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-    z-index: 9999;
-    overflow-y: auto; /* Если контент больше экрана, добавляется вертикальная прокрутка */
   
 
-
-
-    /* position: fixed; */
     top: 0;
     right: 0;
     z-index: 1000;
@@ -36,33 +11,25 @@
     height: 100%;
     width: 200px;
   
-    padding-top: 136px;
-    padding-left: 20px;
-    padding-bottom: 20px;
-  
+ 
     background-color:#9bb537;
-    ;
+    
   
     overflow: auto;
-  
-    opacity: 0;
-    visibility: hidden;
-    pointer-events: none;
-  
-    transform: translateX(100%);
-  
-    transition: transform 500ms cubic-bezier(0.4, 0, 0.2, 1),
-      opacity 250ms cubic-bezier(0.4, 0, 0.2, 1),
-      visibility 250ms cubic-bezier(0.4, 0, 0.2, 1);
-  
-}
-
-.mobil.is-open{
-    transform: translateX(0);
+/*   
+   
     opacity: 1;
     visibility: visible;
     pointer-events: auto;
+  
+    /* transform: translateX(100%); */
+  
+    /* transition: transform 500ms cubic-bezier(0.4, 0, 0.2, 1),
+      opacity 250ms cubic-bezier(0.4, 0, 0.2, 1),
+      visibility 250ms cubic-bezier(0.4, 0, 0.2, 1);
+   */
 }
+
 
 .close-mobile {
   position: fixed;
@@ -93,9 +60,7 @@
     margin-bottom: 16px;
 }
 
-/* .mobile-svg{
-    position: fixed;
-} */
+
 
 .buy-btn {
   fill: #050505;
@@ -150,19 +115,10 @@ a {
   text-decoration: none;
 }
 
-.header-nav {
-  display: none;
-}
 .nav-list {
   display: flex;
 }
 
-.switcher {
-  
-display: none;
-    
-
-}
 
 .switch-mobile{
     margin-top: 772px;
@@ -172,7 +128,29 @@ display: none;
 .slider{   
 }
 
+
+
+
+@media screen and (max-width: 767px){
+
+    .switcher {
+  
+        display: none;
+            
+        
+        }
+
+        .header-nav{
+            display: none;
+        }
+   
+}
+
 @media screen and (min-width: 768px) {
+   .open-mobile{
+    display: none;
+   }
+
   .header-nav {
     display: flex;
     gap: 16px;
@@ -195,9 +173,6 @@ display: none;
     text-align: left;
   }
 
-  .open-mobile {
-    display: none;
-  }
 
   .switcher {
     display: block;
