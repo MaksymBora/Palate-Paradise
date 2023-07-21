@@ -28,7 +28,93 @@
 } */
 
 /* Загальні стилі для всіх розмірів пристроїв */
+
 .container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.hero {
+  background-color: #f2f2f2;
+  padding: 40px 0;
+  text-align: center;
+}
+
+.hero-title {
+  font-size: 32px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.title {
+  color: #ff6b6b;
+}
+
+.hero-description {
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+
+.hero-btn {
+  background-color: #ff6b6b;
+  color: #fff;
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
+
+.eventsContainer {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  overflow: hidden;
+}
+
+.event-card {
+  flex: 0 0 375px;
+  margin-right: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.event-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.event-card h2 {
+  font-size: 20px;
+  font-weight: bold;
+  margin: 10px 20px;
+}
+
+.event-card p {
+  font-size: 16px;
+  margin: 10px 20px;
+}
+
+/* Add animation for the slider */
+.slider {
+  display: flex;
+  overflow: hidden;
+  animation: slide 20s infinite linear;
+}
+
+@keyframes slide {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(calc(-375px * 3));
+  }
+}
+
+/* .container {
   max-width: 1200px;
   margin: 0 auto;
 }
@@ -62,7 +148,7 @@
   border: 1px solid #9bb537;
   border-radius: 20px;
   cursor: pointer;
-}
+} */
 /* .swiper-container {
   margin-top: 45px;
   margin-bottom: 45px;

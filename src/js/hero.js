@@ -1,9 +1,6 @@
-import Swiper from 'swiper'; // Імпорт Swiper
-import 'swiper/swiper-bundle.min.css'; // Імпорт CSS стилів Swiper
+import Swiper from 'swiper'; // Змінено імпорт, використовуючи 'swiper/bundle'
+import 'swiper/swiper-bundle.min.css';
 
-// Решта вашого коду
-
-const swiperEl = document.querySelector('.swiper-container');
 fetch('https://tasty-treats-backend.p.goit.global/api/events')
   .then(response => {
     if (!response.ok) {
@@ -14,11 +11,14 @@ fetch('https://tasty-treats-backend.p.goit.global/api/events')
   .then(data => {
     displayEvents(data);
 
-    const swiper = new Swiper(swiperEl, {
-      effect: 'slide', //ефекти 'fade', 'slide', 'cube'
-      grabCursor: true, // Змінює курсор під час перетягування слайдера
+    const swiper = new Swiper('.swiper-container', {
+      slidesPerView: 1, // Кількість видимих слайдів
+      spaceBetween: 20, // Відстань між слайдами
       loop: true, // Циклічний режим слайдера (можна вимкнути, якщо не потрібен)
-      // modules: [Navigation, Pagination],
+      pagination: {
+        el: '.swiper-pagination', // Створення пагінації для переключення між слайдами
+        clickable: true, // Дозволяє переключати слайди, натискаючи на пагінацію
+      },
     });
   })
   .catch(error => {
@@ -31,7 +31,7 @@ function displayEvents(eventsData) {
   eventsContainer.innerHTML = '';
 
   eventsData.forEach(event => {
-    const eventCard = document.createElement('li');
+    const eventCard = document.createElement('div');
     eventCard.classList.add('event-card');
 
     const chefImage = document.createElement('img');
