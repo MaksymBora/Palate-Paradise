@@ -1,4 +1,4 @@
-.container {
+/* .container {
 }
 .hero {
 }
@@ -25,4 +25,92 @@
 .dishPreview-img {
 }
 .dish-img {
+} */
+
+/* Загальні стилі для всіх розмірів пристроїв */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.hero {
+  background-color: #f0f0f0;
+  padding: 40px 0;
+}
+
+.hero-title {
+  font-size: 36px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 14px;
+}
+
+.title {
+  color: #9bb537;
+}
+
+.hero-description {
+  font-size: 18px;
+  color: #666;
+  margin-bottom: 28px;
+}
+
+.hero-btn {
+  background-color: #fff;
+  color: #666;
+  padding: 10px 20px;
+  border: 1px solid #9bb537;
+  border-radius: 20px;
+  cursor: pointer;
+}
+/* .swiper-container {
+  margin-top: 45px;
+  margin-bottom: 45px;
+} */
+/* .eventsContainer {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 20px;
+} */
+
+/* .event-card {
+  width: calc(50% - 20px);
+  margin: 10px;
+  border: 1px solid #ccc;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+} */
+
+/* .event-name {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 10px;
+} */
+
+/* .event-region {
+  font-size: 16px;
+  color: #666;
+  margin-bottom: 10px;
+} */
+
+/* .chef-img,
+.dishPreview-img,
+.dish-img {
+  width: 100%;
+  height: auto;
+} */
+
+/* Стилі для мобільних пристроїв з шириною 375 пікселів і менше */
+@media (max-width: 375px) {
+  .hero-title {
+    font-size: 24px;
+  }
+
+  .hero-description {
+    font-size: 14px;
+  }
+
+  .event-card {
+    width: 100%;
+  }
 }
