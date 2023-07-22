@@ -19,3 +19,6 @@
 @import './modals/modal-recipes.css';
 
 @import './modals/backdrop.css';
+
+/* Pagination */
+@import './favorites/pagination.css';
