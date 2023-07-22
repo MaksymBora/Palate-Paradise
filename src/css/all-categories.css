@@ -84,7 +84,7 @@
     }
 
     .all-cat-wrap {
-        width: 235px;
+        min-width: 235px;
         
     }
 
