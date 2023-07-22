@@ -50,7 +50,7 @@
 .mob-menu-list {
   color: #ffffff;
   padding-top: 200px;
-
+  font-family: Inter;
   text-align: center;
   font-weight: 500;
   font-size: 12px;
@@ -58,6 +58,10 @@
 
 .mob-menu-link:visited {
   color: #fff;
+}
+
+.menu-nav-links:hover {
+  color: var(--brand-green);
 }
 
 .mob-menu-item {
@@ -69,14 +73,13 @@
 }
 
 .buy-btn {
-  fill: #050505;
+  /* fill: #050505; */
   display: flex;
   justify-content: center;
 }
 
 .buy-btn:hover,
-.buy-btn:Focus
- {
+.buy-btn:focus {
   color: #9bb537;
 }
 
@@ -86,20 +89,24 @@
   justify-content: space-between;
   align-items: center;
 }
-.header-logo {
-  /* color: #050505; */
+
+.logo-first-color {
+  color: #9bb537;
+  text-align: center;
+  font-family: Inter;
   font-size: 16px;
+  font-style: normal;
   font-weight: 600;
   line-height: 18px;
-  text-align: center;
+  letter-spacing: -0.64px;
 }
 
-.logo {
-  color: #9bb537;
-  font-size: 16px;
-  font-weight: 600;
-  line-height: 18px;
-  letter-spacing: -0.04em;
+.logo-second-color {
+  color: #050505;
+}
+
+.dark-mode .logo-second-color {
+  color: #ffffff;
 }
 
 .cart {
@@ -142,10 +149,6 @@ a {
 .slider {
 }
 
-.buy-now.dark-theme{
-    color:#ffffff;
-}
-
 @media screen and (max-width: 767px) {
   .switcher {
     display: none;
@@ -176,24 +179,20 @@ a {
     gap: 16px;
   }
 
-  .nav-point-home {
-    color: #9bb537;
+ 
+
+  .menu-nav-links {
+    color: #050505;
     font-size: 12px;
     font-weight: 500;
+    line-height: normal;
+  }
 
-    text-align: left;
+  .menu-nav-links:not(:last-child) {
     margin-right: 16px;
   }
 
-  .nav-point {
-    font-size: 12px;
-    font-weight: 400;
-
-    text-align: left;
-  }
-
-  .nav-point:hover,
-  .nav-point:focus{
+  .menu-nav-links:hover {
     color: #9bb537;
   }
 
@@ -209,5 +208,10 @@ a {
 @media screen and (min-width: 1280px) {
   .container {
     margin-top: 40px;
+  }
+
+  .logo-first-color {
+    font-size: 18px;
+    line-height: 20px;
   }
 }
