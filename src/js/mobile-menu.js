@@ -21,21 +21,24 @@
 
 
   // відкриття модалки
-  const openModalBtn = document.querySelector('open-mobile');
-  const closeModalBtn = document.querySelector('close-mobile');
-  const modal = document.querySelector('backdrop');
+  const openModalBtn = document.querySelector('.open-mobile');
+  const closeModalBtn = document.querySelector('.close-mobile');
+  const modal = document.querySelector('.mobile');
+  const backdrop = document.querySelector('.backdrop') 
 
 
   openModalBtn.addEventListener('click', openModal);
   closeModalBtn.addEventListener('click', closeModal);
   
   function openModal() {
+     
     modal.classList.remove('is-hidden');
   }
 
   
   function closeModal() {
-    modal.classList.add("is-hidden");
+     modal.classList.add("is-hidden");
+    
   }
 
   
