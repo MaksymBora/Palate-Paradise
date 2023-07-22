@@ -10,6 +10,27 @@
   padding: 40px 20px 40px 20px;
 }
 
+.modal-close-btn {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 20px;
+  height: 20px;
+  background-color: var(--primary-white-color);
+  border: transparent;
+  padding: 0;
+}
+
+.modal-close-btn:hover .modal-close-btn-icon,
+.modal-close-btn:focus .modal-close-btn-icon {
+  stroke: var(--accent-color);
+}
+
 .recipes-components-list {
   display: flex;
   flex-direction: column;
@@ -23,19 +44,6 @@
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
   padding-bottom: 6px;
 }
-
-/* .recipes-components-item::after {
-  position: absolute;
-  top: 100%;
-  right: 0;
-  margin-top: 6px;
-
-  content: '';
-  height: 1px;
-  background-color: var(--primaty-black-color);
-  opacity: 0.1;
-  width: 100%;
-} */
 
 .recipes-components-item_name {
   font-size: 14px;
