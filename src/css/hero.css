@@ -38,10 +38,6 @@
 /* slider */
 .eventsContainer {
   display: flex;
-  display: flex;
-  max-width: 700px; /* Задайте максимальну ширину контейнера */
-  margin: 0 auto; /* Вирівняйте контейнер по центру */
-  overflow: hidden;
 }
 
 /* slider card */
@@ -135,6 +131,29 @@
 
   .event-card {
     width: 100%;
+  }
+}
+
+.swiper-container {
+  width: 266px;
+  height: 252px;
+  margin: 0 0 40px 0;
+}
+@media screen and (max-width: 306px) {
+  .swiper-container {
+    width: 240px;
+    height: 232px;
+  }
+}
+@media screen and (min-width: 768px) {
+  .swiper-container {
+    width: 436px;
+    height: 315px;
+  }
+}
+@media screen and (min-width: 1280px) {
+  .swiper-container {
+    margin-top: 122px;
   }
 }
 

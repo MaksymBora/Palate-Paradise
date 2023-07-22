@@ -12,6 +12,7 @@ fetch('https://tasty-treats-backend.p.goit.global/api/events')
 
     const swiper = new Swiper('.swiper-container', {
       effect: 'slide',
+      direction: 'horizontal',
       grabCursor: true,
       loop: true,
       pagination: {
