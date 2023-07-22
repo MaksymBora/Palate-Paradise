@@ -127,5 +127,14 @@
             <sub><b>🇺🇦</b></sub>
         </a>
     </td>
+    <td align="center">
+        <a href="https://github.com/AnnieKrivega">
+            <img src="https://avatars.githubusercontent.com/u/121309759?v=4" width="100;" alt="AnnieKrivega"/>
+            <br />
+            <sub><b>Anna Krivega</b></sub>
+            <br />
+            <sub><b>🇺🇦</b></sub>
+        </a>
+    </td>
     </tr>
 </table>
