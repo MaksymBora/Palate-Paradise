@@ -95,26 +95,19 @@
             <sub><b>Надія Риченко</b></sub>
             <br />
             <sub><b>🇺🇦</b></sub>
-        </a></tr>
-	
+        </a>
+    </td>
+    
+</tr>
 <tr>
-    </tr>
-</table>
-<!-- readme: contributors,ImgBotApp/- -end -->
-
-### Bots
-
-<!-- readme: bots -start -->
-<table>
-<tr>
-    <td align="center">
-        <a href="https://github.com/github-actions[bot]">
-            <img src="https://avatars.githubusercontent.com/in/15368?v=4" width="100;" alt="github-actions[bot]"/>
+<td align="center">
+        <a href="https://github.com/galu4ok">
+            <img src="https://avatars.githubusercontent.com/u/92317052?v=4" width="100;" alt="Maryna-Korbet"/>
             <br />
-            <sub><b>github-actions[bot]</b></sub>
+            <sub><b>Galyna Shevchenko</b></sub>
+            <br />
+            <sub><b>🇺🇦</b></sub>
         </a>
     </td>
     </tr>
 </table>
-<!-- readme: bots,ImgBotApp -end -->
-<!-- markdownlint-restore -->
