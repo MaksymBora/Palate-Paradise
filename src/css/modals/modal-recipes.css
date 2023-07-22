@@ -75,25 +75,22 @@
 }
 .modal-btn-container {
   display: flex;
-  justify-content: space-between;
-  gap: 14px;
+  justify-content: flex-start;
+  gap: 13px;
 }
 
 .btn-add-favorite {
   font-size: 14px;
   font-weight: 500;
-  min-width: 148px;
-  min-height: 41px;
+  letter-spacing: 0em;
+  line-height: 1.21;
+  color: var(--text-white-color);
+  text-align: center;
 
   padding: 12px 24px 12px 24px;
   border-radius: 15px;
   background-color: var(--accent-color);
-
-  font-size: 14px;
-  font-weight: 500;
-  line-height: 1.21;
   border: transparent;
-  color: var(--text-white-color);
 }
 
 .btn-add-favorite:hover,
@@ -106,19 +103,19 @@
 }
 
 .btn-give-rating {
+  font-family: inherit;
+  text-align: center;
+  letter-spacing: 0em;
   font-size: 14px;
   font-weight: 500;
-  min-width: 133px;
-  min-height: 41px;
+  line-height: 1.21;
+  color: var(--primaty-black-color);
+
   padding: 12px 24px 12px 24px;
   border-radius: 15px;
   background-color: var(--primary-white-color);
 
-  font-size: 14px;
-  font-weight: 500;
-  line-height: 1.21;
   border: 1px solid var(--accent-color);
-  color: var(--primaty-black-color);
 }
 
 .btn-give-rating:hover,
