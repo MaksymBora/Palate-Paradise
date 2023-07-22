@@ -90,8 +90,10 @@ function displayFavorites(pageSet = 1) {
   const storage = localStorage.getItem('favorites-data');
   const data = JSON.parse(storage);
 
+  // Show or hide the "All" button based on whether there is data in localStorage.
   refs.allButton.style.display = data && data.length ? 'block' : 'none';
 
+  // Display a message and hide the "All" button if there is no data in localStorage or the data array is empty.
   if (!data || data.length === 0) {
     refs.noFavoritesMessage.classList.remove('visually-hidden');
     refs.allButton.classList.add('visually-hidden');

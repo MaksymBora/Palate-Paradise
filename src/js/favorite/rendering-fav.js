@@ -47,11 +47,21 @@ function checkForFav(id) {
   const data = JSON.parse(storage);
 
   // Check if the recipe with the specified ID exists in the favorites data.
-  // If it exists, return 'active', indicating that the recipe is in favorites.
-  // Otherwise, return an empty string.
+
   return storage && data.find(el => el.id === id) ? 'active' : '';
 }
 
+/**
+ * Render the HTML markup for a favorite recipe item.
+ *
+ *  title - The title of the recipe.
+ *  description - The description of the recipe.
+ *  preview - The URL of the recipe's preview image.
+ *  rating - The rating of the recipe.
+ *  id - The ID of the recipe.
+ *  category - The category of the recipe.
+ *  Returns the HTML markup for the favorite recipe item.
+ */
 export function renderingFavRec(
   title,
   description,
@@ -60,6 +70,7 @@ export function renderingFavRec(
   id,
   category
 ) {
+  // Create an object with recipe information.
   const infoRecipe = {
     title,
     description: description.replace("'", ''),
@@ -69,8 +80,10 @@ export function renderingFavRec(
     category,
   };
 
+  // Ensure the rating is within the range of 0 to 5, and fix it to one decimal place.
   const fixedRating = Math.min(rating, 5).toFixed(1);
 
+  // Return the HTML markup for the favorite recipe item.
   return `
     <div data-category="${category}" class="rec-item" 
       style="background: linear-gradient(0deg, rgba(5, 5, 5, 0.6), rgba(5, 5, 5, 0)),
