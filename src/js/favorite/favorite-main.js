@@ -1,66 +1,35 @@
 import RecipeApiService from '../service/service-api';
-import { renderingFavRec } from '../favorite/rendering-fav';
-import createPagination from '../favorite/pagination';
+
+import refs from './constants';
+import { getFromLocalStorage } from '../favorite/localStorageUtils';
+import { handleCategoryFilter } from '../favorite/handleCategotyFilter';
+import { displayFavorites } from '../favorite/display-favorites';
 
 const recipeApiSeriсe = new RecipeApiService();
 
-const refs = {
-  recipesListContainer: document.querySelector('.fav-list'),
-  categoriesContainer: document.querySelector('.fav-categories'),
-  noFavoritesMessage: document.querySelector('.fav-empty'),
-  paginationElement: document.getElementById('pagination'),
-  allButton: document.querySelector('.common-btn'),
-  categoriesList: document.querySelector('.fav-categories'),
-  renderedRecipesBox: document.getElementById('fav-rendered-card'),
-  heroImage: document.querySelector('.fav-hero'),
-};
-
 // Imitation
-recipeApiSeriсe.getRecipe().then(response => {
-  const arr = response.results;
+// recipeApiSeriсe.getRecipe().then(response => {
+//   const arr = response.results;
 
-  const FAV_DATA = 'favorites-data';
-  const toStorage = [];
+//   const FAV_DATA = 'favorites-data';
+//   const toStorage = [];
 
-  for (let i = 0; i < 6; i++) {
-    const { _id, title, category, rating, preview, description } = arr[i];
-    for (let j = 0; j < 5; j++) {
-      toStorage.push({
-        _id,
-        title,
-        category,
-        rating,
-        preview,
-        description,
-      });
-    }
-  }
+//   for (let i = 0; i < 6; i++) {
+//     const { _id, title, category, rating, preview, description } = arr[i];
+//     for (let j = 0; j < 5; j++) {
+//       toStorage.push({
+//         _id,
+//         title,
+//         category,
+//         rating,
+//         preview,
+//         description,
+//       });
+//     }
+//   }
 
-  localStorage.setItem(FAV_DATA, JSON.stringify(toStorage));
-});
-
-let currentBtn = '';
-
-// Calculates the number of items per page
-function countPage() {
-  return window.innerWidth < 768 ? 9 : 12;
-}
-
-/**
- * Groups an array into chunks of a specified size.
- *
- *  array - The array to be grouped into chunks.
- *  chunkSize - The size of each chunk(Part).
- * {Object} An object containing the grouped chunks, with chunk numbers as keys.
- */
-function groupArrayIntoChunks(array, chunkSize) {
-  const groupedChunks = {};
-  for (let i = 0; i < array.length; i += chunkSize) {
-    const chunkNumber = Math.floor(i / chunkSize) + 1;
-    groupedChunks[chunkNumber] = array.slice(i, i + chunkSize);
-  }
-  return groupedChunks;
-}
+//   localStorage.setItem(FAV_DATA, JSON.stringify(toStorage));
+// });
 
 /**
  * Refreshes the favorite recipes page.
@@ -71,52 +40,11 @@ function onFavoritesReload() {
   const categoryMarkup = createCategoryList();
   const allCatBtn = `<button class="fav-button common-btn is-active" name="main-cat-btn">All categories</button>`;
 
-  const data = JSON.parse(localStorage.getItem('favorites-data'));
+  const data = getFromLocalStorage('favorites-data');
   refs.recipesListContainer.innerHTML = '';
   refs.categoriesContainer.innerHTML =
     data && data.length ? `${allCatBtn}${categoryMarkup}` : '';
   displayFavorites();
-}
-
-/**
- * Displays the favorite recipes based on the given pageSet.
- * If there is no data in localStorage or the data array is empty, displays a message and hides the "All" button.
- * Otherwise, calculates the number of recipes to display per page, groups the data into chunks,
- * and generates the pagination if there are multiple pages.
- * Then, creates the markup for the favorite recipes and updates the display accordingly.
- * pageSet - The current page number to display.
- */
-function displayFavorites(pageSet = 1) {
-  const storage = localStorage.getItem('favorites-data');
-  const data = JSON.parse(storage);
-
-  // Show or hide the "All" button based on whether there is data in localStorage.
-  refs.allButton.style.display = data && data.length ? 'block' : 'none';
-
-  // Display a message and hide the "All" button if there is no data in localStorage or the data array is empty.
-  if (!data || data.length === 0) {
-    refs.noFavoritesMessage.classList.remove('visually-hidden');
-    refs.allButton.classList.add('visually-hidden');
-    if (window.innerWidth < 768)
-      refs.heroImage.classList.add('visually-hidden');
-    return;
-  }
-
-  const perPage = countPage();
-  const objData = groupArrayIntoChunks(data, perPage);
-  const totalPages = Object.keys(objData).length;
-
-  refs.paginationElement.style.display = totalPages > 1 ? 'block' : 'none';
-  createPagination(pageSet, perPage, totalPages, displayFavorites);
-
-  const listMarkup = objData[pageSet]
-    .map(({ title, description, preview, rating, id, category }) =>
-      renderingFavRec(title, description, preview, rating, id, category)
-    )
-    .join('');
-
-  refs.recipesListContainer.innerHTML = listMarkup;
-  refs.noFavoritesMessage.classList.add('visually-hidden');
 }
 
 /**
@@ -145,70 +73,6 @@ function createCategoryList() {
  */
 function renderCategories(category) {
   return `<button class="fav-button">${category}</button>`;
-}
-
-/**
- * Handles the category filter event.
- * {Event} evt - The event object.
- */
-function handleCategoryFilter(evt) {
-  if (evt.target.classList.contains('is-active')) return;
-
-  let data = [];
-  let categoryRecipes;
-  refs.recipesListContainer.innerHTML = '';
-
-  if (evt !== Number(evt) && evt.target.nodeName === 'BUTTON') {
-    toggleActiveClass(evt);
-    currentBtn =
-      evt.target.name === 'main-cat-btn' ? '' : evt.target.textContent;
-  }
-
-  const storage = localStorage.getItem('favorites-data');
-  data = JSON.parse(storage);
-
-  if (!data || data.length === 0) {
-    refs.categoriesContainer.style.display = 'none';
-    return;
-  }
-
-  if (!currentBtn) {
-    displayFavorites();
-    return;
-  }
-
-  categoryRecipes = [...data.filter(recipe => recipe.category === currentBtn)];
-
-  let pageSet = 1;
-
-  if (Number(evt) === evt) pageSet = evt;
-
-  const perPage = countPage();
-  const objData = groupArrayIntoChunks(categoryRecipes, perPage);
-  const totalPages = Object.keys(objData).length;
-
-  refs.paginationElement.style.display = totalPages > 1 ? 'block' : 'none';
-  createPagination(pageSet, perPage, totalPages, displayFavorites);
-
-  const listMarkup = objData[pageSet].reduce(
-    (markup, { title, description, preview, rating, id, category }) =>
-      markup +
-      renderingFavRec(title, description, preview, rating, id, category),
-    ''
-  );
-
-  refs.recipesListContainer.innerHTML = listMarkup;
-}
-
-/**
- * Toggles the 'is-active' class on the target element.
- * {Event} target - The event target element.
- */
-function toggleActiveClass({ target }) {
-  const btn = document.querySelector('.is-active');
-  if (!btn) refs.allButton.classList.add('is-active');
-  else btn.classList.remove('is-active');
-  target.classList.add('is-active');
 }
 
 /**
