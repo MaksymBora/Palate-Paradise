@@ -1,0 +1,87 @@
+.all-cat-wrap {
+    max-width: 326px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.all-cat-title{
+    display: none;
+}
+
+.all-cat-main-btn{
+    margin-bottom: 24px;
+    padding: 14px 29px;
+    min-width: 176px;
+
+    font-size: 18px;
+    font-weight: 500;
+
+    border-radius: 15px;
+    border-color: rgba(5, 5, 5, 0.2);
+    color: rgba(5, 5, 5, 0.5);
+    background-color: transparent;
+}
+
+.all-cat-select-btn{
+    padding: 0;
+
+    color: rgba(5, 5, 5, 0.3);
+
+    font-size: 14px;
+    line-height: 18px;
+    font-weight: 500;
+
+    background-color: transparent;
+    border-color: transparent;
+}
+
+.all-cat-select-item:not(:last-child){
+    margin-bottom: 18px;
+}
+
+.all-cat-select-list{
+    max-height: 198px;
+    
+}
+
+/*======Tablet style=========*/
+@media screen and (min-width: 768px) {
+    .all-cat-wrap {
+            max-width: 176px;
+            
+        }
+
+    .all-cat-select-list {
+            max-height: 416px;
+    
+        }
+
+    .all-cat-main-btn {
+            margin-bottom: 30px;
+            font-size: 17px;
+        }
+
+    .all-cat-select-item:not(:last-child) {
+            margin-bottom: 24px;
+        }
+    .all-cat-select-btn {
+    
+            font-size: 16px;
+            line-height: 20px;
+        }
+}
+
+/*======Desktop style=========*/
+@media screen and (min-width: 1200px) {
+    .all-cat-main-btn{
+        min-width: 174px;
+        padding: 14px 28px;
+        margin-bottom: 42px;
+    }
+
+    .all-cat-wrap {
+        max-width: 235px;
+        
+    }
+
+}
