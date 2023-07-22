@@ -1,76 +1,94 @@
+.hero {
+  min-height: 100%;
+}
+
+.block-body {
+  width: 100%;
+
+  flex: 1 1 auto;
+  min-width: 0;
+  overflow: hidden;
+}
 .container {
 }
-.hero {
-  margin-top: 90px;
+.hero-wrapper {
 }
-
 .hero-title {
+  text-align: start;
+  margin-top: 80px;
+  font-size: 36;
+
   color: #050505;
-  font-size: 36px;
+
+  font-weight: bold;
 }
 .title {
+  font-weight: bold;
+  font-size: 36;
   color: #9bb537;
-  font-size: 36px;
-  margin-bottom: 16px;
+  margin-bottom: 14px;
 }
 .hero-description {
-  max-width: 408px;
-  counter-reset: #050505;
-  font-size: 16px;
-  margin-bottom: 32px;
+  text-align: start;
+  font-weight: regular;
+  color: #050505;
+  margin-bottom: 28px;
 }
 .hero-btn {
-  padding: 14px 28px;
-  color: #050505;
-  height: 45px;
-  border: 1px solid #9bb537;
-  border-radius: 15px;
   background-color: #fff;
-  margin-bottom: 64px;
+  padding: 10px 20px;
+  border: 2px solid #9bb537;
+  border-radius: 12px;
 }
 
-.hero-btn:hover,
-.hero-btn-focus {
-  background-color: #9bb537;
-  color: #f8f8f8;
+.swiper-container {
+  width: auto;
+  padding: 30px 0 70px 0;
 }
-
-/* slider */
-.eventsContainer {
+.swiper-wrapper {
   display: flex;
 }
 
-/* slider card */
+.element-wrapper {
+  display: flex;
+}
 .swiper-slide {
-  max-width: 700px;
-  display: flex;
+  width: 100%;
+}
+.swiper-pagination {
 }
 
 /* the first card in the slider */
 .schef-image-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   margin-right: 16px;
-}
-.chef-img {
   width: 80px;
-  height: 302px;
-  object-fit: cover;
+  height: 300px;
   border-radius: 15px;
+  overflow: hidden;
+}
 
-  /* transform: scale(1.2); */
+.schef-image-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 /* the second card in the slider */
 
 .dish-Preview-image-wrapper {
   background-color: #050505;
-  margin-right: 16px;
+  max-width: 200px;
+  display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   overflow: hidden;
   text-align: center;
-  width: 200px;
-  height: 302px;
+  margin-right: 16px;
+  height: 300px;
   border-radius: 15px;
   background-image: radial-gradient(
     circle at center,
@@ -78,29 +96,36 @@
     transparent
   );
 }
-.dishPreview-img {
-  width: 100%;
+
+.dish-Preview-image-wrapper img {
+  max-width: 100%;
+  width: 80%;
   height: auto;
-  max-height: 100%;
-  object-fit: cover;
-  margin-top: 25px;
 }
+
 .event-name {
   font-size: medium;
-
   color: rgba(248, 248, 248, 0.6);
+  margin-top: 8px;
 }
+
 .event-region {
   font-size: small;
   color: rgba(248, 248, 248, 0.2);
+  margin-top: 4px;
 }
 
 /* the third card in the slider */
+.thierd-slider {
+  /* width: 350px; */
+}
+
 .dish-image-wrapper {
+  max-width: 200px;
   display: flex;
   overflow: hidden;
-
-  height: 302px;
+  align-items: center;
+  height: 300px;
   border-radius: 15px;
   background-color: #050505;
   background-image: radial-gradient(
@@ -109,68 +134,59 @@
     transparent
   );
 }
-.dish-img {
+
+.dish-image-wrapper img {
+  object-fit: cover;
+  width: 100%;
+  height: 80%;
+  margin: 0 auto;
+  transform: scale(1.7);
 }
 
 /* Загальні стилі для всіх розмірів пристроїв */
-
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-/* Стилі для мобільних пристроїв з шириною 375 пікселів і менше */
-@media (max-width: 375px) {
+@media screen and (min-width: 481px) {
   .hero-title {
-    font-size: 24px;
+    max-width: 446px;
   }
 
   .hero-description {
-    font-size: 14px;
+    max-width: 390px;
   }
 
-  .event-card {
-    width: 100%;
+  .dish-Preview-image-wrapper {
+    max-width: 300px;
   }
-}
 
-.swiper-container {
-  width: 266px;
-  height: 252px;
-  margin: 0 0 40px 0;
-}
-@media screen and (max-width: 306px) {
-  .swiper-container {
-    width: 240px;
-    height: 232px;
-  }
-}
-@media screen and (min-width: 768px) {
-  .swiper-container {
-    width: 436px;
-    height: 315px;
-  }
-}
-@media screen and (min-width: 1280px) {
-  .swiper-container {
-    margin-top: 122px;
+  .dish-image-wrapper {
+    max-width: 350px;
   }
 }
 
-@media screen and (max-width: 480px) {
-  .container {
-    max-width: 480px;
+@media screen and (min-width: 769px) {
+  .schef-image-wrapper {
+    width: 137px;
+  }
+  .hero-btn {
+    padding: 14px 28px;
+  }
+
+  .schef-image-wrapper {
+    width: 137px;
+    height: 442px;
+  }
+  .dish-Preview-image-wrapper {
+    max-width: 350px;
+    height: 442px;
+  }
+
+  .dish-image-wrapper {
+    max-width: 350px;
+    height: 442px;
   }
 }
 
-@media screen and (min-width: 768px) {
-  .container {
-    max-width: 768px;
-  }
-}
-@media screen and (min-width: 1200px) {
-  .container {
+@media screen and (min-width: 1281px) {
+  .container-wrapper {
     display: flex;
-    max-width: 1170px;
   }
 }
