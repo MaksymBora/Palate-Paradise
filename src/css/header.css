@@ -221,7 +221,7 @@ a {
 
 @media screen and (min-width: 1280px) {
 
-
+ /* не існує ніяких марджинів... */
   .logo-first-color {
     
     padding-top: 40px;
