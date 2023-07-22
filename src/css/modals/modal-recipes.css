@@ -2,12 +2,35 @@
 }
 
 .recipes-components-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
 .recipes-components-item {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+}
+
+.recipes-components-item::after {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  transform: translateY(6px);
+
+  content: '';
+  height: 1px;
+  background-color: var(--primaty-black-color);
+  opacity: 0.1;
+  width: 100%;
 }
 
 .recipes-components-item_name {
+  font-size: 14px;
 }
 .recipes-components-item_quantity {
+  font-size: 14px;
+  color: var(--primaty-black-color);
+  opacity: 0.5;
 }
