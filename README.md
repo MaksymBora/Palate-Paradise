@@ -109,5 +109,14 @@
             <sub><b>🇺🇦</b></sub>
         </a>
     </td>
+    <td align="center">
+        <a href="https://github.com/Lizamakarichak26">
+            <img src="https://avatars.githubusercontent.com/u/119078134?v=4" width="100;" alt="Maryna-Korbet"/>
+            <br />
+            <sub><b>Liza.m26</b></sub>
+            <br />
+            <sub><b>🇺🇦</b></sub>
+        </a>
+    </td>
     </tr>
 </table>
