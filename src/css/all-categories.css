@@ -4,6 +4,10 @@
     margin-right: auto;
 }
 
+.all-cat-select-wrap{
+    width: 100%;
+}
+
 .all-cat-title{
     display: none;
 }
@@ -80,7 +84,7 @@
     }
 
     .all-cat-wrap {
-        max-width: 235px;
+        width: 235px;
         
     }
 

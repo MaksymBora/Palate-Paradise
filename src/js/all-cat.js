@@ -1,14 +1,6 @@
 import RecipeApiService from "./service/service-api";
 import Scrollbar from 'smooth-scrollbar';
 
-// import 'overlayscrollbars/overlayscrollbars.css';
-// import { 
-//   OverlayScrollbars
-// } from 'overlayscrollbars';
-
-// const osInstance = OverlayScrollbars(document.querySelector('.myElement'), {});
-
-
 const allCatBtnEl = document.querySelector('.all-cat-main-btn');
 const selectListEl = document.querySelector('.all-cat-select-list')
 console.log(selectListEl);
