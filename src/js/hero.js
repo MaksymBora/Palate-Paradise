@@ -1,7 +1,7 @@
-import Swiper from 'swiper';
-import '/node_modules/swiper/swiper-bundle.js';
+// import Swiper from 'swiper';
+// import '/node_modules/swiper/swiper-bundle.js';
 
-import 'swiper/swiper-bundle.css';
+// import 'swiper/swiper-bundle.css';
 
 fetch('https://tasty-treats-backend.p.goit.global/api/events')
   .then(response => {
@@ -24,11 +24,11 @@ fetch('https://tasty-treats-backend.p.goit.global/api/events')
         onlyInViewport: true,
       },
       autoplay: {
-        delay: 1000,
+        delay: 3000,
       },
       slidesPerView: 0.5,
-
-      speed: 700,
+      spaceBetween: 0,
+      speed: 1000,
 
       pagination: {
         el: '.swiper-pagination',

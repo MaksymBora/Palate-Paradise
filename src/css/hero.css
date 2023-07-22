@@ -143,6 +143,22 @@
   transform: scale(1.7);
 }
 
+/* CSS для зміни стилів точок пагінації */
+.swiper-pagination-bullet {
+  display: inline-block;
+  background-color: #050505;
+
+  width: 8px;
+  height: 8px;
+  margin: 4px;
+  border-radius: 50%;
+}
+
+.swiper-pagination-bullet-active {
+  display: inline-block;
+  background-color: #9bb537;
+}
+
 /* Загальні стилі для всіх розмірів пристроїв */
 @media screen and (min-width: 481px) {
   .hero-title {
