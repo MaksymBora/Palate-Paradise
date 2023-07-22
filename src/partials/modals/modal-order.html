@@ -1,3 +1,33 @@
-<div class="backdrop is-hidden">
-  <div class="modal-order is-hidden"></div>
+<!-- Modal window Order now for order creation -->
+<div class="backdrop">
+  <div class="modal-order">
+    <button type="button" class="modal-order__close-button" data-modal-order-close>
+      <svg class="modal-order__icon-close" width="20" height="20">
+        <use href="./images/sprite.svg#icon-x"></use>
+      </svg>
+    </button>
+    <p class=" modal-order__title">Order now</p>
+    <form class="modal-order-form" autocomplete="off">
+      <div class="modal-order-form__field">
+        <label for="user-name" class="modal-order-form__label">Name</label>
+        <input type="text" name="user-name" id="user-name" class="modal-order-form__input" required
+          pattern="^[A-Za-z]{1,15}"
+          title="Names can comprise only letters (either case); no more than 15 characters." />
+      </div>
+      <div class="modal-order-form__field">
+        <label for="user-tel" class="modal-order-form__label">Phone number</label>
+        <input type="tel" name="user-name" id="user-tel" class="modal-order-form__input" required pattern="^ [0-9] + $"
+          title="Please enter the phone in the number format" />
+      </div>
+      <div class="modal-order-form__field">
+        <label for="user-email" class="modal-order-form__label">Email</label>
+        <input type="email" name="user-email" id="user-email" class="modal-order-form__input" required />
+      </div>
+      <div class="modal-order-form__comment-field">
+        <label for="user-comment" class="modal-order-form__label">Comment</label>
+        <textarea name="user-comment" id="user-comment" class="modal-order-form__text" placeholder=""></textarea>
+      </div>
+      <button type="submit" class="modal-order-form__button button">Send</button>
+    </form>
+  </div>
 </div>
