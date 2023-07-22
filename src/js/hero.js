@@ -26,12 +26,12 @@ fetch('https://tasty-treats-backend.p.goit.global/api/events')
   });
 
 function displayEvents(eventsData) {
-  const eventsContainer = document.querySelector('.eventsContainer');
+  const eventsContainer = document.querySelector('.swiper-wrapper');
 
   eventsContainer.innerHTML = '';
 
   eventsData.forEach(event => {
-    const eventCard = document.createElement('li');
+    const eventCard = document.createElement('div');
     eventCard.classList.add('swiper-slide');
 
     const chefImageWrapper = document.createElement('div');
