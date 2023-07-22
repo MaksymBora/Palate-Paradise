@@ -1,13 +1,18 @@
 import RecipeApiService from '../service/service-api';
-
 import refs from './constants';
 import { getFromLocalStorage } from '../favorite/localStorageUtils';
 import { handleCategoryFilter } from '../favorite/handleCategotyFilter';
 import { displayFavorites } from '../favorite/display-favorites';
+import {
+  updateCategoryList,
+  renderCategories,
+} from '../favorite/updateCategoryList';
 
 const recipeApiSeriсe = new RecipeApiService();
 
-// Imitation
+// ---------------------------------------
+// Imitation adding data to LocalStorage
+// ---------------------------------------
 // recipeApiSeriсe.getRecipe().then(response => {
 //   const arr = response.results;
 
@@ -67,15 +72,6 @@ function createCategoryList() {
 }
 
 /**
- * Generates the markup for a category button.
- * {string} category - The category name.
- * return {string} The category button markup.
- */
-function renderCategories(category) {
-  return `<button class="fav-button">${category}</button>`;
-}
-
-/**
  * Removes the favorite recipe from localStorage and reloads the favorites list.
  *  currentBtn - The current button element representing the favorite recipe.
  */
@@ -87,29 +83,6 @@ function removeFavorite(currentBtn) {
     JSON.stringify(storage.filter(el => el.id !== recipeInfo.id))
   );
   onFavoritesReload();
-}
-
-/**
- * Updates the category list in the favorites view based on the selected recipe's category.
- *  target - The target element representing the selected recipe.
- */
-function updateCategoryList(target) {
-  const currentRec = target.closest('div.recipe-item').dataset.category;
-  const storageItems = JSON.parse(localStorage.getItem('favorites-data'));
-  const isCategoryLocal = storageItems.find(el => el.category === currentRec);
-  const isCategoryRendered = [...refs.categoriesContainer.children].find(
-    el => el.textContent === currentRec
-  );
-
-  if (!isCategoryLocal && isCategoryRendered) isCategoryRendered.remove();
-  else if (isCategoryLocal && !isCategoryRendered)
-    refs.categoriesContainer.insertAdjacentHTML(
-      'beforeend',
-      renderCategories(currentRec)
-    );
-
-  refs.allButton.style.display =
-    storageItems && storageItems.length ? 'block' : 'none';
 }
 
 /**
