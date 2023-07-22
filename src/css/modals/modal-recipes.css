@@ -8,6 +8,8 @@
   border-radius: 15px;
   transform: translate(-50%, -50%);
   padding: 40px 20px 40px 20px;
+  max-height: 1171px;
+  overflow-y: auto;
 }
 
 .modal-close-btn {
@@ -31,6 +33,9 @@
   stroke: var(--accent-color);
 }
 
+.modal-close-btn:active .modal-close-btn-icon {
+  stroke: var(--accent-color);
+}
 .recipes-title {
   text-transform: uppercase;
   font-size: 18px;
@@ -67,4 +72,33 @@
   opacity: 0.8;
   line-height: 18px;
   margin-bottom: 40px;
+}
+.modal-btn-container {
+  display: flex;
+  gap: 14px;
+  justify-content: space-between;
+}
+
+.btn-add-favorite {
+  min-width: 156px;
+  min-height: 45px;
+
+  padding: 14px 28px 14px 28px;
+  border-radius: 15px;
+  background-color: var(--accent-color);
+
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.21;
+  border: transparent;
+  color: var(--text-white-color);
+}
+
+.btn-add-favorite:hover,
+.btn-add-favorite:focus {
+  color: var(--primaty-black-color);
+}
+
+.btn-add-favorite:hover:active {
+  color: var(--primaty-black-color);
 }
