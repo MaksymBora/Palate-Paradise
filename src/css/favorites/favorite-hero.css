@@ -9,6 +9,9 @@
 
     margin: 0 auto;
     background-size: cover;
+
+    /* For IOS */
+    background-image: url('../../images/favorites/jpg/card-mob3x.jpg');
     /* Chrome & Safari */
     background-image: -webkit-image-set(
       url('../../images/favorites/jpg/card-mob@3x.avif') 3x,
@@ -17,9 +20,9 @@
       url('../../images/favorites/webp/card-mob@3x.webp') 3x,
       url('../../images/favorites/webp/card-mob@2x.webp') 2x,
       url('../../images/favorites/webp/card-mob@1x.webp') 1x,
-      url('../../images/favorites/jpg/card-mob@3x.jpg') 3x,
-      url('../../images/favorites/jpg/card-mob@2x.jpg') 2x,
-      url('../../images/favorites/jpg/card-mob@1x.jpg') 1x
+      url('../../images/favorites/jpg/card-mob3x.jpg') 3x,
+      url('../../images/favorites/jpg/card-mob2x.jpg') 2x,
+      url('../../images/favorites/jpg/card-mob1x.jpg') 1x
     );
 
     /* For Firefox */
@@ -30,10 +33,13 @@
       url('../../images/favorites/webp/card-mob@3x.webp') type('image/webp') 3x,
       url('../../images/favorites/webp/card-mob@2x.webp') type('image/webp') 2x,
       url('../../images/favorites/webp/card-mob@1x.webp') type('image/webp') 1x,
-      url('../../images/favorites/jpg/card-mob@3x.jpg') 3x,
-      url('../../images/favorites/jpg/card-mob@2x.jpg') 2x,
-      url('../../images/favorites/jpg/card-mob@1x.jpg') 1x
+      url('../../images/favorites/jpg/card-mob3x.jpg') 3x,
+      url('../../images/favorites/jpg/card-mob2x.jpg') 2x,
+      url('../../images/favorites/jpg/card-mob1x.jpg') 1x
     );
+
+    /* For iOS */
+    background-image: url('../../images/favorites/jpg/card-mob@3x.avif');
   }
 }
 
@@ -72,6 +78,9 @@
       url('../../images/favorites/jpg/card-tab@2x.jpg') 2x,
       url('../../images/favorites/jpg/card-tab@1x.jpg') 1x
     );
+
+    /* For iOS */
+    background-image: url('../../images/favorites/jpg/card-tab@3x.avif');
   }
 }
 
@@ -85,7 +94,7 @@
     height: 356px;
     background-size: cover;
     /* Chrome & Safari */
-    background-image: -webkit-image-set(
+    /* background-image: -webkit-image-set(
       url('../../images/favorites/jpg/card-desk@3x.avif') 3x,
       url('../../images/favorites/jpg/card-desk@2x.avif') 2x,
       url('../../images/favorites/jpg/card-desk@1x.avif') 1x,
@@ -95,10 +104,10 @@
       url('../../images/favorites/jpg/card-desk@3x.jpg') 3x,
       url('../../images/favorites/jpg/card-desk@2x.jpg') 2x,
       url('../../images/favorites/jpg/card-desk@1x.jpg') 1x
-    );
+    ); */
 
     /* For Firefox */
-    background-image: -webkit-image-set(
+    /* background-image: -webkit-image-set(
       url('../../images/favorites/jpg/card-desk@3x.avif') type('image/avif') 3x,
       url('../../images/favorites/jpg/card-desk@2x.avif') type('image/avif') 2x,
       url('../../images/favorites/jpg/card-desk@1x.avif') type('image/avif') 1x,
@@ -108,7 +117,7 @@
       url('../../images/favorites/jpg/card-desk@3x.jpg') 3x,
       url('../../images/favorites/jpg/card-desk@2x.jpg') 2x,
       url('../../images/favorites/jpg/card-desk@1x.jpg') 1x
-    );
+    ); */
   }
 }
 
