@@ -1,81 +1,116 @@
 .modal-rating {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-
-    height: 216px;
-    width: 335px;
-
-    border-radius: 15px;
-
-    background-color: #ffffff;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 15px;
+  background-color: var(--primary-white-color);
 }
 
-.raiting-container {
-    position: relative;
-    margin: 20px;;
+.rating-container {
+  position: relative;
+  margin: 20px;
 }
 
 .rating-title {
-    margin-bottom: 4px;
-    font-size: 14px;
-    font-weight: 600;
+  margin-bottom: 4px;
+  font-size: 14px;
+  font-weight: 600;
 }
 
-.raiting-number {
-    font-weight: 500;
-    margin-right: 8px;
+.rating-number {
+  font-size: 16px;
+  font-weight: 500;
+  margin-right: 8px;
 }
 
-
-.rating-stars{
-    display: flex;
-    width: 128px;
-    height: 24px;
-    margin-bottom: 24px;
-    align-items: center;
+.rating-check {
+    appearance: none;
+    margin-right: -2px;
 }
 
-.star { 
-    margin-right: 2px;
-    /* margin-bottom: 24px; */
+.rating-stars {
+  display: flex;
+  font-weight: 500;
+  margin-bottom: 24px;
+  align-items: center;
 }
 
 .icon {
-    fill: #d9d9d9;;
+  fill: #d9d9d9;
+  stroke: none;
 }
 
-.icon-fill{
-    fill:#eea10c;
+.icon-fill {
+  fill: var(--rating-stars);
 }
 
-.raiting-email {
-    padding: 14px;
-    width: 295px;
-    border-radius: 15px;
-    border-color: rgba(5, 5, 5, 0.2);
+.rating-email {
+  padding: 14px;
+  border-radius: 15px;
+  border-color: rgba(5, 5, 5, 0.2);
 }
 
-.raiting-button-send {
-    height: 46px;
-    width: 295px;
-    margin-top: 4px;
-    background-color: #9bb537;
-    border: none;
-    border-radius: 15px;
-    color: #ffffff;
+.rating-button-send {
+  background-color: var(--accent-color);
+  border: none;
+  border-radius: 15px;
+  color: var(--primary-white-color);
 }
 
-.raiting-button-close {
-    position: absolute;
-    top: 0;
-    right: 0;
-    border:none;
-    background-color: #ffffff;
+.rating-button-close {
+  position: absolute;
+  top: 0;
+  right: 0;
+  border: none;
+  background-color: var(--primary-white-color);
 }
 
 .close {
-    height: 20px;
-    width: 20px;
+  height: 20px;
+  width: 20px;
+} 
+
+@media screen and (max-width: 767px) {
+  .modal-rating {
+    height: 216px;
+    width: 335px;
+  }
+
+  .rating-container {
+    margin: 20px;
+  }
+
+  .rating-email {
+    height: 46px;
+    width: 295px;
+    margin-bottom: 14px;
+  }
+
+  .rating-button-send {
+    height: 46px;
+    width: 295px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .modal-rating {
+    height: 254px;
+    width: 424px;
+  }
+
+  .rating-container {
+    margin: 32px;
+  }
+
+  .rating-email {
+    height: 48px;
+    width: 360px;
+    margin-bottom: 16px;
+  }
+
+  .rating-button-send {
+    height: 48px;
+    width: 360px;
+  }
 }
