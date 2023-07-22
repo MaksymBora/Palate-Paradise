@@ -1,16 +1,9 @@
 <header>
-  <div class="container">
+  <div class="container container-header-nav">
     <nav class="header-nav">
 
       <a id="home-link" class="menu-nav-links" href="./index.html">Home</a>
       <a id="favorites-link" class="menu-nav-links" href="./favorites.html">Favorites</a>
-<!-- 
-      <ul class="nav-list">
-        <li class="nav-point"> <a class="nav-link" href="./index.html">Home</a>
-        </li>
-
-        <li class="nav-point"><a class="nav-link" href="">Favorites</a></li>
-      </ul> -->
     </nav>
    
       <div class="logo-block">
@@ -21,23 +14,26 @@
     <div class="header-buttons">
       <div class="buttons-wrapper">
         <button class="cart">
-          <svg class="buy-btn" width="24" height="24">
-            <use href="./images/sprite.svg#icon-cart"></use>
+          <svg class="buy-btn" width="22" height="22">
+            <use href="./images/sprite.svg#cart"></use>
           </svg>
         </button>
-        <label class="switch">
-          <input class="switcher" type="checkbox" id="theme-switch" />
-          <span class="slider"> </span>
-          <span></span>
-        </label>
+       
+        <button class="open-mobile">
+          <svg width="32" height="32">
+            <use href="./images/sprite.svg#icon-menu"></use>
+          </svg>
+        </button>
       </div>
 
-      <button class="open-mobile">
-        <svg width="32" height="32">
-          <use href="./images/sprite.svg#icon-menu"></use>
-        </svg>
-      </button>
-    </div>
+        
+      
+      <label class="switch">
+        <input class="switcher" type="checkbox" id="theme-switch" />
+        <span class="slider"> </span>
+        <span></span>
+      </label>
+      
 
     <!-- Mobile Menu -->
 
@@ -51,10 +47,10 @@
         <li class="mob-menu-item">
           <a class="mob-menu-link" href="./index.html">Home</a>
         </li>
-        <li><a class="mob-menu-link" href="">Favorite</a></li>
+        <li><a class="mob-menu-link" href="./favorites.html">Favorite</a></li>
       </ul>
-      <label class="switch-mobile">
-        <input class="switcher-mobile" type="checkbox" id="theme-switch" />
+      <!-- <label class="switch-mobile">
+        <input class="switcher-mobile" type="checkbox" id="theme-switch" /> -->
         <span></span>
         <span></span>
       </label>

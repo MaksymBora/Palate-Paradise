@@ -50,7 +50,6 @@
 .mob-menu-list {
   color: #ffffff;
   padding-top: 200px;
-  font-family: Inter;
   text-align: center;
   font-weight: 500;
   font-size: 12px;
@@ -70,6 +69,7 @@
 
 .mob-menu-link {
   text-decoration: none;
+
 }
 
 .buy-btn {
@@ -83,12 +83,20 @@
   color: #9bb537;
 }
 
-.container {
-  display: flex;
-  margin-top: 20px;
-  justify-content: space-between;
-  align-items: center;
+
+
+
+.container-header-nav{
+    display: flex;
+    
+    justify-content: space-between;
+    align-items: center;
 }
+.logo-block{
+    padding-top: 28px;
+    padding-bottom: 28px;
+}
+
 
 .logo-first-color {
   color: #9bb537;
@@ -99,6 +107,7 @@
   font-weight: 600;
   line-height: 18px;
   letter-spacing: -0.64px;
+ 
 }
 
 .logo-second-color {
@@ -112,7 +121,10 @@
 .cart {
   border: none;
   background: none;
+ 
 }
+
+
 
 .header-buttons {
   display: flex;
@@ -120,8 +132,9 @@
 
 .buttons-wrapper {
   display: flex;
-  gap: 16px;
+  
 }
+
 
 .open-mobile {
   border: none;
@@ -146,7 +159,8 @@ a {
   bottom: 20px;
 }
 
-.slider {
+.switch {
+    display: none;
 }
 
 @media screen and (max-width: 767px) {
@@ -164,19 +178,9 @@ a {
     display: none;
   }
 
-  .header-logo {
-    line-height: 20px;
-    font-size: 18px;
-  }
-
-  .logo {
-    line-height: 20px;
-    font-size: 18px;
-  }
-
   .header-nav {
     display: flex;
-    gap: 16px;
+  
   }
 
  
@@ -184,8 +188,10 @@ a {
   .menu-nav-links {
     color: #050505;
     font-size: 12px;
-    font-weight: 500;
+    font-weight: 400;
     line-height: normal;
+    padding-top: 35px;
+    padding-bottom: 35px;
   }
 
   .menu-nav-links:not(:last-child) {
@@ -194,6 +200,7 @@ a {
 
   .menu-nav-links:hover {
     color: #9bb537;
+    font-weight: 500px;
   }
 
   .switcher {
@@ -203,15 +210,21 @@ a {
   .nav-link:visited {
     color: #9bb537;
   }
-}
 
-@media screen and (min-width: 1280px) {
-  .container {
-    margin-top: 40px;
-  }
-
+  
   .logo-first-color {
     font-size: 18px;
     line-height: 20px;
+    
+  }
+}
+
+@media screen and (min-width: 1280px) {
+
+
+  .logo-first-color {
+    
+    padding-top: 40px;
+    padding-bottom: 40px;
   }
 }
