@@ -21,25 +21,45 @@
 
 
   // відкриття модалки
-  const openModalBtn = document.querySelector('.open-mobile');
-  const closeModalBtn = document.querySelector('.close-mobile');
-  const modal = document.querySelector('.mobile');
-  const backdrop = document.querySelector('.backdrop') 
 
-
-  openModalBtn.addEventListener('click', openModal);
-  closeModalBtn.addEventListener('click', closeModal);
-  
-  function openModal() {
-     
-    modal.classList.remove('is-hidden');
-  }
 
   
-  function closeModal() {
-     modal.classList.add("is-hidden");
     
-  }
-
   
+    (() => {
+        const mobileMenu = document.querySelector('.mobile');
+        const openMenuBtn = document.querySelector('.open-mobile');
+        const closeMenuBtn = document.querySelector('.close-mobile');
+        const body = document.body;
+      
+        const toggleMenu = () => {
+          const isMenuOpen = openMenuBtn.getAttribute('aria-expanded') === 'true' || false;
+          openMenuBtn.setAttribute('aria-expanded', !isMenuOpen);
+          mobileMenu.classList.toggle('is-open');
+      
+          if (mobileMenu.classList.contains('is-open')) {
+            bodyLock();
+          } else {
+            bodyUnLock();
+          }
+        };
+      
+        openMenuBtn.addEventListener('click', toggleMenu);
+        closeMenuBtn.addEventListener('click', toggleMenu);
+      
+        window.matchMedia('(min-width: 768px)').addEventListener('change', e => {
+          if (!e.matches) return;
+          mobileMenu.classList.remove('is-open');
+          openMenuBtn.setAttribute('aria-expanded', false);
+          bodyUnLock();
+        });
+      
+        function bodyLock() {
+          body.style.overflow = 'hidden';
+        }
+      
+        function bodyUnLock() {
+          body.style.removeProperty('overflow');
+        }
+      })();
 
