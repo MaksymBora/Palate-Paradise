@@ -75,15 +75,17 @@
 }
 .modal-btn-container {
   display: flex;
-  gap: 14px;
   justify-content: space-between;
+  gap: 14px;
 }
 
 .btn-add-favorite {
-  min-width: 156px;
-  min-height: 45px;
+  font-size: 14px;
+  font-weight: 500;
+  min-width: 148px;
+  min-height: 41px;
 
-  padding: 14px 28px 14px 28px;
+  padding: 12px 24px 12px 24px;
   border-radius: 15px;
   background-color: var(--accent-color);
 
@@ -101,4 +103,31 @@
 
 .btn-add-favorite:hover:active {
   color: var(--primaty-black-color);
+}
+
+.btn-give-rating {
+  font-size: 14px;
+  font-weight: 500;
+  min-width: 133px;
+  min-height: 41px;
+  padding: 12px 24px 12px 24px;
+  border-radius: 15px;
+  background-color: var(--primary-white-color);
+
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.21;
+  border: 1px solid var(--accent-color);
+  color: var(--primaty-black-color);
+}
+
+.btn-give-rating:hover,
+.btn-give-rating:focus {
+  color: var(--text-white-color);
+  background-color: var(--accent-color);
+}
+
+.btn-give-rating:hover:active {
+  color: var(--text-white-color);
+  background-color: var(--accent-color);
 }
