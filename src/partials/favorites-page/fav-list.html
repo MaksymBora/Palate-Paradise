@@ -1,14 +1,17 @@
 <section>
   <h2 class="visually-hidden">Favorites</h2>
   <div id="fav-container" class="container">
-    <!-- <div class="fav-categories"> -->
-    <!-- <button class="fav-button is-hidden">All categories</button> -->
-    <!-- </div> -->
+    <div class="fav-categories">
+      <button class="fav-button common-btn is-active" name="main-cat-btn">
+        All categories
+      </button>
+    </div>
 
-    <ul class="fav-list"></ul>
+    <ul id="fav-rendered-card" class="fav-list"></ul>
+    <div id="pagination" class="tui-pagination"></div>
 
     <!--  -->
-    <!-- <div class="fav-empty">
+    <div class="fav-empty">
       <svg class="hat" width="68" height="58">
         <use href="./images/sprite.svg#cook-hat"></use>
       </svg>
@@ -17,6 +20,6 @@
         get started, you can add recipes that you like to your favorites for
         easier access in the future.
       </p>
-    </div> -->
+    </div>
   </div>
 </section>

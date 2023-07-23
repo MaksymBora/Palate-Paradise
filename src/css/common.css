@@ -27,7 +27,7 @@
   --switcher-bg: #cecdcd;
   --rating-stars: #eea10c;
   /* Dark Theme */
-  --primary-dark-color: #1e1e1e;
+  --primary-dark-color: #161616;
 }
 
 body {
@@ -93,6 +93,17 @@ button {
   flex-direction: column;
 }
 
+footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.copy {
+  font-size: 14px;
+  color: var(--switcher-bg);
+}
+
 /*================================*/
 /* Common Container*/
 /*================================*/
@@ -101,6 +112,7 @@ button {
   .container {
     min-width: 375px;
     padding: 0 20px;
+    width: 375px;
   }
 }
 
