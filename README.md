@@ -95,46 +95,13 @@
             <sub><b>Надія Риченко</b></sub>
             <br />
             <sub><b>🇺🇦</b></sub>
-        </a>
-    </td>
-    
-</tr>
+
+        </a></tr>
+	
 <tr>
-<td align="center">
-        <a href="https://github.com/galu4ok">
-            <img src="https://avatars.githubusercontent.com/u/92317052?v=4" width="100;" alt="galu4ok"/>
-            <br />
-            <sub><b>Galyna Shevchenko</b></sub>
-            <br />
-            <sub><b>🇺🇦</b></sub>
-        </a>
-    </td>
-    <td align="center">
-        <a href="https://github.com/Lizamakarichak26">
-            <img src="https://avatars.githubusercontent.com/u/119078134?v=4" width="100;" alt="Lizamakarichak26"/>
-            <br />
-            <sub><b>Liza.m26</b></sub>
-            <br />
-            <sub><b>🇺🇦</b></sub>
-        </a>
-    </td>
-     <td align="center">
-        <a href="https://github.com/Serjio2">
-            <img src="https://avatars.githubusercontent.com/u/130094175?v=4" width="100;" alt="Serjio2"/>
-            <br />
-            <sub><b>Serhii Kondratenko</b></sub>
-            <br />
-            <sub><b>🇺🇦</b></sub>
-        </a>
-    </td>
-    <td align="center">
-        <a href="https://github.com/AnnieKrivega">
-            <img src="https://avatars.githubusercontent.com/u/121309759?v=4" width="100;" alt="AnnieKrivega"/>
-            <br />
-            <sub><b>Anna Krivega</b></sub>
-            <br />
-            <sub><b>🇺🇦</b></sub>
-        </a>
-    </td>
     </tr>
 </table>
+
+
+
+
