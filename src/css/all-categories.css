@@ -1,3 +1,7 @@
+.all-categories-section {
+  width: 326px;
+}
+
 .all-cat-wrap {
   max-width: 326px;
   margin-left: auto;
@@ -59,8 +63,18 @@
   max-height: 198px;
 }
 
+@media screen and (max-width: 767px) {
+  .all-categories-section {
+    margin: 0 auto;
+  }
+}
+
 /*======Tablet style=========*/
 @media screen and (min-width: 768px) {
+  .all-categories-section {
+    width: 176px;
+    margin-top: 26px;
+  }
   .all-cat-wrap {
     max-width: 176px;
   }
@@ -85,6 +99,9 @@
 
 /*======Desktop style=========*/
 @media screen and (min-width: 1200px) {
+  .all-categories-section {
+    width: 235px;
+  }
   .all-cat-main-btn {
     min-width: 174px;
     padding: 14px 28px;
