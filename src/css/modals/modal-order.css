@@ -100,7 +100,7 @@
 }
 .modal-order-form__button {
   display: flex;
-  width: 295px;
+  width: 100%;
   height: 46px;
   justify-content: center;
   align-items: center;
@@ -112,6 +112,12 @@
   font-size: 14px;
   font-weight: 500;
   line-height: normal;
+}
+.modal-order-form__button:hover,
+.modal-order-form__button:focus {
+  border: 1px solid #9bb537;
+  background: none;
+  color: var(--primaty-black-color);
 }
 
 @media screen and (min-width: 768px) {
@@ -131,7 +137,6 @@
     height: 48px;
   }
   .modal-order-form__button {
-    width: 360px;
     height: 48px;
   }
 }

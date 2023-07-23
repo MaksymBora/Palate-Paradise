@@ -1,67 +1,34 @@
 <!-- Modal window Order now for order creation -->
-<div class="backdrop">
+<div class="backdrop is-hidden" data-modal-order>
   <div class="modal-order">
-    <button
-      type="button"
-      class="modal-order__close-button"
-      data-modal-order-close
-    >
+    <button type="button" class="modal-order__close-button" data-modal-order-close>
       <svg class="modal-order__icon-close" width="20" height="20">
         <use href="./images/sprite.svg#icon-x"></use>
       </svg>
     </button>
-    <p class="modal-order__title">Order now</p>
+    <p class=" modal-order__title">Order now</p>
     <form class="modal-order-form" autocomplete="off">
       <div class="modal-order-form__field">
-        <label for="user-name" class="modal-order-form__label">Name</label>
-        <input
-          type="text"
-          name="user-name"
-          id="user-name"
-          class="modal-order-form__input"
-          required
-          pattern="^[A-Za-z]{1,15}"
-          title="Names can comprise only letters (either case); no more than 15 characters."
-        />
+        <label for="name" class="modal-order-form__label">Name*</label>
+        <input type="text" name="name" id="name" class="modal-order-form__input" pattern="^[A-Za-z]{1,15}"
+          title="Names can comprise only letters (either case); no more than 15 characters." />
       </div>
       <div class="modal-order-form__field">
-        <label for="user-tel" class="modal-order-form__label"
-          >Phone number</label
-        >
-        <input
-          type="tel"
-          name="user-name"
-          id="user-tel"
-          class="modal-order-form__input"
-          required
-          pattern="^ [0-9] + $"
-          title="Please enter the phone in the number format"
-        />
+        <label for="phone" class="modal-order-form__label">Phone number*</label>
+        <input type="tel" name="phone" id="phone" class="modal-order-form__input" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
+          title="Please enter the phone in the number format: 123-456-7890" />
       </div>
       <div class="modal-order-form__field">
-        <label for="user-email" class="modal-order-form__label">Email</label>
-        <input
-          type="email"
-          name="user-email"
-          id="user-email"
-          class="modal-order-form__input"
-          required
-        />
+        <label for="email" class="modal-order-form__label">Email*</label>
+        <input type="email" name="email" id="email" class="modal-order-form__input" />
       </div>
       <div class="modal-order-form__comment-field">
-        <label for="user-comment" class="modal-order-form__label"
-          >Comment</label
-        >
-        <textarea
-          name="user-comment"
-          id="user-comment"
-          class="modal-order-form__text"
-          placeholder=""
-        ></textarea>
+        <label for="comment" class="modal-order-form__label">Comment</label>
+        <textarea name="comment" id="comment" class="modal-order-form__text" placeholder=""></textarea>
       </div>
-      <button type="submit" class="modal-order-form__button button">
-        Send
-      </button>
+      <button type="submit" class="modal-order-form__button button">Send</button>
     </form>
   </div>
 </div>
+
+<!-- <button type="button" class="hero__button button" data-modal-order-open>Order now</button> -->
