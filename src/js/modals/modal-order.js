@@ -11,8 +11,8 @@ const refs = {
 
 refs.openModalOrderBtn.addEventListener('click', onToggleModalOrder);
 refs.closeModalOrderBtn.addEventListener('click', onToggleModalOrder);
-refs.modalOrderForm.addEventListener('input', onTextareaInput);
-refs.modalOrderForm.addEventListener('submit', throttle(onFormSubmit, 500));
+refs.modalOrderForm.addEventListener('input', throttle(onTextareaInput, 500));
+refs.modalOrderForm.addEventListener('submit', onFormSubmit);
 
 // Open and close modal-order modal window
 function onToggleModalOrder() {
