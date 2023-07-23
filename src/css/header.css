@@ -48,16 +48,14 @@
 }
 
 .mob-menu-list {
-  color: #ffffff;
+  
   padding-top: 200px;
   text-align: center;
   font-weight: 500;
   font-size: 12px;
 }
 
-.mob-menu-link:visited {
-  color: #fff;
-}
+
 
 .menu-nav-links:hover {
   color:#9bb537;
@@ -69,7 +67,7 @@
 
 .mob-menu-link {
   text-decoration: none;
-
+  color: #ffffff; 
 }
 
 .buy-btn {
@@ -79,12 +77,16 @@
   transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+
+
 .buy-btn:hover,
 .buy-btn:focus {
   color: #9bb537;
 }
 
-
+.dark-theme .buy-btn{
+    color: #ffffff;
+}
 
 
 .container-header-nav{
@@ -115,7 +117,7 @@
   color: #050505;
 }
 
-.dark-mode .logo-second-color {
+.dark-theme .logo-second-color {
   color: #ffffff;
 }
 
@@ -125,6 +127,9 @@
  
 }
 
+#home-mobile .dark-theme{
+    color: #9bb537;
+} 
 
 
 .header-buttons {
@@ -140,10 +145,15 @@
 .open-mobile {
   border: none;
   background: none;
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .open-mobile:hover {
   color: #9bb537;
+}
+
+.dark-theme .open-mobile{
+    color: #ffffff;
 }
 
 a {
@@ -184,10 +194,21 @@ a {
   
   }
 
+  #home-link{
+    color: #050505;
+  }
+
+  .dark-theme #home-link{
+    color: #fff;
+  }
+
+  #favorites-link{
+    color: #9bb537;
+  }
  
 
   .menu-nav-links {
-    color: #050505;
+    
     font-size: 12px;
     font-weight: 400;
     line-height: normal;
@@ -200,18 +221,14 @@ a {
     margin-right: 16px;
   }
 
-  .menu-nav-links:hover {
-    color: #9bb537;
-    font-weight: 500px;
-  }
-
+  
   .switcher {
     display: block;
   }
 
-  .nav-link:visited {
+  /* .nav-link:visited {
     color: #9bb537;
-  }
+  } */
 
   
   .logo-first-color {
