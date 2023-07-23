@@ -80,7 +80,13 @@
 
 .recipes-hashtags-item {
   padding: 8px 16px 8px 16px;
-  border: ;
+  border: 1px solid rgba(5, 5, 5, 0.2);
+  border-radius: 35px;
+
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.17;
+  letter-spacing: 0em;
 }
 
 .recipes-description {
