@@ -59,6 +59,45 @@
   line-height: 1.33;
   margin-bottom: 14px;
 }
+.rating-time-container {
+  display: flex;
+  margin-bottom: 33px;
+}
+
+.ratinng-value {
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.3;
+  color: rgba(5, 5, 5, 0.5);
+  margin-right: 6px;
+}
+
+.recipes-cooking-time {
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.3;
+  color: rgba(5, 5, 5, 0.5);
+}
+
+.modal-rating-star-icon {
+  stroke: transparent;
+  fill: rgba(0, 0, 0, 0.1);
+}
+
+.modal-rating-star-icon:active {
+  stroke: transparent;
+  fill: var(--rating-stars);
+}
+
+.modal-rating-star-list {
+  gap: 1px;
+  display: flex;
+  margin-right: 16px;
+}
+.modal-rating-star-item {
+  width: 18px;
+  height: 18px;
+}
 
 .recipes-components-list {
   display: flex;
