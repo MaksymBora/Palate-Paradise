@@ -1,15 +1,15 @@
-<header >
+<header>
   <div class="container container-header-nav">
     <nav class="header-nav">
-
-      <a  class="menu-nav-links header-accent" href="./index.html">Home</a>
-      <a  class="menu-nav-links" href="./favorites.html">Favorites</a>
+      <a class="menu-nav-links header-accent" href="./index.html">Home</a>
+      <a class="menu-nav-links" href="./favorites.html">Favorites</a>
     </nav>
-   
-      <div class="logo-block">
-        <a class="logo-first-color" href="./index.html">tasty<span class="logo-second-color">treats.</span></a>
+
+    <div class="logo-block">
+      <a class="logo-first-color" href="./index.html"
+        >tasty<span class="logo-second-color">treats.</span></a
+      >
     </div>
-    
 
     <div class="header-buttons">
       <div class="buttons-wrapper">
@@ -18,23 +18,20 @@
             <use href="./images/sprite.svg#cart"></use>
           </svg>
         </button>
-       
+        <!-- Switcher -->
+        <label class="toggle header-toggle-checkbox">
+          <input class="toggle-checkbox" type="checkbox" name="switch-theme" />
+          <span class="toggle-switch"></span>
+          <span class="toggle-label"></span>
+        </label>
+
         <button class="open-mobile">
           <svg class="icon-menu" width="32" height="32">
             <use href="./images/sprite.svg#icon-menu"></use>
           </svg>
         </button>
       </div>
-
-        
-      
-      <label class="switch">
-        <input class="switcher" type="checkbox" id="theme-switch" />
-        <span class="slider"> </span>
-        <span></span>
-      </label>
-      
-
+    </div>
     <!-- Mobile Menu -->
 
     <div class="mobile">
@@ -45,15 +42,19 @@
       </button>
       <ul class="mob-menu-list">
         <li class="mob-menu-item">
-          <a  class="mob-menu-link" href="./index.html">Home</a>
+          <a class="mob-menu-link" href="./index.html">Home</a>
         </li>
-        <li><a id="home-mobile" class="mob-menu-link" href="./favorites.html">Favorite</a></li>
+        <li>
+          <a id="home-mobile" class="mob-menu-link" href="./favorites.html"
+            >Favorite</a
+          >
+        </li>
       </ul>
       <!-- <label class="switch-mobile">
-        <input class="switcher-mobile" type="checkbox" id="theme-switch" /> -->
+        <input class="switcher-mobile" type="checkbox" id="theme-switch" />
         <span></span>
         <span></span>
-      </label>
+      </label> -->
     </div>
   </div>
 </header>

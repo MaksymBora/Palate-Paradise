@@ -31,10 +31,8 @@ function createCategories(resp) {
 }
 
 // Make button Active
-
+const button = document.querySelectorAll('.all-cat-active-btn');
 function makeBtnActive(event) {
-  const button = document.querySelectorAll('.all-cat-active-btn');
-
   const clickedButton = event.target;
 
   button.forEach(button => {
@@ -44,7 +42,7 @@ function makeBtnActive(event) {
   clickedButton.classList.add('all-cat-active-btn');
 }
 
-buttons.forEach(button => {
+button.forEach(button => {
   button.addEventListener('click', makeBtnActive);
 });
 // Click on button "all-category" with adding all recipe
