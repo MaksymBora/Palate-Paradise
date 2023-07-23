@@ -1,4 +1,4 @@
-.modal-rating {
+ .modal-rating {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -11,64 +11,65 @@
   position: relative;
 }
 
-.rating-title {
+.rating {
+  display: flex;
+  align-items: center;
+}
+
+ .rating-title {
   margin-bottom: 4px;
   font-size: 14px;
   font-weight: 600;
-}
+} 
 
-.rating-number {
+.rating-value {
   font-size: 16px;
   font-weight: 500;
   margin-right: 8px;
 }
 
-.rating-check {
-    appearance: none;
-    margin-right: -2px;
+.rating-item {
+margin-right: -5px;
+appearance: none;
 }
 
-
-.rating-stars {
-    display: flex;
-    align-items: center;
-  margin-bottom: 24px;
-}
-
-.icon {
+.star {
   fill: #d9d9d9;
   stroke: none;
 }
 
-.icon-fill {
-  fill: var(--rating-stars);
+.star:hover {
+  fill: gold;
 }
 
-.rating-email {
+
+ .rating-email {
   padding: 14px;
   border-radius: 15px;
   border-color: rgba(5, 5, 5, 0.2);
-}
+  margin-top: 20px;
+} 
 
 .rating-button-send {
   background-color: var(--accent-color);
   border: none;
   border-radius: 15px;
   color: var(--primary-white-color);
-}
+} 
 
-.rating-button-close {
+
+ .rating-button-close {
   position: absolute;
   top: 0;
   right: 0;
   border: none;
   background-color: var(--primary-white-color);
-}
+} 
 
-.close {
+ .close {
   height: 20px;
   width: 20px;
-} 
+}  
 
 @media screen and (max-width: 767px) {
   .modal-rating {

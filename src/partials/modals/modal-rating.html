@@ -1,87 +1,91 @@
 <div class="backdrop">
   <div class="modal-rating">
-    <div class="rating-container">
+<div class="rating-container">
+    <form class="form-check">
       <h3 class="rating-title">Rating</h3>
+    <div class="rating">
+      <div class="rating-value">0.0</div>
+      <div class="rating-body">
+        <div class="rating-active"></div>
+        
+        <div class="rating-items">
 
-      <form class="form-check">
-        <div class="rating-stars">
-          <p class="rating-number">0.0</p>
           <label>
             <input
-              class="rating-check"
+              class="rating-item"
               type="radio"
-              name="rating1"
-              value="rating1"
-              checked
+              name="rating"
+              value="1"
             />
             <svg class="star" width="24px" height="24px">
-              <use
-                class="icon icon-fill"
-                href="./images/sprite.svg#rate-star"
-              ></use>
+              <use href="./images/sprite.svg#rate-star"></use>
             </svg>
           </label>
-          <label
-            ><input
-              class="rating-check"
-              type="radio"
-              name="rating2"
-              value="rating2"
-            />
-            <svg class="star" width="24px" height="24px">
-              <use class="icon" href="./images/sprite.svg#rate-star"></use>
-            </svg>
-          </label>
-          <label
-            ><input
-              class="rating-check"
-              type="radio"
-              name="rating3"
-              value="rating3"
-            />
-            <svg class="star" width="24px" height="24px">
-              <use class="icon" href="./images/sprite.svg#rate-star"></use>
-            </svg>
-          </label>
-          <label
-            ><input
-              class="rating-check"
-              type="radio"
-              name="rating4"
-              value="rating4"
-            />
-            <svg class="star" width="24px" height="24px">
-              <use class="icon" href="./images/sprite.svg#rate-star"></use>
-            </svg>
-          </label>
-          <label
-            ><input
-              class="rating-check"
-              type="radio"
-              name="rating5"
-              value="rating5"
-            />
-            <svg class="star" width="24px" height="24px">
-              <use class="icon" href="./images/sprite.svg#rate-star"></use>
-            </svg>
-          </label>
-        </div>
-        <label>
-          <input
-            class="rating-email"
-            type="email"
-            placeholder="Enter email"
-            required
-          />
-        </label>
-        <button type="submit" class="rating-button-send">Send</button>
 
-        <button class="rating-button-close">
-          <svg class="close">
-            <use class="close-icon" href="./images/sprite.svg#icon-x"></use>
-          </svg>
-        </button>
-      </form>
+          <label
+        ><input
+          class="rating-item"
+          type="radio"
+          name="rating"
+          value="2"
+        />
+        <svg class="star" width="24px" height="24px">
+          <use href="./images/sprite.svg#rate-star"></use>
+        </svg>
+      </label>
+
+      <label
+        ><input
+          class="rating-item"
+          type="radio"
+          name="rating"
+          value="3"
+        />
+        <svg class="star" width="24px" height="24px">
+          <use href="./images/sprite.svg#rate-star"></use>
+        </svg>
+      </label>
+
+      <label
+        ><input
+          class="rating-item"
+          type="radio"
+          name="rating"
+          value="4"
+        />
+        <svg class="star" width="24px" height="24px">
+          <use href="./images/sprite.svg#rate-star"></use>
+        </svg>
+      </label>
+
+      <label
+        ><input
+          class="rating-item"
+          type="radio"
+          name="rating"
+          value="5"
+        />
+        <svg class="star" width="24px" height="24px">
+          <use href="./images/sprite.svg#rate-star"></use>
+        </svg>
+      </label>
+
+        </div>
+      </div>
+      
     </div>
+
+    <input class="rating-email" type="email" name="email" placeholder="Enter email" required/>
+
+    <button type="submit" class="rating-button-send">Send</button>
+
+    <button class="rating-button-close">
+      <svg class="close">
+        <use class="close-icon" href="./images/sprite.svg#icon-x"></use>
+      </svg>
+    </button>
+
+  </form>
+</div>
   </div>
 </div>
