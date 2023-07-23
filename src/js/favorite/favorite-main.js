@@ -10,6 +10,24 @@ import {
 
 const recipeApiSeriсe = new RecipeApiService();
 
+//
+// Add accent color on load page.
+//
+function modifyClassesOnLoad() {
+  const links = document.querySelectorAll('.menu-nav-links');
+
+  if (links[0].classList.contains('header-accent')) {
+    links[0].classList.remove('header-accent');
+
+    if (links.length > 1) {
+      links[1].classList.add('header-accent');
+    }
+  }
+}
+
+// Вызываем функцию при загрузке страницы
+window.addEventListener('load', modifyClassesOnLoad);
+
 // ---------------------------------------
 // Imitation adding data to LocalStorage
 // ---------------------------------------
