@@ -100,22 +100,20 @@ button {
 @media screen and (max-width: 767px) {
   .container {
     min-width: 375px;
-
     padding: 0 20px;
+    width: 375px;
   }
 }
 
 @media screen and (min-width: 768px) {
   .container {
     width: 768px;
-
     padding: 0 32px;
   }
 
   .content-wrapper {
     flex-wrap: wrap;
     max-height: 1423px;
-
     align-items: center;
     column-gap: 32px;
   }
