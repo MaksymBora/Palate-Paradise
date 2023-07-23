@@ -30,12 +30,13 @@
         const mobileMenu = document.querySelector('.mobile');
         const openMenuBtn = document.querySelector('.open-mobile');
         const closeMenuBtn = document.querySelector('.close-mobile');
-        const body = document.body;
+         const backdrop = document.querySelector(".backdrop")
+        const body = document.body
       
         const toggleMenu = () => {
           const isMenuOpen = openMenuBtn.getAttribute('aria-expanded') === 'true' || false;
           openMenuBtn.setAttribute('aria-expanded', !isMenuOpen);
-          mobileMenu.classList.toggle('is-open');
+         mobileMenu.classList.toggle('is-open');
       
           if (mobileMenu.classList.contains('is-open')) {
             bodyLock();
@@ -46,7 +47,7 @@
       
         openMenuBtn.addEventListener('click', toggleMenu);
         closeMenuBtn.addEventListener('click', toggleMenu);
-      
+        backdrop.addEventListener('click', bodyUnLock)
         window.matchMedia('(min-width: 768px)').addEventListener('change', e => {
           if (!e.matches) return;
           mobileMenu.classList.remove('is-open');
@@ -56,10 +57,14 @@
       
         function bodyLock() {
           body.style.overflow = 'hidden';
+          backdrop.classList.remove("is-hidden");
+          
         }
       
         function bodyUnLock() {
           body.style.removeProperty('overflow');
+          backdrop.classList.add("is-hidden");
+          
         }
       })();
 
