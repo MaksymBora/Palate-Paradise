@@ -30,6 +30,8 @@
 
 ### Contributors
 
+<!-- markdownlint-disable -->
+<!-- readme: contributors,ImgBotApp/- -start -->
 <table>
 <tr>
     <td align="center">
