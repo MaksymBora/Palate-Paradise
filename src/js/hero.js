@@ -1,6 +1,6 @@
 import RecipeApiService from './service/service-api';
 import '../../node_modules/swiper/swiper.css';
-import '../../node_modules/swiper/modules/pagination/pagination-element.min.css';
+import '../../node_modules/swiper/modules/pagination-element.min.css';
 import Swiper, { Pagination, Autoplay } from 'swiper';
 
 const recipeApiSeriсe = new RecipeApiService();
