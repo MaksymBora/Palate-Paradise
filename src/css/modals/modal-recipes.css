@@ -107,7 +107,6 @@
 }
 
 .recipes-components-item {
-  position: relative;
   display: flex;
   justify-content: space-between;
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
@@ -127,6 +126,7 @@
   display: flex;
   gap: 8px;
   margin-bottom: 24px;
+  flex-wrap: wrap;
 }
 
 .recipes-hashtags-item {
@@ -206,4 +206,57 @@
 .btn-give-rating:hover:active {
   color: var(--text-white-color);
   background-color: var(--accent-color);
+}
+@media screen and (max-width: 767px) {
+  .modal-recipes {
+    max-width: 335px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .modal-recipes {
+    flex-direction: column-reverse;
+    max-width: 531px;
+    padding: 32px;
+    /* max-height: 905px; */
+  }
+  .recipes-title {
+    position: absolute;
+    top: 32px;
+    margin: 0;
+  }
+  .modal-close-btn {
+    top: 16px;
+    right: 16px;
+    width: 24px;
+    height: 24px;
+  }
+
+  .recipes-iframe-wrapper {
+    height: 250px;
+    margin-bottom: 16px;
+    margin-top: 38px;
+  }
+
+  .recipes-description {
+    margin-bottom: 32px;
+  }
+  .modal-btn-container {
+    gap: 16px;
+  }
+
+  .btn-add-favorite {
+    padding: 14px 28px 14px 28px;
+  }
+
+  .btn-give-rating {
+    padding: 14px 28px 14px 28px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .modal-recipes {
+    width: 1110px;
+    padding: 0 15px;
+  }
 }
