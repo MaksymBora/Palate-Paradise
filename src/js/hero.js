@@ -1,76 +1,94 @@
-// import Swiper from 'swiper';
-// import '/node_modules/swiper/swiper-bundle.js';
+import axios from 'axios';
+import '../../node_modules/swiper/swiper.css';
+import '../../node_modules/swiper/modules/pagination/pagination-element.min.css';
 
-// import 'swiper/swiper-bundle.css';
+import Swiper, { Pagination, Autoplay } from 'swiper';
 
-fetch('https://tasty-treats-backend.p.goit.global/api/events')
-  .then(response => {
-    if (!response.ok) {
-      throw new Error('Network response was not ok');
-    }
-    return response.json();
-  })
-  .then(data => {
-    displayEvents(data);
+const refs = {
+  swiper: document.querySelector('.swiper-wrapper'),
+  loader: document.querySelector('.loader'),
+  body: document.querySelector('body'),
+};
 
-    const swiper = new Swiper('.swiper-container', {
-      // effect: 'slide',
-      effect: 'fade',
-      fadeEffect: {
-        crossFade: true,
-      },
-      simulateTouch: true,
-      grabCursor: true,
-      loop: true,
-      slideToClickedSlide: true,
-      keyboard: {
-        enabled: true,
-        onlyInViewport: true,
-      },
-      autoplay: {
-        delay: 2000,
-      },
-      slidesPerView: 0.4,
-      spaceBetween: -70,
-      speed: 2500,
+async function findGeneralClasses() {
+  try {
+    const cooks = await axios.get(
+      'https://tasty-treats-backend.p.goit.global/api/events'
+    );
+    return cooks.data;
+  } catch (error) {
+    console.log(error);
+  }
+}
 
+createSlider();
+
+async function createSlider() {
+  try {
+    const markup = await generateIventsMarkup();
+    await addIventsInSlick(markup);
+
+    const swiper = await new Swiper('.swiper', {
+      modules: [Pagination, Autoplay],
       pagination: {
         el: '.swiper-pagination',
         clickable: true,
-        type: 'bullets',
-        dynamicBullets: true,
+      },
+      autoplay: {
+        delay: 6000,
       },
     });
-  })
-  .catch(error => {
-    console.error('Error fetching data:', error);
-  });
+  } catch (error) {
+    console.log(error);
+  }
+}
 
-function displayEvents(eventsData) {
-  const eventsContainer = document.querySelector('.swiper-wrapper');
+async function generateIventsMarkup() {
+  refs.loader.classList.remove('visible');
 
-  eventsContainer.innerHTML = '';
+  try {
+    const ivents = await findGeneralClasses();
+    refs.loader.classList.add('visible');
 
-  eventsData.forEach(event => {
-    eventsContainer.innerHTML += `
-      <div class="swiper-slide">
-      <div class="element-wrapper">
-    <div class="schef-image-wrapper">
-        <img src="${event.cook.imgUrl}" alt="${event.cook.name}">
-    </div>
-    
-    <div class="dish-Preview-image-wrapper">
-        <img src="${event.topic.previewUrl}" alt="${event.topic.name}">
-        <p class="event-name">${event.topic.name}</p>
-        <p class="event-region">${event.topic.area}</p>
-    </div>
+    return ivents.reduce((markup, ivent) => markup + createMarkup(ivent), '');
+  } catch (error) {
+    console.log(error);
+  }
+}
 
-    <div class="dish-image-wrapper">
-        <img src="${event.topic.imgUrl}" alt="${event.topic.name}">
-    </div>
-
+function createMarkup(ivent) {
+  const { name, previewUrl, area } = ivent.topic;
+  const cookName = ivent.cook.name;
+  const cookImgUrl = ivent.cook.imgUrl;
+  return `<div class="swiper-slide">
+    <div class="slide-item">
+      <img
+        class="slider-cook"
+        src="${cookImgUrl}"
+        alt="${cookName}"
+      />
+      <div class="slide-event-box">
+        <img
+          class="slider-event"
+          src="${previewUrl}"
+          alt=""
+        />
+        <div class="event-info-box">
+        <p class="event-title">${name}</p>
+        <p class="event-country">${area}</p>
+        </div>
+      </div>
+      <div
+        class="dish-box"
+        style="
+          background-image: url('${previewUrl}');
+        ">
+        </div>
     </div>
 </div>
-      `;
-  });
+    `;
+}
+
+function addIventsInSlick(markup) {
+  refs.swiper.insertAdjacentHTML('beforeend', markup);
 }
