@@ -24,6 +24,15 @@
     border-color: rgba(5, 5, 5, 0.2);
     color: rgba(5, 5, 5, 0.5);
     background-color: transparent;
+    transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    color 250ms cubic-bezier(0.4, 0, 0.2, 1), 
+}
+
+.all-cat-main-btn:hover,
+.all-cat-main-btn:focus{
+    background-color: rgba(155, 181, 55, 1);
+    color: rgba(248, 248, 248, 1);
+
 }
 
 .all-cat-select-btn{
@@ -37,6 +46,12 @@
 
     background-color: transparent;
     border-color: transparent;
+}
+    
+
+.all-cat-active-btn{
+    color: rgba(155, 181, 55, 1);
+
 }
 
 .all-cat-select-item:not(:last-child){
