@@ -14,7 +14,11 @@ fetch('https://tasty-treats-backend.p.goit.global/api/events')
     displayEvents(data);
 
     const swiper = new Swiper('.swiper-container', {
-      effect: 'slide',
+      // effect: 'slide',
+      effect: 'fade',
+      fadeEffect: {
+        crossFade: true,
+      },
       simulateTouch: true,
       grabCursor: true,
       loop: true,
@@ -24,11 +28,11 @@ fetch('https://tasty-treats-backend.p.goit.global/api/events')
         onlyInViewport: true,
       },
       autoplay: {
-        delay: 3000,
+        delay: 2000,
       },
-      slidesPerView: 0.5,
-      spaceBetween: -40,
-      speed: 3500,
+      slidesPerView: 0.4,
+      spaceBetween: -70,
+      speed: 2500,
 
       pagination: {
         el: '.swiper-pagination',

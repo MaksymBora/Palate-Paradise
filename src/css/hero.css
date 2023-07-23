@@ -17,7 +17,7 @@
   text-transform: uppercase;
   text-align: start;
   margin-top: 80px;
-  font-size: 36;
+  font-size: 36px;
 
   color: #050505;
 
@@ -27,12 +27,12 @@
   text-transform: uppercase;
   font-style: italic;
   font-weight: 400;
-  font-size: 36;
+  font-size: 36px;
   color: #9bb537;
   margin-bottom: 14px;
 }
 .hero-description {
-  font-size: 16;
+  font-size: 16px;
 
   text-align: start;
   font-weight: regular;
@@ -40,7 +40,7 @@
   margin-bottom: 28px;
 }
 .hero__button {
-  font-size: 14;
+  font-size: 14px;
   background-color: #fff;
   padding: 10px 20px;
   border: 2px solid #9bb537;
@@ -77,6 +77,7 @@
   align-items: center;
   margin-right: 16px;
   width: 80px;
+  min-width: 80px;
   height: 300px;
   border-radius: 15px;
   overflow: hidden;
@@ -92,7 +93,8 @@
 
 .dish-Preview-image-wrapper {
   background-color: #050505;
-  max-width: 200px;
+  width: 200px;
+  min-width: 200px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -110,29 +112,26 @@
 }
 
 .dish-Preview-image-wrapper img {
-  max-width: 100%;
   width: 80%;
   height: auto;
 }
 
 .event-name {
-  font-size: 14;
-  font-size: medium;
+  width: 157px;
+  font-size: 10px;
+
   color: rgba(248, 248, 248, 0.6);
   margin-top: 8px;
 }
 
 .event-region {
-  font-size: 12;
-  font-size: small;
+  font-size: 8px;
+
   color: rgba(248, 248, 248, 0.2);
   margin-top: 4px;
 }
 
 /* the third card in the slider */
-.thierd-slider {
-  /* width: 350px; */
-}
 
 .dish-image-wrapper {
   max-width: 200px;
@@ -159,19 +158,20 @@
 
 /* CSS для зміни стилів точок пагінації */
 .swiper-pagination {
+  position: relative !important;
   display: inline-block;
   top: 0;
 }
 
-.image-slider .swiper-pagination-bullet {
-  color: #050505;
+.block-body .swiper-pagination-bullet {
+  background-color: #050505;
   width: 8px;
   height: 8px;
   margin: 4px;
   border-radius: 50%;
 }
 
-.image-slider .swiper-pagination-bullet-active {
+.block-body .swiper-pagination-bullet-active {
   display: inline-block;
   background-color: #9bb537;
 }
@@ -186,13 +186,13 @@
     max-width: 390px;
   }
 
-  .dish-Preview-image-wrapper {
-    max-width: 300px;
+  /* .dish-Preview-image-wrapper {
+    max-width: 350px;
   }
 
   .dish-image-wrapper {
     max-width: 350px;
-  }
+  } */
 }
 
 @media screen and (min-width: 769px) {
@@ -206,16 +206,22 @@
     padding: 64px 0 0 0;
   }
   .schef-image-wrapper {
-    width: 137px;
+    min-width: 137px;
     height: 442px;
   }
   .dish-Preview-image-wrapper {
-    max-width: 350px;
+    width: 350px;
     height: 442px;
   }
-
+  .event-name {
+    font-size: 14px;
+    width: 276px;
+  }
+  .event-region {
+    font-size: 12px;
+  }
   .dish-image-wrapper {
-    max-width: 350px;
+    width: 350px;
     height: 442px;
   }
 }
