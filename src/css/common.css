@@ -93,6 +93,17 @@ button {
   flex-direction: column;
 }
 
+footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.copy {
+  font-size: 14px;
+  color: var(--switcher-bg);
+}
+
 /*================================*/
 /* Common Container*/
 /*================================*/
