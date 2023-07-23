@@ -1,8 +1,9 @@
-import axios from 'axios';
+import RecipeApiService from './service/service-api';
 import '../../node_modules/swiper/swiper.css';
 import '../../node_modules/swiper/modules/pagination/pagination-element.min.css';
-
 import Swiper, { Pagination, Autoplay } from 'swiper';
+
+const recipeApiSeriсe = new RecipeApiService();
 
 const refs = {
   swiper: document.querySelector('.swiper-wrapper'),
@@ -12,10 +13,8 @@ const refs = {
 
 async function findGeneralClasses() {
   try {
-    const cooks = await axios.get(
-      'https://tasty-treats-backend.p.goit.global/api/events'
-    );
-    return cooks.data;
+    const cooks = await recipeApiSeriсe.getCooksEvents();
+    return cooks;
   } catch (error) {
     console.log(error);
   }
