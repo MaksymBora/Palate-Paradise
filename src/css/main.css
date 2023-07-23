@@ -1,0 +1,22 @@
+/* Common Styles */
+@import './common.css';
+
+/* Index.html */
+@import './all-categories.css';
+@import './header.css';
+@import './hero.css';
+@import './popular.css';
+@import './search.css';
+
+/* Favorites */
+@import './favorites/favorite-hero.css';
+@import './favorites/favorite-list.css';
+
+/* Modal */
+@import './modals/modal-order.css';
+@import './modals/modal-rating.css';
+@import './modals/modal-recipes.css';
+
+@import './modals/backdrop.css';
+
+@import './favorites/pagination.css';
