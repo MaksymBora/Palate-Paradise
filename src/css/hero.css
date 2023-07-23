@@ -14,27 +14,33 @@
 .hero-wrapper {
 }
 .hero-title {
+  text-transform: uppercase;
   text-align: start;
   margin-top: 80px;
   font-size: 36;
 
   color: #050505;
 
-  font-weight: bold;
+  font-weight: 700;
 }
 .title {
-  font-weight: bold;
+  text-transform: uppercase;
+  font-style: italic;
+  font-weight: 400;
   font-size: 36;
   color: #9bb537;
   margin-bottom: 14px;
 }
 .hero-description {
+  font-size: 16;
+
   text-align: start;
   font-weight: regular;
   color: #050505;
   margin-bottom: 28px;
 }
 .hero__button {
+  font-size: 14;
   background-color: #fff;
   padding: 10px 20px;
   border: 2px solid #9bb537;
@@ -110,12 +116,14 @@
 }
 
 .event-name {
+  font-size: 14;
   font-size: medium;
   color: rgba(248, 248, 248, 0.6);
   margin-top: 8px;
 }
 
 .event-region {
+  font-size: 12;
   font-size: small;
   color: rgba(248, 248, 248, 0.2);
   margin-top: 4px;
@@ -150,17 +158,20 @@
 }
 
 /* CSS для зміни стилів точок пагінації */
-.swiper-pagination-bullet {
+.swiper-pagination {
   display: inline-block;
-  background-color: #050505;
+  top: 0;
+}
 
+.image-slider .swiper-pagination-bullet {
+  color: #050505;
   width: 8px;
   height: 8px;
   margin: 4px;
   border-radius: 50%;
 }
 
-.swiper-pagination-bullet-active {
+.image-slider .swiper-pagination-bullet-active {
   display: inline-block;
   background-color: #9bb537;
 }

@@ -34,6 +34,7 @@ fetch('https://tasty-treats-backend.p.goit.global/api/events')
         el: '.swiper-pagination',
         clickable: true,
         type: 'bullets',
+        dynamicBullets: true,
       },
     });
   })
