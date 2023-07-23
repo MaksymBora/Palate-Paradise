@@ -1,7 +1,6 @@
 import RecipeApiService from '../service/service-api';
 import sprite from '../../images/sprite.svg';
 
-const recipeApiSerive = new RecipeApiService();
 
 recipeApiSerive.getRecipe().then(response => {
   const arr = response.results;
