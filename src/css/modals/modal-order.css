@@ -113,6 +113,12 @@
   font-weight: 500;
   line-height: normal;
 }
+.modal-order-form__button:disabled {
+  opacity: 1;
+  pointer-events: none;
+  background: var(--switcher-bg);
+  border: 1px solid #9bb537;
+}
 .modal-order-form__button:hover,
 .modal-order-form__button:focus {
   border: 1px solid #9bb537;

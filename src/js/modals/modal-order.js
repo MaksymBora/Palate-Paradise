@@ -11,17 +11,18 @@ const refs = {
 
 refs.openModalOrderBtn.addEventListener('click', onToggleModalOrder);
 refs.closeModalOrderBtn.addEventListener('click', onToggleModalOrder);
-refs.modalOrderForm.addEventListener('input', throttle(onTextareaInput, 500));
-refs.modalOrderForm.addEventListener('submit', onFormSubmit);
+refs.modalOrderForm.addEventListener('input', onTextareaInput);
+refs.modalOrderForm.addEventListener('submit', throttle(onFormSubmit, 500));
 
 // Open and close modal-order modal window
 function onToggleModalOrder() {
   refs.modalOrder.classList.toggle('is-hidden');
 }
 
+refs.modalOrderSubmitBtn.disabled = true;
 onClickPageReload();
 
-// Track the input event on the form and keep input data  in localStorage
+// Track the input event on the form and keep input data in localStorage
 function onTextareaInput(evt) {
   const { name, phone, email, comment } = evt.currentTarget.elements;
   const feedbackFormState = {
@@ -30,7 +31,7 @@ function onTextareaInput(evt) {
     email: email.value,
     comment: comment.value,
   };
-
+  refs.modalOrderSubmitBtn.disabled = false;
   localStorage.setItem(
     'feedback-form-state',
     JSON.stringify(feedbackFormState)
@@ -53,17 +54,31 @@ function onFormSubmit(evt) {
   evt.preventDefault();
 
   const { name, phone, email, comment } = evt.currentTarget.elements;
+  refs.modalOrderSubmitBtn.disabled = false;
 
   if (name.value === '' || phone.value === '' || email.value === '') {
-    return Notiflix.Notify.warning('Please fill in all the fields!.');
+    refs.modalOrderSubmitBtn.disabled = true;
+    return Notiflix.Report.warning(
+      'Please fill out all required fields!',
+      '',
+      'Ok',
+      {
+        position: 'center-top',
+        titleMaxLength: '100',
+      }
+    );
   }
+
   console.log({
     name: name.value.trim(),
     phone: phone.value.trim(),
     email: email.value.trim(),
     comment: comment.value.trim(),
   });
-
+  Notiflix.Report.success('Your order has completed successfully!', '', 'Ok', {
+    position: 'center-top',
+    titleMaxLength: '100',
+  });
   localStorage.removeItem('feedback-form-state');
   // Clear data from form inputs
   evt.currentTarget.reset();
