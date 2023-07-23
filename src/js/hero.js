@@ -27,8 +27,8 @@ fetch('https://tasty-treats-backend.p.goit.global/api/events')
         delay: 3000,
       },
       slidesPerView: 0.5,
-      spaceBetween: 0,
-      speed: 1000,
+      spaceBetween: -40,
+      speed: 3500,
 
       pagination: {
         el: '.swiper-pagination',

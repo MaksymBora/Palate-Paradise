@@ -34,16 +34,22 @@
   color: #050505;
   margin-bottom: 28px;
 }
-.hero-btn {
+.hero__button {
   background-color: #fff;
   padding: 10px 20px;
   border: 2px solid #9bb537;
   border-radius: 12px;
 }
 
+.hero__button:hover,
+.hero__button:focus {
+  color: #f8f8f8;
+  background-color: #9bb537;
+}
+
 .swiper-container {
   width: auto;
-  padding: 30px 0 70px 0;
+  padding: 48px 0 0 0;
 }
 .swiper-wrapper {
   display: flex;
@@ -182,10 +188,12 @@
   .schef-image-wrapper {
     width: 137px;
   }
-  .hero-btn {
+  .hero__button {
     padding: 14px 28px;
   }
-
+  .swiper-container {
+    padding: 64px 0 0 0;
+  }
   .schef-image-wrapper {
     width: 137px;
     height: 442px;
@@ -204,5 +212,11 @@
 @media screen and (min-width: 1281px) {
   .container-wrapper {
     display: flex;
+  }
+  .hero-wrapper {
+  }
+  .swiper-container {
+    height: 468px;
+    padding: 30px 32px 0 32px;
   }
 }
