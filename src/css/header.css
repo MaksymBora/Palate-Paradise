@@ -1,0 +1,219 @@
+.mobile {
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: 1000;
+  height: 100%;
+  width: 200px;
+  background-color: var(--accent-color);
+
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+
+  transition: transform 500ms cubic-bezier(0.4, 0, 0.2, 1),
+    opacity 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    visibility 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
+  overflow-y: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  transform: translateX(-0%);
+}
+
+.is-open {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.close-mobile {
+  position: fixed;
+  font-size: 20px;
+  cursor: pointer;
+  right: 20px;
+  top: 20px;
+  width: 32px;
+  height: 32px;
+  background-color: var(--accent-color);
+  border: none;
+  color: var(--primary-white-color);
+}
+
+.mob-menu-list {
+  padding-top: 200px;
+  text-align: center;
+  font-weight: 500;
+  font-size: 12px;
+}
+
+.menu-nav-links:hover {
+  color: var(--accent-color);
+}
+
+.mob-menu-item {
+  margin-bottom: 16px;
+}
+
+.mob-menu-link {
+  text-decoration: none;
+  color: var(--primary-white-color);
+}
+
+.buy-btn {
+  color: var(--primaty-black-color);
+  display: flex;
+  justify-content: center;
+
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.buy-btn:hover,
+.buy-btn:focus {
+  color: var(--accent-color);
+}
+
+.icon-menu {
+  color: var(--primaty-black-color);
+}
+
+.container-header-nav {
+  display: flex;
+
+  justify-content: space-between;
+  align-items: center;
+}
+.logo-block {
+  padding-top: 28px;
+  padding-bottom: 28px;
+}
+
+.logo-first-color {
+  color: var(--accent-color);
+  text-align: center;
+  font-family: Inter;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 18px;
+  letter-spacing: -0.64px;
+}
+
+.logo-second-color {
+  color: var(--primaty-black-color);
+}
+
+.dark-theme .logo-second-color {
+  color: var(--primary-white-color);
+}
+
+.cart {
+  border: none;
+  background: none;
+}
+
+#home-mobile .dark-theme {
+  color: var(--accent-color);
+}
+
+.header-buttons {
+  display: flex;
+}
+
+.buttons-wrapper {
+  display: flex;
+}
+
+.open-mobile {
+  border: none;
+  background: none;
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.open-mobile:hover {
+  color: var(--accent-color);
+}
+
+.dark-theme .open-mobile {
+  color: var(--primary-white-color);
+}
+
+a {
+  text-decoration: none;
+}
+
+.nav-list {
+  display: flex;
+}
+
+.switch-mobile {
+  position: fixed;
+  left: 20px;
+  bottom: 20px;
+}
+
+.switch {
+  display: none;
+}
+
+@media screen and (max-width: 767px) {
+  .switcher {
+    display: none;
+  }
+
+  .header-nav {
+    display: none;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .open-mobile {
+    display: none;
+  }
+
+  .header-nav {
+    display: flex;
+  }
+
+  .menu-nav-links {
+    font-size: 12px;
+    font-weight: 400;
+    line-height: normal;
+    transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    padding-top: 35px;
+    padding-bottom: 35px;
+    color: var(--primaty-black-color);
+
+    transition: color 250ms ease-in-out;
+  }
+
+  .header-accent {
+    color: var(--accent-color);
+  }
+
+  .menu-nav-links:not(:last-child) {
+    margin-right: 16px;
+  }
+
+  .switcher {
+    display: block;
+  }
+
+  .nav-link:visited {
+    color: var(--accent-color);
+  }
+
+  .logo-first-color {
+    font-size: 18px;
+    line-height: 20px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .logo-first-color {
+    padding-top: 40px;
+    padding-bottom: 40px;
+  }
+}
