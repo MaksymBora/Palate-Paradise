@@ -26,7 +26,6 @@
     "smooth-scrollbar": "^8.8.4",
     "swiper": "^9.4.1",
     "tui-pagination": "^3.4.1"
-
   },
   "devDependencies": {
     "@parcel/transformer-sass": "^2.6.0",
