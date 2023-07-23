@@ -28,6 +28,11 @@
   padding: 0;
 }
 
+.modal-close-btn-icon {
+  transition: transform var(--transition-property),
+    stroke var(--transition-property);
+}
+
 .modal-close-btn:hover .modal-close-btn-icon,
 .modal-close-btn:focus .modal-close-btn-icon {
   stroke: var(--accent-color);
@@ -66,6 +71,18 @@
   color: var(--primaty-black-color);
   opacity: 0.5;
 }
+
+.recipes-hashtags-list {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+
+.recipes-hashtags-item {
+  padding: 8px 16px 8px 16px;
+  border: ;
+}
+
 .recipes-description {
   font-size: 14px;
   color: var(--primaty-black-color);
@@ -91,6 +108,8 @@
   border-radius: 15px;
   background-color: var(--accent-color);
   border: transparent;
+  transition: transform var(--transition-property),
+    color var(--transition-property);
 }
 
 .btn-add-favorite:hover,
@@ -116,6 +135,9 @@
   background-color: var(--primary-white-color);
 
   border: 1px solid var(--accent-color);
+  transition: transform var(--transition-property),
+    color var(--transition-property),
+    background-color var(--transition-property);
 }
 
 .btn-give-rating:hover,
