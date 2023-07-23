@@ -13,28 +13,28 @@ const recipeApiSeriсe = new RecipeApiService();
 // ---------------------------------------
 // Imitation adding data to LocalStorage
 // ---------------------------------------
-// recipeApiSeriсe.getRecipe().then(response => {
-//   const arr = response.results;
+recipeApiSeriсe.getRecipe().then(response => {
+  const arr = response.results;
 
-//   const FAV_DATA = 'favorites-data';
-//   const toStorage = [];
+  const FAV_DATA = 'favorites-data';
+  const toStorage = [];
 
-//   for (let i = 0; i < 6; i++) {
-//     const { _id, title, category, rating, preview, description } = arr[i];
-//     for (let j = 0; j < 5; j++) {
-//       toStorage.push({
-//         _id,
-//         title,
-//         category,
-//         rating,
-//         preview,
-//         description,
-//       });
-//     }
-//   }
+  for (let i = 0; i < 6; i++) {
+    const { _id, title, category, rating, preview, description } = arr[i];
+    for (let j = 0; j < 5; j++) {
+      toStorage.push({
+        _id,
+        title,
+        category,
+        rating,
+        preview,
+        description,
+      });
+    }
+  }
 
-//   localStorage.setItem(FAV_DATA, JSON.stringify(toStorage));
-// });
+  localStorage.setItem(FAV_DATA, JSON.stringify(toStorage));
+});
 
 /**
  * Refreshes the favorite recipes page.
