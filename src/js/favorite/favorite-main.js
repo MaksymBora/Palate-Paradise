@@ -25,8 +25,11 @@ function modifyClassesOnLoad() {
   }
 }
 
+
+
 // Вызываем функцию при загрузке страницы
 window.addEventListener('load', modifyClassesOnLoad);
+
 
 // ---------------------------------------
 // Imitation adding data to LocalStorage
