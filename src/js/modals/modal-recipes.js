@@ -1,5 +1,35 @@
 import axios from 'axios';
 
+const recipeCardButtons = document.querySelectorAll('.rec-btn-open');
+recipeCardButtons.forEach(button => {
+  button.addEventListener('click', () => {
+    const recipeId = button.dataset.id;
+    openModalWithRecipe(recipeId);
+  });
+});
+
+// Функція для відкриття модального вікна з даними рецепта
+async function openModalWithRecipe(recipeId) {
+  const recipe = await fetchRecipe(recipeId);
+  if (recipe) {
+    displayRecipeDataInModal(recipe);
+    openModal(); 
+  }
+}
+
+
+// Функція, яка відображає дані рецепта в модальному вікні
+function displayRecipeDataInModal(recipe) {
+  displayRecipeVideo(recipe);
+  displayRecipeTitle(recipe);
+  displayRecipeDescription(recipe);
+  displayRecipeTimeCooking(recipe);
+  displayRecipeRating(recipe);
+  displayRecipeHashtags(recipe);
+  displayRecipeIngredients(recipe);
+  displayStarRating(recipe);
+}
+
 // const url = 'https://tasty-treats-backend.p.goit.global/api/recipes';
 // // Отримуємо дані рецептів з API
 // async function fetchRecipes() {
@@ -21,32 +51,21 @@ import axios from 'axios';
 // Отримую дані про конкретний рецепт з API по ID
 async function fetchRecipe(recipeId) {
   const url = `https://tasty-treats-backend.p.goit.global/api/recipes/${recipeId}`;
-  
- 
   try {
     const response = await axios.get(url);
-    const recipe = response.data;
-    displayRecipeVideo(recipe);
-    displayRecipeTitle(recipe);
-    displayRecipeDescription(recipe);
-    displayRecipeTimeCooking(recipe);
-    displayRecipeRating(recipe);
-    displayRecipeHashtags(recipe);
-    displayRecipeIngredients(recipe);
-      displayStarRating(recipe);
+    return response.data;
+  } catch (error) {
+    console.log(error);
+    return null;
+  }
+}
 
-           return recipe;
-    } catch (error) {
-      console.log(error);
-    };
-    };
-
-    // Тимчасовий приклад 
-fetchRecipe('6462a8f74c3d0ddd28897fba').then(recipe => {
-  console.log(recipe);
- }).catch(error => {
-  console.log(error);
-});
+//     // Тимчасовий приклад 
+// fetchRecipe('6462a8f74c3d0ddd28897fba').then(recipe => {
+//   console.log(recipe);
+//  }).catch(error => {
+//   console.log(error);
+// });
 
 // Відображаю відео на сторінці
 function displayRecipeVideo(recipe) {
@@ -130,6 +149,17 @@ function displayStarRating(recipe) {
       starElements[i].classList.remove("active");
     }
   }
+}
+
+// Відкриття модального вікна
+function openModal() {
+  const modal = document.querySelector('.modal-recipes');
+  const backdrop = document.querySelector('.backdrop');
+  modal.classList.remove('is-hidden');
+  backdrop.classList.remove('is-hidden');
+  document.addEventListener('keydown', onEscKeyPress);
+  backdrop.addEventListener('click', closeModal);
+  closeButton.addEventListener('click', closeModal);
 }
 
 // Закриття модального вікна:
