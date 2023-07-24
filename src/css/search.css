@@ -183,16 +183,24 @@
   max-width: 335px;
 }
 
+@media screen and (max-width: 767px) {
+  .search_recipes {
+    width: 335px;
+    margin: 0 auto;
+  }
+}
+
 @media screen and (min-width: 768px) {
   .search_recipes {
     width: 496px;
     min-height: 985px;
-    margin-top: 80px;
   }
 
   .recipes_box {
     align-items: center;
     gap: 16px;
+    margin-bottom: 14px;
+
   }
 
   .label-text,

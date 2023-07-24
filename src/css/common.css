@@ -26,6 +26,7 @@
   --accent-color: #9bb537;
   --switcher-bg: #cecdcd;
   --rating-stars: #eea10c;
+  --transition-property: 250ms cubic-bezier(0.4, 0, 0.2, 1);
   /* Dark Theme */
   --primary-dark-color: #161616;
 }
@@ -88,11 +89,6 @@ button {
   margin: 0 auto;
 }
 
-.content-wrapper {
-  display: flex;
-  flex-direction: column;
-}
-
 footer {
   display: flex;
   align-items: center;
@@ -112,8 +108,13 @@ footer {
   .container {
     min-width: 375px;
     padding: 0 20px;
-    width: 375px;
+    /* width: 375px; */
   }
+}
+
+.content-wrapper {
+  display: flex;
+  flex-direction: column;
 }
 
 @media screen and (min-width: 768px) {
