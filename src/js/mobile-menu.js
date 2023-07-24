@@ -22,24 +22,29 @@
   const mobileMenu = document.querySelector('.mobile');
   const openMenuBtn = document.querySelector('.open-mobile');
   const closeMenuBtn = document.querySelector('.close-mobile');
-   const backdrop = document.querySelector(".backdrop")
-  const body = document.body
+  const backdrop = document.querySelector(".backdrop");
+  const body = document.body;
 
   const toggleMenu = () => {
-    const isMenuOpen = openMenuBtn.getAttribute('aria-expanded') === 'true' || false;
-    openMenuBtn.setAttribute('aria-expanded', !isMenuOpen);
-   mobileMenu.classList.toggle('is-open');
+    const isMenuOpen = mobileMenu.classList.contains('is-open');
+    openMenuBtn.setAttribute('aria-expanded', isMenuOpen);
+    mobileMenu.classList.toggle('is-open');
 
-    if (mobileMenu.classList.contains('is-open')) {
-      bodyLock();
-    } else {
+    if (isMenuOpen) {
       bodyUnLock();
+    } else {
+      bodyLock();
     }
   };
 
   openMenuBtn.addEventListener('click', toggleMenu);
   closeMenuBtn.addEventListener('click', toggleMenu);
-  backdrop.addEventListener('click', bodyUnLock)
+  backdrop.addEventListener('click', () => {
+    if (mobileMenu.classList.contains('is-open')) {
+      toggleMenu();
+    }
+  });
+
   window.matchMedia('(min-width: 768px)').addEventListener('change', e => {
     if (!e.matches) return;
     mobileMenu.classList.remove('is-open');
@@ -49,13 +54,13 @@
 
   function bodyLock() {
     body.style.overflow = 'hidden';
-    backdrop.classList.remove("is-hidden");
-    
+    backdrop.classList.remove("visually-hidden");
   }
 
   function bodyUnLock() {
     body.style.removeProperty('overflow');
-    backdrop.classList.add("is-hidden");
-    
+    backdrop.classList.add("visually-hidden");
   }
 })();
+
+
