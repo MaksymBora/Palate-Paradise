@@ -1,12 +1,9 @@
 .search_recipes {
-  margin: 0 auto;
-  width: 375px;
   color: rgba(5, 5, 5, 0.5);
   font-weight: 500;
 }
 
 .recipes_box {
-  margin-top: 40px;
   display: flex;
   flex-wrap: wrap;
   gap: 14px;
@@ -119,15 +116,23 @@ select {
   max-width: 335px;
 }
 
+@media screen and (max-width: 767px) {
+  .search_recipes {
+    width: 335px;
+    margin: 0 auto;
+  }
+}
+
 @media screen and (min-width: 768px) {
   .search_recipes {
     width: 496px;
+    min-height: 985px;
   }
 
   .recipes_box {
-    margin-top: 100px;
+    align-items: center;
     gap: 16px;
-    margin-bottom: 16px;
+    margin-bottom: 14px;
   }
 
   .label-text,
