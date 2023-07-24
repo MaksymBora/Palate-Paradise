@@ -36,7 +36,7 @@
 <tr>
     <td align="center">
         <a href="https://github.com/MaksymBora">
-            <img src="https://avatars.githubusercontent.com/u/123206568?v=4" width="100;" alt="masiuk-mykola"/>
+            <img src="https://avatars.githubusercontent.com/u/123206568?v=4" width="100;" alt="MaksymBora"/>
             <br />
             <sub><b>Maksym Borovichenko</b></sub>
             <br />
@@ -45,7 +45,7 @@
     </td>
     <td align="center">
         <a href="https://github.com/heilya">
-            <img src="https://avatars.githubusercontent.com/u/123752915?v=4" width="100;" alt="AnastasiyaSeroshtan"/>
+            <img src="https://avatars.githubusercontent.com/u/123752915?v=4" width="100;" alt="heilya"/>
             <br />
             <sub><b>Viktoriia Kurnosova</b></sub>
             <br />
@@ -54,7 +54,7 @@
     </td>
     <td align="center">
         <a href="https://github.com/TetyanaDubchak">
-            <img src="https://avatars.githubusercontent.com/u/123674629?v=4" width="100;" alt="Anastasiia"/>
+            <img src="https://avatars.githubusercontent.com/u/123674629?v=4" width="100;" alt="TetyanaDubchak"/>
             <br />
             <sub><b>Tetyana Dubchak</b></sub>
             <br />
@@ -63,7 +63,7 @@
     </td>
     <td align="center">
         <a href="https://github.com/YuriyBeregovoy">
-            <img src="https://avatars.githubusercontent.com/u/124146107?v=4" width="100;" alt="BlackInHUB"/>
+            <img src="https://avatars.githubusercontent.com/u/124146107?v=4" width="100;" alt="YuriyBeregovoy"/>
             <br />
             <sub><b>Yuriy Beregovoy</b></sub>
             <br />
@@ -72,16 +72,16 @@
     </td>
     <td align="center">
         <a href="https://github.com/MateichukNina">
-            <img src="https://avatars.githubusercontent.com/u/124276133?v=4" width="100;" alt="Dmitry-Natalchuk"/>
+            <img src="https://avatars.githubusercontent.com/u/124276133?v=4" width="100;" alt="MateichukNina"/>
             <br />
-            <sub><b>Dmytro Natalchuk</b></sub>
+            <sub><b>Mateichuk Nina</b></sub>
             <br />
             <sub><b>🇺🇦</b></sub>
         </a>
     </td>
     <td align="center">
         <a href="https://github.com/StanislavBobrivskyi">
-            <img src="https://avatars.githubusercontent.com/u/121600218?v=4" width="100;" alt="Maryna-Korbet"/>
+            <img src="https://avatars.githubusercontent.com/u/121600218?v=4" width="100;" alt="StanislavBobrivskyi"/>
             <br />
             <sub><b>Stanislav Bobrivskyi</b></sub>
             <br />
@@ -90,31 +90,18 @@
     </td>
     <td align="center">
         <a href="https://github.com/penadine">
-            <img src="https://avatars.githubusercontent.com/u/105946746?v=4" width="100;" alt="Maryna-Korbet"/>
+            <img src="https://avatars.githubusercontent.com/u/105946746?v=4" width="100;" alt="penadine"/>
             <br />
             <sub><b>Надія Риченко</b></sub>
             <br />
             <sub><b>🇺🇦</b></sub>
+
         </a></tr>
 	
 <tr>
     </tr>
 </table>
-<!-- readme: contributors,ImgBotApp/- -end -->
 
-### Bots
 
-<!-- readme: bots -start -->
-<table>
-<tr>
-    <td align="center">
-        <a href="https://github.com/github-actions[bot]">
-            <img src="https://avatars.githubusercontent.com/in/15368?v=4" width="100;" alt="github-actions[bot]"/>
-            <br />
-            <sub><b>github-actions[bot]</b></sub>
-        </a>
-    </td>
-    </tr>
-</table>
-<!-- readme: bots,ImgBotApp -end -->
-<!-- markdownlint-restore -->
+
+

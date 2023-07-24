@@ -229,6 +229,17 @@
     margin-bottom: 64px;
   }
 
+  /* see recipe button */
+
+  .rec-btn-open.rec-btn {
+    padding: 8px 10px;
+  }
+
+  .star-icon {
+    width: 16px;
+    height: 16px;
+  }
+
   .fav-empty {
     margin-top: 0px;
     width: 481px;
