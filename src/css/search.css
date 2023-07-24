@@ -170,20 +170,27 @@
   line-height: calc(16 / 12);
 }
 
-.recipes {
-  margin-bottom: 40px;
-}
+/*  */
 
-.recipes__items {
-  margin: -20px;
+.rec-search-item {
+  position: relative;
   display: flex;
-  flex-wrap: wrap;
+  color: #f8f8f8;
+  font-size: 12px;
+  border-radius: 14px;
 }
 
-.recipes__item {
-  flex-basis: calc((100% - 20px) / 1);
-  margin: 20px;
-  max-width: 335px;
+/*  */
+
+@media screen and (max-width: 1279px) {
+  .rec-search-item :nth-child(2n),
+  .rec-search-item :last-child {
+    margin-right: 0;
+  }
+
+  .rec-search-item :nth-last-child(-n + 2) {
+    margin-bottom: 0;
+  }
 }
 
 @media screen and (max-width: 767px) {
@@ -191,12 +198,41 @@
     width: 335px;
     margin: 0 auto;
   }
+
+  .image-container {
+    display: block;
+    margin-bottom: 40px;
+  }
+
+  .rec-search-item {
+    width: 335px;
+    height: 335px;
+  }
+
+  .rec-search-item:not(:last-child) {
+    margin-bottom: 24px;
+  }
 }
 
 @media screen and (min-width: 768px) {
+  .rec-search-item {
+    width: 240px;
+    height: 264px;
+    display: inline-flex;
+  }
+
   .search_recipes {
     width: 496px;
     min-height: 985px;
+  }
+
+  .image-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+
+    min-height: 844px;
+    margin-bottom: 64px;
   }
 
   .recipes_box {
@@ -269,35 +305,37 @@
 
   .recipes {
     margin-bottom: 64px;
-  }
-
-  .recipes__items {
-    margin: -8px;
-  }
-
-  .recipes__item {
-    flex-basis: calc((100% - 32px) / 2);
-    margin: 8px;
-    max-width: 240px;
+    min-height: 844px;
   }
 }
 
 @media screen and (min-width: 1280px) {
+  #search-section .rec-search-item {
+    width: 250px;
+    height: 287px;
+  }
+
+  .rec-search-item:nth-child(3n),
+  .rec-search-item:last-child {
+    margin-right: 0;
+  }
+
+  .rec-search-item:nth-last-child(-n + 3) {
+    margin-bottom: 0;
+  }
+
   .search_recipes {
     width: 782px;
+    min-height: 728px;
   }
 
   .reset {
     padding-left: 677px;
   }
 
-  .recipes__items {
-    margin: -15px;
-  }
+  .image-container {
+    min-height: 908px;
 
-  .rec-item.recipes__item {
-    flex-basis: calc((100% - 90px) / 3);
-    margin: 15px;
-    max-width: 250px;
+    row-gap: 32px;
   }
 }
