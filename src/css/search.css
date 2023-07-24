@@ -1,12 +1,10 @@
 .search_recipes {
-  margin: 0 auto;
-  width: 375px;
   color: rgba(5, 5, 5, 0.5);
   font-weight: 500;
+  margin-top: 40px;
 }
 
 .recipes_box {
-  margin-top: 40px;
   display: flex;
   flex-wrap: wrap;
   gap: 14px;
@@ -50,35 +48,101 @@
   line-height: calc(18 / 14);
 }
 
-#time {
-  width: 160px;
-  padding-left: 18px;
+/* Стилизация обертки для выпадающего меню */
+.custom-dropdown {
+  position: relative;
+  display: inline-block;
 }
 
-#area {
+.choice__time {
+  width: 160px;
+}
+
+.choice__area {
   width: 161px;
 }
 
-#ingredients {
+.choice__ingredients {
   width: 188px;
 }
 
-.dropdown {
+.selected-option,
+.dropdown-list {
   color: rgba(5, 5, 5, 0.5);
   font-size: 14px;
   line-height: calc(18 / 14);
 }
 
-select {
+.custom-dropdown ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.custom-dropdown .selected-option {
+  display: flex;
   border: 1px solid rgba(5, 5, 5, 0.2);
-  appearance: none;
+  border-radius: 15px;
   background: url('../images/chevron-down.svg') no-repeat right center;
   background-position-x: calc(100% - 18px);
-  outline: 0;
-  padding-left: 18px;
-  padding-right: 18px;
   height: 46px;
-  border-radius: 15px;
+  padding-left: 18px;
+  align-items: center;
+}
+
+.custom-dropdown .dropdown-list {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 1;
+  width: 100%;
+  overflow-y: auto;
+  border-radius: 14px;
+  background-color: rgba(255, 255, 255, 1);
+}
+
+.choice__time .dropdown-list {
+  max-height: 124px;
+}
+
+.choice__area .dropdown-list {
+  max-height: 176px;
+}
+
+.choice__ingredients .dropdown-list {
+  max-height: 176px;
+}
+
+.custom-dropdown:hover .dropdown-list,
+.custom-dropdown.active .dropdown-list {
+  display: block;
+  padding-left: 18px;
+  padding-top: 18px;
+  padding-bottom: 14px;
+}
+
+.custom-dropdown .dropdown-list li {
+  margin-bottom: 8px;
+  cursor: pointer;
+}
+
+.custom-dropdown .dropdown-list li:last-child {
+  margin-bottom: 0;
+}
+
+.custom-dropdown .dropdown-list li:hover {
+  color: rgba(5, 5, 5, 1);
+}
+
+.custom-dropdown .dropdown-list::-webkit-scrollbar-thumb {
+  background-color: rgba(5, 5, 5, 0.1);
+  border-radius: 12px;
+}
+
+.custom-dropdown .dropdown-list::-moz-scrollbar-thumb {
+  background-color: rgba(5, 5, 5, 0.1);
+  border-radius: 12px;
 }
 
 .reset {
@@ -122,12 +186,13 @@ select {
 @media screen and (min-width: 768px) {
   .search_recipes {
     width: 496px;
+    min-height: 985px;
+    margin-top: 80px;
   }
 
   .recipes_box {
-    margin-top: 100px;
+    align-items: center;
     gap: 16px;
-    margin-bottom: 16px;
   }
 
   .label-text,
@@ -139,7 +204,8 @@ select {
   }
 
   .form-input,
-  .dropdown {
+  .selected-option,
+  .dropdown-list {
     font-size: 16px;
     line-height: calc(20 / 16);
   }
@@ -154,21 +220,31 @@ select {
     line-height: calc(20 / 16);
   }
 
-  #time {
+  .choice__time {
     width: 125px;
-    padding-left: 18px;
   }
 
-  #area {
+  .choice__area {
     width: 141px;
   }
 
-  #ingredients {
+  .choice__ingredients {
     width: 188px;
   }
-
-  select {
+  .custom-dropdown .selected-option {
     height: 48px;
+  }
+
+  .choice__time .dropdown-list {
+    max-height: 128px;
+  }
+
+  .choice__area .dropdown-list {
+    max-height: 188px;
+  }
+
+  .choice__ingredients .dropdown-list {
+    max-height: 188x;
   }
 
   .reset {
@@ -199,10 +275,7 @@ select {
 @media screen and (min-width: 1280px) {
   .search_recipes {
     width: 782px;
-  }
-
-  .recipes_box {
-    margin-bottom: 14px;
+    margin-top: 100px;
   }
 
   .reset {

@@ -112,4 +112,23 @@ function renderList(data) {
 }
 
 
+// Випадающее меню код
+const dropdownContainers = document.querySelectorAll('.custom-dropdown');
+
+function handleSelection(container) {
+  const selectedOption = container.querySelector('.selected-option');
+  const dropdownList = container.querySelector('.dropdown-list');
+
+  const options = dropdownList.querySelectorAll('li');
+  options.forEach((option) => {
+    option.addEventListener('click', () => {
+      selectedOption.textContent = option.textContent;
+      selectedOption.style.color = 'rgba(5, 5, 5, 1)';
+    });
+  });
+}
+
+dropdownContainers.forEach((container) => {
+  handleSelection(container);
+});
 

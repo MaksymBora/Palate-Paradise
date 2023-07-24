@@ -12,34 +12,49 @@
       </label>
     </form>
 
-    <div class="form__time">
-      <label for="time" class="time">Time</label>
-      <select id="time" name="time" class="dropdown">
-        <option value=""></option>
-        <option value=""></option>
-        <option value="40" selected>40 min</option>
-        <option value=""></option>
-      </select>
-    </div>
-    <div class="form__area">
-      <label for="area" class="area">Area</label>
-      <select id="area" name="area" class="dropdown">
-        <option value=""></option>
-        <option value=""></option>
-        <option value="40" selected>Italian</option>
-        <option value=""></option>
-      </select>
-    </div>
-    <div class="form__ingredients">
-      <label for="ingredients" class="ingredients">Ingredients</label>
-      <select id="ingredients" name="ingredients" class="dropdown">
-        <option value=""></option>
-        <option value=""></option>
-        <option value="tomato" selected>Tomato</option>
-        <option value=""></option>
-      </select>
-    </div>
+<div class="form__time">
+  <label for="time" class="time">Time</label>
+  <div class="choice__time custom-dropdown">
+    <span class="selected-option">10 min</span>
+    <ul class="dropdown-list">
+      <li data-value="10">10 min</li>
+      <li data-value="20">20 min</li>
+      <li data-value="30">30 min</li>
+      <li data-value="40">40 min</li>
+    </ul>
   </div>
+</div>
+
+<div class="form__area">
+  <label for="area" class="area">Area</label>
+  <div class="choice__area custom-dropdown">
+    <span class="selected-option">Italian</span>
+    <ul class="dropdown-list">
+      <li data-value="Italian">Italian</li>
+      <li data-value="Mexican">Mexican</li>
+      <li data-value="French">French</li>
+      <li data-value="Spanish">Spanish</li>
+      <li data-value="English">English</li>
+      <li data-value="Norwegian">Norwegian</li>
+      <li data-value="Ukrainian">Ukrainian</li>
+    </ul>
+  </div>
+</div>
+
+<div class="form__ingredients">
+  <label for="ingredients" class="ingredients">Ingredients</label>
+  <div class="choice__ingredients custom-dropdown">
+    <span class="selected-option">Tomato</span>
+    <ul class="dropdown-list">
+      <li data-value="Tomato">Tomato</li>
+      <li data-value="Cabbage">Cabbage</li>
+      <li data-value="Cucumber">Cucumber</li>
+      <li data-value="Corn">Corn</li>
+      <li data-value="Radish">Radish</li>
+      <li data-value="Parsley">Parsley</li>
+    </ul>
+  </div>
+</div>
 
   <div class="reset">
     <svg class="icon-x" width="16" height="16">
@@ -53,4 +68,8 @@
       <li class="recipes__item"></li>
     </ul>
   </div>
+
+
+
+
 </section>
