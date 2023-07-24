@@ -39,6 +39,7 @@ function fetchRecipe(recipeId) {
     });
     };
 
+    // Тимчасовий приклад 
 fetchRecipe('6462a8f74c3d0ddd28897fbb').then(recipe => {
   console.log(recipe);
  }).catch(error => {
@@ -77,19 +78,19 @@ function displayRecipeDescription(recipe) {
  const recipeTitleEl = document.querySelector('.recipes-description');
   recipeTitleEl.textContent = recipe.instructions;
 }
-
+// Функція виведення часу приготування
 function displayRecipeTimeCooking(recipe) {
  const tmeCookingEl = document.querySelector('.recipes-cooking-time');
  tmeCookingEl.textContent = recipe.time;
 }
-
+// Функція виведення числового рейтингу
 function displayRecipeRating(recipe) {
  const recipeRatingEl = document.querySelector('.ratinng-value');
  recipeRatingEl.textContent = recipe.rating;
 }
 
 
-
+// Функція виведення хештегів
 function displayRecipeHashtags(recipe) {
   const recipeHashtagsEl = document.querySelector('.recipes-hashtags-list');
   recipeHashtagsEl.innerHTML = '';
@@ -101,7 +102,7 @@ function displayRecipeHashtags(recipe) {
 }
 
 
-
+// Функція виведення інгредіентів
 function displayRecipeIngredients(recipe) {
   const recipeIngredientsEl = document.querySelector('.recipes-components-list');
   recipeIngredientsEl.innerHTML = '';
@@ -115,7 +116,7 @@ function displayRecipeIngredients(recipe) {
   
 }
 
-
+// Функція зіркового рейтингу залежно від числового
 function displayStarRating(recipe) {
   const ratingValue = parseFloat(recipe.rating);
   const starElements = document.querySelectorAll(".modal-rating-star-icon");
