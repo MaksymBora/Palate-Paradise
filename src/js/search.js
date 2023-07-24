@@ -1,6 +1,7 @@
 // Importing modules
 import RecipeApiService from './service/service-api';
 import sprite from '../images/sprite.svg';
+import { getRating } from '../js/favorite/rendering-fav';
 
 // Initializing variables and elements
 const recipeApiSerive = new RecipeApiService();
@@ -50,7 +51,7 @@ function renderingRecipes(title, description, preview, rating, id, category) {
         <p class="rec-card-desc desc-cut">${description}</p>
         <div class="rec-rate">
           <p class="rate">${fixedRating}</p>
-          <!-- Implement the rating markup here, if needed -->
+           ${getRating(fixedRating)}
           <button type="button" name="details" class="rec-btn-open rec-btn" data-id="${id}">See recipe</button>
         </div>
       </div>
