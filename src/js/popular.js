@@ -32,5 +32,3 @@ function createPopularMarkup(data) {
   </ul>`).join('');
     return popularBox.insertAdjacentHTML('beforeend', markup);
 };
-
-console.log('Hi')
