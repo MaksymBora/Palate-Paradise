@@ -1,4 +1,4 @@
- .modal-rating {
+.modal-rating {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -16,11 +16,11 @@
   align-items: center;
 }
 
- .rating-title {
+.rating-title {
   margin-bottom: 4px;
   font-size: 14px;
   font-weight: 600;
-} 
+}
 
 .rating-value {
   font-size: 16px;
@@ -29,8 +29,8 @@
 }
 
 .rating-item {
-margin-right: -5px;
-appearance: none;
+  margin-right: -5px;
+  appearance: none;
 }
 
 .star {
@@ -39,37 +39,39 @@ appearance: none;
 }
 
 .star:hover {
-  fill: gold;
+  fill: var(--rating-stars);
 }
 
+.is-active {
+  fill: var(--rating-stars);
+}
 
- .rating-email {
+.rating-email {
   padding: 14px;
   border-radius: 15px;
   border-color: rgba(5, 5, 5, 0.2);
   margin-top: 20px;
-} 
+}
 
 .rating-button-send {
   background-color: var(--accent-color);
   border: none;
   border-radius: 15px;
   color: var(--primary-white-color);
-} 
+}
 
-
- .rating-button-close {
+.rating-button-close {
   position: absolute;
   top: 0;
   right: 0;
   border: none;
   background-color: var(--primary-white-color);
-} 
+}
 
- .close {
+.close {
   height: 20px;
   width: 20px;
-}  
+}
 
 @media screen and (max-width: 767px) {
   .modal-rating {
