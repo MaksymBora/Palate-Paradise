@@ -11,7 +11,6 @@ let data = [];
 
 // Function to fetch data from the API and render the markup
 async function getApi() {
-  recipeApiSerive.limit = 8;
   try {
     const response = await recipeApiSerive.getRecipe();
     data = response.results;

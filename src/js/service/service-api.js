@@ -13,6 +13,22 @@ export default class RecipeApiService {
     this.recipeId = '';
   }
 
+  resizePage() {
+    const screenWidth = window.innerWidth;
+
+    if (screenWidth >= 1280) {
+      return 'per_page=9&limit=9';
+    }
+
+    if (screenWidth >= 768 && screenWidth < 1280) {
+      return 'per_page=8&limit=8';
+    }
+
+    if (screenWidth < 768) {
+      return 'per_page=6&limit=6';
+    }
+  }
+
   async getCooksEvents() {
     const url = `${this.BASE_URL}/events`;
     try {
@@ -34,7 +50,11 @@ export default class RecipeApiService {
   }
 
   async getRecipe() {
-    const url = `${this.BASE_URL}/recipes?category=${this.category}&page=${this.page}&limit=${this.limit}&time=${this.time}&area=${this.area}&ingredients=${this.ingredients}`;
+    const url = `${this.BASE_URL}/recipes?category=${this.category}&page=${
+      this.page
+    }&${this.resizePage()}&time=${this.time}&area=${this.area}&ingredients=${
+      this.ingredients
+    }`;
     try {
       const response = await axios.get(url);
       return response.data;
