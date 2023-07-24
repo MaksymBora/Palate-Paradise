@@ -100,6 +100,11 @@ footer {
   color: var(--switcher-bg);
 }
 
+.content-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
 /*================================*/
 /* Common Container*/
 /*================================*/
@@ -110,11 +115,6 @@ footer {
     padding: 0 20px;
     /* width: 375px; */
   }
-}
-
-.content-wrapper {
-  display: flex;
-  flex-direction: column;
 }
 
 @media screen and (min-width: 768px) {
