@@ -42,7 +42,7 @@ async function fetchRecipe(recipeId) {
     };
 
     // Тимчасовий приклад 
-fetchRecipe('6462a8f74c3d0ddd28897fbb').then(recipe => {
+fetchRecipe('6462a8f74c3d0ddd28897fba').then(recipe => {
   console.log(recipe);
  }).catch(error => {
   console.log(error);
@@ -132,19 +132,35 @@ function displayStarRating(recipe) {
   }
 }
 
+// Закриття модального вікна:
+function closeModal() {
+  const modal = document.querySelector('.modal-recipes');
+  modal.classList.add('is-hidden');
+  document.removeEventListener('keydown', onEscKeyPress);
+  backdrop.removeEventListener('click', closeModal);
+  closeButton.removeEventListener('click', closeModal);
+   backdrop.classList.add('is-hidden');
+}
 
 
+function onEscKeyPress(event) {
+  if (event.key === 'Escape') {
+    closeModal();
+  }
+}
 
+const backdrop = document.querySelector('.backdrop');
 
+backdrop.addEventListener('click', (event) => {
+  if (event.target === backdrop) {
+    closeModal();
+  }
+});
 
+const closeButton = document.querySelector('.modal-close-btn');
+closeButton.addEventListener('click', closeModal);
 
-
-
-
-
-
-
-
+document.addEventListener('keydown', onEscKeyPress);
 
 
 
