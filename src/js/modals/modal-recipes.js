@@ -10,7 +10,7 @@ import axios from 'axios';
 //     });
 // }
 
-// // Дані рецептів, коли вони будуть отримані з API
+// // Дані рецептів  з API
 // fetchRecipes().then(recipes => {
 //   console.log(recipes);
 // }).catch(error => {
@@ -32,7 +32,9 @@ function fetchRecipe(recipeId) {
     displayRecipeRating(recipe);
     displayRecipeHashtags(recipe);
     displayRecipeIngredients(recipe);
-    displayStarRating(recipe);
+      displayStarRating(recipe);
+
+           return recipe;
     })
     .catch((error) => {
       console.log(error);
