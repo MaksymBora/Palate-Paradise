@@ -1,7 +1,4 @@
-
 import axios from 'axios';
-
-
 import RecipeApiService from './service/service-api';
 import sprite from '../images/sprite.svg';
 import { getRating } from '../js/favorite/rendering-fav';
@@ -62,7 +59,6 @@ function renderingRecipes(title, description, preview, rating, id, category) {
   `;
 }
 
-
 async function fetchAndPopulateAreas() {
   const apiUrl = 'https://tasty-treats-backend.p.goit.global/api/areas';
 
@@ -104,9 +100,8 @@ async function fetchAndPopulateIngredients() {
   }
 }
 
-  fetchAndPopulateAreas();
-  fetchAndPopulateIngredients();
-
+fetchAndPopulateAreas();
+fetchAndPopulateIngredients();
 
 document.addEventListener('DOMContentLoaded', async function () {
   // Создание списка времени от 5 до 120 минут с шагом 5
@@ -147,7 +142,6 @@ document.addEventListener('DOMContentLoaded', async function () {
   });
 });
 
-
 // Функция для сброса фильтров
 function resetFilters() {
   // Сбрасываем выбранные опции в списке времени
@@ -161,13 +155,14 @@ function resetFilters() {
   selectedAreaOption.style.color = '';
 
   // Сбрасываем выбранные опции в списке ингредиентов
-  const selectedIngredientsOption = document.getElementById('selected-ingredients');
+  const selectedIngredientsOption = document.getElementById(
+    'selected-ingredients'
+  );
   selectedIngredientsOption.textContent = 'Tomato';
   selectedIngredientsOption.style.color = '';
 
   //Все рецепты
   const recipesContainer = document.querySelector('.recipes');
- 
 
   // Добавляем класс "pressed" при клике на кнопку
   resetButton.classList.add('pressed');
@@ -180,13 +175,6 @@ function resetFilters() {
 
 const resetButton = document.querySelector('.reset');
 resetButton.addEventListener('click', resetFilters);
-
-
-
-
-
-
-
 
 // Function to filter recipes by title
 function filterByTitle(title) {
@@ -221,4 +209,3 @@ searchInput.addEventListener('input', () => {
 
 // Initiating the script
 getApi();
-

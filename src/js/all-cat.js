@@ -1,10 +1,9 @@
 import RecipeApiService from './service/service-api';
 import Scrollbar from 'smooth-scrollbar';
 import { notifyInfo } from './notifications';
+import { renderingAllRecips } from './service/all-cat-render';
 
-const allCatBtnEl = document.querySelector('.all-cat-main-btn');
 const selectListEl = document.querySelector('.all-cat-select-list');
-const selectWrapper = document.querySelector('.all-cat-select-list');
 
 const recipeApiService = new RecipeApiService();
 
@@ -42,3 +41,31 @@ function makeBtnActive(event) {
 button.forEach(button => {
   button.addEventListener('click', makeBtnActive);
 });
+
+// Rendering Recipts on Click
+
+const selectBtn = document.querySelector('.all-cat-main-btn');
+const imageContainer = document.querySelector('.image-container');
+const formSearch = document.querySelector('.form_search');
+
+selectBtn.addEventListener('click', renderingOnClick);
+
+function renderingOnClick() {
+  formSearch.querySelector('.form-input').value = '';
+
+  recipeApiService.getRecipe().then(response => {
+    imageContainer.innerHTML = '';
+    const recipesMarkup = response.results.map(recipe => {
+      const { title, description, preview, rating, id, category } = recipe;
+      return renderingAllRecips(
+        title,
+        description,
+        preview,
+        rating,
+        id,
+        category
+      );
+    });
+    imageContainer.innerHTML = recipesMarkup.join('');
+  });
+}
