@@ -7,7 +7,7 @@ export function notifyError(error) {
 }
 
 export function notifyInfo(error) {
-  Notiflix.Notify.failure('No result for your request, please try again!', {
+  Notiflix.Notify.info('Oops! Something went wrong! Try reloading the page!', {
     timeout: 6000,
   });
 }
