@@ -3,11 +3,22 @@ import sprite from '../images/sprite.svg';
 
 const recipeApiSerive = new RecipeApiService();
 
-recipeApiSerive.getRecipe().then(response => {
-  const data = response.results;
+// recipeApiSerive.getRecipe().then(response => {
+//   recipeApiSerive.limit = 8;
+//   const data = response.results;
 
-  renderList(data);
-});
+//   renderList(data);
+// });
+
+function getApi() {
+  recipeApiSerive.limit = 8;
+  recipeApiSerive.getRecipe().then(response => {
+    const data = response.results;
+
+    renderList(data);
+  });
+}
+getApi();
 
 function renderList(data) {
   const post = document.querySelector('.recipes');
@@ -45,11 +56,8 @@ function renderList(data) {
     })
     .join('');
 
-    post.innerHTML = renderMarkup;
-    
-
+  post.innerHTML = renderMarkup;
 }
-
 
 // Фунція фільтрації
 
@@ -62,18 +70,16 @@ function filterByTitle(data, title) {
 function renderList(data) {
   const post = document.querySelector('.recipes');
   const searchInput = document.querySelector('.form-input');
-    
+
   searchInput.addEventListener('input', () => {
-    
     const filterValue = searchInput.value.trim();
     const filteredData = filterValue ? filterByTitle(data, filterValue) : data;
-   
-    renderMarkup(filteredData); 
+
+    renderMarkup(filteredData);
   });
 
   function renderMarkup(filteredData) {
-   
-    const markup = filteredData 
+    const markup = filteredData
       .map(({ preview, title, description, _id }) => {
         const markup = `<div class="rec-item" style="background: linear-gradient(0deg, rgba(5, 5, 5, 0.6),
                       rgba(5, 5, 5, 0)),
@@ -105,11 +111,8 @@ function renderList(data) {
       })
       .join('');
 
-    post.innerHTML = markup; 
+    post.innerHTML = markup;
   }
 
-  renderMarkup(data); 
+  renderMarkup(data);
 }
-
-
-
