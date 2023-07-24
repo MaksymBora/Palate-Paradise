@@ -10,17 +10,17 @@
     <form class="modal-order-form" autocomplete="off">
       <div class="modal-order-form__field">
         <label for="name" class="modal-order-form__label">Name*</label>
-        <input type="text" name="name" id="name" class="modal-order-form__input" pattern="^[A-Za-z ]{1,15}"
-          title="Names can comprise only letters (either case); no more than 15 characters." />
+        <input type="text" name="name" id="name" class="modal-order-form__input" required
+          pattern="^[a-zA-Zа-яА-Я ]+ [a-zA-Zа-яА-Я ]+$" title="Names can comprise only letters (either case)" />
       </div>
       <div class="modal-order-form__field">
         <label for="phone" class="modal-order-form__label">Phone number*</label>
-        <input type="tel" name="phone" id="phone" class="modal-order-form__input" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
-          title="Please enter the phone in the number format: 123-456-7890" />
+        <input type="tel" name="phone" id="phone" class="modal-order-form__input" required pattern="\ +?[0-9\s\-\(\)]+"
+          title="Please enter the phone in the number format" />
       </div>
       <div class="modal-order-form__field">
         <label for="email" class="modal-order-form__label">Email*</label>
-        <input type="email" name="email" id="email" class="modal-order-form__input" />
+        <input type="email" name="email" id="email" class="modal-order-form__input" required />
       </div>
       <div class="modal-order-form__comment-field">
         <label for="comment" class="modal-order-form__label">Comment</label>

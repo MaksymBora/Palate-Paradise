@@ -20,6 +20,7 @@ function onToggleModalOrder() {
 }
 
 refs.modalOrderSubmitBtn.disabled = true;
+
 onClickPageReload();
 
 // Track the input event on the form and keep input data in localStorage
@@ -31,13 +32,16 @@ function onTextareaInput(evt) {
     email: email.value,
     comment: comment.value,
   };
-  refs.modalOrderSubmitBtn.disabled = false;
+
   localStorage.setItem(
     'feedback-form-state',
     JSON.stringify(feedbackFormState)
   );
+  if (name.value !== '' && phone.value !== '' && email.value !== '') {
+    refs.modalOrderSubmitBtn.disabled = false;
+  }
 }
-//Check localStorage after page reload and get last saved data (or empty filds otherwise)
+//Check localStorage after page reload and get last saved data (or empty fields otherwise)
 function onClickPageReload() {
   const storageData =
     JSON.parse(localStorage.getItem('feedback-form-state')) || {};
@@ -49,24 +53,15 @@ function onClickPageReload() {
     refs.modalOrderForm.elements.comment.value = comment || '';
   }
 }
-//Clean localStorage and form inputs after form submit,log current values to console
+//Clean localStorage and form inputs after form submit
 function onFormSubmit(evt) {
   evt.preventDefault();
 
   const { name, phone, email, comment } = evt.currentTarget.elements;
-  refs.modalOrderSubmitBtn.disabled = false;
 
   if (name.value === '' || phone.value === '' || email.value === '') {
     refs.modalOrderSubmitBtn.disabled = true;
-    return Notiflix.Report.warning(
-      'Please fill out all required fields!',
-      '',
-      'Ok',
-      {
-        position: 'center-top',
-        titleMaxLength: '100',
-      }
-    );
+    return onWarningMes();
   }
 
   console.log({
@@ -75,11 +70,24 @@ function onFormSubmit(evt) {
     email: email.value.trim(),
     comment: comment.value.trim(),
   });
+
+  onSuccessMes();
+
+  refs.modalOrderSubmitBtn.disabled = true;
+  localStorage.removeItem('feedback-form-state');
+  // Clear data from form inputs
+  evt.currentTarget.reset();
+}
+
+function onSuccessMes() {
   Notiflix.Report.success('Your order has completed successfully!', '', 'Ok', {
     position: 'center-top',
     titleMaxLength: '100',
   });
-  localStorage.removeItem('feedback-form-state');
-  // Clear data from form inputs
-  evt.currentTarget.reset();
+}
+function onWarningMes() {
+  Notiflix.Report.warning('Please fill out all required fields!', '', 'Ok', {
+    position: 'center-top',
+    titleMaxLength: '100',
+  });
 }
