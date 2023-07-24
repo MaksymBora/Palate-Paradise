@@ -2,12 +2,13 @@ import axios from 'axios';
 
 // const url = 'https://tasty-treats-backend.p.goit.global/api/recipes';
 // // Отримуємо дані рецептів з API
-// function fetchRecipes() {
-//   return axios.get(url)
-//     .then(response => response.data)
-//     .catch(error => {
-//       console.log(error);
-//     });
+// async function fetchRecipes() {
+//   try {
+//     const response = await axios.get(url);
+//     return response.data;
+//   } catch (error) {
+//     console.log(error);
+//   }
 // }
 
 // // Дані рецептів  з API
@@ -18,13 +19,13 @@ import axios from 'axios';
 // });
 
 // Отримую дані про конкретний рецепт з API по ID
-function fetchRecipe(recipeId) {
+async function fetchRecipe(recipeId) {
   const url = `https://tasty-treats-backend.p.goit.global/api/recipes/${recipeId}`;
   
- return axios
-    .get(url)
-    .then((response) => response.data)
-    .then((recipe) => {
+ 
+  try {
+    const response = await axios.get(url);
+    const recipe = response.data;
     displayRecipeVideo(recipe);
     displayRecipeTitle(recipe);
     displayRecipeDescription(recipe);
@@ -35,10 +36,9 @@ function fetchRecipe(recipeId) {
       displayStarRating(recipe);
 
            return recipe;
-    })
-    .catch((error) => {
+    } catch (error) {
       console.log(error);
-    });
+    };
     };
 
     // Тимчасовий приклад 
