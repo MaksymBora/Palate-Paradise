@@ -10,7 +10,7 @@ getPopular();
 async function getPopular() {
     const url = `${BASE_URL}/recipes/popular`;
     try {
-      const {data} = await axios.get(url);
+        const {data} = await axios.get(url);
         createPopularMarkup(data);
         return data;
     } catch (error) {
@@ -32,3 +32,5 @@ function createPopularMarkup(data) {
   </ul>`).join('');
     return popularBox.insertAdjacentHTML('beforeend', markup);
 };
+
+console.log('Hi')
