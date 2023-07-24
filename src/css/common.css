@@ -89,11 +89,6 @@ button {
   margin: 0 auto;
 }
 
-.content-wrapper {
-  display: flex;
-  flex-direction: column;
-}
-
 footer {
   display: flex;
   align-items: center;
@@ -113,8 +108,13 @@ footer {
   .container {
     min-width: 375px;
     padding: 0 20px;
-    width: 375px;
+    /* width: 375px; */
   }
+}
+
+.content-wrapper {
+  display: flex;
+  flex-direction: column;
 }
 
 @media screen and (min-width: 768px) {
