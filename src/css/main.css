@@ -11,6 +11,7 @@
 /* Favorites */
 @import './favorites/favorite-hero.css';
 @import './favorites/favorite-list.css';
+@import './favorites/skroll.css';
 
 /* Modal */
 @import './modals/modal-order.css';
