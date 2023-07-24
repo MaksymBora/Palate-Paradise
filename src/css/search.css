@@ -149,6 +149,13 @@
   align-items: center;
   padding-left: 230px;
   margin-bottom: 20px;
+  cursor: pointer;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.reset.pressed {
+  color: rgba(5, 5, 5, 1);
 }
 
 .icon-x {
@@ -156,9 +163,6 @@
   margin-right: 4px;
   width: 16px;
   height: 16px;
-  cursor: pointer;
-  transition-duration: 250ms;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .reset_filter {

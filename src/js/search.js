@@ -1,4 +1,7 @@
-// Importing modules
+
+import axios from 'axios';
+
+
 import RecipeApiService from './service/service-api';
 import sprite from '../images/sprite.svg';
 import { getRating } from '../js/favorite/rendering-fav';
@@ -19,6 +22,7 @@ async function getApi() {
     console.error('Error fetching data:', error);
   }
 }
+getApi();
 
 // Function to render the recipe markup
 function renderingRecipes(title, description, preview, rating, id, category) {
@@ -58,6 +62,132 @@ function renderingRecipes(title, description, preview, rating, id, category) {
   `;
 }
 
+
+async function fetchAndPopulateAreas() {
+  const apiUrl = 'https://tasty-treats-backend.p.goit.global/api/areas';
+
+  try {
+    const response = await axios.get(apiUrl);
+    const areas = response.data;
+    const areaDropdownList = document.getElementById('area-dropdown');
+
+    areas.forEach(area => {
+      const listItem = document.createElement('li');
+      listItem.setAttribute('data-value', area._id);
+      listItem.textContent = area.name;
+      areaDropdownList.appendChild(listItem);
+    });
+  } catch (error) {
+    console.error('Error fetching areas:', error);
+  }
+}
+
+// Function to fetch ingredients
+async function fetchAndPopulateIngredients() {
+  const apiUrl = 'https://tasty-treats-backend.p.goit.global/api/ingredients';
+
+  try {
+    const response = await axios.get(apiUrl);
+    const ingredients = response.data;
+    const ingredientsDropdownList = document.getElementById(
+      'ingredients-dropdown'
+    );
+
+    ingredients.forEach(ingredient => {
+      const listItem = document.createElement('li');
+      listItem.setAttribute('data-value', ingredient._id);
+      listItem.textContent = ingredient.name;
+      ingredientsDropdownList.appendChild(listItem);
+    });
+  } catch (error) {
+    console.error('Error fetching ingredients:', error);
+  }
+}
+
+  fetchAndPopulateAreas();
+  fetchAndPopulateIngredients();
+
+
+document.addEventListener('DOMContentLoaded', async function () {
+  // Создание списка времени от 5 до 120 минут с шагом 5
+  const timeDropdownList = document.getElementById('time-dropdown');
+  for (let i = 1; i <= 24; i++) {
+    const timeValue = i * 5;
+    const listItem = document.createElement('li');
+    listItem.setAttribute('data-value', timeValue);
+    listItem.textContent = timeValue + ' min';
+    timeDropdownList.appendChild(listItem);
+  }
+
+  // Function to handle the selection and color change for dropdowns
+  function handleSelection(container) {
+    const selectedOption = container.querySelector('.selected-option');
+    const dropdownList = container.querySelector('.dropdown-list');
+
+    const options = dropdownList.querySelectorAll('li');
+    options.forEach(option => {
+      option.addEventListener('click', () => {
+        selectedOption.textContent = option.textContent;
+        selectedOption.style.color = 'rgba(5, 5, 5, 1)';
+
+        // Add a class to indicate the selected option
+        options.forEach(item => item.classList.remove('selected'));
+        option.classList.add('selected');
+      });
+    });
+  }
+
+  await fetchAndPopulateAreas();
+  await fetchAndPopulateIngredients();
+
+  // Обработчики событий для всех выпадающих списков
+  const dropdownContainers = document.querySelectorAll('.custom-dropdown');
+  dropdownContainers.forEach(container => {
+    handleSelection(container);
+  });
+});
+
+
+// Функция для сброса фильтров
+function resetFilters() {
+  // Сбрасываем выбранные опции в списке времени
+  const selectedTimeOption = document.getElementById('selected-time');
+  selectedTimeOption.textContent = '10 min';
+  selectedTimeOption.style.color = '';
+
+  // Сбрасываем выбранные опции в списке области
+  const selectedAreaOption = document.getElementById('selected-area');
+  selectedAreaOption.textContent = 'Italian';
+  selectedAreaOption.style.color = '';
+
+  // Сбрасываем выбранные опции в списке ингредиентов
+  const selectedIngredientsOption = document.getElementById('selected-ingredients');
+  selectedIngredientsOption.textContent = 'Tomato';
+  selectedIngredientsOption.style.color = '';
+
+  //Все рецепты
+  const recipesContainer = document.querySelector('.recipes');
+ 
+
+  // Добавляем класс "pressed" при клике на кнопку
+  resetButton.classList.add('pressed');
+
+  // Удаляем класс "pressed" через небольшой промежуток времени, чтобы вернуть обычный стиль кнопки
+  setTimeout(function () {
+    resetButton.classList.remove('pressed');
+  }, 100);
+}
+
+const resetButton = document.querySelector('.reset');
+resetButton.addEventListener('click', resetFilters);
+
+
+
+
+
+
+
+
 // Function to filter recipes by title
 function filterByTitle(title) {
   return data.filter(item =>
@@ -91,3 +221,4 @@ searchInput.addEventListener('input', () => {
 
 // Initiating the script
 getApi();
+
