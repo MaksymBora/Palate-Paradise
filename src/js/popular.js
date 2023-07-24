@@ -19,6 +19,6 @@ function createPopularMarkup(data) {
     )
     .join('');
   return popularList.insertAdjacentHTML('beforeend', markup);
-}
+};
 
-console.log('hi')
+
