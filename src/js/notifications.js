@@ -5,3 +5,9 @@ export function notifyError(error) {
     timeout: 6000,
   });
 }
+
+export function notifyInfo(error) {
+  Notiflix.Notify.info('Oops! Something went wrong! Try reloading the page!', {
+    timeout: 6000,
+  });
+}
