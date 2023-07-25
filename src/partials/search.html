@@ -1,42 +1,57 @@
-<!-- <section class="search_recipes">
-  <form class="form_search">
-   <label class="form-label">
-    <span class="label-text">Search</span>
-    <input type="text" class="form-input" name="username" placeholder="Enter Text">
-  </label>
-      <svg class="icon-search" width="18" height="18">
-      <use href="./images/sprite.svg#search"></use>
-    </svg>
-  </form>
-  <div class="time_area">
-  <div class="form__time">
-    <label for="time" class="time">Time</label>
-    <select id="time" name="time" class="choice">
-      <option value=""></option>
-      <option value=""></option>
-      <option value="40" selected>40 min</option>
-      <option value=""></option>
-    </select>
-  </div>
-  <div class="form__area">
-    <label for="area" class="area">Area</label>
-    <select id="area" name="area" class="choice">
-      <option value=""></option>
-      <option value=""></option>
-      <option value="40" selected>Italian</option>
-      <option value=""></option>
-    </select>
-  </div>
-  </div>
-  <div class="form__ingredients" class="choice">
-    <label for="ingredients" class="ingredients">Ingredients</label>
-    <select id="ingredients" name="ingredients" class="choice">
-      <option value=""></option>
-      <option value=""></option>
-      <option value="tomato" selected>Tomato</option>
-      <option value=""></option>
-    </select>
-  </div>
-</section>
+<section id="search-section" class="search_recipes">
+  <div class="recipes_box">
+    <form class="form_search">
+      <label class="form-label">
+        <span class="label-text">Search</span>
+        <input
+          type="search"
+          class="form-input"
+          name="username"
+          placeholder="Enter Text"
+        />
+      </label>
+    </form>
 
- -->
+    <div class="form__time">
+      <label for="time" class="time">Time</label>
+      <div class="choice__time custom-dropdown">
+        <span class="selected-option" id="selected-time">min</span>
+        <ul class="dropdown-list" id="time-dropdown"></ul>
+      </div>
+    </div>
+
+    <div class="form__area">
+      <label for="area" class="area">Area</label>
+      <div class="choice__area custom-dropdown" id="area-dropdown-container">
+        <span class="selected-option" id="selected-area">Country</span>
+        <ul class="dropdown-list" id="area-dropdown"></ul>
+      </div>
+    </div>
+
+    <div class="form__ingredients">
+      <label for="ingredients" class="ingredients">Ingredients</label>
+      <div
+        class="choice__ingredients custom-dropdown"
+        id="ingredients-dropdown-container"
+      >
+        <span class="selected-option" id="selected-ingredients"
+          >Vegetables</span
+        >
+        <ul class="dropdown-list" id="ingredients-dropdown"></ul>
+      </div>
+    </div>
+
+    <div class="reset">
+      <svg class="icon-x" width="16" height="16">
+        <use href="./images/sprite.svg#icon-x"></use>
+      </svg>
+      <div class="reset_filter" id="reset-filter">Reset the filter</div>
+    </div>
+  </div>
+
+  <div id="image-container" class="image-container">
+    <span class="loader-spinner"></span>
+  </div>
+
+  <div id="pagination" class="tui-pagination"></div>
+</section>
