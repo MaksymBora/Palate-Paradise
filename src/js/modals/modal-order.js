@@ -148,5 +148,3 @@ document
         setTimeout(hideLoader, 2000);
       });
   });
-
-// test
