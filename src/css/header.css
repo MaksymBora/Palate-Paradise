@@ -25,11 +25,6 @@
   overflow-x: auto;
 }
 
-.dark-theme {
-  background-color: #161616;
-  color: #fff;
-}
-
 .is-open {
   opacity: 1;
   visibility: visible;
@@ -37,10 +32,11 @@
   transform: translateX(0);
 }
 
-.backdrop{
+.backdrop {
   transition: transform 500ms cubic-bezier(0.4, 0, 0.2, 1),
     opacity 250ms cubic-bezier(0.4, 0, 0.2, 1),
-    visibility 250ms cubic-bezier(0.4, 0, 0.2, 1);}
+    visibility 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
 
 .close-mobile {
   position: fixed;
@@ -82,11 +78,6 @@
   justify-content: center;
 
   transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.buy-btn:hover,
-.buy-btn:focus {
-  color: var(--accent-color);
 }
 
 .icon-menu {
@@ -323,8 +314,7 @@ a {
     transition: color 250ms ease-in-out;
   }
 
-  .menu-nav-links .dark-theme{
-
+  .menu-nav-links .dark-theme {
   }
 
   .header-accent {
@@ -346,6 +336,11 @@ a {
   .logo-first-color {
     font-size: 18px;
     line-height: 20px;
+  }
+
+  .buy-btn:hover,
+  .buy-btn:focus {
+    color: var(--accent-color);
   }
 }
 

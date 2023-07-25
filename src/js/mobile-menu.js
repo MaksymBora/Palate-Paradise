@@ -6,9 +6,7 @@
    const backdrop = document.querySelector('.backdrop');
     body.classList.toggle('dark-theme');
    body.classList.toggle('light-theme');
-   backdrop.classList.toggle('dark-theme');
-   backdrop.classList.toggle('light-theme');
-   
+  
     // нинішня тема
     const isDarkTheme = body.classList.contains('dark-theme');
    localStorage.setItem('theme', isDarkTheme ? 'dark' : 'light')
