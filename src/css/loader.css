@@ -1,0 +1,36 @@
+.loader-spinner {
+  width: 48px;
+  height: 48px;
+  display: inline-block;
+  position: relative;
+
+  margin: auto;
+  width: 100px;
+  height: 100px;
+  display: none;
+}
+.loader-spinner::after,
+.loader-spinner::before {
+  content: '';
+  width: 48px;
+  height: 48px;
+  border: 2px solid var(--primaty-black-color);
+  position: absolute;
+  left: 0;
+  top: 0;
+  box-sizing: border-box;
+  animation: rotation 2s ease-in-out infinite;
+}
+.loader-spinner::after {
+  border-color: var(--accent-color);
+  animation-delay: 1s;
+}
+
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

@@ -2,13 +2,21 @@ import RecipeApiService from './service/service-api';
 import Scrollbar from 'smooth-scrollbar';
 import { notifyInfo } from './notifications';
 import { renderingAllRecips } from './all-cat/all-cat-render';
+import { showLoader, hideLoader } from './loader';
 
 const selectListEl = document.querySelector('.all-cat-select-list');
 
 const recipeApiService = new RecipeApiService();
 
 //Add categories on page
-recipeApiService.getCategories().then(createCategories).catch(notifyInfo);
+recipeApiService
+  .getCategories()
+  .then(response => {
+    showLoader(); // Показываем лоадер перед загрузкой категорий
+    createCategories(response);
+    hideLoader(); // Скрываем лоадер после рендеринга категорий
+  })
+  .catch(notifyInfo);
 
 //Make scroll  in categories
 const scrollbar = Scrollbar.init(document.querySelector('.my-scrollbar'), {
@@ -56,8 +64,11 @@ const formSearch = document.querySelector('.form_search');
 
 selectBtn.addEventListener('click', renderingOnClick);
 
+// Rendering by Categories
 function renderingOnClick() {
   formSearch.querySelector('.form-input').value = '';
+
+  showLoader();
 
   recipeApiService.getRecipe().then(response => {
     imageContainer.innerHTML = '';
@@ -73,6 +84,8 @@ function renderingOnClick() {
       ); // Make sure the ID property is correct here
     });
     imageContainer.innerHTML = recipesMarkup.join('');
+
+    hideLoader();
   });
 }
 

@@ -2,6 +2,7 @@ import axios from 'axios';
 import RecipeApiService from './service/service-api';
 import sprite from '../images/sprite.svg';
 import { getRating } from '../js/favorite/rendering-fav';
+import { showLoader, hideLoader } from './loader';
 
 // Initializing variables and elements
 const recipeApiSerive = new RecipeApiService();
@@ -9,12 +10,14 @@ const post = document.querySelector('.image-container');
 const searchInput = document.querySelector('.form-input');
 let data = [];
 
+showLoader();
 // Function to fetch data from the API and render the markup
 async function getApi() {
   try {
     const response = await recipeApiSerive.getRecipe();
     data = response.results;
     renderMarkup(data);
+    hideLoader();
   } catch (error) {
     console.error('Error fetching data:', error);
   }

@@ -7,6 +7,7 @@ import {
   updateCategoryList,
   renderCategories,
 } from '../favorite/updateCategoryList';
+import { showLoader, hideLoader } from '../loader';
 
 const recipeApiSeriсe = new RecipeApiService();
 
@@ -25,11 +26,8 @@ function modifyClassesOnLoad() {
   }
 }
 
-
-
 // Вызываем функцию при загрузке страницы
 window.addEventListener('load', modifyClassesOnLoad);
-
 
 // ---------------------------------------
 // Imitation adding data to LocalStorage
@@ -63,6 +61,8 @@ recipeApiSeriсe.getRecipe().then(response => {
  * Then displays the favorite recipes.
  */
 function onFavoritesReload() {
+  showLoader();
+
   const categoryMarkup = createCategoryList();
   const allCatBtn = `<button class="fav-button common-btn is-active" name="main-cat-btn">All categories</button>`;
 
@@ -70,7 +70,10 @@ function onFavoritesReload() {
   refs.recipesListContainer.innerHTML = '';
   refs.categoriesContainer.innerHTML =
     data && data.length ? `${allCatBtn}${categoryMarkup}` : '';
+
   displayFavorites();
+
+  hideLoader();
 }
 
 /**
