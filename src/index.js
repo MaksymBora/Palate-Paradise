@@ -4,12 +4,14 @@ import './js/hero';
 import './js/all-cat';
 import './js/popular';
 
-import './js/modals/modal-order';
+import './js/modals/modal-rating';
 
+import './js/modals/modal-order';
 
 import './js/modals/modal-recipes';
 
 import './js/search';
 import './js/cart/cart';
 import './js/all-cat/reset';
+
 
