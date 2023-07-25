@@ -37,9 +37,35 @@ backdrop.addEventListener('click', (event) => {
   }
 });
 
-// Функція - контейнер що рендерить модалку
-function displayRecipeInModal(recipe) {
-  displayRecipeVideo(recipe);
+
+
+// Слухач на пул рецептів для визначення кліку на кнопку картки
+const recipesContainer = document.querySelector('.recipes');
+recipesContainer.addEventListener('click', async (event) => {
+  const seeRecipeBtn = event.target.closest(`.rec-btn-open`);
+  if (!seeRecipeBtn) return; 
+
+  const recipeId = seeRecipeBtn.dataset.id;
+  console.log(recipeId);
+  try {
+     await fetchRecipe(recipeId);
+    openModal();
+   
+  } catch (error) {
+    console.log(error);
+  }
+});
+
+
+
+// Отримую дані про конкретний рецепт з API по ID
+async function fetchRecipe(recipeId) {
+  console.log(recipeId);
+  const url = `https://tasty-treats-backend.p.goit.global/api/recipes/${recipeId}`;
+  try {
+    const response = await axios.get(url);
+    const recipe = response.data;
+displayRecipeVideo(recipe);
   displayRecipeTitle(recipe);
   displayRecipeDescription(recipe);
   displayRecipeTimeCooking(recipe);
@@ -47,64 +73,12 @@ function displayRecipeInModal(recipe) {
   displayRecipeHashtags(recipe);
   displayRecipeIngredients(recipe);
   displayStarRating(recipe);
-}
-
-// Слухач на пул рецептів для визначення кліку на кнопку картки
-const recipesContainer = document.querySelector('.recipes');
-recipesContainer.addEventListener('click', async (event) => {
-  const seeRecipeBtn = event.target.closest('.rec-btn-open');
-  if (!seeRecipeBtn) return; 
-
-  const recipeId = seeRecipeBtn.dataset.id;
-  try {
-    const recipe = await fetchRecipe(recipeId);
-    displayRecipeInModal(recipe);
-    openModal();
-  } catch (error) {
-    console.log(error);
-  }
-});
-
-// const url = 'https://tasty-treats-backend.p.goit.global/api/recipes';
-// // Отримуємо дані рецептів з API
-// async function fetchRecipes() {
-//   try {
-//     const response = await axios.get(url);
-//     return response.data;
-//   } catch (error) {
-//     console.log(error);
-//   }
-// }
-
-// // Дані рецептів  з API
-// fetchRecipes().then(recipes => {
-//   console.log(recipes);
-// }).catch(error => {
-//   console.log(error);
-// });
-
-
-
-
-// Отримую дані про конкретний рецепт з API по ID
-async function fetchRecipe(recipeId) {
-  const url = `https://tasty-treats-backend.p.goit.global/api/recipes/${recipeId}`;
-  try {
-    const response = await axios.get(url);
-    const recipe = response.data;
-
            return recipe;
   } catch (error) {
     console.log(error);
   }
 }
 
-//     // Тимчасовий приклад 
-// fetchRecipe('6462a8f74c3d0ddd28897fba').then(recipe => {
-//   console.log(recipe);
-//  }).catch(error => {
-//   console.log(error);
-// });
 
 // Відображаю відео на сторінці
 function displayRecipeVideo(recipe) {
