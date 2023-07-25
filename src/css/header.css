@@ -25,6 +25,11 @@
   overflow-x: auto;
 }
 
+.dark-theme {
+  background-color: #161616;
+  color: #fff;
+}
+
 .is-open {
   opacity: 1;
   visibility: visible;
@@ -45,7 +50,8 @@
   top: 20px;
   width: 32px;
   height: 32px;
-  background-color: var(--accent-color);
+  /* background-color: var(--accent-color); */
+  background-color: transparent;
   border: none;
   color: var(--primary-white-color);
 }
@@ -315,6 +321,10 @@ a {
     color: var(--primaty-black-color);
 
     transition: color 250ms ease-in-out;
+  }
+
+  .menu-nav-links .dark-theme{
+
   }
 
   .header-accent {
