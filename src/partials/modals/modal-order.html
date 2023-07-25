@@ -11,7 +11,7 @@
       </svg>
     </button>
     <p class="modal-order__title">Order now</p>
-    <form class="modal-order-form" autocomplete="off">
+    <form class="modal-order-form" id="orderForm" autocomplete="off">
       <div class="modal-order-form__field">
         <label for="name" class="modal-order-form__label">Name*</label>
         <input
@@ -32,7 +32,7 @@
           id="phone"
           class="modal-order-form__input"
           required
-          pattern="\s*\+?[0-9\s\-\(\)]+"
+          pattern="\+?[0-9\s\-\(\)]+"
           title="Please enter the phone in the number format"
         />
       </div>
@@ -57,6 +57,8 @@
       <button type="submit" class="modal-order-form__button button">
         Send
       </button>
+         <!-- Элемент для отображения loader'а -->
+      <div id="loader" class="loader-spinner is-hidden"></div>
     </form>
   </div>
 </div>
