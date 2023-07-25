@@ -1,6 +1,9 @@
 import throttle from 'lodash.throttle';
 import Notiflix from 'notiflix';
 import RecipeApiService from '../service/service-api';
+import axios from 'axios';
+import { showLoader, hideLoader } from '../loader.js';
+import { error } from 'console';
 
 const refs = {
   openModalOrderBtn: document.querySelector('[data-modal-order-open]'),
@@ -84,3 +87,64 @@ function onSuccessMes() {
     titleMaxLength: '100',
   });
 }
+
+const express = require('express');
+const cors = require('cors');
+const app = express();
+app.use(cors());
+
+// Обработчик отправки формы
+document
+  .getElementById('orderForm')
+  .addEventListener('submit', function (event) {
+    event.preventDefault(); // Отменяем стандартное поведение отправки формы
+
+    // Получаем данные из элементов формы
+    const name = document.getElementById('name').value;
+    const phone = document.getElementById('phone').value;
+    const email = document.getElementById('email').value;
+    const comment = document.getElementById('comment').value;
+
+    // Показываем loader перед отправкой запроса
+    showLoader();
+
+    // Создаем объект с данными для отправки на сервер
+    const postToAdd = {
+      name: name,
+      phone: phone,
+      email: email,
+      comment: comment,
+    };
+
+    // Опции для POST-запроса
+    const options = {
+      method: 'POST',
+      body: JSON.stringify(postToAdd),
+      headers: {
+        'Content-Type': 'application/json',
+        Accept: 'application/json',
+      },
+    };
+
+    // Выполняем POST-запрос с помощью Fetch API
+    fetch('https://tasty-treats-backend.p.goit.global/api/orders/add', options)
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        return response.json();
+      })
+      .then(data => {
+        console.log('Success:', data);
+        showSuccessMessage('Your order has been successfully submitted!');
+        setTimeout(closeModal, 2000);
+        setTimeout(hideLoader, 2000);
+      })
+      .catch(error => {
+        console.error('Error:', error);
+        showErrorNotification(
+          'An error occurred while submitting the order. Please try again later.'
+        );
+        setTimeout(hideLoader, 2000);
+      });
+  });
