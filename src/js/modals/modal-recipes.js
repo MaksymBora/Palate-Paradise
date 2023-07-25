@@ -1,25 +1,45 @@
 import axios from 'axios';
 
-const recipeCardButtons = document.querySelectorAll('.rec-btn-open');
-recipeCardButtons.forEach(button => {
-  button.addEventListener('click', () => {
-    const recipeId = button.dataset.id;
-    openModalWithRecipe(recipeId);
-  });
-});
+const backdrop = document.querySelector('.backdrop');
+const closeButton = document.querySelector('.modal-close-btn');
 
-// Функція для відкриття модального вікна з даними рецепта
-async function openModalWithRecipe(recipeId) {
-  const recipe = await fetchRecipe(recipeId);
-  if (recipe) {
-    displayRecipeDataInModal(recipe);
-    openModal(); 
+
+// Відкриття модального вікна
+function openModal() {
+  const modal = document.querySelector('.modal-recipes');
+  modal.classList.remove('is-hidden');
+  backdrop.classList.remove('is-hidden');
+  document.addEventListener('keydown', onEscKeyPress);
+  backdrop.addEventListener('click', closeModal);
+}
+
+
+// Закриття модального вікна:
+function closeModal() {
+  const modal = document.querySelector('.modal-recipes');
+  modal.classList.add('is-hidden');
+  document.removeEventListener('keydown', onEscKeyPress);
+  backdrop.removeEventListener('click', closeModal);
+  backdrop.classList.add('is-hidden');
+}
+
+function onEscKeyPress(event) {
+  if (event.key === 'Escape') {
+    closeModal();
   }
 }
 
 
-// Функція, яка відображає дані рецепта в модальному вікні
-function displayRecipeDataInModal(recipe) {
+backdrop.addEventListener('click', (event) => {
+  if (event.target === backdrop) {
+    closeModal();
+  }
+});
+closeButton.addEventListener('click', closeModal);
+
+
+
+function displayRecipeInModal(recipe) {
   displayRecipeVideo(recipe);
   displayRecipeTitle(recipe);
   displayRecipeDescription(recipe);
@@ -29,6 +49,24 @@ function displayRecipeDataInModal(recipe) {
   displayRecipeIngredients(recipe);
   displayStarRating(recipe);
 }
+
+
+const recipesContainer = document.querySelector('.recipes');
+recipesContainer.addEventListener('click', async (event) => {
+  const seeRecipeBtn = event.target.closest('.rec-btn-open');
+  if (!seeRecipeBtn) return; 
+
+  const recipeId = seeRecipeBtn.dataset.id;
+  try {
+    const recipe = await fetchRecipe(recipeId);
+    displayRecipeInModal(recipe);
+    openModal();
+  } catch (error) {
+    console.log(error);
+  }
+});
+
+
 
 // const url = 'https://tasty-treats-backend.p.goit.global/api/recipes';
 // // Отримуємо дані рецептів з API
@@ -53,10 +91,11 @@ async function fetchRecipe(recipeId) {
   const url = `https://tasty-treats-backend.p.goit.global/api/recipes/${recipeId}`;
   try {
     const response = await axios.get(url);
-    return response.data;
+    const recipe = response.data;
+
+           return recipe;
   } catch (error) {
     console.log(error);
-    return null;
   }
 }
 
@@ -154,13 +193,13 @@ function displayStarRating(recipe) {
 // Відкриття модального вікна
 function openModal() {
   const modal = document.querySelector('.modal-recipes');
-  const backdrop = document.querySelector('.backdrop');
   modal.classList.remove('is-hidden');
   backdrop.classList.remove('is-hidden');
   document.addEventListener('keydown', onEscKeyPress);
   backdrop.addEventListener('click', closeModal);
   closeButton.addEventListener('click', closeModal);
 }
+
 
 // Закриття модального вікна:
 function closeModal() {
@@ -179,7 +218,6 @@ function onEscKeyPress(event) {
   }
 }
 
-const backdrop = document.querySelector('.backdrop');
 
 backdrop.addEventListener('click', (event) => {
   if (event.target === backdrop) {
@@ -187,7 +225,7 @@ backdrop.addEventListener('click', (event) => {
   }
 });
 
-const closeButton = document.querySelector('.modal-close-btn');
+
 closeButton.addEventListener('click', closeModal);
 
 document.addEventListener('keydown', onEscKeyPress);
