@@ -1,3 +1,57 @@
-<div>
-  <section></section>
-</div>
+<section id="search-section" class="search_recipes">
+  <div class="recipes_box">
+    <form class="form_search">
+      <label class="form-label">
+        <span class="label-text">Search</span>
+        <input
+          type="search"
+          class="form-input"
+          name="username"
+          placeholder="Enter Text"
+        />
+      </label>
+    </form>
+
+    <div class="form__time">
+      <label for="time" class="time">Time</label>
+      <div class="choice__time custom-dropdown">
+        <span class="selected-option" id="selected-time">min</span>
+        <ul class="dropdown-list" id="time-dropdown"></ul>
+      </div>
+    </div>
+
+    <div class="form__area">
+      <label for="area" class="area">Area</label>
+      <div class="choice__area custom-dropdown" id="area-dropdown-container">
+        <span class="selected-option" id="selected-area">Country</span>
+        <ul class="dropdown-list" id="area-dropdown"></ul>
+      </div>
+    </div>
+
+    <div class="form__ingredients">
+      <label for="ingredients" class="ingredients">Ingredients</label>
+      <div
+        class="choice__ingredients custom-dropdown"
+        id="ingredients-dropdown-container"
+      >
+        <span class="selected-option" id="selected-ingredients"
+          >Vegetables</span
+        >
+        <ul class="dropdown-list" id="ingredients-dropdown"></ul>
+      </div>
+    </div>
+
+    <div class="reset">
+      <svg class="icon-x" width="16" height="16">
+        <use href="./images/sprite.svg#icon-x"></use>
+      </svg>
+      <div class="reset_filter" id="reset-filter">Reset the filter</div>
+    </div>
+  </div>
+
+  <div id="image-container" class="image-container">
+    <span class="loader-spinner"></span>
+  </div>
+
+  <div id="pagination" class="tui-pagination"></div>
+</section>

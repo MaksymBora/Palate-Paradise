@@ -1,1 +1,62 @@
-<header></header>
+<header>
+  <div class="container container-header-nav">
+    <nav class="header-nav">
+      <a class="menu-nav-links header-accent" href="./index.html">Home</a>
+      <a class="menu-nav-links" href="./favorites.html">Favorites</a>
+    </nav>
+
+    <div class="logo-block">
+      <a class="logo-first-color" href="./index.html"
+        >tasty<span class="logo-second-color">treats.</span></a
+      >
+    </div>
+
+    <div class="header-buttons">
+      <div class="buttons-wrapper">
+        <button class="cart">
+          <svg class="buy-btn" width="22" height="22">
+            <use href="./images/sprite.svg#cart"></use>
+          </svg>
+        </button>
+        <!-- Switcher -->
+        <label class="toggle header-toggle-checkbox">
+          <input class="toggle-checkbox" type="checkbox" name="switch-theme" />
+          <span class="toggle-switch"></span>
+          <span class="toggle-label"></span>
+        </label>
+
+        <button class="open-mobile">
+          <svg class="icon-menu" width="32" height="32">
+            <use href="./images/sprite.svg#icon-menu"></use>
+          </svg>
+        </button>
+      </div>
+    </div>
+    <!-- Mobile Menu -->
+    <div class="backdrop visually-hidden">
+      <div class="mobile">
+      <button class="close-mobile">
+        <svg class="mobile-svg" width="32" height="32">
+          <use href="./images/sprite.svg#icon-x"></use>
+        </svg>
+      </button>
+      <ul class="mob-menu-list">
+        <li class="mob-menu-item">
+          <a class="mob-menu-link" href="./index.html">Home</a>
+        </li>
+        <li>
+          <a id="home-mobile" class="mob-menu-link" href="./favorites.html"
+            >Favorite</a
+          >
+        </li>
+      </ul>
+      <label class="toggle header-toggle-checkbox">
+        <input class="toggle-checkbox" type="checkbox" name="switch-theme" />
+        <span class="toggle-switch"></span>
+        <span class="toggle-label"></span>
+      </label>
+    </div>
+  </div>
+    
+  </div>
+</header>
