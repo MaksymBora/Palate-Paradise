@@ -2,26 +2,34 @@ import axios from 'axios';
 
 const backdrop = document.querySelector('.backdrop');
 const closeButton = document.querySelector('.modal-close-btn');
-closeButton.addEventListener('click', closeModal);
- document.addEventListener('keydown', onEscKeyPress);
+const modal = document.querySelector('.modal-recipes');
 
+closeButton.addEventListener('click', closeModal);
+document.addEventListener('keydown', onEscKeyPress);
+backdrop.addEventListener('click', (event) => {
+  if (event.target === backdrop) {
+    closeModal();
+  }
+});
 
 // Відкриття модального вікна
 function openModal() {
-  const modal = document.querySelector('.modal-recipes');
-  modal.classList.remove('is-hidden');
-  backdrop.classList.remove('is-hidden');
-  backdrop.addEventListener('click', closeModal);
+  if (modal) {
+    modal.classList.remove('is-hidden');
+    backdrop.classList.remove('is-hidden');
+    backdrop.removeEventListener('click', closeModal);
+    backdrop.addEventListener('click', closeModal);
+  }
 }
-
 
 // Закриття модального вікна:
 function closeModal() {
-  const modal = document.querySelector('.modal-recipes');
-  modal.classList.add('is-hidden');
-  document.removeEventListener('keydown', onEscKeyPress);
-  backdrop.removeEventListener('click', closeModal);
-  backdrop.classList.add('is-hidden');
+  if (modal) {
+    modal.classList.add('is-hidden');
+    document.removeEventListener('keydown', onEscKeyPress);
+    backdrop.removeEventListener('click', closeModal);
+    backdrop.classList.add('is-hidden');
+  }
 }
 
 function onEscKeyPress(event) {
@@ -43,14 +51,15 @@ backdrop.addEventListener('click', (event) => {
 const recipesContainer = document.querySelector('.recipes');
 recipesContainer.addEventListener('click', async (event) => {
   const seeRecipeBtn = event.target.closest(`.rec-btn-open`);
-  if (!seeRecipeBtn) return; 
+  if (!seeRecipeBtn) return;
 
   const recipeId = seeRecipeBtn.dataset.id;
   console.log(recipeId);
   try {
-     await fetchRecipe(recipeId);
-    openModal();
-   
+    const recipe = await fetchRecipe(recipeId);
+    if (recipe) {
+      openModal();
+    }
   } catch (error) {
     console.log(error);
   }
@@ -84,11 +93,7 @@ displayRecipeVideo(recipe);
 function displayRecipeVideo(recipe) {
   const recipeVideoIframe = document.querySelector('.recipes-iframe-video');
   const youtubeLink = recipe.youtube;
-
-  // ID відео з URL YouTube
-  const videoId = getVideoIdFromLink(youtubeLink);
-
-
+   const videoId = getVideoIdFromLink(youtubeLink);
   recipeVideoIframe.src = `https://www.youtube.com/embed/${videoId}`;
 }
 
@@ -127,27 +132,19 @@ function displayRecipeRating(recipe) {
 // Функція виведення хештегів
 function displayRecipeHashtags(recipe) {
   const recipeHashtagsEl = document.querySelector('.recipes-hashtags-list');
-  recipeHashtagsEl.innerHTML = '';
-  recipe.tags.forEach(tag => {
-    const hashtagItemHtml = `<li class="recipes-hashtags-item">#${tag}</li>`;
-    recipeHashtagsEl.insertAdjacentHTML('beforeend', hashtagItemHtml);
-  });
-  
+  recipeHashtagsEl.innerHTML = recipe.tags.map(tag => `<li class="recipes-hashtags-item">#${tag}</li>`).join('');
 }
 
 
 // Функція виведення інгредіентів
 function displayRecipeIngredients(recipe) {
   const recipeIngredientsEl = document.querySelector('.recipes-components-list');
-  recipeIngredientsEl.innerHTML = '';
-  recipe.ingredients.forEach(({measure, name})=> {
-    const ingredientsItemHtml = `<li class="recipes-components-item">
-        <p class="recipes-components-item_name">${name}</p>
-        <p class="recipes-components-item_quantity">${measure}</p>
-      </li>`;
-    recipeIngredientsEl.insertAdjacentHTML('beforeend', ingredientsItemHtml);
-  });
-  
+  recipeIngredientsEl.innerHTML = recipe.ingredients.map(({ measure, name }) => `
+    <li class="recipes-components-item">
+      <p class="recipes-components-item_name">${name}</p>
+      <p class="recipes-components-item_quantity">${measure}</p>
+    </li>
+  `).join('');
 }
 
 // Функція зіркового рейтингу залежно від числового
