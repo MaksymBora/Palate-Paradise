@@ -87,9 +87,32 @@ async function handleTimeSelection(event) {
 }
 
 //===========================================//
+// HANDLE TIME SELECTION       ==============//
+//===========================================//
+async function handleAreaSelection(event) {
+  const selectedTime = event.target.innerText;
+
+  recipeApiService.area = selectedTime;
+
+  try {
+    const response = await recipeApiService.getRecipe();
+    console.log(response.results);
+    if (response.results.length === 0) {
+      notifyInfoResult();
+      return;
+    }
+
+    renderMarkup(response.results);
+  } catch (error) {
+    console.error('Error fetching data:', error);
+  }
+}
+
+//===========================================//
 // INITIALAZING       =======================//
 //===========================================//
 async function init() {
+  const areaDropdownList = document.getElementById('area-dropdown');
   const timeDropdownList = document.getElementById('time-dropdown');
   try {
     showLoader();
@@ -98,6 +121,7 @@ async function init() {
     createTimeDropdownList();
     handleSelection(dropdownContainer);
     timeDropdownList.addEventListener('click', handleTimeSelection);
+    areaDropdownList.addEventListener('click', handleAreaSelection);
     await getApi();
     hideLoader();
   } catch (error) {
