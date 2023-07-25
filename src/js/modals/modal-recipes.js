@@ -8,16 +8,23 @@ const modal = document.querySelector('.modal-recipes');
 closeButton.addEventListener('click', closeModal);
 document.addEventListener('keydown', onEscKeyPress);
 backdrop.addEventListener('click', (event) => {
-  if (event.target === backdrop) {
+  if (event.target !== modal && !modal.contains(event.target)) {
     closeModal();
   }
 });
+
 
 // Відкриття модального вікна
 function openModal() {
   if (modal) {
     modal.classList.remove('is-hidden');
     backdrop.classList.remove('is-hidden');
+    document.addEventListener('keydown', onEscKeyPress);
+
+     modal.addEventListener('click', (event) => {
+      event.stopPropagation();
+     });
+    
     backdrop.removeEventListener('click', closeModal);
     backdrop.addEventListener('click', closeModal);
   }
