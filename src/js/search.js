@@ -50,7 +50,6 @@ function handleSelection(container) {
 
   options.forEach(option => {
     option.addEventListener('click', () => {
-      console.log(option);
       selectedOption.textContent = option.textContent;
       selectedOption.style.color = 'rgba(5, 5, 5, 1)';
 
@@ -70,6 +69,7 @@ function handleSelection(container) {
 // HANDLE TIME SELECTION       ==============//
 //===========================================//
 async function handleTimeSelection(event) {
+  apiConstructorReset();
   const selectedTime = parseInt(event.target.getAttribute('data-value'));
 
   recipeApiService.time = selectedTime;
@@ -87,10 +87,17 @@ async function handleTimeSelection(event) {
   }
 }
 
+function apiConstructorReset() {
+  recipeApiService.time = '';
+  recipeApiService.area = '';
+  recipeApiService.ingredients = '';
+}
+
 //===========================================//
 // HANDLE TIME SELECTION       ==============//
 //===========================================//
 async function handleAreaSelection(event) {
+  apiConstructorReset();
   const selectedTime = event.target.innerText;
 
   recipeApiService.area = selectedTime;
@@ -121,6 +128,7 @@ async function init() {
     await fetchAndPopulateAreas();
     await fetchAndPopulateIngredients();
     createTimeDropdownList();
+
     handleSelection(dropdownContainer);
 
     timeDropdownList.addEventListener('click', handleTimeSelection);
