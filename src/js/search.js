@@ -50,6 +50,7 @@ function handleSelection(container) {
 
   options.forEach(option => {
     option.addEventListener('click', () => {
+      console.log(option);
       selectedOption.textContent = option.textContent;
       selectedOption.style.color = 'rgba(5, 5, 5, 1)';
 
@@ -87,17 +88,44 @@ async function handleTimeSelection(event) {
 }
 
 //===========================================//
+// HANDLE TIME SELECTION       ==============//
+//===========================================//
+async function handleAreaSelection(event) {
+  const selectedTime = event.target.innerText;
+
+  recipeApiService.area = selectedTime;
+
+  try {
+    const response = await recipeApiService.getRecipe();
+
+    if (response.results.length === 0) {
+      notifyInfoResult();
+      return;
+    }
+
+    renderMarkup(response.results);
+  } catch (error) {
+    console.error('Error fetching data:', error);
+  }
+}
+
+//===========================================//
 // INITIALAZING       =======================//
 //===========================================//
 async function init() {
+  const areaDropdownList = document.getElementById('area-dropdown');
   const timeDropdownList = document.getElementById('time-dropdown');
   try {
     showLoader();
+
     await fetchAndPopulateAreas();
     await fetchAndPopulateIngredients();
     createTimeDropdownList();
     handleSelection(dropdownContainer);
+
     timeDropdownList.addEventListener('click', handleTimeSelection);
+    areaDropdownList.addEventListener('click', handleAreaSelection);
+
     await getApi();
     hideLoader();
   } catch (error) {
@@ -123,3 +151,5 @@ searchInput.addEventListener('input', () => {
 
 // Initiating the script
 init();
+
+//COMMIT>>??
