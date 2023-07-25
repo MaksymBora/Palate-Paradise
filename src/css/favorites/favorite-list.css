@@ -39,9 +39,9 @@
 /*============================*/
 
 #fav-container .rec-item {
-  margin-bottom: 24px;
   width: 335px;
   height: 335px;
+  margin-bottom: 24px;
   margin-left: auto;
   margin-right: auto;
 }

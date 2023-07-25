@@ -1,137 +1,213 @@
 import RecipeApiService from './service/service-api';
-import sprite from '../images/sprite.svg';
+import { showLoader, hideLoader } from './loader';
+import { filterByTitle } from './search/filter-by-title';
+import { renderMarkup } from './search/renderingrecipes';
+import { resetFilters } from './search/reset-filters';
+import {
+  fetchAndPopulateAreas,
+  fetchAndPopulateIngredients,
+  createTimeDropdownList,
+} from './search/rendering-selects';
+import {
+  handleTimeSelection,
+  handleAreaSelection,
+  handleIngredients,
+} from './search/handle-selects';
+import Pagination from 'tui-pagination';
+import 'tui-pagination/dist/tui-pagination.css';
+// import createPagination from './favorite/pagination';
 
-const recipeApiSerive = new RecipeApiService();
-const post = document.querySelector('.recipes');
+const recipeApiService = new RecipeApiService();
+
 const searchInput = document.querySelector('.form-input');
 
+showLoader();
 let data = [];
 
+let page = 1;
+let perPage = 9;
+let totalPages = 0;
+
+// ===========================================================//
+// Function to fetch data from the API and render the markup
+//  ========================================================//
 async function getApi() {
-  recipeApiSerive.limit = 8;
   try {
-    const response = await recipeApiSerive.getRecipe();
-    data = response.results;
-    renderCardList(data);
+    const results = await recipeApiService.getRecipe();
+    data = results.results;
+    perPage = results.perPage;
+    totalPages = results.totalPages;
+
+    renderMarkup(results.results);
+
+    hideLoader();
   } catch (error) {
     console.error('Error fetching data:', error);
   }
 }
 
-function renderCardList(data) {
-  post.innerHTML = data
-    .map(({ preview, title, description, _id, rating }) => {
-      const fixedRating = Math.min(rating, 5).toFixed(1);
-      return `
-        <div class="rec-item" style="background: linear-gradient(0deg, rgba(5, 5, 5, 0.6),
-            rgba(5, 5, 5, 0)),
-            url(${preview}); 
-            background-position: center;
-            background-size: cover;">
-          <div class="upper-part">
-            <button class="heart-btn" type="button">
-              <svg class="icon-heart" width="18" height="16">
-                <use href="${sprite}#heart"></use>
-              </svg>
-            </button>
-            <h2 class="rec-card-title title-cut">${title}</h2>
-            <p class="rec-card-desc desc-cut">
-              ${description}
-            </p>
-            <div class="rec-rate">
-              <p class="rate">${fixedRating}</p>
-              <button type="button" class="rec-btn-open rec-btn" data-id="${_id}">See recipe</button>
-            </div>
-          </div>
-        </div>`;
-    })
-    .join('');
-}
+const dropdownContainer = document.querySelector('.custom-dropdown');
 
-function filterByTitle(title) {
-  return data.filter(item =>
-    item.title.toLowerCase().includes(title.toLowerCase())
+//===========================================//
+// INITIALAZING       =======================//
+//===========================================//
+
+async function init() {
+  const areaDropdownList = document.querySelector(
+    '.choice__area.custom-dropdown'
   );
+
+  const timeDropdownList = document.querySelector(
+    '.choice__time.custom-dropdown'
+  );
+
+  const ingredientsDropdownContainer = document.querySelector(
+    '.choice__ingredients.custom-dropdown'
+  );
+  try {
+    showLoader();
+    await getApi();
+    await fetchAndPopulateAreas();
+    await fetchAndPopulateIngredients();
+    createTimeDropdownList();
+    handleSelection(dropdownContainer);
+
+    handleAreaSelect(areaDropdownList);
+
+    handleIngredientsSelect(ingredientsDropdownContainer);
+
+    timeDropdownList.addEventListener('click', handleTimeSelection);
+    areaDropdownList.addEventListener('click', handleAreaSelection);
+
+    ingredientsDropdownContainer.addEventListener('click', handleIngredients);
+
+    hideLoader();
+  } catch (error) {
+    console.error('Error initializing script:', error);
+  }
 }
 
+// Function to handle the selection and color change for dropdowns
+function handleSelection(container) {
+  if (!container) {
+    console.error(
+      'Container is undefined. Please provide a valid container element.'
+    );
+    return;
+  }
 
-// function renderList(data) {
-//   const post = document.querySelector('.recipes');
-//   const searchInput = document.querySelector('.form-input');
-    
-//   searchInput.addEventListener('input', () => {
-    
-//     const filterValue = searchInput.value.trim();
-//     const filteredData = filterValue ? filterByTitle(data, filterValue) : data;
-   
-//     renderMarkup(filteredData); 
-//   });
+  const selectedOption = container.querySelector('.selected-option');
+  const dropdownList = container.querySelector('.dropdown-list');
 
-//   function renderMarkup(filteredData) {
-   
-//     const markup = filteredData 
-//       .map(({ preview, title, description, _id }) => {
-//         const markup = `<div class="rec-item" style="background: linear-gradient(0deg, rgba(5, 5, 5, 0.6),
-//                       rgba(5, 5, 5, 0)),
-//                       url(${preview}); 
-//                       background-position: center;
-//                       background-size: cover;">
-//         <div class="upper-part">
-          
-//           <button class="heart-btn" type="button">
-//             <svg class="icon-heart" width="18" height="16">
-//               <use href="${sprite}#heart"></use>
-//             </svg>
-//           </button>
-  
-//           <h2 class="rec-card-title title-cut">${title}</h2>
-//           <p class="rec-card-desc desc-cut">
-//             ${description}
-//           </p>
-          
-//           <div class="rec-rate">
-//             <p class="rate">5</p>
-     
-//             <button type="button" class="rec-btn-open rec-btn" data-id="${_id}">See recipe</button>
-//           </div>
-//         </div>
-//       </div>`;
+  const options = dropdownList.querySelectorAll('li');
 
-//         return markup;
-//       })
-//       .join('');
+  options.forEach(option => {
+    option.addEventListener('click', () => {
+      selectedOption.textContent = option.textContent;
+      selectedOption.style.color = 'rgba(5, 5, 5, 1)';
 
-//     post.innerHTML = markup; 
-//   }
+      // Add a class to indicate the selected option
+      options.forEach(item => {
+        if (item === option) {
+          item.classList.add('selected');
+        } else {
+          item.classList.remove('selected');
+        }
+      });
+    });
+  });
+}
 
-//   renderMarkup(data); 
-// }
+// ==================================================================
+// Function to handle AREA selection and color change for dropdowns
+// ==================================================================
+function handleAreaSelect(container) {
+  if (!container) {
+    console.error(
+      'Container is undefined. Please provide a valid container element.'
+    );
+    return;
+  }
 
+  const selectedOption = container.querySelector('.selected-option');
+  const dropdownList = container.querySelector('.dropdown-list');
 
-// // Випадающее меню код
-// const dropdownContainers = document.querySelectorAll('.custom-dropdown');
+  // Add a click event listener to the whole dropdown list
+  dropdownList.addEventListener('click', event => {
+    const clickedOption = event.target.closest('li'); // Find the closest <li> element
 
-// function handleSelection(container) {
-//   const selectedOption = container.querySelector('.selected-option');
-//   const dropdownList = container.querySelector('.dropdown-list');
+    if (!clickedOption) return; // If the click was not on an <li> element, return
 
-//   const options = dropdownList.querySelectorAll('li');
-//   options.forEach((option) => {
-//     option.addEventListener('click', () => {
-//       selectedOption.textContent = option.textContent;
-//       selectedOption.style.color = 'rgba(5, 5, 5, 1)';
-//     });
-//   });
-// }
+    selectedOption.textContent = clickedOption.textContent;
+    selectedOption.style.color = 'rgba(5, 5, 5, 1)';
 
-// dropdownContainers.forEach((container) => {
-//   handleSelection(container);
+    // Add a class to indicate the selected option
+    const options = dropdownList.querySelectorAll('li');
+    options.forEach(option => {
+      if (option === clickedOption) {
+        option.classList.add('selected');
+      } else {
+        option.classList.remove('selected');
+      }
+    });
+  });
+}
 
-// searchInput.addEventListener('input', () => {
-//   const filterValue = searchInput.value.trim();
-//   const filteredData = filterValue ? filterByTitle(filterValue) : data;
-//   renderCardList(filteredData);
+// ==================================================================
+// Function to handle INGREDIENTS selection and color change for dropdowns
+// ==================================================================
 
-// });
+function handleIngredientsSelect(container) {
+  if (!container) {
+    console.error(
+      'Container is undefined. Please provide a valid container element.'
+    );
+    return;
+  }
 
-getApi();
+  const selectedOption = container.querySelector('.selected-option');
+  const dropdownList = container.querySelector('.dropdown-list');
+
+  // Add a click event listener to the whole dropdown list
+  dropdownList.addEventListener('click', event => {
+    const clickedOption = event.target.closest('li'); // Find the closest <li> element
+
+    if (!clickedOption) return; // If the click was not on an <li> element, return
+
+    selectedOption.textContent = clickedOption.textContent;
+    selectedOption.style.color = 'rgba(5, 5, 5, 1)';
+
+    // Add a class to indicate the selected option
+    const options = dropdownList.querySelectorAll('li');
+    options.forEach(option => {
+      if (option === clickedOption) {
+        option.classList.add('selected');
+      } else {
+        option.classList.remove('selected');
+      }
+    });
+  });
+}
+
+//==============================================================
+// RESET FILTERS
+// =============================================================
+
+const resetButton = document.querySelector('.reset');
+resetButton.addEventListener('click', resetFilters);
+
+//==============================================================
+// Event listener for search input to filter recipes
+// =============================================================
+searchInput.addEventListener('input', () => {
+  const filterValue = searchInput.value.trim();
+  const filteredData = filterValue ? filterByTitle(filterValue, data) : data;
+  renderMarkup(filteredData);
+});
+
+// Initiating the script
+
+init();
+// ==============PAGINATION==================================
+
+//===========================================================
