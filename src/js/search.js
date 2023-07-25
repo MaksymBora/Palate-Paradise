@@ -100,6 +100,42 @@ function handleAreaSelect(container) {
   });
 }
 
+// ==================================================================
+// Function to handle INGREDIENTS selection and color change for dropdowns
+// ==================================================================
+
+function handleIngredientsSelect(container) {
+  if (!container) {
+    console.error(
+      'Container is undefined. Please provide a valid container element.'
+    );
+    return;
+  }
+
+  const selectedOption = container.querySelector('.selected-option');
+  const dropdownList = container.querySelector('.dropdown-list');
+
+  // Add a click event listener to the whole dropdown list
+  dropdownList.addEventListener('click', event => {
+    const clickedOption = event.target.closest('li'); // Find the closest <li> element
+
+    if (!clickedOption) return; // If the click was not on an <li> element, return
+
+    selectedOption.textContent = clickedOption.textContent;
+    selectedOption.style.color = 'rgba(5, 5, 5, 1)';
+
+    // Add a class to indicate the selected option
+    const options = dropdownList.querySelectorAll('li');
+    options.forEach(option => {
+      if (option === clickedOption) {
+        option.classList.add('selected');
+      } else {
+        option.classList.remove('selected');
+      }
+    });
+  });
+}
+
 //===========================================//
 // HANDLE TIME SELECTION       ==============//
 //===========================================//
@@ -129,14 +165,36 @@ function apiConstructorReset() {
 }
 
 //===========================================//
-// HANDLE TIME SELECTION       ==============//
+// HANDLE AREA SELECTION       ==============//
 //===========================================//
 async function handleAreaSelection(event) {
   apiConstructorReset();
-  const selectedTime = event.target.innerText;
+  const selectedArea = event.target.innerText;
 
-  recipeApiService.area = selectedTime;
+  recipeApiService.area = selectedArea;
 
+  try {
+    const response = await recipeApiService.getRecipe();
+
+    if (response.results.length === 0) {
+      notifyInfoResult();
+      return;
+    }
+
+    renderMarkup(response.results);
+  } catch (error) {
+    console.error('Error fetching data:', error);
+  }
+}
+
+//===========================================//
+// HANDLE INGREDIENTS SELECTION==============//
+//===========================================//
+async function handleIngredients(event) {
+  apiConstructorReset();
+  const selectedIngredients = event.target.innerText;
+
+  recipeApiService.ingredients = selectedIngredients;
   try {
     const response = await recipeApiService.getRecipe();
 
@@ -162,6 +220,10 @@ async function init() {
   const timeDropdownList = document.querySelector(
     '.choice__time.custom-dropdown'
   );
+
+  const ingredientsDropdownContainer = document.querySelector(
+    '.choice__ingredients.custom-dropdown'
+  );
   try {
     showLoader();
 
@@ -171,8 +233,12 @@ async function init() {
     handleSelection(dropdownContainer);
 
     handleAreaSelect(areaDropdownList);
+
+    handleIngredientsSelect(ingredientsDropdownContainer);
     timeDropdownList.addEventListener('click', handleTimeSelection);
     areaDropdownList.addEventListener('click', handleAreaSelection);
+
+    ingredientsDropdownContainer.addEventListener('click', handleIngredients);
 
     await getApi();
     hideLoader();
