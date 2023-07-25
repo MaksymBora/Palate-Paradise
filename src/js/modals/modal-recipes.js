@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const backdrop = document.querySelector('.backdrop');
+const backdrop = document.querySelector('.backdrop-recipes');
 const closeButton = document.querySelector('.modal-close-btn');
 const modal = document.querySelector('.modal-recipes');
 
