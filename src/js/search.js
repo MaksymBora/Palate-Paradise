@@ -1,6 +1,5 @@
 import RecipeApiService from './service/service-api';
 import { showLoader, hideLoader } from './loader';
-import { notifyInfoResult, notifyError } from './notifications';
 import { filterByTitle } from './search/filter-by-title';
 import { renderMarkup } from './search/renderingrecipes';
 import { resetFilters } from './search/reset-filters';
@@ -9,6 +8,15 @@ import {
   fetchAndPopulateIngredients,
   createTimeDropdownList,
 } from './search/rendering-selects';
+import {
+  handleTimeSelection,
+  handleAreaSelection,
+  handleIngredients,
+} from './search/handle-selects';
+import Pagination from 'tui-pagination';
+import 'tui-pagination/dist/tui-pagination.css';
+import createPagination from './favorite/pagination';
+import refs from './favorite/constants';
 
 const recipeApiService = new RecipeApiService();
 
@@ -24,8 +32,8 @@ async function getApi() {
   try {
     const results = await recipeApiService.getRecipe();
     data = results.results;
-
     renderMarkup(results.results);
+
     hideLoader();
   } catch (error) {
     console.error('Error fetching data:', error);
@@ -137,80 +145,6 @@ function handleIngredientsSelect(container) {
 }
 
 //===========================================//
-// HANDLE TIME SELECTION       ==============//
-//===========================================//
-async function handleTimeSelection(event) {
-  apiConstructorReset();
-  const selectedTime = parseInt(event.target.getAttribute('data-value'));
-
-  recipeApiService.time = selectedTime;
-  try {
-    const response = await recipeApiService.getRecipe();
-
-    if (response.results.length === 0) {
-      notifyInfoResult();
-      return;
-    }
-
-    renderMarkup(response.results);
-  } catch (error) {
-    console.error('Error fetching data:', error);
-  }
-}
-
-function apiConstructorReset() {
-  recipeApiService.time = '';
-  recipeApiService.area = '';
-  recipeApiService.ingredients = '';
-}
-
-//===========================================//
-// HANDLE AREA SELECTION       ==============//
-//===========================================//
-async function handleAreaSelection(event) {
-  apiConstructorReset();
-  const selectedArea = event.target.innerText;
-
-  recipeApiService.area = selectedArea;
-
-  try {
-    const response = await recipeApiService.getRecipe();
-
-    if (response.results.length === 0) {
-      notifyInfoResult();
-      return;
-    }
-
-    renderMarkup(response.results);
-  } catch (error) {
-    console.error('Error fetching data:', error);
-  }
-}
-
-//===========================================//
-// HANDLE INGREDIENTS SELECTION==============//
-//===========================================//
-async function handleIngredients(event) {
-  apiConstructorReset();
-  const selectedIngredients = event.target.dataset.value;
-
-  recipeApiService.ingredients = selectedIngredients;
-
-  try {
-    const response = await recipeApiService.getRecByIngredient();
-    console.log(response);
-    if (response.results.length === 0) {
-      notifyInfoResult();
-      return;
-    }
-
-    renderMarkup(response.results);
-  } catch (error) {
-    console.error('Error fetching data:', error);
-  }
-}
-
-//===========================================//
 // INITIALAZING       =======================//
 //===========================================//
 async function init() {
@@ -268,4 +202,6 @@ searchInput.addEventListener('input', () => {
 // Initiating the script
 init();
 
-//COMMIT>>??
+// ==============PAGINATION==================================
+
+//===========================================================
