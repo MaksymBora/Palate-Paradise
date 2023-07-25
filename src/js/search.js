@@ -4,73 +4,32 @@ import { notifyInfoResult, notifyError } from './notifications';
 import { filterByTitle } from './search/filter-by-title';
 import { renderMarkup } from './search/renderingrecipes';
 import { resetFilters } from './search/reset-filters';
+import {
+  fetchAndPopulateAreas,
+  fetchAndPopulateIngredients,
+  createTimeDropdownList,
+} from './search/rendering-selects';
 
-// Initializing variables and elements
 const recipeApiService = new RecipeApiService();
 
 const searchInput = document.querySelector('.form-input');
-let data = [];
 
 showLoader();
+let data = [];
 
+// ===========================================================//
 // Function to fetch data from the API and render the markup
+//  ========================================================//
 async function getApi() {
   try {
-    const response = await recipeApiService.getRecipe();
-    data = response.results;
-    renderMarkup(data);
+    const results = await recipeApiService.getRecipe();
+    data = results.results;
 
+    renderMarkup(results.results);
     hideLoader();
   } catch (error) {
     console.error('Error fetching data:', error);
   }
-}
-
-async function fetchAndPopulateAreas() {
-  try {
-    const response = await recipeApiService.getAreas();
-    const areas = response;
-    const areaDropdownList = document.getElementById('area-dropdown');
-
-    areas.forEach(area => {
-      const listItem = document.createElement('li');
-      listItem.setAttribute('data-value', area._id);
-      listItem.textContent = area.name;
-      areaDropdownList.appendChild(listItem);
-    });
-  } catch (error) {
-    console.error('Error fetching areas:', error);
-  }
-}
-
-// Function to fetch ingredients
-async function fetchAndPopulateIngredients() {
-  try {
-    const response = await recipeApiService.getIngredients();
-
-    const ingredientsDropdownList = document.getElementById(
-      'ingredients-dropdown'
-    );
-
-    response.forEach(ingredient => {
-      const listItem = document.createElement('li');
-      listItem.setAttribute('data-value', ingredient._id);
-      listItem.textContent = ingredient.name;
-      ingredientsDropdownList.appendChild(listItem);
-    });
-  } catch (error) {
-    notifyError();
-  }
-}
-
-// Создание списка времени от 5 до 120 минут с шагом 5
-const timeDropdownList = document.getElementById('time-dropdown');
-for (let i = 1; i <= 24; i++) {
-  const timeValue = i * 5;
-  const listItem = document.createElement('li');
-  listItem.setAttribute('data-value', timeValue);
-  listItem.textContent = timeValue + ' min';
-  timeDropdownList.appendChild(listItem);
 }
 
 const dropdownContainer = document.querySelector('.custom-dropdown');
@@ -78,7 +37,6 @@ const dropdownContainer = document.querySelector('.custom-dropdown');
 // Function to handle the selection and color change for dropdowns
 function handleSelection(container) {
   if (!container) {
-    // Если контейнер не передан, выведите сообщение об ошибке или предпримите нужные действия.
     console.error(
       'Container is undefined. Please provide a valid container element.'
     );
@@ -96,29 +54,20 @@ function handleSelection(container) {
       selectedOption.style.color = 'rgba(5, 5, 5, 1)';
 
       // Add a class to indicate the selected option
-      options.forEach(item => item.classList.remove('selected'));
-      option.classList.add('selected');
+      options.forEach(item => {
+        if (item === option) {
+          item.classList.add('selected');
+        } else {
+          item.classList.remove('selected');
+        }
+      });
     });
   });
 }
 
-async function init() {
-  await Promise.all([fetchAndPopulateAreas(), fetchAndPopulateIngredients()]);
-  handleSelection(dropdownContainer);
-  timeDropdownList.addEventListener('click', handleTimeSelection);
-  getApi();
-}
-
-const resetButton = document.querySelector('.reset');
-resetButton.addEventListener('click', resetFilters);
-
-// Event listener for search input to filter recipes
-searchInput.addEventListener('input', () => {
-  const filterValue = searchInput.value.trim();
-  const filteredData = filterValue ? filterByTitle(filterValue, data) : data;
-  renderMarkup(filteredData);
-});
-
+//===========================================//
+// HANDLE TIME SELECTION       ==============//
+//===========================================//
 async function handleTimeSelection(event) {
   const selectedTime = parseInt(event.target.getAttribute('data-value'));
 
@@ -127,17 +76,50 @@ async function handleTimeSelection(event) {
     const response = await recipeApiService.getRecipe();
 
     if (response.results.length === 0) {
-      // If the filtered data is empty, display a message or take any other action
       notifyInfoResult();
-      return; // Stop further execution
+      return;
     }
 
-    // Render the markup with the filtered data
     renderMarkup(response.results);
   } catch (error) {
     console.error('Error fetching data:', error);
   }
 }
+
+//===========================================//
+// INITIALAZING       =======================//
+//===========================================//
+async function init() {
+  const timeDropdownList = document.getElementById('time-dropdown');
+  try {
+    showLoader();
+    await fetchAndPopulateAreas();
+    await fetchAndPopulateIngredients();
+    createTimeDropdownList();
+    handleSelection(dropdownContainer);
+    timeDropdownList.addEventListener('click', handleTimeSelection);
+    await getApi();
+    hideLoader();
+  } catch (error) {
+    console.error('Error initializing script:', error);
+  }
+}
+
+//==============================================================
+// RESET FILTERS
+// =============================================================
+
+const resetButton = document.querySelector('.reset');
+resetButton.addEventListener('click', resetFilters);
+
+//==============================================================
+// Event listener for search input to filter recipes
+// =============================================================
+searchInput.addEventListener('input', () => {
+  const filterValue = searchInput.value.trim();
+  const filteredData = filterValue ? filterByTitle(filterValue, data) : data;
+  renderMarkup(filteredData);
+});
 
 // Initiating the script
 init();
