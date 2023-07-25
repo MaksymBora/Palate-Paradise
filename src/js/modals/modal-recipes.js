@@ -66,8 +66,6 @@ recipesContainer.addEventListener('click', async (event) => {
   }
 });
 
-
-
 // const url = 'https://tasty-treats-backend.p.goit.global/api/recipes';
 // // Отримуємо дані рецептів з API
 // async function fetchRecipes() {
