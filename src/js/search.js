@@ -192,12 +192,13 @@ async function handleAreaSelection(event) {
 //===========================================//
 async function handleIngredients(event) {
   apiConstructorReset();
-  const selectedIngredients = event.target.innerText;
+  const selectedIngredients = event.target.dataset.value;
 
   recipeApiService.ingredients = selectedIngredients;
-  try {
-    const response = await recipeApiService.getRecipe();
 
+  try {
+    const response = await recipeApiService.getRecByIngredient();
+    console.log(response);
     if (response.results.length === 0) {
       notifyInfoResult();
       return;
@@ -226,7 +227,7 @@ async function init() {
   );
   try {
     showLoader();
-
+    await getApi();
     await fetchAndPopulateAreas();
     await fetchAndPopulateIngredients();
     createTimeDropdownList();
@@ -235,12 +236,13 @@ async function init() {
     handleAreaSelect(areaDropdownList);
 
     handleIngredientsSelect(ingredientsDropdownContainer);
+
     timeDropdownList.addEventListener('click', handleTimeSelection);
     areaDropdownList.addEventListener('click', handleAreaSelection);
 
     ingredientsDropdownContainer.addEventListener('click', handleIngredients);
 
-    await getApi();
+    // await getApi();
     hideLoader();
   } catch (error) {
     console.error('Error initializing script:', error);
