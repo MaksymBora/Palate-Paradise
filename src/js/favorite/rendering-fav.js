@@ -39,7 +39,7 @@ export function getRating(rating) {
  *  id - The ID of the recipe to be checked.
  *  Returns 'active' if the recipe is in favorites, or an empty string if not.
  */
-function checkForFav(id) {
+export function checkForFav(id) {
   // Retrieve the favorites data from localStorage.
   const storage = localStorage.getItem('favorites-data');
 

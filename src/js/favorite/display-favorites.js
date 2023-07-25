@@ -3,8 +3,11 @@ import { getFromLocalStorage } from '../favorite/localStorageUtils';
 import { countPage, groupArrayIntoChunks } from '../favorite/utils';
 import createPagination from '../favorite/pagination';
 import { renderingFavRec } from '../favorite/rendering-fav';
+import { showLoader, hideLoader } from '../loader';
 
 export function displayFavorites(pageSet = 1) {
+  showLoader();
+
   const data = getFromLocalStorage('favorites-data');
 
   // Show or hide the "All" button based on whether there is data in localStorage.
@@ -34,4 +37,6 @@ export function displayFavorites(pageSet = 1) {
 
   refs.recipesListContainer.innerHTML = listMarkup;
   refs.noFavoritesMessage.classList.add('visually-hidden');
+
+  hideLoader();
 }

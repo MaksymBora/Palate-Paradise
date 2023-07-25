@@ -1,93 +1,271 @@
-// Importing modules
 import RecipeApiService from './service/service-api';
-import sprite from '../images/sprite.svg';
-import { getRating } from '../js/favorite/rendering-fav';
+import { showLoader, hideLoader } from './loader';
+import { notifyInfoResult, notifyError } from './notifications';
+import { filterByTitle } from './search/filter-by-title';
+import { renderMarkup } from './search/renderingrecipes';
+import { resetFilters } from './search/reset-filters';
+import {
+  fetchAndPopulateAreas,
+  fetchAndPopulateIngredients,
+  createTimeDropdownList,
+} from './search/rendering-selects';
 
-// Initializing variables and elements
-const recipeApiSerive = new RecipeApiService();
-const post = document.querySelector('.image-container');
+const recipeApiService = new RecipeApiService();
+
 const searchInput = document.querySelector('.form-input');
+
+showLoader();
 let data = [];
 
+// ===========================================================//
 // Function to fetch data from the API and render the markup
+//  ========================================================//
 async function getApi() {
   try {
-    const response = await recipeApiSerive.getRecipe();
-    data = response.results;
-    renderMarkup(data);
+    const results = await recipeApiService.getRecipe();
+    data = results.results;
+
+    renderMarkup(results.results);
+    hideLoader();
   } catch (error) {
     console.error('Error fetching data:', error);
   }
 }
 
-// Function to render the recipe markup
-function renderingRecipes(title, description, preview, rating, id, category) {
-  // Create an object with recipe information.
-  const infoRecipe = {
-    title,
-    description: description.replace("'", ''),
-    preview,
-    rating,
-    id,
-    category,
-  };
+const dropdownContainer = document.querySelector('.custom-dropdown');
 
-  const fixedRating = Math.min(rating, 5).toFixed(1);
+// Function to handle the selection and color change for dropdowns
+function handleSelection(container) {
+  if (!container) {
+    console.error(
+      'Container is undefined. Please provide a valid container element.'
+    );
+    return;
+  }
 
-  return `
-    <div data-category="${category}" class="rec-search-item" 
-      style="background: linear-gradient(0deg, rgba(5, 5, 5, 0.6), rgba(5, 5, 5, 0)),
-      url(${preview}); background-position: center; background-size: cover;">
-      <div class="upper-part">
-        <button type="button" class="heart-btn" data-info="${JSON.stringify(
-          infoRecipe
-        )}" name="favorite">
-          <svg class="icon-heart" width="22" height="22">
-            <use href="${sprite}#heart"></use>
-          </svg>
-        </button>
-        <h2 class="rec-card-title title-cut">${title}</h2>
-        <p class="rec-card-desc desc-cut">${description}</p>
-        <div class="rec-rate">
-          <p class="rate">${fixedRating}</p>
-           ${getRating(fixedRating)}
-          <button type="button" name="details" class="rec-btn-open rec-btn" data-id="${id}">See recipe</button>
-        </div>
-      </div>
-    </div>
-  `;
+  const selectedOption = container.querySelector('.selected-option');
+  const dropdownList = container.querySelector('.dropdown-list');
+
+  const options = dropdownList.querySelectorAll('li');
+
+  options.forEach(option => {
+    option.addEventListener('click', () => {
+      selectedOption.textContent = option.textContent;
+      selectedOption.style.color = 'rgba(5, 5, 5, 1)';
+
+      // Add a class to indicate the selected option
+      options.forEach(item => {
+        if (item === option) {
+          item.classList.add('selected');
+        } else {
+          item.classList.remove('selected');
+        }
+      });
+    });
+  });
 }
 
-// Function to filter recipes by title
-function filterByTitle(title) {
-  return data.filter(item =>
-    item.title.toLowerCase().includes(title.toLowerCase())
+// ==================================================================
+// Function to handle AREA selection and color change for dropdowns
+// ==================================================================
+function handleAreaSelect(container) {
+  if (!container) {
+    console.error(
+      'Container is undefined. Please provide a valid container element.'
+    );
+    return;
+  }
+
+  const selectedOption = container.querySelector('.selected-option');
+  const dropdownList = container.querySelector('.dropdown-list');
+
+  // Add a click event listener to the whole dropdown list
+  dropdownList.addEventListener('click', event => {
+    const clickedOption = event.target.closest('li'); // Find the closest <li> element
+
+    if (!clickedOption) return; // If the click was not on an <li> element, return
+
+    selectedOption.textContent = clickedOption.textContent;
+    selectedOption.style.color = 'rgba(5, 5, 5, 1)';
+
+    // Add a class to indicate the selected option
+    const options = dropdownList.querySelectorAll('li');
+    options.forEach(option => {
+      if (option === clickedOption) {
+        option.classList.add('selected');
+      } else {
+        option.classList.remove('selected');
+      }
+    });
+  });
+}
+
+// ==================================================================
+// Function to handle INGREDIENTS selection and color change for dropdowns
+// ==================================================================
+
+function handleIngredientsSelect(container) {
+  if (!container) {
+    console.error(
+      'Container is undefined. Please provide a valid container element.'
+    );
+    return;
+  }
+
+  const selectedOption = container.querySelector('.selected-option');
+  const dropdownList = container.querySelector('.dropdown-list');
+
+  // Add a click event listener to the whole dropdown list
+  dropdownList.addEventListener('click', event => {
+    const clickedOption = event.target.closest('li'); // Find the closest <li> element
+
+    if (!clickedOption) return; // If the click was not on an <li> element, return
+
+    selectedOption.textContent = clickedOption.textContent;
+    selectedOption.style.color = 'rgba(5, 5, 5, 1)';
+
+    // Add a class to indicate the selected option
+    const options = dropdownList.querySelectorAll('li');
+    options.forEach(option => {
+      if (option === clickedOption) {
+        option.classList.add('selected');
+      } else {
+        option.classList.remove('selected');
+      }
+    });
+  });
+}
+
+//===========================================//
+// HANDLE TIME SELECTION       ==============//
+//===========================================//
+async function handleTimeSelection(event) {
+  apiConstructorReset();
+  const selectedTime = parseInt(event.target.getAttribute('data-value'));
+
+  recipeApiService.time = selectedTime;
+  try {
+    const response = await recipeApiService.getRecipe();
+
+    if (response.results.length === 0) {
+      notifyInfoResult();
+      return;
+    }
+
+    renderMarkup(response.results);
+  } catch (error) {
+    console.error('Error fetching data:', error);
+  }
+}
+
+function apiConstructorReset() {
+  recipeApiService.time = '';
+  recipeApiService.area = '';
+  recipeApiService.ingredients = '';
+}
+
+//===========================================//
+// HANDLE AREA SELECTION       ==============//
+//===========================================//
+async function handleAreaSelection(event) {
+  apiConstructorReset();
+  const selectedArea = event.target.innerText;
+
+  recipeApiService.area = selectedArea;
+
+  try {
+    const response = await recipeApiService.getRecipe();
+
+    if (response.results.length === 0) {
+      notifyInfoResult();
+      return;
+    }
+
+    renderMarkup(response.results);
+  } catch (error) {
+    console.error('Error fetching data:', error);
+  }
+}
+
+//===========================================//
+// HANDLE INGREDIENTS SELECTION==============//
+//===========================================//
+async function handleIngredients(event) {
+  apiConstructorReset();
+  const selectedIngredients = event.target.dataset.value;
+
+  recipeApiService.ingredients = selectedIngredients;
+
+  try {
+    const response = await recipeApiService.getRecByIngredient();
+    console.log(response);
+    if (response.results.length === 0) {
+      notifyInfoResult();
+      return;
+    }
+
+    renderMarkup(response.results);
+  } catch (error) {
+    console.error('Error fetching data:', error);
+  }
+}
+
+//===========================================//
+// INITIALAZING       =======================//
+//===========================================//
+async function init() {
+  const areaDropdownList = document.querySelector(
+    '.choice__area.custom-dropdown'
   );
+
+  const timeDropdownList = document.querySelector(
+    '.choice__time.custom-dropdown'
+  );
+
+  const ingredientsDropdownContainer = document.querySelector(
+    '.choice__ingredients.custom-dropdown'
+  );
+  try {
+    showLoader();
+    await getApi();
+    await fetchAndPopulateAreas();
+    await fetchAndPopulateIngredients();
+    createTimeDropdownList();
+    handleSelection(dropdownContainer);
+
+    handleAreaSelect(areaDropdownList);
+
+    handleIngredientsSelect(ingredientsDropdownContainer);
+
+    timeDropdownList.addEventListener('click', handleTimeSelection);
+    areaDropdownList.addEventListener('click', handleAreaSelection);
+
+    ingredientsDropdownContainer.addEventListener('click', handleIngredients);
+
+    // await getApi();
+    hideLoader();
+  } catch (error) {
+    console.error('Error initializing script:', error);
+  }
 }
 
-// Function to render the markup for all filtered recipes
-function renderMarkup(data) {
-  const markup = data
-    .map(recipe =>
-      renderingRecipes(
-        recipe.title,
-        recipe.description,
-        recipe.preview,
-        recipe.rating,
-        recipe.id,
-        recipe.category
-      )
-    )
-    .join('');
-  post.innerHTML = markup;
-}
+//==============================================================
+// RESET FILTERS
+// =============================================================
 
+const resetButton = document.querySelector('.reset');
+resetButton.addEventListener('click', resetFilters);
+
+//==============================================================
 // Event listener for search input to filter recipes
+// =============================================================
 searchInput.addEventListener('input', () => {
   const filterValue = searchInput.value.trim();
-  const filteredData = filterValue ? filterByTitle(filterValue) : data;
+  const filteredData = filterValue ? filterByTitle(filterValue, data) : data;
   renderMarkup(filteredData);
 });
 
 // Initiating the script
-getApi();
+init();
+
+//COMMIT>>??

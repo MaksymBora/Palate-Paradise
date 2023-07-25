@@ -3,6 +3,7 @@ import { countPage, groupArrayIntoChunks } from '../favorite/utils';
 import { renderingFavRec } from '../favorite/rendering-fav';
 import createPagination from '../favorite/pagination';
 import { displayFavorites } from '../favorite/display-favorites';
+import { showLoader, hideLoader } from '../loader';
 
 let currentBtn = '';
 
@@ -21,6 +22,8 @@ function toggleActiveClass({ target }) {
  * {Event} evt - The event object.
  */
 export function handleCategoryFilter(evt) {
+  showLoader();
+
   if (evt.target.classList.contains('is-active')) return;
 
   let data = [];
@@ -67,4 +70,6 @@ export function handleCategoryFilter(evt) {
   );
 
   refs.recipesListContainer.innerHTML = listMarkup;
+
+  hideLoader();
 }
