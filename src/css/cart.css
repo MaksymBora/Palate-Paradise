@@ -1,0 +1,114 @@
+.cart-recipe-wrapper {
+    padding: 10px 20px;
+    margin-left: auto;
+    margin-right: auto;
+    height: auto;
+    max-width: 800px;
+    
+}
+
+.cart-main-title{
+    margin-top: 30px;
+    margin-bottom: 50px;
+}
+
+.cart-main-title > i{
+    color: rgba(155, 181, 55, 1);
+}
+.cart-recipe-item{
+    margin-bottom: 20px;
+    padding: 10px;
+    background-color: rgb(250, 235, 215);
+    border-radius: 5px;
+    transition: scale 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.cart-recipe-item:hover,
+.cart-recipe-item:focus{
+    scale: 1.05;
+}
+
+.cart-recipe-img{
+    width: 120px;
+    height: 120px;
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 10px;
+}
+
+.cart-recipe-title{
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.cart-recipe-area {
+    margin-bottom: 8px;
+}
+
+.cart-recipe-descr{
+    margin-bottom: 8px;
+    text-align: justify;
+}
+
+.cart-recipe-rating{
+    margin-bottom: 8px;
+}
+
+.cart-recipe-btn {
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    margin: auto;
+    min-width: 120px;
+    height: 45px;
+    border-radius: 15px;
+    border-color: rgba(155, 181, 55, 1);
+    background-color: transparent;
+    transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    border-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.cart-recipe-btn:hover,
+.cart-recipe-btn:focus {
+    background-color: rgba(155, 181, 55, 1);
+    border-color: transparent;
+    color: rgba(248, 248, 248, 1);
+}
+
+.cart-text-wrap {
+    width: auto;
+}
+
+/*======Tablet style=========*/
+@media screen and (min-width: 768px) {
+.cart-recipe-item {
+        display: flex;
+}
+
+.cart-recipe-title{
+    margin-bottom: 4px;
+}
+
+.cart-recipe-img {
+    margin-right: 20px;
+    align-self: self-end;
+}
+
+.cart-recipe-area {
+    margin-bottom: 5px;
+}
+
+.cart-recipe-descr {
+    margin-bottom: 5px;
+}
+
+.cart-recipe-rating {
+    margin-bottom: 5px;
+}
+
+.cart-text-wrap{
+    margin-right: 20px;
+}
+}
