@@ -1,21 +1,28 @@
-// const changeTheme = document.querySelector('#theme-switch');
-// changeTheme.addEventListener('change', toggleTheme);
+  const changeTheme = document.querySelector('.toggle-checkbox');
+ changeTheme.addEventListener('change', toggleTheme);
 
-// function toggleTheme() {
-//   const body = document.body;
-//   body.classList.toggle('dark-theme');
-//   body.classList.toggle('light-theme');
+  function toggleTheme() {
+   const body = document.body;
+   const backdrop = document.querySelector('.backdrop');
+    body.classList.toggle('dark-theme');
+   body.classList.toggle('light-theme');
+  
+    // нинішня тема
+    const isDarkTheme = body.classList.contains('dark-theme');
+   localStorage.setItem('theme', isDarkTheme ? 'dark' : 'light')
+  }
 
-//   // нинішня тема
-//   const isDarkTheme = body.classList.contains('dark-theme');
-//   localStorage.setItem('theme', isDarkTheme ? 'dark' : 'light');
-// }
+  const savedTheme = localStorage.getItem('theme');
+ if (savedTheme === 'dark') {
+    toggleTheme();
+   changeTheme.checked = true;
+  }
 
-// const savedTheme = localStorage.getItem('theme');
-// if (savedTheme === 'dark') {
-//   toggleTheme();
-//   changeTheme.checked = true;
-// }
+
+
+
+  
+
 
 // відкриття модалки
 (() => {

@@ -1,0 +1,100 @@
+/* HEADER */
+.dark-theme {
+  background-color: #161616;
+  color: #fff;
+}
+
+.dark-theme .menu-nav-links {
+  color: var(--primary-white-color);
+}
+
+.dark-theme .buy-btn {
+  color: var(--primary-white-color);
+}
+
+.dark-theme .icon-menu {
+  color: var(--primary-white-color);
+}
+
+.dark-theme .header-accent {
+  color: var(--accent-color);
+}
+
+.dark-theme .mobile {
+  background-color: var(--primaty-black-color);
+}
+
+.dark-theme .hero-description {
+  color: var(--primary-white-color);
+}
+
+.dark-theme .block-body .swiper-pagination-bullet{
+   background-color: var(--primary-white-color);
+}
+
+.dark-theme .all-cat-select-btn {
+  color: rgba(255, 255, 255, 0.2);
+}
+
+.dark-theme .all-cat-main-btn {
+    color: rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+.dark-theme .scrollbar-thumb{
+    background-color: rgba(255, 255, 255, 0.2);
+    
+}
+
+.dark-theme .scrollbar-track{
+    background-color: transparent;
+}
+
+.dark-theme .form-input{
+   border: 1px solid rgba(255, 255, 255, 0.2);
+   color: rgba(255, 255, 255, 0.5);
+   
+}
+
+.dark-theme .form-input::placeholder {
+    color: rgba(255, 255, 255, 0.2);
+    
+  }
+
+.dark-theme .label-text{
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.dark-theme .selected-option,
+.dropdown-list{
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.dark-theme .custom-dropdown{
+    color: rgba(255, 255, 255, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 15px;
+}
+
+
+
+.dark-theme .selected-option{
+    color: rgba(255, 255, 255, 0.5);
+    border:1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 15px;
+}
+
+.dark-theme .search_recipes{
+    color:rgba(255, 255, 255, 0.5) ;
+}
+
+.dark-theme .dropdown-list{
+   background-color: var(--primaty-black-color);
+}
+
+.dark-theme .fav-button{
+    background-color: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: rgba(255, 255, 255, 0.3);
+}
+
