@@ -29,7 +29,9 @@ function fillCart(resp) {
         <p class="cart-recipe-descr"><b>Description:</b> ${description}</p>
         <p class="cart-recipe-rating"><b>Rating:</b> ${rating}</p> 
         </div>
-        <button class="cart-recipe-btn">Order now</button>
+        <button type="button" class="hero__button button cart-recipe-btn" data-modal-order-open>
+        Order now
+        </button>
       </li>`;
     };
     const { results } = resp;
