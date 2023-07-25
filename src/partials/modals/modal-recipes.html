@@ -1,7 +1,7 @@
-<!-- Додати клас is-hidden до backdrop -->
-<div class="backdrop is-hidden">
-  <!-- Додати клас is-hidden до modal-receipes -->
-  <div class="modal-recipes">
+
+<div class="backdrop-recipes is-hidden">
+  <div class="modal-recipes is-hidden">
+
     <button type="button" class="modal-close-btn">
       <svg class="modal-close-btn-icon" width="20" height="20">
         <use href="/src/images/sprite.svg#icon-x"></use>
@@ -10,8 +10,10 @@
     <div class="recipes-iframe-wrapper">
       <iframe
         class="recipes-iframe-video"
-        src="https://www.youtube.com/embed/_ID_"
-        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+        src="https://www.youtube.com/embed/"
+        title="YouTube video player"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
         allowfullscreen
       ></iframe>
     </div>
@@ -19,7 +21,8 @@
     <h2 class="recipes-title">Banana Pancakes</h2>
 
     <div class="rating-time-container">
-      <p class="ratinng-value">4.5</p>
+      <p class="ratinng-value">#</p>
+
       <ul class="modal-rating-star-list">
         <li class="modal-rating-star-item">
           <svg class="modal-rating-star-icon" width="16" height="16">
@@ -47,40 +50,12 @@
           </svg>
         </li>
       </ul>
-      <p class="recipes-cooking-time">40 min</p>
+      <p class="recipes-cooking-time">#</p>
+      <p class="time-text">min</p>
     </div>
 
-    <ul class="recipes-components-list">
-      <li class="recipes-components-item">
-        <p class="recipes-components-item_name">Banana</p>
-        <p class="recipes-components-item_quantity">1 large</p>
-      </li>
-      <li class="recipes-components-item">
-        <p class="recipes-components-item_name">Eggs</p>
-        <p class="recipes-components-item_quantity">2 medium</p>
-      </li>
-      <li class="recipes-components-item">
-        <p class="recipes-components-item_name">Oil</p>
-        <p class="recipes-components-item_quantity">1 tsp</p>
-      </li>
-      <li class="recipes-components-item">
-        <p class="recipes-components-item_name">Pecan nuts</p>
-        <p class="recipes-components-item_quantity">25 tsp</p>
-      </li>
-      <li class="recipes-components-item">
-        <p class="recipes-components-item_name">Baking Powder</p>
-        <p class="recipes-components-item_quantity">Pinch</p>
-      </li>
-      <li class="recipes-components-item">
-        <p class="recipes-components-item_name">Raspberries</p>
-        <p class="recipes-components-item_quantity">125 g</p>
-      </li>
-    </ul>
-    <ul class="recipes-hashtags-list">
-      <li class="recipes-hashtags-item">#Breakfast</li>
-      <li class="recipes-hashtags-item">#Desert</li>
-      <li class="recipes-hashtags-item">#Sweet</li>
-    </ul>
+    <ul class="recipes-components-list"></ul>
+    <ul class="recipes-hashtags-list"></ul>
 
     <p class="recipes-description">
       Mash the ripe banana in a medium mixing bowl. Add the egg and whisk
