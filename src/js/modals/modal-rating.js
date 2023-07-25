@@ -7,7 +7,8 @@ const ratingStars = document.querySelectorAll('.rating');
 
 const addRatingFormEl = document.querySelector('.form-check');
 const ratingValue = document.querySelector('.rating-value');
-const saveEmailLocalStorage = document.querySelector(".rating-email")
+const saveEmailLocalStorage = document.querySelector(".rating-email");
+const sendBtn = document.querySelector('.rating-button-send');
 
 const recipeApiService = new RecipeApiService();
 
@@ -22,6 +23,11 @@ ratingStars.forEach(element => {
     element.addEventListener('change', changeRatingStar);
     // console.log('dsdf')
 });
+
+// saveEmailLocalStorage.hidden = true;
+
+// sendBtn.setAttribute('disabled', true);
+// sendBtn.classList.add('is-active-send');
 
 getLocalStorage();
 
@@ -39,11 +45,16 @@ function handleSubmitRating(event) {
 
     localStorage.removeItem(STORAGE_KEY);
 
+    // if(saveEmailLocalStorage.value) {
+    //     sendBtn.setAttribute('disabled', false);
+    //     sendBtn.classList.remove('is-active-send');
+    // }
+
 }
 
 function changeRatingStar (event) {
     // console.log(event.target.value)
-    console.log(event.target.nextElementSibling);
+    // console.log(event.target.nextElementSibling);
 
     ratingValue.textContent = event.target.value;
 
@@ -67,40 +78,34 @@ function getLocalStorage() {
     }
 }
 
-function updateRating (data) {
+function updateRating (formData) {
 
-// recipeApiService.getRecipeById()
-// .then((data) => {
-//     data.results.map( ({_id, rating}) => {
-//             console.log(_id, rating)
-//             console.log(recipeId = _id)
-//             // console.log(rating = _id)
-//         })
-// })
+
+    const retingToUpdate = {
+        "rate": 5,
+        "email": "test@gmail.com"
+      };
+      
+      const options = {
+        // method: "PATCH",
+        body: JSON.stringify(retingToUpdate),
+        headers: {
+          "Content-Type": "application/json; charset=UTF-8",
+        },
+      };
+
+recipeApiService.getRecipeById(formData)
+.then((data) => {
+    
+    data.results.map( ({_id}) => {
+
+        recipeId = _id;
+            // console.log(_id)
+            // console.log(recipeId = _id)
+            // console.log(rating = _id)
+        })
+})
 
 }
 
-updateRating('werty')
-
-// const retingToUpdate = {
-//     "rate": 5,
-//     "email": "test@gmail.com"
-//   };
-  
-//   const options = {
-//     method: "PATCH",
-//     body: JSON.stringify(retingToUpdate),
-//     headers: {
-//       "Content-Type": "application/json; charset=UTF-8",
-//     },
-//   };
-
-// fetch( `https://tasty-treats-backend.p.goit.global/api/recipes/${id}/rating`, options)
-//        .then((response) => response.json())
-//        .then((data) => {
-//         data.results.map( ({id, rating}) => {
-//                 console.log(id, rating)
-//             })
-//         //    const {_id} = data
-//         //    console.log(data.results);
-//     })
+updateRating()

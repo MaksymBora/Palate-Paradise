@@ -60,6 +60,13 @@
   color: var(--primary-white-color);
 }
 
+.is-active-send {
+  background-color: gray;
+  border: none;
+  border-radius: 15px;
+  color: var(--primary-white-color);
+}
+
 .rating-button-close {
   position: absolute;
   top: 0;
