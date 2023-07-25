@@ -153,19 +153,19 @@ async function init() {
 function resetFilters() {
   // Сбрасываем выбранные опции в списке времени
   const selectedTimeOption = document.getElementById('selected-time');
-  selectedTimeOption.textContent = '10 min';
+  selectedTimeOption.textContent = 'min';
   selectedTimeOption.style.color = '';
 
   // Сбрасываем выбранные опции в списке области
   const selectedAreaOption = document.getElementById('selected-area');
-  selectedAreaOption.textContent = 'Italian';
+  selectedAreaOption.textContent = 'Country';
   selectedAreaOption.style.color = '';
 
   // Сбрасываем выбранные опции в списке ингредиентов
   const selectedIngredientsOption = document.getElementById(
     'selected-ingredients'
   );
-  selectedIngredientsOption.textContent = 'Tomato';
+  selectedIngredientsOption.textContent = 'Vegetables';
   selectedIngredientsOption.style.color = '';
 
   //Все рецепты
