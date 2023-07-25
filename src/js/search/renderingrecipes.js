@@ -62,5 +62,6 @@ export function renderMarkup(data) {
       )
     )
     .join('');
+
   post.innerHTML = markup;
 }

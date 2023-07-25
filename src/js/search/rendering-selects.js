@@ -26,6 +26,7 @@ export async function fetchAndPopulateAreas() {
 export async function fetchAndPopulateIngredients() {
   try {
     const ingredients = await recipeApiService.getIngredients();
+
     const ingredientsDropdownList = document.getElementById(
       'ingredients-dropdown'
     );
