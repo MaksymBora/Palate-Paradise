@@ -20,13 +20,22 @@
   flex-direction: column;
   justify-content: space-between;
 
-  transform: translateX(-0%);
+  transform: translateX(100%);
+
+  overflow-x: auto;
 }
 
 .is-open {
   opacity: 1;
   visibility: visible;
   pointer-events: auto;
+  transform: translateX(0);
+}
+
+.backdrop {
+  transition: transform 500ms cubic-bezier(0.4, 0, 0.2, 1),
+    opacity 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    visibility 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .close-mobile {
@@ -37,7 +46,8 @@
   top: 20px;
   width: 32px;
   height: 32px;
-  background-color: var(--accent-color);
+  /* background-color: var(--accent-color); */
+  background-color: transparent;
   border: none;
   color: var(--primary-white-color);
 }
@@ -68,11 +78,6 @@
   justify-content: center;
 
   transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.buy-btn:hover,
-.buy-btn:focus {
-  color: var(--accent-color);
 }
 
 .icon-menu {
@@ -309,6 +314,9 @@ a {
     transition: color 250ms ease-in-out;
   }
 
+  .menu-nav-links .dark-theme {
+  }
+
   .header-accent {
     color: var(--accent-color);
   }
@@ -328,6 +336,11 @@ a {
   .logo-first-color {
     font-size: 18px;
     line-height: 20px;
+  }
+
+  .buy-btn:hover,
+  .buy-btn:focus {
+    color: var(--accent-color);
   }
 }
 

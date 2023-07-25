@@ -1,23 +1,27 @@
 import RecipeApiService from './service/service-api';
 import Scrollbar from 'smooth-scrollbar';
-import { notifyError } from './notifications';
+import { notifyInfo } from './notifications';
+import { renderingAllRecips } from './all-cat/all-cat-render';
+import { showLoader, hideLoader } from './loader';
 
-const allCatBtnEl = document.querySelector('.all-cat-main-btn');
 const selectListEl = document.querySelector('.all-cat-select-list');
-const selectWrapper = document.querySelector('.all-cat-select-list');
 
 const recipeApiService = new RecipeApiService();
 
 //Add categories on page
 recipeApiService
   .getCategories()
-  .then(resp => {
-    createCategories(resp);
+  .then(response => {
+    showLoader(); // Показываем лоадер перед загрузкой категорий
+    createCategories(response);
+    hideLoader(); // Скрываем лоадер после рендеринга категорий
   })
-  .catch(err => notifyError('Opps ... something went wrong'));
+  .catch(notifyInfo);
 
 //Make scroll  in categories
-Scrollbar.init(document.querySelector('.my-scrollbar'));
+const scrollbar = Scrollbar.init(document.querySelector('.my-scrollbar'), {
+  alwaysShowTracks: true,
+});
 
 //Create mark-up for adding categories
 function createCategories(resp) {
@@ -28,6 +32,12 @@ function createCategories(resp) {
   };
   const markUpCat = resp.map(obj => takeElementName(obj)).join('');
   selectListEl.innerHTML = markUpCat;
+
+  const categoryButtons = document.querySelectorAll('.all-cat-select-btn');
+
+  categoryButtons.forEach(button => {
+    button.addEventListener('click', handleCategoryClick);
+  });
 }
 
 // Make button Active
@@ -45,40 +55,44 @@ function makeBtnActive(event) {
 button.forEach(button => {
   button.addEventListener('click', makeBtnActive);
 });
-// Click on button "all-category" with adding all recipe
-// allCatBtnEl.addEventListener('click', onAllCatClickHandler);
 
-// function onAllCatClickHandler(evt) {
-//     evt.preventDefault();
+// Rendering Recipts on Click
 
-//     recipeApiService.getRecipe().then(resp => {
+const selectBtn = document.querySelector('.all-cat-main-btn');
+const imageContainer = document.querySelector('.image-container');
+const formSearch = document.querySelector('.form_search');
 
-//         console.log(resp)
-//     }
-//  ).catch(err => notifyError('Opps ... something went wrong'))
-// }
+selectBtn.addEventListener('click', renderingOnClick);
 
-// Click on button-category with adding recipe
-// selectWrapper.addEventListener('click', onSelectCategoryHandler);
+// Rendering by Categories
+function renderingOnClick() {
+  formSearch.querySelector('.form-input').value = '';
 
-// function onSelectCategoryHandler(evt) {
-//   evt.preventDefault();
+  showLoader();
 
-//   // const arrayItem = evt.currentTarget.children;
-//   // for (let index = 0; index < arrayItem.length; index++) {
-//   //     if (index.children.classList.contains('all-cat-active-btn'))
-//   //     elem.classList.remove('all-cat-active-btn')
-//   // }
+  recipeApiService.getRecipe().then(response => {
+    imageContainer.innerHTML = '';
+    const recipesMarkup = response.results.map(recipe => {
+      const { title, description, preview, rating, _id, category } = recipe;
+      return renderingAllRecips(
+        title,
+        description,
+        preview,
+        rating,
+        _id,
+        category
+      ); // Make sure the ID property is correct here
+    });
+    imageContainer.innerHTML = recipesMarkup.join('');
 
-//   if (!evt.target.matches('button')) {
-//     return;
-//   }
-//   evt.target.classList.add('all-cat-active-btn');
-//   recipeApiService.category = evt.target.textContent;
-//   recipeApiService
-//     .getRecipe()
-//     .then(resp => {
-//       console.log(resp);
-//     })
-//     .catch(err => notifyError('Opps ... something went wrong'));
-// }
+    hideLoader();
+  });
+}
+
+function handleCategoryClick(event) {
+  const selectedCategory = event.target.dataset.name;
+
+  recipeApiService.category = selectedCategory;
+
+  renderingOnClick();
+}

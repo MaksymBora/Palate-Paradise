@@ -67,6 +67,10 @@
   .all-categories-section {
     margin: 0 auto;
   }
+
+  .all-cat-wrap {
+    margin: 0 auto 40px;
+  }
 }
 
 /*======Tablet style=========*/
@@ -109,6 +113,7 @@
   }
 
   .all-cat-wrap {
+    margin-left: 0;
     min-width: 235px;
   }
 }

@@ -1,4 +1,4 @@
-<section class="search_recipes">
+<section id="search-section" class="search_recipes">
   <div class="recipes_box">
     <form class="form_search">
       <label class="form-label">
@@ -14,43 +14,44 @@
 
     <div class="form__time">
       <label for="time" class="time">Time</label>
-      <select id="time" name="time" class="dropdown">
-        <option value=""></option>
-        <option value=""></option>
-        <option value="40" selected>40 min</option>
-        <option value=""></option>
-      </select>
+      <div class="choice__time custom-dropdown">
+        <span class="selected-option" id="selected-time">min</span>
+        <ul class="dropdown-list" id="time-dropdown"></ul>
+      </div>
     </div>
+
     <div class="form__area">
       <label for="area" class="area">Area</label>
-      <select id="area" name="area" class="dropdown">
-        <option value=""></option>
-        <option value=""></option>
-        <option value="40" selected>Italian</option>
-        <option value=""></option>
-      </select>
+      <div class="choice__area custom-dropdown" id="area-dropdown-container">
+        <span class="selected-option" id="selected-area">Country</span>
+        <ul class="dropdown-list" id="area-dropdown"></ul>
+      </div>
     </div>
+
     <div class="form__ingredients">
       <label for="ingredients" class="ingredients">Ingredients</label>
-      <select id="ingredients" name="ingredients" class="dropdown">
-        <option value=""></option>
-        <option value=""></option>
-        <option value="tomato" selected>Tomato</option>
-        <option value=""></option>
-      </select>
+      <div
+        class="choice__ingredients custom-dropdown"
+        id="ingredients-dropdown-container"
+      >
+        <span class="selected-option" id="selected-ingredients"
+          >Vegetables</span
+        >
+        <ul class="dropdown-list" id="ingredients-dropdown"></ul>
+      </div>
+    </div>
+
+    <div class="reset">
+      <svg class="icon-x" width="16" height="16">
+        <use href="./images/sprite.svg#icon-x"></use>
+      </svg>
+      <div class="reset_filter" id="reset-filter">Reset the filter</div>
     </div>
   </div>
 
-  <div class="reset">
-    <svg class="icon-x" width="16" height="16">
-      <use href="./images/sprite.svg#icon-x"></use>
-    </svg>
-    <div class="reset_filter">Reset the filter</div>
+  <div id="image-container" class="image-container">
+    <span class="loader-spinner"></span>
   </div>
 
-  <div class="recipes">
-    <ul class="recipes__items">
-      <li class="recipes__item"></li>
-    </ul>
-  </div>
+  <div id="pagination" class="tui-pagination"></div>
 </section>

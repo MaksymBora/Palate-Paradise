@@ -1,3 +1,64 @@
-<div class="backdrop is-hidden">
-  <div class="modal-order is-hidden"></div>
+<!-- Modal window Order now for order creation -->
+<div class="backdrop is-hidden" data-modal-order>
+  <div class="modal-order">
+    <button
+      type="button"
+      class="modal-order__close-button"
+      data-modal-order-close
+    >
+      <svg class="modal-order__icon-close" width="20" height="20">
+        <use href="./images/sprite.svg#icon-x"></use>
+      </svg>
+    </button>
+    <p class="modal-order__title">Order now</p>
+    <form class="modal-order-form" id="orderForm" autocomplete="off">
+      <div class="modal-order-form__field">
+        <label for="name" class="modal-order-form__label">Name*</label>
+        <input
+          type="text"
+          name="name"
+          id="name"
+          class="modal-order-form__input"
+          required
+          pattern="^[a-zA-Zа-яА-Я ]+$"
+          title="Names can comprise only letters (either case)"
+        />
+      </div>
+      <div class="modal-order-form__field">
+        <label for="phone" class="modal-order-form__label">Phone number*</label>
+        <input
+          type="tel"
+          name="phone"
+          id="phone"
+          class="modal-order-form__input"
+          required
+          pattern="\+?[0-9\s\-\(\)]+"
+          title="Please enter the phone in the number format"
+        />
+      </div>
+      <div class="modal-order-form__field">
+        <label for="email" class="modal-order-form__label">Email*</label>
+        <input
+          type="email"
+          name="email"
+          id="email"
+          class="modal-order-form__input"
+          required
+        />
+      </div>
+      <div class="modal-order-form__comment-field">
+        <label for="comment" class="modal-order-form__label">Comment</label>
+        <textarea
+          name="comment"
+          id="comment"
+          class="modal-order-form__text"
+        ></textarea>
+      </div>
+      <button type="submit" class="modal-order-form__button button">
+        Send
+      </button>
+         <!-- Элемент для отображения loader'а -->
+      <div id="loader" class="loader-spinner is-hidden"></div>
+    </form>
+  </div>
 </div>
