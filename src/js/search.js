@@ -65,6 +65,41 @@ function handleSelection(container) {
   });
 }
 
+// ==================================================================
+// Function to handle AREA selection and color change for dropdowns
+// ==================================================================
+function handleAreaSelect(container) {
+  if (!container) {
+    console.error(
+      'Container is undefined. Please provide a valid container element.'
+    );
+    return;
+  }
+
+  const selectedOption = container.querySelector('.selected-option');
+  const dropdownList = container.querySelector('.dropdown-list');
+
+  // Add a click event listener to the whole dropdown list
+  dropdownList.addEventListener('click', event => {
+    const clickedOption = event.target.closest('li'); // Find the closest <li> element
+
+    if (!clickedOption) return; // If the click was not on an <li> element, return
+
+    selectedOption.textContent = clickedOption.textContent;
+    selectedOption.style.color = 'rgba(5, 5, 5, 1)';
+
+    // Add a class to indicate the selected option
+    const options = dropdownList.querySelectorAll('li');
+    options.forEach(option => {
+      if (option === clickedOption) {
+        option.classList.add('selected');
+      } else {
+        option.classList.remove('selected');
+      }
+    });
+  });
+}
+
 //===========================================//
 // HANDLE TIME SELECTION       ==============//
 //===========================================//
@@ -120,17 +155,22 @@ async function handleAreaSelection(event) {
 // INITIALAZING       =======================//
 //===========================================//
 async function init() {
-  const areaDropdownList = document.getElementById('area-dropdown');
-  const timeDropdownList = document.getElementById('time-dropdown');
+  const areaDropdownList = document.querySelector(
+    '.choice__area.custom-dropdown'
+  );
+
+  const timeDropdownList = document.querySelector(
+    '.choice__time.custom-dropdown'
+  );
   try {
     showLoader();
 
     await fetchAndPopulateAreas();
     await fetchAndPopulateIngredients();
     createTimeDropdownList();
-
     handleSelection(dropdownContainer);
 
+    handleAreaSelect(areaDropdownList);
     timeDropdownList.addEventListener('click', handleTimeSelection);
     areaDropdownList.addEventListener('click', handleAreaSelection);
 
