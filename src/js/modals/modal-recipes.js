@@ -67,16 +67,13 @@ recipesContainer.addEventListener('click', async (event) => {
      const fetchedRecipe = await fetchRecipe(recipeId);
     if (fetchedRecipe) {
       recipe = fetchedRecipe;
-      
+      updateFavoriteButtonStatus(recipe);
       openModal();
     }
   } catch (error) {
     console.log(error);
   }
 });
-
-
-
 
 
 // Отримую дані про конкретний рецепт з API по ID
@@ -174,45 +171,65 @@ function displayStarRating(recipe) {
   }
 }
 
-// Додавання рецептів у обрані (localStorage)
+// Додавання/видалення рецептів в localStorage
 
+// Функція для отримання списку обраних рецептів з localStorage
 function getFavoriteRecipes() {
   const favoriteRecipes = JSON.parse(localStorage.getItem('favoriteRecipes')) || [];
   return favoriteRecipes;
 }
-
+// Функція для збереження списку обраних рецептів з localStorage
 function saveFavoriteRecipes(favoriteRecipes) {
   localStorage.setItem('favoriteRecipes', JSON.stringify(favoriteRecipes));
 }
-
-const addToFavoriteButton = document.querySelector('.btn-add-favorite');
-addToFavoriteButton.addEventListener('click', (event) => {
-  if (recipe) {
-    addToFavorites(recipe);
-  }
-});
-
-// function removeFromFavorites(recipeId) {
-//   const favoriteRecipes = getFavoriteRecipes();
-//   const index = favoriteRecipes.indexOf(recipeId);
-//   if (index !== -1) {
-//     favoriteRecipes.splice(index, 1);
-//     saveFavoriteRecipes(favoriteRecipes);
-//   }
-// }
-
-function addToFavorites(recipe) {
-  const favoriteRecipes = getFavoriteRecipes(); 
-  const { _id, title, category, rating, preview, description } = recipe;
-  
-  const newRecipe = { _id, title, category, rating, preview, description };
-  
-  const isDuplicate = favoriteRecipes.some((favoriteRecipe) => favoriteRecipe._id === recipe._id);
-  if (!isDuplicate) {
-    favoriteRecipes.push(newRecipe); 
-    saveFavoriteRecipes(favoriteRecipes); 
-  }
+//  Функція для видалення рецепту зі списку обраних рецептів в localStorage
+function removeFromFavorites(recipe) {
+  const favoriteRecipes = getFavoriteRecipes();
+  const updatedFavorites = favoriteRecipes.filter((favoriteRecipe) => favoriteRecipe._id !== recipe._id);
+  saveFavoriteRecipes(updatedFavorites);
 }
 
 
+// Чіпляємося до кнопки "Add to favorite"
+const addToFavoriteButton = document.querySelector('.btn-add-favorite');
 
+// Функція перевірки перебування рецепта в localStorage
+function isRecipeInFavorites(recipe) {
+  const favoriteRecipes = getFavoriteRecipes();
+  return favoriteRecipes.some((favoriteRecipe) => favoriteRecipe._id === recipe._id);
+}
+// Функція для додавання/видалення обраного рецепту з масиву localStorage
+function addToFavorites(recipe) {
+  const favoriteRecipes = getFavoriteRecipes();
+  const { _id, title, category, rating, preview, description } = recipe;
+
+  const newRecipe = { _id, title, category, rating, preview, description };
+
+  const isDuplicate = isRecipeInFavorites(recipe);
+  if (!isDuplicate) {
+    favoriteRecipes.push(newRecipe);
+    addToFavoriteButton.textContent = 'Remove from favorite';
+  } else {
+    const updatedFavorites = favoriteRecipes.filter((favoriteRecipe) => favoriteRecipe._id !== _id);
+    saveFavoriteRecipes(updatedFavorites);
+    addToFavoriteButton.textContent = 'Add to favorite';
+  }
+  saveFavoriteRecipes(favoriteRecipes);
+}
+
+//  Слухач події для кнопки "Add to favorite", який для додавання/видалення обраного рецепту з масиву localStorage
+addToFavoriteButton.addEventListener('click', () => {
+  const isFavorite = isRecipeInFavorites(recipe);
+  if (isFavorite) {
+    removeFromFavorites(recipe);
+    addToFavoriteButton.textContent = 'Add to favorite';
+  } else {
+    addToFavorites(recipe);
+    addToFavoriteButton.textContent = 'Remove from favorite';
+  }
+});
+// Функція для оновлення тексту кнопки на "Add to favorite" або "Remove from favorite" в залежності від статусу
+function updateFavoriteButtonStatus(recipe) {
+  const isFavorite = isRecipeInFavorites(recipe);
+  addToFavoriteButton.textContent = isFavorite ? 'Remove from favorite' : 'Add to favorite';
+}
