@@ -1,14 +1,22 @@
 import RecipeApiService from './service/service-api';
 import Scrollbar from 'smooth-scrollbar';
 import { notifyInfo } from './notifications';
-import { renderingAllRecips } from './service/all-cat-render';
+import { renderingAllRecips } from './all-cat/all-cat-render';
+import { showLoader, hideLoader } from './loader';
 
 const selectListEl = document.querySelector('.all-cat-select-list');
 
 const recipeApiService = new RecipeApiService();
 
 //Add categories on page
-recipeApiService.getCategories().then(createCategories).catch(notifyInfo);
+recipeApiService
+  .getCategories()
+  .then(response => {
+    showLoader(); // Показываем лоадер перед загрузкой категорий
+    createCategories(response);
+    hideLoader(); // Скрываем лоадер после рендеринга категорий
+  })
+  .catch(notifyInfo);
 
 //Make scroll  in categories
 const scrollbar = Scrollbar.init(document.querySelector('.my-scrollbar'), {
@@ -24,6 +32,12 @@ function createCategories(resp) {
   };
   const markUpCat = resp.map(obj => takeElementName(obj)).join('');
   selectListEl.innerHTML = markUpCat;
+
+  const categoryButtons = document.querySelectorAll('.all-cat-select-btn');
+
+  categoryButtons.forEach(button => {
+    button.addEventListener('click', handleCategoryClick);
+  });
 }
 
 // Make button Active
@@ -50,22 +64,35 @@ const formSearch = document.querySelector('.form_search');
 
 selectBtn.addEventListener('click', renderingOnClick);
 
+// Rendering by Categories
 function renderingOnClick() {
   formSearch.querySelector('.form-input').value = '';
+
+  showLoader();
 
   recipeApiService.getRecipe().then(response => {
     imageContainer.innerHTML = '';
     const recipesMarkup = response.results.map(recipe => {
-      const { title, description, preview, rating, id, category } = recipe;
+      const { title, description, preview, rating, _id, category } = recipe;
       return renderingAllRecips(
         title,
         description,
         preview,
         rating,
-        id,
+        _id,
         category
-      );
+      ); // Make sure the ID property is correct here
     });
     imageContainer.innerHTML = recipesMarkup.join('');
+
+    hideLoader();
   });
+}
+
+function handleCategoryClick(event) {
+  const selectedCategory = event.target.dataset.name;
+
+  recipeApiService.category = selectedCategory;
+
+  renderingOnClick();
 }

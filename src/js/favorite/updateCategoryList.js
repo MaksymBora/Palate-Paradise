@@ -1,4 +1,5 @@
 import { getFromLocalStorage } from '../favorite/localStorageUtils';
+import { showLoader, hideLoader } from '../loader';
 
 /**
  * Generates the markup for a category button.
@@ -14,6 +15,8 @@ export function renderCategories(category) {
  *  target - The target element representing the selected recipe.
  */
 export function updateCategoryList(target) {
+  showLoader();
+
   const currentRec = target.closest('div.recipe-item').dataset.category;
   const storageItems = getFromLocalStorage('favorites-data');
   const isCategoryLocal = storageItems.find(el => el.category === currentRec);
@@ -30,4 +33,6 @@ export function updateCategoryList(target) {
 
   refs.allButton.style.display =
     storageItems && storageItems.length ? 'block' : 'none';
+
+  hideLoader();
 }
