@@ -1,3 +1,8 @@
+.popular {
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .popular-img {
   border-radius: 8px;
 }
@@ -11,6 +16,7 @@
   display: flex;
   gap: 16px;
   height: 67px;
+  width: 100%;
 }
 .popular-subtitle {
   margin-bottom: 8px;
@@ -37,6 +43,11 @@
 
 /* Mobile */
 @media screen and (max-width: 767px) {
+  .popular {
+    padding-top: 40px;
+    padding-bottom: 40px;
+    width: 335px;
+  }
   .popular-img {
     width: 64px;
     height: 64px;
@@ -47,9 +58,6 @@
     height: 160px;
     overflow: hidden;
   }
-  .popular-list-item {
-    width: 332px;
-  }
 
   .popular-description {
     -webkit-line-clamp: 2;
@@ -59,6 +67,10 @@
 /* Tablet */
 
 @media screen and (min-width: 768px) {
+  .popular {
+    padding-top: 64px;
+    width: 176px;
+  }
   .popular-img {
     width: 48px;
     height: 48px;
@@ -66,10 +78,6 @@
 
   .popular-list {
     gap: 16px;
-  }
-
-  .popular-list-item {
-    width: 176px;
   }
 
   .popular-description {
