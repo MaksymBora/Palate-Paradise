@@ -20,6 +20,7 @@
           id="name"
           class="modal-order-form__input"
           required
+          pattern="^[a-zA-Zа-яА-Я ]+$"
           title="Names can comprise only letters (either case)"
         />
       </div>
@@ -31,7 +32,7 @@
           id="phone"
           class="modal-order-form__input"
           required
-          pattern="\ +?[0-9\s\-\(\)]+"
+          pattern="\s*\+?[0-9\s\-\(\)]+"
           title="Please enter the phone in the number format"
         />
       </div>
@@ -51,7 +52,6 @@
           name="comment"
           id="comment"
           class="modal-order-form__text"
-          placeholder=""
         ></textarea>
       </div>
       <button type="submit" class="modal-order-form__button button">

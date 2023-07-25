@@ -1,5 +1,6 @@
 import throttle from 'lodash.throttle';
 import Notiflix from 'notiflix';
+import RecipeApiService from '../service/service-api';
 
 const refs = {
   openModalOrderBtn: document.querySelector('[data-modal-order-open]'),
@@ -8,6 +9,7 @@ const refs = {
   modalOrderForm: document.querySelector('.modal-order-form'),
   modalOrderSubmitBtn: document.querySelector('.modal-order-form__button'),
 };
+const ORDER_FORM_KEY = 'order-form-state';
 
 refs.openModalOrderBtn.addEventListener('click', onToggleModalOrder);
 refs.closeModalOrderBtn.addEventListener('click', onToggleModalOrder);
@@ -20,31 +22,30 @@ function onToggleModalOrder() {
 }
 
 refs.modalOrderSubmitBtn.disabled = true;
-
 onClickPageReload();
 
 // Track the input event on the form and keep input data in localStorage
 function onTextareaInput(evt) {
   const { name, phone, email, comment } = evt.currentTarget.elements;
-  const feedbackFormState = {
-    name: name.value,
-    phone: phone.value,
-    email: email.value,
-    comment: comment.value,
+  const orderFormState = {
+    name: name.value.trim(),
+    phone: phone.value.trim(),
+    email: email.value.trim(),
+    comment: comment.value.trim(),
   };
 
-  localStorage.setItem(
-    'feedback-form-state',
-    JSON.stringify(feedbackFormState)
-  );
-  if (name.value !== '' && phone.value !== '' && email.value !== '') {
+  localStorage.setItem(ORDER_FORM_KEY, JSON.stringify(orderFormState));
+
+  if (
+    name.value.trim() !== '' &&
+    phone.value.trim() !== '' &&
+    email.value.trim() !== ''
+  )
     refs.modalOrderSubmitBtn.disabled = false;
-  }
 }
 //Check localStorage after page reload and get last saved data (or empty fields otherwise)
 function onClickPageReload() {
-  const storageData =
-    JSON.parse(localStorage.getItem('feedback-form-state')) || {};
+  const storageData = JSON.parse(localStorage.getItem(ORDER_FORM_KEY)) || {};
   const { name, phone, email, comment } = storageData;
   if (storageData) {
     refs.modalOrderForm.elements.name.value = name || '';
@@ -52,17 +53,15 @@ function onClickPageReload() {
     refs.modalOrderForm.elements.email.value = email || '';
     refs.modalOrderForm.elements.comment.value = comment || '';
   }
+  if (name === '' || phone === '' || email === '') {
+    refs.modalOrderSubmitBtn.disabled = true;
+  }
 }
 //Clean localStorage and form inputs after form submit
 function onFormSubmit(evt) {
   evt.preventDefault();
 
   const { name, phone, email, comment } = evt.currentTarget.elements;
-
-  if (name.value === '' || phone.value === '' || email.value === '') {
-    refs.modalOrderSubmitBtn.disabled = true;
-    return onWarningMes();
-  }
 
   console.log({
     name: name.value.trim(),
@@ -74,19 +73,13 @@ function onFormSubmit(evt) {
   onSuccessMes();
 
   refs.modalOrderSubmitBtn.disabled = true;
-  localStorage.removeItem('feedback-form-state');
+  localStorage.removeItem(ORDER_FORM_KEY);
   // Clear data from form inputs
   evt.currentTarget.reset();
 }
 
 function onSuccessMes() {
   Notiflix.Report.success('Your order has completed successfully!', '', 'Ok', {
-    position: 'center-top',
-    titleMaxLength: '100',
-  });
-}
-function onWarningMes() {
-  Notiflix.Report.warning('Please fill out all required fields!', '', 'Ok', {
     position: 'center-top',
     titleMaxLength: '100',
   });
