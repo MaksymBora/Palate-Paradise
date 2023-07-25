@@ -7,6 +7,7 @@
   background-color: transparent;
   border: none;
   padding: 0;
+  color: var(--primaty-black-color);
 }
 .modal-order__close-button:hover,
 .modal-order__close-button:focus {
@@ -117,11 +118,11 @@
   opacity: 1;
   pointer-events: none;
   background: var(--switcher-bg);
-  border: 1px solid #9bb537;
+  border: 1px solid var(--accent-color);
 }
 .modal-order-form__button:hover,
 .modal-order-form__button:focus {
-  border: 1px solid #9bb537;
+  border: 1px solid var(--accent-color);
   background: none;
   color: var(--primaty-black-color);
 }
