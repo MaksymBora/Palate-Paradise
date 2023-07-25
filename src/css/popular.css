@@ -83,7 +83,17 @@
   .popular {
     padding-top: 64px;
     width: 176px;
+    margin-left: 0;
   }
+
+  .popular-title {
+    margin-bottom: 32px;
+  }
+
+  .popular-description {
+    width: 120px;
+  }
+
   .popular-img {
     width: 48px;
     height: 48px;
@@ -95,5 +105,19 @@
 
   .popular-description {
     -webkit-line-clamp: 3;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .popular {
+    width: 235px;
+  }
+  .popular-description {
+    width: 155px;
+  }
+
+  .popular-img {
+    width: 64px;
+    height: 64px;
   }
 }
