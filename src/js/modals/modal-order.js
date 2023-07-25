@@ -88,11 +88,6 @@ function onSuccessMes() {
   });
 }
 
-const express = require('express');
-const cors = require('cors');
-const app = express();
-app.use(cors());
-
 // Обработчик отправки формы
 document
   .getElementById('orderForm')
