@@ -4,6 +4,7 @@ const backdrop = document.querySelector('.backdrop-recipes');
 const closeButton = document.querySelector('.modal-close-btn');
 const modal = document.querySelector('.modal-recipes');
 
+
 closeButton.addEventListener('click', closeModal);
 document.addEventListener('keydown', onEscKeyPress);
 backdrop.addEventListener('click', (event) => {
@@ -56,14 +57,18 @@ recipesContainer.addEventListener('click', async (event) => {
   const recipeId = seeRecipeBtn.dataset.id;
   console.log(recipeId);
   try {
-    const recipe = await fetchRecipe(recipeId);
-    if (recipe) {
+     const fetchedRecipe = await fetchRecipe(recipeId);
+    if (fetchedRecipe) {
+      recipe = fetchedRecipe;
+      
       openModal();
     }
   } catch (error) {
     console.log(error);
   }
 });
+
+
 
 
 
@@ -92,6 +97,7 @@ displayRecipeVideo(recipe);
 // Відображаю відео на сторінці
 function displayRecipeVideo(recipe) {
   const recipeVideoIframe = document.querySelector('.recipes-iframe-video');
+   recipeVideoIframe.src = '';
   const youtubeLink = recipe.youtube;
    const videoId = getVideoIdFromLink(youtubeLink);
   recipeVideoIframe.src = `https://www.youtube.com/embed/${videoId}`;
@@ -161,13 +167,45 @@ function displayStarRating(recipe) {
   }
 }
 
+// Додавання рецептів у обрані (localStorage)
 
+function getFavoriteRecipes() {
+  const favoriteRecipes = JSON.parse(localStorage.getItem('favoriteRecipes')) || [];
+  return favoriteRecipes;
+}
 
+function saveFavoriteRecipes(favoriteRecipes) {
+  localStorage.setItem('favoriteRecipes', JSON.stringify(favoriteRecipes));
+}
 
+const addToFavoriteButton = document.querySelector('.btn-add-favorite');
+addToFavoriteButton.addEventListener('click', (event) => {
+  if (recipe) {
+    addToFavorites(recipe);
+  }
+});
 
+// function removeFromFavorites(recipeId) {
+//   const favoriteRecipes = getFavoriteRecipes();
+//   const index = favoriteRecipes.indexOf(recipeId);
+//   if (index !== -1) {
+//     favoriteRecipes.splice(index, 1);
+//     saveFavoriteRecipes(favoriteRecipes);
+//   }
+// }
 
-
-
+function addToFavorites(recipe) {
+  const favoriteRecipes = getFavoriteRecipes(); 
+  const { _id, title, category, rating, preview, description } = recipe;
+  
+  const newRecipe = { _id, title, category, rating, preview, description };
+  
+  const isDuplicate = favoriteRecipes.some((favoriteRecipe) => favoriteRecipe._id === recipe._id);
+  if (!isDuplicate) {
+    favoriteRecipes.push(newRecipe); 
+    saveFavoriteRecipes(favoriteRecipes); 
+  }
+}
 
 
 
