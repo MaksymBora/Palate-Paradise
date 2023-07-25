@@ -2,6 +2,8 @@ import axios from 'axios';
 
 const backdrop = document.querySelector('.backdrop');
 const closeButton = document.querySelector('.modal-close-btn');
+closeButton.addEventListener('click', closeModal);
+ document.addEventListener('keydown', onEscKeyPress);
 
 
 // Відкриття модального вікна
@@ -9,7 +11,6 @@ function openModal() {
   const modal = document.querySelector('.modal-recipes');
   modal.classList.remove('is-hidden');
   backdrop.classList.remove('is-hidden');
-  document.addEventListener('keydown', onEscKeyPress);
   backdrop.addEventListener('click', closeModal);
 }
 
@@ -35,10 +36,8 @@ backdrop.addEventListener('click', (event) => {
     closeModal();
   }
 });
-closeButton.addEventListener('click', closeModal);
 
-
-
+// Функція - контейнер що рендерить модалку
 function displayRecipeInModal(recipe) {
   displayRecipeVideo(recipe);
   displayRecipeTitle(recipe);
@@ -50,7 +49,7 @@ function displayRecipeInModal(recipe) {
   displayStarRating(recipe);
 }
 
-
+// Слухач на пул рецептів для визначення кліку на кнопку картки
 const recipesContainer = document.querySelector('.recipes');
 recipesContainer.addEventListener('click', async (event) => {
   const seeRecipeBtn = event.target.closest('.rec-btn-open');
@@ -83,6 +82,9 @@ recipesContainer.addEventListener('click', async (event) => {
 // }).catch(error => {
 //   console.log(error);
 // });
+
+
+
 
 // Отримую дані про конкретний рецепт з API по ID
 async function fetchRecipe(recipeId) {
@@ -188,45 +190,7 @@ function displayStarRating(recipe) {
   }
 }
 
-// Відкриття модального вікна
-function openModal() {
-  const modal = document.querySelector('.modal-recipes');
-  modal.classList.remove('is-hidden');
-  backdrop.classList.remove('is-hidden');
-  document.addEventListener('keydown', onEscKeyPress);
-  backdrop.addEventListener('click', closeModal);
-  closeButton.addEventListener('click', closeModal);
-}
 
-
-// Закриття модального вікна:
-function closeModal() {
-  const modal = document.querySelector('.modal-recipes');
-  modal.classList.add('is-hidden');
-  document.removeEventListener('keydown', onEscKeyPress);
-  backdrop.removeEventListener('click', closeModal);
-  closeButton.removeEventListener('click', closeModal);
-   backdrop.classList.add('is-hidden');
-}
-
-
-function onEscKeyPress(event) {
-  if (event.key === 'Escape') {
-    closeModal();
-  }
-}
-
-
-backdrop.addEventListener('click', (event) => {
-  if (event.target === backdrop) {
-    closeModal();
-  }
-});
-
-
-closeButton.addEventListener('click', closeModal);
-
-document.addEventListener('keydown', onEscKeyPress);
 
 
 
