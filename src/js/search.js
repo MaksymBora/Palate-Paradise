@@ -15,8 +15,7 @@ import {
 } from './search/handle-selects';
 import Pagination from 'tui-pagination';
 import 'tui-pagination/dist/tui-pagination.css';
-import createPagination from './favorite/pagination';
-import refs from './favorite/constants';
+// import createPagination from './favorite/pagination';
 
 const recipeApiService = new RecipeApiService();
 
@@ -25,6 +24,10 @@ const searchInput = document.querySelector('.form-input');
 showLoader();
 let data = [];
 
+let page = 1;
+let perPage = 9;
+let totalPages = 0;
+
 // ===========================================================//
 // Function to fetch data from the API and render the markup
 //  ========================================================//
@@ -32,6 +35,9 @@ async function getApi() {
   try {
     const results = await recipeApiService.getRecipe();
     data = results.results;
+    perPage = results.perPage;
+    totalPages = results.totalPages;
+
     renderMarkup(results.results);
 
     hideLoader();
@@ -41,6 +47,45 @@ async function getApi() {
 }
 
 const dropdownContainer = document.querySelector('.custom-dropdown');
+
+//===========================================//
+// INITIALAZING       =======================//
+//===========================================//
+
+async function init() {
+  const areaDropdownList = document.querySelector(
+    '.choice__area.custom-dropdown'
+  );
+
+  const timeDropdownList = document.querySelector(
+    '.choice__time.custom-dropdown'
+  );
+
+  const ingredientsDropdownContainer = document.querySelector(
+    '.choice__ingredients.custom-dropdown'
+  );
+  try {
+    showLoader();
+    await getApi();
+    await fetchAndPopulateAreas();
+    await fetchAndPopulateIngredients();
+    createTimeDropdownList();
+    handleSelection(dropdownContainer);
+
+    handleAreaSelect(areaDropdownList);
+
+    handleIngredientsSelect(ingredientsDropdownContainer);
+
+    timeDropdownList.addEventListener('click', handleTimeSelection);
+    areaDropdownList.addEventListener('click', handleAreaSelection);
+
+    ingredientsDropdownContainer.addEventListener('click', handleIngredients);
+
+    hideLoader();
+  } catch (error) {
+    console.error('Error initializing script:', error);
+  }
+}
 
 // Function to handle the selection and color change for dropdowns
 function handleSelection(container) {
@@ -144,45 +189,6 @@ function handleIngredientsSelect(container) {
   });
 }
 
-//===========================================//
-// INITIALAZING       =======================//
-//===========================================//
-async function init() {
-  const areaDropdownList = document.querySelector(
-    '.choice__area.custom-dropdown'
-  );
-
-  const timeDropdownList = document.querySelector(
-    '.choice__time.custom-dropdown'
-  );
-
-  const ingredientsDropdownContainer = document.querySelector(
-    '.choice__ingredients.custom-dropdown'
-  );
-  try {
-    showLoader();
-    await getApi();
-    await fetchAndPopulateAreas();
-    await fetchAndPopulateIngredients();
-    createTimeDropdownList();
-    handleSelection(dropdownContainer);
-
-    handleAreaSelect(areaDropdownList);
-
-    handleIngredientsSelect(ingredientsDropdownContainer);
-
-    timeDropdownList.addEventListener('click', handleTimeSelection);
-    areaDropdownList.addEventListener('click', handleAreaSelection);
-
-    ingredientsDropdownContainer.addEventListener('click', handleIngredients);
-
-    // await getApi();
-    hideLoader();
-  } catch (error) {
-    console.error('Error initializing script:', error);
-  }
-}
-
 //==============================================================
 // RESET FILTERS
 // =============================================================
@@ -200,8 +206,8 @@ searchInput.addEventListener('input', () => {
 });
 
 // Initiating the script
-init();
 
+init();
 // ==============PAGINATION==================================
 
 //===========================================================
