@@ -1,7 +1,7 @@
 import RecipeApiService from './service/service-api';
 import Scrollbar from 'smooth-scrollbar';
 import { notifyInfo } from './notifications';
-import { renderingAllRecips } from './service/all-cat-render';
+import { renderingAllRecips } from './all-cat/all-cat-render';
 
 const selectListEl = document.querySelector('.all-cat-select-list');
 
@@ -56,15 +56,15 @@ function renderingOnClick() {
   recipeApiService.getRecipe().then(response => {
     imageContainer.innerHTML = '';
     const recipesMarkup = response.results.map(recipe => {
-      const { title, description, preview, rating, id, category } = recipe;
+      const { title, description, preview, rating, _id, category } = recipe;
       return renderingAllRecips(
         title,
         description,
         preview,
         rating,
-        id,
+        _id,
         category
-      );
+      ); // Make sure the ID property is correct here
     });
     imageContainer.innerHTML = recipesMarkup.join('');
   });

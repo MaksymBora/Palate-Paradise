@@ -192,7 +192,7 @@ function renderMarkup(data) {
         recipe.description,
         recipe.preview,
         recipe.rating,
-        recipe.id,
+        recipe._id,
         recipe.category
       )
     )
