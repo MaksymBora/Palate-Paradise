@@ -11,3 +11,12 @@ export function notifyInfo() {
     timeout: 6000,
   });
 }
+
+export function notifyInfoResult() {
+  Notiflix.Notify.info(
+    'Oops! There is no result for your request, please try again!',
+    {
+      timeout: 6000,
+    }
+  );
+}
