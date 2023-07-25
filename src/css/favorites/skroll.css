@@ -1,4 +1,4 @@
-#scrollToTopBtn {
+.scrollToTopBtn {
     display: none;
     position: fixed;
     bottom: 20px;
@@ -15,11 +15,11 @@
     display: block;
 }
 
-#scrollToTopBtn:hover {
+.scrollToTopBtn:hover {
     opacity: 1;
 }
 
-#scrollToTopBtn img {
+.scrollToTopBtn img {
     width: 30px; 
     height: 30px;
     object-fit: contain; 
@@ -27,12 +27,12 @@
 
 /* Додаткові стилі для планшетів */
 @media (max-width: 768px) {
-    #scrollToTopBtn {
+    .scrollToTopBtn {
         bottom: 10px;
         right: 10px;
     }
 
-    #scrollToTopBtn img {
+    .scrollToTopBtn img {
         width: 25px;
         height: 25px;
     }
@@ -40,7 +40,7 @@
 
 /* Додаткові стилі для мобільних телефонів */
 @media (max-width: 480px) {
-    #scrollToTopBtn {
+    .scrollToTopBtn {
         bottom: 5;
     }
 }
