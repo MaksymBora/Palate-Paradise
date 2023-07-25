@@ -6,7 +6,7 @@ import sprite from '../../images/sprite.svg';
  *  rating - The rating value to be displayed (should be between 0 and 5).
  * returns string HTML markup representing the star rating.
  */
-function getRating(rating) {
+export function getRating(rating) {
   // Ensure the rating is capped at a maximum of 5 stars.
   const roundedRating = rating > 5 ? 5 : rating;
 
@@ -39,7 +39,7 @@ function getRating(rating) {
  *  id - The ID of the recipe to be checked.
  *  Returns 'active' if the recipe is in favorites, or an empty string if not.
  */
-function checkForFav(id) {
+export function checkForFav(id) {
   // Retrieve the favorites data from localStorage.
   const storage = localStorage.getItem('favorites-data');
 

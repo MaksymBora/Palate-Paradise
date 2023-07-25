@@ -89,11 +89,6 @@ button {
   margin: 0 auto;
 }
 
-.content-wrapper {
-  display: flex;
-  flex-direction: column;
-}
-
 footer {
   display: flex;
   align-items: center;
@@ -105,6 +100,11 @@ footer {
   color: var(--switcher-bg);
 }
 
+.content-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
 /*================================*/
 /* Common Container*/
 /*================================*/
@@ -113,7 +113,7 @@ footer {
   .container {
     min-width: 375px;
     padding: 0 20px;
-    width: 375px;
+    /* width: 375px; */
   }
 }
 
