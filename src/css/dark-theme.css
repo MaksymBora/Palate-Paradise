@@ -2,6 +2,7 @@
 .dark-theme {
   background-color: #161616;
   color: #fff;
+  transition: 250ms ease-out;
 }
 
 .dark-theme .menu-nav-links {
