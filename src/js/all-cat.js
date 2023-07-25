@@ -24,6 +24,12 @@ function createCategories(resp) {
   };
   const markUpCat = resp.map(obj => takeElementName(obj)).join('');
   selectListEl.innerHTML = markUpCat;
+
+  const categoryButtons = document.querySelectorAll('.all-cat-select-btn');
+
+  categoryButtons.forEach(button => {
+    button.addEventListener('click', handleCategoryClick);
+  });
 }
 
 // Make button Active
@@ -68,4 +74,12 @@ function renderingOnClick() {
     });
     imageContainer.innerHTML = recipesMarkup.join('');
   });
+}
+
+function handleCategoryClick(event) {
+  const selectedCategory = event.target.dataset.name;
+
+  recipeApiService.category = selectedCategory;
+
+  renderingOnClick();
 }
