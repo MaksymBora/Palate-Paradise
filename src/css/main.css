@@ -22,7 +22,11 @@
 @import './favorites/pagination.css';
 
 
+@import './cart.css';
+
+
 @import './dark-theme.css';
 
 @import './loader.css';
+
 
