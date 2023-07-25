@@ -138,7 +138,7 @@ document
         console.log('Success:', data);
         showSuccessMessage('Your order has been successfully submitted!');
         setTimeout(closeModal, 2000);
-        setTimeout(hideLoader, 2000);
+        setTimeout(hideLoader(), 2000);
       })
       .catch(error => {
         console.error('Error:', error);
@@ -148,3 +148,5 @@ document
         setTimeout(hideLoader, 2000);
       });
   });
+
+// test
