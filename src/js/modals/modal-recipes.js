@@ -32,6 +32,8 @@ function openModal() {
 // Закриття модального вікна:
 function closeModal() {
   if (modal) {
+    const recipeVideoIframe = document.querySelector('.recipes-iframe-video');
+    recipeVideoIframe.src = ''
     modal.classList.add('is-hidden');
     document.removeEventListener('keydown', onEscKeyPress);
     backdrop.removeEventListener('click', closeModal);
