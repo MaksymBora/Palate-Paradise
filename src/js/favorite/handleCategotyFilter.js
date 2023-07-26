@@ -36,7 +36,7 @@ export function handleCategoryFilter(evt) {
       evt.target.name === 'main-cat-btn' ? '' : evt.target.textContent;
   }
 
-  const storage = localStorage.getItem('favorites-data');
+  const storage = localStorage.getItem('favoriteRecipes');
   data = JSON.parse(storage);
 
   if (!data || data.length === 0) {

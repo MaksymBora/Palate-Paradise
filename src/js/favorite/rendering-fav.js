@@ -41,7 +41,7 @@ export function getRating(rating) {
  */
 export function checkForFav(id) {
   // Retrieve the favorites data from localStorage.
-  const storage = localStorage.getItem('favorites-data');
+  const storage = localStorage.getItem('favoriteRecipes');
 
   // Parse the favorites data into an array of recipe objects.
   const data = JSON.parse(storage);

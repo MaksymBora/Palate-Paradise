@@ -18,7 +18,7 @@ export function updateCategoryList(target) {
   showLoader();
 
   const currentRec = target.closest('div.recipe-item').dataset.category;
-  const storageItems = getFromLocalStorage('favorites-data');
+  const storageItems = getFromLocalStorage('favoriteRecipes');
   const isCategoryLocal = storageItems.find(el => el.category === currentRec);
   const isCategoryRendered = [...refs.categoriesContainer.children].find(
     el => el.textContent === currentRec

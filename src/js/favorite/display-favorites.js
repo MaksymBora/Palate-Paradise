@@ -8,7 +8,7 @@ import { showLoader, hideLoader } from '../loader';
 export function displayFavorites(pageSet = 1) {
   showLoader();
 
-  const data = getFromLocalStorage('favorites-data');
+  const data = getFromLocalStorage('favoriteRecipes');
 
   // Show or hide the "All" button based on whether there is data in localStorage.
   refs.allButton.style.display = data && data.length ? 'block' : 'none';

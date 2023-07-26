@@ -99,22 +99,25 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // Event listener for <li> elements inside '.popular-list'
-  popularList.addEventListener('click', async event => {
-    const listItem = event.target.closest('.popular-list-item');
-    if (!listItem) return;
+  if (popularList) {
+    // Event listener for <li> elements inside '.popular-list'
+    popularList.addEventListener('click', async event => {
+      const listItem = event.target.closest('.popular-list-item');
+      if (!listItem) return;
 
-    const recipeId = listItem.dataset.id;
-    try {
-      const fetchedRecipe = await fetchRecipe(recipeId);
-      if (fetchedRecipe) {
-        recipe = fetchedRecipe;
-        updateFavoriteButtonStatus(recipe);
-        openModal();
+      const recipeId = listItem.dataset.id;
+      try {
+        const fetchedRecipe = await fetchRecipe(recipeId);
+        if (fetchedRecipe) {
+          recipe = fetchedRecipe;
+          updateFavoriteButtonStatus(recipe);
+          openModal();
+        }
+      } catch (error) {
+        console.log(error);
       }
-    } catch (error) {
-      console.log(error);
-    }
-  });
+    });
+  }
 });
 
 // Отримую дані про конкретний рецепт з API по ID
@@ -253,7 +256,7 @@ function addToFavorites(recipe) {
   const favoriteRecipes = getFavoriteRecipes();
   const { _id, title, category, rating, preview, description } = recipe;
 
-  const newRecipe = { _id, title, category, rating, preview, description };
+  const newRecipe = { id: _id, title, category, rating, preview, description };
 
   const isDuplicate = isRecipeInFavorites(recipe);
   if (!isDuplicate) {

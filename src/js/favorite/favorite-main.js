@@ -32,28 +32,28 @@ window.addEventListener('load', modifyClassesOnLoad);
 // ---------------------------------------
 // Imitation adding data to LocalStorage
 // ---------------------------------------
-recipeApiSeriсe.getRecipe().then(response => {
-  const arr = response.results;
+// recipeApiSeriсe.getRecipe().then(response => {
+//   const arr = response.results;
 
-  const FAV_DATA = 'favorites-data';
-  const toStorage = [];
+//   const FAV_DATA = 'favoriteRecipes';
+//   const toStorage = [];
 
-  for (let i = 0; i < 6; i++) {
-    const { _id, title, category, rating, preview, description } = arr[i];
-    for (let j = 0; j < 5; j++) {
-      toStorage.push({
-        id: _id,
-        title,
-        category,
-        rating,
-        preview,
-        description,
-      });
-    }
-  }
+//   for (let i = 0; i < 6; i++) {
+//     const { _id, title, category, rating, preview, description } = arr[i];
+//     for (let j = 0; j < 5; j++) {
+//       toStorage.push({
+//         id: _id,
+//         title,
+//         category,
+//         rating,
+//         preview,
+//         description,
+//       });
+//     }
+//   }
 
-  localStorage.setItem(FAV_DATA, JSON.stringify(toStorage));
-});
+//   localStorage.setItem(FAV_DATA, JSON.stringify(toStorage));
+// });
 
 /**
  * Refreshes the favorite recipes page.
@@ -66,7 +66,7 @@ function onFavoritesReload() {
   const categoryMarkup = createCategoryList();
   const allCatBtn = `<button class="fav-button common-btn is-active" name="main-cat-btn">All categories</button>`;
 
-  const data = getFromLocalStorage('favorites-data');
+  const data = getFromLocalStorage('favoriteRecipes');
   refs.recipesListContainer.innerHTML = '';
   refs.categoriesContainer.innerHTML =
     data && data.length ? `${allCatBtn}${categoryMarkup}` : '';
@@ -81,7 +81,7 @@ function onFavoritesReload() {
  * {string} The category list markup or an empty string if there is no data.
  */
 function createCategoryList() {
-  const storage = localStorage.getItem('favorites-data');
+  const storage = localStorage.getItem('favoriteRecipes');
   const data = JSON.parse(storage);
 
   if (!data || data.length === 0) return '';
@@ -101,9 +101,9 @@ function createCategoryList() {
  */
 function removeFavorite(currentBtn) {
   const recipeInfo = JSON.parse(currentBtn.dataset.info);
-  const storage = JSON.parse(localStorage.getItem('favorites-data'));
+  const storage = JSON.parse(localStorage.getItem('favoriteRecipes'));
   localStorage.setItem(
-    'favorites-data',
+    'favoriteRecipes',
     JSON.stringify(storage.filter(el => el.id !== recipeInfo.id))
   );
   onFavoritesReload();
@@ -117,7 +117,7 @@ function handleRecipeButtonEvent({ target }) {
   if (!target.closest('button')) return;
   const currentBtn = target.closest('button');
 
-  if (currentBtn.name === 'favorites-data') {
+  if (currentBtn.name === 'favoriteRecipes') {
     removeFavorite(currentBtn);
     updateCategoryList(target);
   }
