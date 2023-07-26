@@ -15,12 +15,14 @@ function scrollToTopButtonVisibility() {
   const carSectionHeight = carSection.offsetHeight;
   const scrollY = window.scrollY;
 
-  if (scrollY < prevScrollPos || scrollY + windowHeight > carSectionHeight) {
+  if (scrollY <= prevScrollPos || scrollY + windowHeight >= carSectionHeight) {
     scrollToTopBtn.style.display = 'block';
   } else {
     scrollToTopBtn.style.display = 'none';
   }
-
+  if (scrollY === 0) {
+    scrollToTopBtn.style.display = 'none';
+  }
   prevScrollPos = scrollY;
 }
 
