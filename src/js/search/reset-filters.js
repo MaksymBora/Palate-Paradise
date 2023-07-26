@@ -1,4 +1,5 @@
 // Функция для сброса фильтров
+
 export function resetFilters() {
   const resetButton = document.querySelector('.reset');
 

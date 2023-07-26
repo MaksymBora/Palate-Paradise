@@ -13,9 +13,6 @@ import {
   handleAreaSelection,
   handleIngredients,
 } from './search/handle-selects';
-import Pagination from 'tui-pagination';
-import 'tui-pagination/dist/tui-pagination.css';
-// import createPagination from './favorite/pagination';
 
 const recipeApiService = new RecipeApiService();
 
