@@ -1,3 +1,5 @@
+
+
 const changeTheme = document.querySelector("[data-switch]");
 changeTheme.addEventListener('change', toggleTheme);
 const changeMobTheme = document.querySelector("[data-switch-mobile]");
@@ -11,16 +13,30 @@ body.classList.toggle('light-theme');
 // нинішня тема
 const isDarkTheme = body.classList.contains('dark-theme');
 localStorage.setItem('theme', isDarkTheme ? 'dark' : 'light');
+
+changeTheme.checked = isDarkTheme;
+changeMobTheme.checked = isDarkTheme;
 }
-
-const savedTheme = localStorage.getItem('theme');
-if (savedTheme === 'dark') {
-toggleTheme();
-changeTheme.checked = true;
+function updateSwitcher() {
+  const savedTheme = localStorage.getItem('theme');
+  if (savedTheme === 'dark') {
+    document.body.classList.add('dark-theme');
+    changeTheme.checked = true;
+    changeMobTheme.checked = true;
+  } else {
+    document.body.classList.add('light-theme');
+    changeTheme.checked = false;
+    changeMobTheme.checked = false;
+  }
 }
+document.addEventListener('DOMContentLoaded', () => {
+  updateSwitcher();
+});
 
+changeTheme.addEventListener('change', () => {
+  localStorage.setItem('theme', changeTheme.checked ? 'dark' : 'light');
+});
 
-  
 
 
 // відкриття модалки

@@ -58,7 +58,7 @@
   font-size: 14px;
   font-weight: 500;
 }
-.rating-button-send:disabled {
+/* .rating-button-send:disabled {
   opacity: 1;
   pointer-events: none;
   background: var(--switcher-bg);
@@ -70,7 +70,7 @@
   border: none;
   border-radius: 15px;
   color: var(--primary-white-color);
-}
+} */
 .rating-button-close {
   position: absolute;
   top: 0;
