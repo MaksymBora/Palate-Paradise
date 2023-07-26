@@ -1,5 +1,7 @@
 @import '~node_modules/modern-normalize/modern-normalize.css';
 
+@import './dark-theme.css';
+
 @font-face {
   font-family: 'Inter';
   src: url('../fonts/Inter-Regular.woff2'), url('../fonts/Inter-Regular.woff');
@@ -23,8 +25,8 @@
   --primary-white-color: #ffffff;
   --primaty-black-color: #050505;
   --text-white-color: #f8f8f8;
-  --accent-color: #9bb537;
-  --switcher-bg: #cecdcd;
+  --accent-color: rgb(155, 181, 55);
+  --switcher-bg: rgb(206, 205, 205);
   --rating-stars: #eea10c;
   --transition-property: 250ms cubic-bezier(0.4, 0, 0.2, 1);
   /* Dark Theme */

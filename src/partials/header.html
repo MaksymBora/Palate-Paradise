@@ -19,7 +19,7 @@
           </svg>
         </button>
         <!-- Switcher -->
-        <label class="toggle header-toggle-checkbox">
+        <label class="toggle header-toggle-checkbox" data-switch>
           <input class="toggle-checkbox" type="checkbox" name="switch-theme" />
           <span class="toggle-switch"></span>
           <span class="toggle-label"></span>
@@ -35,28 +35,28 @@
     <!-- Mobile Menu -->
     <div class="backdrop visually-hidden">
       <div class="mobile">
-      <button class="close-mobile">
-        <svg class="mobile-svg" width="32" height="32">
-          <use href="./images/sprite.svg#icon-x"></use>
-        </svg>
-      </button>
-      <ul class="mob-menu-list">
-        <li class="mob-menu-item">
-          <a class="mob-menu-link" href="./index.html">Home</a>
-        </li>
-        <li>
-          <a id="home-mobile" class="mob-menu-link" href="./favorites.html"
-            >Favorite</a
-          >
-        </li>
-      </ul>
-      <label class="toggle header-toggle-checkbox">
-        <input class="toggle-checkbox" type="checkbox" name="switch-theme" />
-        <span class="toggle-switch"></span>
-        <span class="toggle-label"></span>
-      </label>
+        <button class="close-mobile">
+          <svg class="mobile-svg" width="32" height="32">
+            <use href="./images/sprite.svg#icon-x"></use>
+          </svg>
+        </button>
+        <ul class="mob-menu-list">
+          <li class="mob-menu-item">
+            <a class="mob-menu-link header-accent" href="./index.html">Home</a>
+          </li>
+          <li>
+            <a id="home-mobile" class="mob-menu-link" href="./favorites.html"
+              >Favorite</a
+            >
+          </li>
+        </ul>
+        <label class="toggle header-toggle-checkbox" for="mobile-switch-theme" data-switch-mobile>
+          <input class="toggle-checkbox" type="checkbox" id="mobile-switch-theme" name="switch-theme" />
+          <span class="toggle-switch"></span>
+          <span class="toggle-label"></span>
+        </label>
+        </label>
+      </div>
     </div>
-  </div>
-    
   </div>
 </header>

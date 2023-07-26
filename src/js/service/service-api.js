@@ -62,6 +62,17 @@ export default class RecipeApiService {
       notifyError(error);
     }
   }
+  async getRecByIngredient() {
+    const url = `${this.BASE_URL}/recipes?ingredient=${
+      this.ingredients
+    }&page=1&${this.resizePage()}`;
+    try {
+      const response = await axios.get(url);
+      return response.data;
+    } catch (error) {
+      notifyError(error);
+    }
+  }
 
   async getPopular() {
     const url = `${this.BASE_URL}/recipes/popular`;
@@ -125,5 +136,3 @@ export default class RecipeApiService {
     }
   }
 }
-
-

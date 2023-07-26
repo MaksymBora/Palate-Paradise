@@ -1,0 +1,110 @@
+.cart-recipe-wrapper {
+    padding: 10px 30px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 20px;
+    border-radius: 4px;
+    height: auto;
+    max-width: 1000px;
+    box-shadow: 2px 1px 37px -1px rgba(0, 0, 0, 0.75);
+        -webkit-box-shadow: 2px 1px 37px -1px rgba(0, 0, 0, 0.75);
+        -moz-box-shadow: 2px 1px 37px -1px rgba(0, 0, 0, 0.75);
+    
+}
+
+.cart-main-title{
+    margin-top: 30px;
+    margin-bottom: 50px;
+    text-align: center;
+}
+
+.cart-main-title > i{
+    color: rgba(155, 181, 55, 1);
+}
+.cart-recipe-item{
+    margin-bottom: 20px;
+    padding: 20px;
+    background: linear-gradient(184deg, rgba(155, 181, 55, 1) 40%,  rgba(206, 205, 205, 1) 100%, rgba(186, 185, 190, 1) 62%);
+    
+    border-radius: 5px;
+    transition: scale 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.cart-recipe-item:hover,
+.cart-recipe-item:focus{
+    scale: 1.05;
+}
+
+.cart-recipe-img{
+    width: 240px;
+    height: 240px;
+    border-radius: 8px;
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 10px;
+}
+
+.cart-recipe-title{
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.cart-recipe-area {
+    margin-bottom: 8px;
+}
+
+.cart-recipe-descr{
+    margin-bottom: 8px;
+    text-align: justify;
+}
+
+.cart-recipe-rating{
+    margin-bottom: 8px;
+}
+
+.cart-recipe-btn {
+    display: block;
+    margin: auto;
+    min-width: 130px;
+    height: 50px;
+
+}
+
+
+.cart-text-wrap {
+    width: auto;
+}
+
+/*======Tablet style=========*/
+@media screen and (min-width: 768px) {
+.cart-recipe-item {
+        display: flex;
+        background-image: linear-gradient(90deg, rgba(155, 181, 55, 1) 23%, rgba(206, 205, 205, 1) 100%, rgba(86, 85, 106, 1) 100%, rgba(83, 82, 103, 1) 100%);
+}
+
+.cart-recipe-title{
+    margin-bottom: 4px;
+}
+
+.cart-recipe-img {
+    margin-right: 20px;
+    align-self: self-end;
+}
+
+.cart-recipe-area {
+    margin-bottom: 5px;
+}
+
+.cart-recipe-descr {
+    margin-bottom: 5px;
+}
+
+.cart-recipe-rating {
+    margin-bottom: 5px;
+}
+
+.cart-text-wrap{
+    margin-right: 20px;
+}
+}
