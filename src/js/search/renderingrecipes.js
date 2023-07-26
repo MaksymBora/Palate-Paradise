@@ -47,8 +47,32 @@ export function renderingRecipes(
 }
 
 // Function to render the markup for all filtered recipes
+// export function renderMarkup(data) {
+//   const post = document.querySelector('.image-container');
+
+//   const markup = data
+//     .map(recipe =>
+//       renderingRecipes(
+//         recipe.title,
+//         recipe.description,
+//         recipe.preview,
+//         recipe.rating,
+//         recipe._id,
+//         recipe.category
+//       )
+//     )
+//     .join('');
+
+//   post.innerHTML = markup;
+// }
+
 export function renderMarkup(data) {
   const post = document.querySelector('.image-container');
+
+  if (!data || data.length === 0) {
+    post.innerHTML = 'No recipes found.'; // Display a message if data is empty or undefined
+    return;
+  }
 
   const markup = data
     .map(recipe =>

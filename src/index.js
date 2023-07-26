@@ -1,4 +1,3 @@
-// import './js/service/service-api';
 import './js/mobile-menu';
 import './js/hero';
 import './js/all-cat';
@@ -15,3 +14,4 @@ import './js/cart/cart';
 import './js/all-cat/reset';
 import './js/scroll';
 import './js/modals/open-rating';
+import './js/search/pagination-search';

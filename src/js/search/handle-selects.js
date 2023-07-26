@@ -25,7 +25,7 @@ export async function handleTimeSelection(event) {
   }
 }
 
-function apiConstructorReset() {
+export function apiConstructorReset() {
   recipeApiService.time = '';
   recipeApiService.area = '';
   recipeApiService.ingredients = '';

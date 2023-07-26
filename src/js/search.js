@@ -24,23 +24,21 @@ const searchInput = document.querySelector('.form-input');
 showLoader();
 let data = [];
 
-let page = 1;
-let perPage = 9;
-let totalPages = 0;
-
 // ===========================================================//
 // Function to fetch data from the API and render the markup
 //  ========================================================//
-async function getApi() {
+export async function getApi() {
   try {
     const results = await recipeApiService.getRecipe();
     data = results.results;
-    perPage = results.perPage;
-    totalPages = results.totalPages;
 
     renderMarkup(results.results);
 
     hideLoader();
+    return {
+      perPage: results.perPage,
+      totalPages: results.totalPages,
+    };
   } catch (error) {
     console.error('Error fetching data:', error);
   }
