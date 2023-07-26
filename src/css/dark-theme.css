@@ -136,7 +136,7 @@
 }
 
  .dark-theme .modal-order-form__text{
-  border: 1px solid rgba(255, 255, 255, 0.2) ;
+  border: 1px solid rgba(110, 110, 110, 0.2) ;
 } 
 
 .dark-theme .modal-order-form__button{
@@ -145,4 +145,70 @@ background-color: var(--accent-color);
 
 .dark-theme .cart-recipe-wrapper{
   background-color: var(--primaty-black-color);
+}
+
+.dark-theme .modal-recipes{
+  background-color: var(--primaty-black-color);
+}
+
+.dark-theme .modal-close-btn{
+  background-color: transparent;
+  color: var(--primary-white-color);
+}
+
+.dark-theme .ratinng-value{
+  color: rgba(255, 255, 255, 0.5) ;
+}
+.dark-theme .recipes-cooking-time,
+.dark-theme .time-text{
+  color: rgba(255, 255, 255, 0.5) ;
+}
+
+.dark-theme .recipes-components-item_quantity{
+  color: rgba(255, 255, 255, 0.5) ;
+  opacity: 1;
+} 
+
+.dark-theme .recipes-hashtags-item{
+  border: 1px solid rgba(255, 255, 255, 0.5) ;
+}
+
+.dark-theme .recipes-description{
+  color: rgba(255, 255, 255, 0.8);
+  ;
+}
+
+.dark-theme .btn-give-rating{
+  color: var(--primary-white-color);
+  background-color: transparent;
+  border: 1px solid var(--accent-color);
+}
+
+.dark-theme .btn-add-favorite:hover,
+.dark-theme .btn-add-favorite:focus{
+  color: var(--primaty-black-color);
+  background-color: var(--accent-color);
+}
+
+.dark-theme .modal-rating{
+  background-color: var(--primaty-black-color);
+}
+
+.dark-theme .rating-button-close {
+  background-color: transparent;
+  color: var(--primary-white-color);
+}
+
+.dark-theme .rating-button-send{
+  background-color: var(--accent-color);
+  color: var(--primary-white-color);
+}
+
+.dark-theme .rating-button-send:hover,
+.dark-theme .rating-button-send:focus{
+  color: var(--primaty-black-color);
+}
+
+.dark-theme .rating-email{
+  border: 1px solid rgba(110, 110, 110, 0.3) ;
 }
