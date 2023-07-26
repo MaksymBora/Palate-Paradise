@@ -124,7 +124,7 @@ function onFormSubmit(evt) {
   };
 
   // Log the data being sent to the server
-  console.log('Data sent to server:', postToAdd);
+  // console.log('Data sent to server:', postToAdd);
 
   // Show loader before sending the request
   Notiflix.Loading.standard('Sending your order...');
