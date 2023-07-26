@@ -1,5 +1,5 @@
 const scrollToTopBtn = document.querySelector('.scroll-to-top');
-const contentWrapper = document.querySelector('.content-wrapper');
+const section = document.querySelector('.image-container');
 let prevScrollPos = window.pageYOffset;
 
 function scrollToTop() {
@@ -7,21 +7,24 @@ function scrollToTop() {
     top: 0,
     behavior: 'smooth',
   });
+  scrollToTopBtn.style.display = 'none';
 }
 
-function toggleScrollToTopButton() {
-  const contentRect = contentWrapper.getBoundingClientRect();
+function scrollToTopButtonVisibility() {
   const windowHeight = window.innerHeight;
-  const scrollY = window.pageYOffset;
+  const sectionHeight = section.offsetHeight;
+  const scrollY = window.scrollY;
 
-  if (scrollY < prevScrollPos || contentRect.bottom <= windowHeight) {
+  if (scrollY <= prevScrollPos || scrollY + windowHeight >= sectionHeight) {
     scrollToTopBtn.style.display = 'block';
   } else {
     scrollToTopBtn.style.display = 'none';
   }
-
+  if (scrollY === 0) {
+    scrollToTopBtn.style.display = 'none';
+  }
   prevScrollPos = scrollY;
 }
 
 scrollToTopBtn.addEventListener('click', scrollToTop);
-window.addEventListener('scroll', toggleScrollToTopButton);
+window.addEventListener('scroll', scrollToTopButtonVisibility);

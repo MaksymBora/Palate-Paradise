@@ -1,26 +1,32 @@
 const scrollToTopBtn = document.querySelector('.scroll-to-top');
+const carSection = document.querySelector('.fav-list');
+let prevScrollPos = window.pageYOffset;
 
 function scrollToTop() {
   window.scrollTo({
     top: 0,
     behavior: 'smooth',
   });
+  scrollToTopBtn.style.display = 'none';
 }
 
-scrollToTopBtn.addEventListener('click', scrollToTop);
+function scrollToTopButtonVisibility() {
+  const windowHeight = window.innerHeight;
+  const carSectionHeight = carSection.offsetHeight;
+  const scrollY = window.scrollY;
 
-let prevScrollPos = window.pageYOffset;
-
-window.addEventListener('scroll', () => {
-  const isScrollingUp = window.scrollY < prevScrollPos;
-  prevScrollPos = window.scrollY;
-
-  if (
-    window.scrollY > 0 &&
-    (isScrollingUp || window.scrollY > window.innerHeight / 2)
-  ) {
+  if (scrollY <= prevScrollPos || scrollY + windowHeight >= carSectionHeight) {
     scrollToTopBtn.style.display = 'block';
   } else {
     scrollToTopBtn.style.display = 'none';
   }
-});
+
+  if (scrollY === 0 || scrollY > prevScrollPos) {
+    scrollToTopBtn.style.display = 'none';
+  }
+
+  prevScrollPos = scrollY;
+}
+
+scrollToTopBtn.addEventListener('click', scrollToTop);
+window.addEventListener('scroll', scrollToTopButtonVisibility);
