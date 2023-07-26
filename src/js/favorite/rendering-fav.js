@@ -91,9 +91,9 @@ export function renderingFavRec(
       <div class="upper-part">
         <button type="button" class="heart-btn ${checkForFav(
           id
-        )}" data-info="${JSON.stringify(infoRecipe)}" name="favorite">
+        )}"  name="favorite">
           <svg class="icon-heart" width="22" height="22">
-            <use href="${sprite}#heart"></use>
+            <use href="${sprite}#heart" data-info="${id}"></use>
           </svg>
         </button>
         <h2 class="rec-card-title title-cut">${title}</h2>

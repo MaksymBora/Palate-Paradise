@@ -29,37 +29,6 @@ function modifyClassesOnLoad() {
 // Вызываем функцию при загрузке страницы
 window.addEventListener('load', modifyClassesOnLoad);
 
-// ---------------------------------------
-// Imitation adding data to LocalStorage
-// ---------------------------------------
-// recipeApiSeriсe.getRecipe().then(response => {
-//   const arr = response.results;
-
-//   const FAV_DATA = 'favoriteRecipes';
-//   const toStorage = [];
-
-//   for (let i = 0; i < 6; i++) {
-//     const { _id, title, category, rating, preview, description } = arr[i];
-//     for (let j = 0; j < 5; j++) {
-//       toStorage.push({
-//         id: _id,
-//         title,
-//         category,
-//         rating,
-//         preview,
-//         description,
-//       });
-//     }
-//   }
-
-//   localStorage.setItem(FAV_DATA, JSON.stringify(toStorage));
-// });
-
-/**
- * Refreshes the favorite recipes page.
- * Generates category markup and the "All categories" button based on the saved data in localStorage.
- * Then displays the favorite recipes.
- */
 function onFavoritesReload() {
   showLoader();
 
@@ -95,17 +64,48 @@ function createCategoryList() {
   );
 }
 
+// ========================== //
+// Remove from Favourite
+// ========================== //
+
+document.addEventListener('click', function (event) {
+  const button = event.target.closest('.heart-btn');
+  if (button) {
+    onClickRemoveFavRec(event);
+  }
+});
+
+function onClickRemoveFavRec(event) {
+  const button = event.target;
+
+  // Вызываем функцию удаления избранного рецепта
+  removeFavorite(button);
+
+  // Удаляем класс "active" (если он присутствует)
+  button.classList.remove('active');
+
+  // onFavoritesReload();
+}
+
 /**
  * Removes the favorite recipe from localStorage and reloads the favorites list.
  *  currentBtn - The current button element representing the favorite recipe.
  */
 function removeFavorite(currentBtn) {
-  const recipeInfo = JSON.parse(currentBtn.dataset.info);
-  const storage = JSON.parse(localStorage.getItem('favoriteRecipes'));
-  localStorage.setItem(
-    'favoriteRecipes',
-    JSON.stringify(storage.filter(el => el.id !== recipeInfo.id))
-  );
+  // Получаем значение data-info (id) для текущей кнопки
+  const id = currentBtn.dataset.info;
+
+  // Получаем из localStorage данные
+  const favoriteRecipes =
+    JSON.parse(localStorage.getItem('favoriteRecipes')) || [];
+
+  // Фильтруем массив, удаляя объект с указанным id
+  const updatedFavorites = favoriteRecipes.filter(recipe => recipe.id !== id);
+
+  // Обновляем данные в localStorage
+  localStorage.setItem('favoriteRecipes', JSON.stringify(updatedFavorites));
+
+  // Перезагружаем список избранных рецептов
   onFavoritesReload();
 }
 
