@@ -27,11 +27,9 @@ export function renderingRecipes(
       style="background: linear-gradient(0deg, rgba(5, 5, 5, 0.6), rgba(5, 5, 5, 0)),
       url(${preview}); background-position: center; background-size: cover;">
       <div class="upper-part">
-        <button type="button" class="heart-btn" data-info="${JSON.stringify(
-          infoRecipe
-        )}" name="favorite">
-          <svg class="icon-heart" width="22" height="22">
-            <use href="${sprite}#heart"></use>
+        <button type="button" class="heart-btn"  name="favorite">
+          <svg data-info="${id}"  class="icon-heart" width="22" height="22" >
+            <use href="${sprite}#heart" ></use>
           </svg>
         </button>
         <h2 class="rec-card-title title-cut">${title}</h2>

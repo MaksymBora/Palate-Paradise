@@ -83,8 +83,6 @@ function onClickRemoveFavRec(event) {
 
   // Удаляем класс "active" (если он присутствует)
   button.classList.remove('active');
-
-  // onFavoritesReload();
 }
 
 /**
