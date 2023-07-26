@@ -164,6 +164,12 @@
   color: var(--text-white-color);
   border: none;
   border-radius: 8px;
+  transition: scale 250ms ease-in-out;
+}
+
+.rec-btn-open.rec-btn:hover,
+.rec-btn-open.rec-btn:focus {
+  scale: 1.1;
 }
 
 .fav-empty {

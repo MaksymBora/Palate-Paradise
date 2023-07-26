@@ -33,7 +33,7 @@ function openModal() {
 function closeModal() {
   if (modal) {
     const recipeVideoIframe = document.querySelector('.recipes-iframe-video');
-    recipeVideoIframe.src = ''
+    recipeVideoIframe.src = '';
     modal.classList.add('is-hidden');
     document.removeEventListener('keydown', onEscKeyPress);
     backdrop.removeEventListener('click', closeModal);
@@ -66,7 +66,7 @@ recipesContainer.addEventListener('click', async event => {
   try {
     const fetchedRecipe = await fetchRecipe(recipeId);
     if (fetchedRecipe) {
-       recipe = fetchedRecipe;
+      recipe = fetchedRecipe;
       updateFavoriteButtonStatus(recipe);
       openModal();
     }
