@@ -13,5 +13,5 @@ import './js/modals/modal-recipes';
 import './js/search';
 import './js/cart/cart';
 import './js/all-cat/reset';
-
-
+import './js/scroll';
+import './js/modals/open-rating';

@@ -1,14 +1,15 @@
 .cart-recipe-wrapper {
     padding: 10px 30px;
     margin-left: auto;
+    margin-top: 40px;
     margin-right: auto;
-    margin-bottom: 20px;
+    margin-bottom: 60px;
     border-radius: 4px;
     height: auto;
     max-width: 1000px;
-    box-shadow: 2px 1px 37px -1px rgba(0, 0, 0, 0.75);
-        -webkit-box-shadow: 2px 1px 37px -1px rgba(0, 0, 0, 0.75);
-        -moz-box-shadow: 2px 1px 37px -1px rgba(0, 0, 0, 0.75);
+    box-shadow: -1px 1px 78px -16px rgba(0, 0, 0, 0.75);
+        -webkit-box-shadow: -1px 1px 78px -16px rgba(0, 0, 0, 0.75);
+        -moz-box-shadow: -1px 1px 78px -16px rgba(0, 0, 0, 0.75);
     
 }
 
@@ -74,6 +75,7 @@
 
 .cart-text-wrap {
     width: auto;
+    padding-top: 20px;
 }
 
 /*======Tablet style=========*/
