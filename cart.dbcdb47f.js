@@ -1,0 +1,2 @@
+!function(){var o=document.querySelector(".scroll-to-top"),e=document.querySelector(".cart-section"),n=window.pageYOffset;o.addEventListener("click",(function(){window.scrollTo({top:0,behavior:"smooth"}),o.style.display="none"})),window.addEventListener("scroll",(function(){var t=window.innerHeight,i=e.offsetHeight,l=window.scrollY;o.style.display=l<=n||l+t>=i?"block":"none",0===l&&(o.style.display="none"),n=l}))}();
+//# sourceMappingURL=cart.dbcdb47f.js.map

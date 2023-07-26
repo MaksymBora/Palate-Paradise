@@ -1,0 +1,2 @@
+const o=document.querySelector(".scroll-to-top"),e=document.querySelector(".cart-section");let n=window.pageYOffset;o.addEventListener("click",(function(){window.scrollTo({top:0,behavior:"smooth"}),o.style.display="none"})),window.addEventListener("scroll",(function(){const t=window.innerHeight,l=e.offsetHeight,i=window.scrollY;o.style.display=i<=n||i+t>=l?"block":"none",0===i&&(o.style.display="none"),n=i}));
+//# sourceMappingURL=cart.a50dddb6.js.map
