@@ -55,33 +55,55 @@ backdrop.addEventListener('click', event => {
 
 // // Слухач на пул рецептів для визначення кліку на кнопку картки
 
-// const recipesContainer = document.querySelector('.image-container');
+// document.addEventListener('DOMContentLoaded', () => {
+//   const recipesContainer = document.querySelector('.image-container');
 
-// recipesContainer.addEventListener('click', async event => {
-//   const seeRecipeBtn = event.target.closest(`.rec-btn-open`);
-//   if (!seeRecipeBtn) return;
+//   recipesContainer.addEventListener('click', async event => {
+//     const seeRecipeBtn = event.target.closest('.rec-btn-open');
+//     if (!seeRecipeBtn) return;
 
-//   const recipeId = seeRecipeBtn.dataset.id;
-//   try {
-//     const fetchedRecipe = await fetchRecipe(recipeId);
-//     if (fetchedRecipe) {
-//       recipe = fetchedRecipe;
-//       updateFavoriteButtonStatus(recipe);
-//       openModal();
+//     const recipeId = seeRecipeBtn.dataset.id;
+//     try {
+//       const fetchedRecipe = await fetchRecipe(recipeId);
+//       if (fetchedRecipe) {
+//         recipe = fetchedRecipe;
+//         updateFavoriteButtonStatus(recipe);
+//         openModal();
+//       }
+//     } catch (error) {
+//       console.log(error);
 //     }
-//   } catch (error) {
-//     console.log(error);
-//   }
+//   });
 // });
 
 document.addEventListener('DOMContentLoaded', () => {
   const recipesContainer = document.querySelector('.image-container');
+  const popularList = document.querySelector('.popular-list');
 
+  // Event listener for '.rec-btn-open' buttons
   recipesContainer.addEventListener('click', async event => {
     const seeRecipeBtn = event.target.closest('.rec-btn-open');
     if (!seeRecipeBtn) return;
 
     const recipeId = seeRecipeBtn.dataset.id;
+    try {
+      const fetchedRecipe = await fetchRecipe(recipeId);
+      if (fetchedRecipe) {
+        recipe = fetchedRecipe;
+        updateFavoriteButtonStatus(recipe);
+        openModal();
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  });
+
+  // Event listener for <li> elements inside '.popular-list'
+  popularList.addEventListener('click', async event => {
+    const listItem = event.target.closest('.popular-list-item');
+    if (!listItem) return;
+
+    const recipeId = listItem.dataset.id;
     try {
       const fetchedRecipe = await fetchRecipe(recipeId);
       if (fetchedRecipe) {
