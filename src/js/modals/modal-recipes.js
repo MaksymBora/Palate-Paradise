@@ -220,8 +220,6 @@ function removeFromFavorites(recipe) {
   );
 
   saveFavoriteRecipes(updatedFavorites);
-
-  onRemoveReload();
 }
 
 // Чіпляємося до кнопки "Add to favorite"
