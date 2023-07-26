@@ -1,5 +1,5 @@
 const scrollToTopBtn = document.querySelector('.scroll-to-top');
-const section = document.querySelector('.image-container');
+const carSection = document.querySelector('.cart-section');
 let prevScrollPos = window.pageYOffset;
 
 function scrollToTop() {
@@ -12,10 +12,10 @@ function scrollToTop() {
 
 function scrollToTopButtonVisibility() {
   const windowHeight = window.innerHeight;
-  const sectionHeight = section.offsetHeight;
+  const carSectionHeight = carSection.offsetHeight;
   const scrollY = window.scrollY;
 
-  if (scrollY <= prevScrollPos || scrollY + windowHeight >= sectionHeight) {
+  if (scrollY <= prevScrollPos || scrollY + windowHeight >= carSectionHeight) {
     scrollToTopBtn.style.display = 'block';
   } else {
     scrollToTopBtn.style.display = 'none';
