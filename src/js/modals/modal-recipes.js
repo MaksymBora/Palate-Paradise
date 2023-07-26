@@ -26,6 +26,8 @@ function openModal() {
 
     backdrop.removeEventListener('click', closeModal);
     backdrop.addEventListener('click', closeModal);
+
+    updateFavoriteButtonStatus(recipe);
   }
 }
 
@@ -52,29 +54,6 @@ backdrop.addEventListener('click', event => {
     closeModal();
   }
 });
-
-// // Слухач на пул рецептів для визначення кліку на кнопку картки
-
-// document.addEventListener('DOMContentLoaded', () => {
-//   const recipesContainer = document.querySelector('.image-container');
-
-//   recipesContainer.addEventListener('click', async event => {
-//     const seeRecipeBtn = event.target.closest('.rec-btn-open');
-//     if (!seeRecipeBtn) return;
-
-//     const recipeId = seeRecipeBtn.dataset.id;
-//     try {
-//       const fetchedRecipe = await fetchRecipe(recipeId);
-//       if (fetchedRecipe) {
-//         recipe = fetchedRecipe;
-//         updateFavoriteButtonStatus(recipe);
-//         openModal();
-//       }
-//     } catch (error) {
-//       console.log(error);
-//     }
-//   });
-// });
 
 document.addEventListener('DOMContentLoaded', () => {
   const recipesContainer = document.querySelector('.image-container');
@@ -126,6 +105,7 @@ async function fetchRecipe(recipeId) {
   try {
     const response = await axios.get(url);
     const recipe = response.data;
+
     displayRecipeVideo(recipe);
     displayRecipeTitle(recipe);
     displayRecipeDescription(recipe);
@@ -236,7 +216,7 @@ function saveFavoriteRecipes(favoriteRecipes) {
 function removeFromFavorites(recipe) {
   const favoriteRecipes = getFavoriteRecipes();
   const updatedFavorites = favoriteRecipes.filter(
-    favoriteRecipe => favoriteRecipe._id !== recipe._id
+    favoriteRecipe => favoriteRecipe.id !== recipe.id
   );
   saveFavoriteRecipes(updatedFavorites);
 }
@@ -248,7 +228,7 @@ const addToFavoriteButton = document.querySelector('.btn-add-favorite');
 function isRecipeInFavorites(recipe) {
   const favoriteRecipes = getFavoriteRecipes();
   return favoriteRecipes.some(
-    favoriteRecipe => favoriteRecipe._id === recipe._id
+    favoriteRecipe => favoriteRecipe.id === recipe._id
   );
 }
 // Функція для додавання/видалення обраного рецепту з масиву localStorage
@@ -264,7 +244,7 @@ function addToFavorites(recipe) {
     addToFavoriteButton.textContent = 'Remove from favorite';
   } else {
     const updatedFavorites = favoriteRecipes.filter(
-      favoriteRecipe => favoriteRecipe._id !== _id
+      favoriteRecipe => favoriteRecipe.id !== id
     );
     saveFavoriteRecipes(updatedFavorites);
     addToFavoriteButton.textContent = 'Add to favorite';
@@ -283,6 +263,7 @@ addToFavoriteButton.addEventListener('click', () => {
     addToFavoriteButton.textContent = 'Remove from favorite';
   }
 });
+
 // Функція для оновлення тексту кнопки на "Add to favorite" або "Remove from favorite" в залежності від статусу
 function updateFavoriteButtonStatus(recipe) {
   const isFavorite = isRecipeInFavorites(recipe);
