@@ -216,7 +216,7 @@ function saveFavoriteRecipes(favoriteRecipes) {
 function removeFromFavorites(recipe) {
   const favoriteRecipes = getFavoriteRecipes();
   const updatedFavorites = favoriteRecipes.filter(
-    favoriteRecipe => favoriteRecipe.id !== recipe.id
+    favoriteRecipe => favoriteRecipe.id !== recipe._id
   );
   saveFavoriteRecipes(updatedFavorites);
 }
@@ -227,12 +227,15 @@ const addToFavoriteButton = document.querySelector('.btn-add-favorite');
 // Функція перевірки перебування рецепта в localStorage
 function isRecipeInFavorites(recipe) {
   const favoriteRecipes = getFavoriteRecipes();
-  return favoriteRecipes.some(
+  const isFavorite = favoriteRecipes.some(
     favoriteRecipe => favoriteRecipe.id === recipe._id
   );
+  console.log('Is Favorite?', isFavorite);
+  return isFavorite;
 }
 // Функція для додавання/видалення обраного рецепту з масиву localStorage
 function addToFavorites(recipe) {
+  console.log('Adding to Favorites:', recipe.title);
   const favoriteRecipes = getFavoriteRecipes();
   const { _id, title, category, rating, preview, description } = recipe;
 
@@ -244,7 +247,7 @@ function addToFavorites(recipe) {
     addToFavoriteButton.textContent = 'Remove from favorite';
   } else {
     const updatedFavorites = favoriteRecipes.filter(
-      favoriteRecipe => favoriteRecipe.id !== id
+      favoriteRecipe => favoriteRecipe.id !== _id
     );
     saveFavoriteRecipes(updatedFavorites);
     addToFavoriteButton.textContent = 'Add to favorite';
@@ -254,6 +257,7 @@ function addToFavorites(recipe) {
 
 //  Слухач події для кнопки "Add to favorite", який для додавання/видалення обраного рецепту з масиву localStorage
 addToFavoriteButton.addEventListener('click', () => {
+  console.log('Button Clicked!');
   const isFavorite = isRecipeInFavorites(recipe);
   if (isFavorite) {
     removeFromFavorites(recipe);
