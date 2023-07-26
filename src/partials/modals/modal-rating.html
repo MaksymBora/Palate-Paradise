@@ -1,69 +1,40 @@
-<div class="backdrop is-hidden">
+<div class="backdrop is-hidden" data-modal-rating>
   <div class="modal-rating">
     <div class="rating-container">
-      <form class="form-check">
+      <form class="rating-form-check">
         <h3 class="rating-title">Rating</h3>
-        <div class="rating">
-          <div class="rating-value">0.0</div>
+        <div class="rating rating-set">
+          <div class="rating-value">0</div>
           <div class="rating-body">
             <div class="rating-active"></div>
 
             <div class="rating-items">
               <label>
-                <input
-                  class="rating-item"
-                  type="radio"
-                  name="rating"
-                  value="1"
-                />
+                <input class="rating-item" type="radio" name="rating" value="1" />
                 <svg class="star" width="24px" height="24px">
                   <use href="./images/sprite.svg#rate-star"></use>
                 </svg>
               </label>
 
-              <label
-                ><input
-                  class="rating-item"
-                  type="radio"
-                  name="rating"
-                  value="2"
-                />
+              <label><input class="rating-item" type="radio" name="rating" value="2" />
                 <svg class="star" width="24px" height="24px">
                   <use href="./images/sprite.svg#rate-star"></use>
                 </svg>
               </label>
 
-              <label
-                ><input
-                  class="rating-item"
-                  type="radio"
-                  name="rating"
-                  value="3"
-                />
+              <label><input class="rating-item" type="radio" name="rating" value="3" />
                 <svg class="star" width="24px" height="24px">
                   <use href="./images/sprite.svg#rate-star"></use>
                 </svg>
               </label>
 
-              <label
-                ><input
-                  class="rating-item"
-                  type="radio"
-                  name="rating"
-                  value="4"
-                />
+              <label><input class="rating-item" type="radio" name="rating" value="4" />
                 <svg class="star" width="24px" height="24px">
                   <use href="./images/sprite.svg#rate-star"></use>
                 </svg>
               </label>
 
-              <label
-                ><input
-                  class="rating-item"
-                  type="radio"
-                  name="rating"
-                  value="5"
-                />
+              <label><input class="rating-item" type="radio" name="rating" value="5" />
                 <svg class="star" width="24px" height="24px">
                   <use href="./images/sprite.svg#rate-star"></use>
                 </svg>
@@ -72,18 +43,12 @@
           </div>
         </div>
 
-        <input
-          class="rating-email"
-          type="email"
-          name="email"
-          placeholder="Enter email"
-          required
-        />
+        <input class="rating-email" type="email" name="email" placeholder="Enter email" required />
 
         <button type="submit" class="rating-button-send">Send</button>
       </form>
 
-      <button class="rating-button-close">
+      <button class="rating-button-close" data-modal-rating-close>
         <svg class="close">
           <use class="close-icon" href="./images/sprite.svg#icon-x"></use>
         </svg>

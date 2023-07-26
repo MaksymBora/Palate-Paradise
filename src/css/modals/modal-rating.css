@@ -58,6 +58,13 @@
   font-size: 14px;
   font-weight: 500;
 }
+.rating-button-send:disabled {
+  opacity: 1;
+  pointer-events: none;
+  background: var(--switcher-bg);
+  border: 1px solid var(--accent-color);
+}
+
 .is-active-send {
   background-color: gray;
   border: none;

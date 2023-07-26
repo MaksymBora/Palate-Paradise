@@ -1,111 +1,86 @@
-import RecipeApiService from "../service/service-api";
+import throttle from 'lodash.throttle';
+import Notiflix from 'notiflix';
 
-const STORAGE_KEY = 'email';
+const refs = {
+  openModalRatingBtn: document.querySelector('[data-modal-rating-open]'),
+  closeModalRatingBtn: document.querySelector('[data-modal-rating-close]'),
 
-const ratingStars = document.querySelectorAll('.rating');
-// const star = document.querySelector
+  modalRating: document.querySelector('[data-modal-rating]'),
+  modalRatingForm: document.querySelector('.rating-form-check'),
+  modalRatingSubmitBtn: document.querySelector('.rating-button-send'),
+  modalRatingValue: document.querySelector('.rating-value'),
+  ratings: document.querySelectorAll('.rating-item'),
+};
 
-const addRatingFormEl = document.querySelector('.form-check');
-const ratingValue = document.querySelector('.rating-value');
-const saveEmailLocalStorage = document.querySelector(".rating-email");
-const sendBtn = document.querySelector('.rating-button-send');
+const RATING_FORM_KEY = 'rating-form-state';
 
-const recipeApiService = new RecipeApiService();
+refs.openModalRatingBtn.addEventListener('click', onToggleModalRating);
+refs.closeModalRatingBtn.addEventListener('click', onToggleModalRating);
+refs.modalRatingForm.addEventListener('change', throttle(onRatingChange, 500));
+refs.modalRatingForm.addEventListener('submit', onFormSubmit);
 
-
-addRatingFormEl.addEventListener('submit', handleSubmitRating);
-
-saveEmailLocalStorage.addEventListener('input', saveLocalStorage);
-// console.log(ratingStars);
-
-
-ratingStars.forEach(element => {
-    element.addEventListener('change', changeRatingStar);
-    // console.log('dsdf')
-});
-
-// saveEmailLocalStorage.hidden = true;
-
-// sendBtn.setAttribute('disabled', true);
-// sendBtn.classList.add('is-active-send');
-
-getLocalStorage();
-
-function handleSubmitRating(event) {
-    event.preventDefault();
-
-    const formData = new FormData(event.currentTarget);
-
-    // console.log(formData);
-
-    // formData.forEach((element) => {
-    //     console.log(element)
-    // })
-    event.currentTarget.reset();
-
-    localStorage.removeItem(STORAGE_KEY);
-
-    // if(saveEmailLocalStorage.value) {
-    //     sendBtn.setAttribute('disabled', false);
-    //     sendBtn.classList.remove('is-active-send');
-    // }
-
+// Open and close modal-rating modal window
+function onToggleModalRating() {
+  refs.modalRating.classList.toggle('is-hidden');
 }
 
-function changeRatingStar (event) {
-    // console.log(event.target.value)
-    // console.log(event.target.nextElementSibling);
+refs.modalRatingSubmitBtn.disabled = true;
+onClickPageReload();
 
-    ratingValue.textContent = event.target.value;
+function onRatingChange(evt) {
+  const { rating, email } = evt.currentTarget.elements;
 
-    const stars = event.target.nextElementSibling;
+  const ratingFormState = {
+    rating: rating.value,
+    email: email.value.trim(),
+  };
 
-    stars.classList.toggle('is-active')
+  refs.modalRatingValue.textContent = ratingFormState.rating;
 
-}
-
-function saveLocalStorage(event) {
-    const email = event.target.value;
-    localStorage.setItem(STORAGE_KEY, email)
-    // console.log(email);
-}
-
-function getLocalStorage() {
-    const savedEmail = localStorage.getItem(STORAGE_KEY);
-    
-    if (savedEmail) {
-        saveEmailLocalStorage.value = savedEmail;
+  //color  the stars according to the rating value
+  for (let i = 0; i < refs.ratings.length; i++) {
+    const rateEl = refs.ratings[i];
+    const star = rateEl.nextElementSibling;
+    if (rateEl.value <= ratingFormState.rating) {
+      star.classList.add('is-active');
+    } else {
+      star.classList.remove('is-active');
     }
+  }
+
+  localStorage.setItem(RATING_FORM_KEY, JSON.stringify(ratingFormState));
+
+  if (email.value !== '') {
+    refs.modalRatingSubmitBtn.disabled = false;
+  }
 }
 
-function updateRating (formData) {
-
-
-    const retingToUpdate = {
-        "rate": 5,
-        "email": "test@gmail.com"
-      };
-      
-      const options = {
-        // method: "PATCH",
-        body: JSON.stringify(retingToUpdate),
-        headers: {
-          "Content-Type": "application/json; charset=UTF-8",
-        },
-      };
-
-recipeApiService.getRecipeById(formData)
-.then((data) => {
-    
-    data.results.map( ({_id}) => {
-
-        recipeId = _id;
-            // console.log(_id)
-            // console.log(recipeId = _id)
-            // console.log(rating = _id)
-        })
-})
-
+//Check localStorage after page reload and get last saved data (or empty fields otherwise)
+function onClickPageReload() {
+  const storageData = JSON.parse(localStorage.getItem(RATING_FORM_KEY)) || {};
+  const { rating, email } = storageData;
+  if (storageData) {
+    refs.modalRatingForm.elements.rating.value = rating || '';
+    refs.modalRatingForm.elements.email.value = email || '';
+  }
+  if (rating === '' || email === '') {
+    refs.modalRatingSubmitBtn.disabled = true;
+  }
 }
+//Clean localStorage and form inputs after form submit
+function onFormSubmit(evt) {
+  evt.preventDefault();
 
-updateRating()
+  onSuccessMes();
+  refs.modalRatingSubmitBtn.disabled = true;
+  localStorage.removeItem(RATING_FORM_KEY);
+  // Clear data from form inputs
+  evt.currentTarget.reset();
+}
+//Show notification after form sending
+function onSuccessMes() {
+  Notiflix.Report.success('Thank you for your feedback!', '', 'Ok', {
+    position: 'center-top',
+    titleMaxLength: '100',
+  });
+}
