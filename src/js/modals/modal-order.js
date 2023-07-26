@@ -1,9 +1,4 @@
-import throttle from 'lodash.throttle';
 import Notiflix from 'notiflix';
-import RecipeApiService from '../service/service-api';
-import axios from 'axios';
-import { showLoader, hideLoader } from '../loader.js';
-import { error } from 'console';
 
 const refs = {
   openModalOrderBtn: document.querySelector('[data-modal-order-open]'),
@@ -12,19 +7,24 @@ const refs = {
   modalOrderForm: document.querySelector('.modal-order-form'),
   modalOrderSubmitBtn: document.querySelector('.modal-order-form__button'),
 };
+
 const ORDER_FORM_KEY = 'order-form-state';
 
 refs.openModalOrderBtn.addEventListener('click', onToggleModalOrder);
 refs.closeModalOrderBtn.addEventListener('click', onToggleModalOrder);
 refs.modalOrderForm.addEventListener('input', onTextareaInput);
-refs.modalOrderForm.addEventListener('submit', throttle(onFormSubmit, 500));
+refs.modalOrderForm.addEventListener('submit', onFormSubmit);
 
 // Open and close modal-order modal window
 function onToggleModalOrder() {
   refs.modalOrder.classList.toggle('is-hidden');
+
+  // Clear the form inputs when the form is closed
+  if (refs.modalOrder.classList.contains('is-hidden')) {
+    refs.modalOrderForm.reset();
+  }
 }
 
-refs.modalOrderSubmitBtn.disabled = true;
 onClickPageReload();
 
 // Track the input event on the form and keep input data in localStorage
@@ -46,7 +46,8 @@ function onTextareaInput(evt) {
   )
     refs.modalOrderSubmitBtn.disabled = false;
 }
-//Check localStorage after page reload and get last saved data (or empty fields otherwise)
+
+// Check localStorage after page reload and get last saved data (or empty fields otherwise)
 function onClickPageReload() {
   const storageData = JSON.parse(localStorage.getItem(ORDER_FORM_KEY)) || {};
   const { name, phone, email, comment } = storageData;
@@ -60,86 +61,121 @@ function onClickPageReload() {
     refs.modalOrderSubmitBtn.disabled = true;
   }
 }
-//Clean localStorage and form inputs after form submit
+
+// Clean localStorage and form inputs after form submit
 function onFormSubmit(evt) {
   evt.preventDefault();
 
   const { name, phone, email, comment } = evt.currentTarget.elements;
 
-  console.log({
-    name: name.value.trim(),
-    phone: phone.value.trim(),
-    email: email.value.trim(),
-    comment: comment.value.trim(),
-  });
+  const nameValue = name.value.trim();
+  const phoneValue = phone.value.trim();
+  const emailValue = email.value.trim();
+  const commentValue = comment.value.trim();
 
-  onSuccessMes();
+  // Validate name: Allow only letters and spaces
+  const namePattern = /^[a-zA-Zа-яА-Я ]+$/;
+  if (!namePattern.test(nameValue)) {
+    // Invalid name format
+    Notiflix.Report.failure('Error', 'Please enter a valid name.', 'Ok');
+    return;
+  }
 
-  refs.modalOrderSubmitBtn.disabled = true;
-  localStorage.removeItem(ORDER_FORM_KEY);
-  // Clear data from form inputs
-  evt.currentTarget.reset();
-}
+  // Validate phone number: Use specific pattern for +380000000000 format
+  const phonePattern = /^\+\d{12}$/;
+  if (!phonePattern.test(phoneValue)) {
+    // Invalid phone number format
+    Notiflix.Report.failure(
+      'Error',
+      'Please enter a valid phone number in the format +380000000000.',
+      'Ok'
+    );
+    return;
+  }
 
-function onSuccessMes() {
-  Notiflix.Report.success('Your order has completed successfully!', '', 'Ok', {
-    position: 'center-top',
-    titleMaxLength: '100',
-  });
-}
+  // Validate email: Use regular expression for email format
+  const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!emailPattern.test(emailValue)) {
+    // Invalid email format
+    Notiflix.Report.failure(
+      'Error',
+      'Please enter a valid email address.',
+      'Ok'
+    );
+    return;
+  }
 
-// Обработчик отправки формы
-document
-  .getElementById('orderForm')
-  .addEventListener('submit', function (event) {
-    event.preventDefault(); // Отменяем стандартное поведение отправки формы
+  // Validate comment: Limit maximum characters to 200
+  const maxCommentLength = 200;
+  if (commentValue.length > maxCommentLength) {
+    Notiflix.Report.failure(
+      'Error',
+      `Please limit the comment to ${maxCommentLength} characters.`,
+      'Ok'
+    );
+    return;
+  }
 
-    // Получаем данные из элементов формы
-    const name = document.getElementById('name').value;
-    const phone = document.getElementById('phone').value;
-    const email = document.getElementById('email').value;
-    const comment = document.getElementById('comment').value;
+  const postToAdd = {
+    name: nameValue,
+    phone: phoneValue,
+    email: emailValue,
+    comment: commentValue,
+  };
 
-    // Показываем loader перед отправкой запроса
-    showLoader();
+  // Log the data being sent to the server
+  console.log('Data sent to server:', postToAdd);
 
-    // Создаем объект с данными для отправки на сервер
-    const postToAdd = {
-      name: name,
-      phone: phone,
-      email: email,
-      comment: comment,
-    };
+  // Show loader before sending the request
+  Notiflix.Loading.standard('Sending your order...');
 
-    // Опции для POST-запроса
-    const options = {
-      method: 'POST',
-      body: JSON.stringify(postToAdd),
-      headers: {
-        'Content-Type': 'application/json',
-        Accept: 'application/json',
-      },
-    };
+  const options = {
+    method: 'POST',
+    body: JSON.stringify(postToAdd),
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  };
 
-    // Выполняем POST-запрос с помощью Fetch API
-    fetch('https://tasty-treats-backend.p.goit.global/api/orders/add', options)
-      .then(response => {
-        if (!response.ok) {
-          throw new Error('Network response was not ok');
-        }
+  fetch('https://tasty-treats-backend.p.goit.global/api/orders/add', options)
+    .then(response => {
+      if (response.status === 201) {
+        // Successful response, order created
+        // You may also want to parse the response JSON if the backend sends additional data
         return response.json();
-      })
-      .then(data => {
-        console.log('Success:', data);
-        showSuccessMessage('Your order has been successfully submitted!');
-        setTimeout(closeModal, 2000);
-        setTimeout(hideLoader, 2000);
-      })
-      .catch(error => {
-        console.error('Error:', error);
-        showErrorNotification(
-          'An error occurred while submitting the order. Please try again later.'
-        );
-        setTimeout(hideLoader, 2000);
-      });
-  });
+      } else if (response.status >= 400 && response.status < 500) {
+        // Client-side error (4xx) - Bad Request or Validation Error
+        throw new Error('Bad Request');
+      } else {
+        // Other server-side error (5xx) - Internal Server Error
+        throw new Error('Server Error');
+      }
+    })
+    .then(data => {
+      console.log('Data received from server:', data);
+      // Show success message using Notiflix
+      Notiflix.Report.success(
+        'Your order has completed successfully!',
+        '',
+        'Ok',
+        {
+          position: 'center-top',
+          titleMaxLength: '100',
+        }
+      );
+      onToggleModalOrder();
+    })
+    .catch(error => {
+      console.error('Error:', error);
+      // Show error message using Notiflix
+      Notiflix.Report.failure(
+        'Error',
+        'An error occurred while submitting the order. Please try again later.',
+        'Ok'
+      );
+    })
+    .finally(() => {
+      // Hide the loader after request completion
+      Notiflix.Loading.remove();
+    });
+}
