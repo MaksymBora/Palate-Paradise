@@ -38,7 +38,7 @@
 }
 
 .dark-theme .all-cat-main-btn {
-    color: rgba(255, 255, 255, 0.2);
+    color: rgba(255, 255, 255, 0.5);
     border-color: rgba(255, 255, 255, 0.2);
 }
 
@@ -58,7 +58,7 @@
 }
 
 .dark-theme .form-input::placeholder {
-    color: rgba(255, 255, 255, 0.2);
+    color: rgba(255, 255, 255, 0.5);
     
   }
 
@@ -66,13 +66,13 @@
     color: rgba(255, 255, 255, 0.5);
 }
 
-.dark-theme .selected-option,
+/* .dark-theme .selected-option,
 .dropdown-list{
     color: rgba(255, 255, 255, 0.5);
-}
+} */
 
 .dark-theme .custom-dropdown{
-    color: rgba(255, 255, 255, 0.5);
+    /* color: rgba(255, 255, 255, 0.5); */
     border: 1px solid rgba(255, 255, 255, 0.2);
     border-radius: 15px;
 }
@@ -80,7 +80,7 @@
 
 
 .dark-theme .selected-option{
-    color: rgba(255, 255, 255, 0.5);
+    color: rgba(255, 255, 255, 0.5); 
     border:1px solid rgba(255, 255, 255, 0.2);
     border-radius: 15px;
 }
@@ -89,9 +89,26 @@
     color:rgba(255, 255, 255, 0.5) ;
 }
 
-.dark-theme .dropdown-list{
+.dark-theme .custom-dropdown  .dropdown-list{
    background-color: var(--primaty-black-color);
+   color:rgba(255, 255, 255, 0.3) ;
 }
+
+.dark-theme .custom-dropdown {
+
+  color:rgba(30, 22, 22, 0.3) ;
+}
+
+/* .dark-theme .selected-option,
+.dropdown-list{
+  color: rgba(255, 255, 255, 0.5) ;
+} */
+
+.dark-theme 
+.custom-dropdown .dropdown-list li:hover {
+  color:var(--primary-white-color) ;
+}
+
 
 .dark-theme .fav-button{
     background-color: transparent;
@@ -99,3 +116,33 @@
     color: rgba(255, 255, 255, 0.3);
 }
 
+
+.dark-theme .modal-order__close-button{
+  color: var(--primary-white-color);
+}
+
+.dark-theme .modal-order {
+   background-color: var(--primaty-black-color); 
+
+}
+
+.dark-theme .modal-order-form__input {
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color:rgba(255, 255, 255, 0.5) ; ;
+} 
+
+.dark-theme .modal-order-form__label{
+  color:rgba(255, 255, 255, 0.5) ;
+}
+
+ .dark-theme .modal-order-form__text{
+  border: 1px solid rgba(255, 255, 255, 0.2) ;
+} 
+
+.dark-theme .modal-order-form__button{
+background-color: var(--accent-color);
+} 
+
+.dark-theme .cart-recipe-wrapper{
+  background-color: var(--primaty-black-color);
+}
