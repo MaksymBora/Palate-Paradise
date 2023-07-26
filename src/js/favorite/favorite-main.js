@@ -121,9 +121,9 @@ function handleRecipeButtonEvent({ target }) {
     removeFavorite(currentBtn);
     updateCategoryList(target);
   }
-  if (currentBtn.name === 'details') {
-    console.log('modal here');
-  }
+  // if (currentBtn.name === 'details') {
+  //   console.log('modal here');
+  // }
 }
 
 // Add event listeners to the corresponding elements when the DOM is fully loaded.
