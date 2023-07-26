@@ -1,6 +1,5 @@
 import RecipeApiService from './service/service-api';
 import { showLoader, hideLoader } from './loader';
-import { notifyInfoResult, notifyError } from './notifications';
 import { filterByTitle } from './search/filter-by-title';
 import { renderMarkup } from './search/renderingrecipes';
 import { resetFilters } from './search/reset-filters';
@@ -9,6 +8,14 @@ import {
   fetchAndPopulateIngredients,
   createTimeDropdownList,
 } from './search/rendering-selects';
+import {
+  handleTimeSelection,
+  handleAreaSelection,
+  handleIngredients,
+} from './search/handle-selects';
+import Pagination from 'tui-pagination';
+import 'tui-pagination/dist/tui-pagination.css';
+// import createPagination from './favorite/pagination';
 
 const recipeApiService = new RecipeApiService();
 
@@ -17,6 +24,10 @@ const searchInput = document.querySelector('.form-input');
 showLoader();
 let data = [];
 
+let page = 1;
+let perPage = 9;
+let totalPages = 0;
+
 // ===========================================================//
 // Function to fetch data from the API and render the markup
 //  ========================================================//
@@ -24,8 +35,11 @@ async function getApi() {
   try {
     const results = await recipeApiService.getRecipe();
     data = results.results;
+    perPage = results.perPage;
+    totalPages = results.totalPages;
 
     renderMarkup(results.results);
+
     hideLoader();
   } catch (error) {
     console.error('Error fetching data:', error);
@@ -33,6 +47,45 @@ async function getApi() {
 }
 
 const dropdownContainer = document.querySelector('.custom-dropdown');
+
+//===========================================//
+// INITIALAZING       =======================//
+//===========================================//
+
+async function init() {
+  const areaDropdownList = document.querySelector(
+    '.choice__area.custom-dropdown'
+  );
+
+  const timeDropdownList = document.querySelector(
+    '.choice__time.custom-dropdown'
+  );
+
+  const ingredientsDropdownContainer = document.querySelector(
+    '.choice__ingredients.custom-dropdown'
+  );
+  try {
+    showLoader();
+    await getApi();
+    await fetchAndPopulateAreas();
+    await fetchAndPopulateIngredients();
+    createTimeDropdownList();
+    handleSelection(dropdownContainer);
+
+    handleAreaSelect(areaDropdownList);
+
+    handleIngredientsSelect(ingredientsDropdownContainer);
+
+    timeDropdownList.addEventListener('click', handleTimeSelection);
+    areaDropdownList.addEventListener('click', handleAreaSelection);
+
+    ingredientsDropdownContainer.addEventListener('click', handleIngredients);
+
+    hideLoader();
+  } catch (error) {
+    console.error('Error initializing script:', error);
+  }
+}
 
 // Function to handle the selection and color change for dropdowns
 function handleSelection(container) {
@@ -136,119 +189,6 @@ function handleIngredientsSelect(container) {
   });
 }
 
-//===========================================//
-// HANDLE TIME SELECTION       ==============//
-//===========================================//
-async function handleTimeSelection(event) {
-  apiConstructorReset();
-  const selectedTime = parseInt(event.target.getAttribute('data-value'));
-
-  recipeApiService.time = selectedTime;
-  try {
-    const response = await recipeApiService.getRecipe();
-
-    if (response.results.length === 0) {
-      notifyInfoResult();
-      return;
-    }
-
-    renderMarkup(response.results);
-  } catch (error) {
-    console.error('Error fetching data:', error);
-  }
-}
-
-function apiConstructorReset() {
-  recipeApiService.time = '';
-  recipeApiService.area = '';
-  recipeApiService.ingredients = '';
-}
-
-//===========================================//
-// HANDLE AREA SELECTION       ==============//
-//===========================================//
-async function handleAreaSelection(event) {
-  apiConstructorReset();
-  const selectedArea = event.target.innerText;
-
-  recipeApiService.area = selectedArea;
-
-  try {
-    const response = await recipeApiService.getRecipe();
-
-    if (response.results.length === 0) {
-      notifyInfoResult();
-      return;
-    }
-
-    renderMarkup(response.results);
-  } catch (error) {
-    console.error('Error fetching data:', error);
-  }
-}
-
-//===========================================//
-// HANDLE INGREDIENTS SELECTION==============//
-//===========================================//
-async function handleIngredients(event) {
-  apiConstructorReset();
-  const selectedIngredients = event.target.dataset.value;
-
-  recipeApiService.ingredients = selectedIngredients;
-
-  try {
-    const response = await recipeApiService.getRecByIngredient();
-    console.log(response);
-    if (response.results.length === 0) {
-      notifyInfoResult();
-      return;
-    }
-
-    renderMarkup(response.results);
-  } catch (error) {
-    console.error('Error fetching data:', error);
-  }
-}
-
-//===========================================//
-// INITIALAZING       =======================//
-//===========================================//
-async function init() {
-  const areaDropdownList = document.querySelector(
-    '.choice__area.custom-dropdown'
-  );
-
-  const timeDropdownList = document.querySelector(
-    '.choice__time.custom-dropdown'
-  );
-
-  const ingredientsDropdownContainer = document.querySelector(
-    '.choice__ingredients.custom-dropdown'
-  );
-  try {
-    showLoader();
-    await getApi();
-    await fetchAndPopulateAreas();
-    await fetchAndPopulateIngredients();
-    createTimeDropdownList();
-    handleSelection(dropdownContainer);
-
-    handleAreaSelect(areaDropdownList);
-
-    handleIngredientsSelect(ingredientsDropdownContainer);
-
-    timeDropdownList.addEventListener('click', handleTimeSelection);
-    areaDropdownList.addEventListener('click', handleAreaSelection);
-
-    ingredientsDropdownContainer.addEventListener('click', handleIngredients);
-
-    // await getApi();
-    hideLoader();
-  } catch (error) {
-    console.error('Error initializing script:', error);
-  }
-}
-
 //==============================================================
 // RESET FILTERS
 // =============================================================
@@ -266,6 +206,8 @@ searchInput.addEventListener('input', () => {
 });
 
 // Initiating the script
-init();
 
-//COMMIT>>??
+init();
+// ==============PAGINATION==================================
+
+//===========================================================

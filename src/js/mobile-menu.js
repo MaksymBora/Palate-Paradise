@@ -1,24 +1,23 @@
-  const changeTheme = document.querySelector('.toggle-checkbox');
- changeTheme.addEventListener('change', toggleTheme);
+const changeTheme = document.querySelector("[data-switch]");
+changeTheme.addEventListener('change', toggleTheme);
+const changeMobTheme = document.querySelector("[data-switch-mobile]");
+changeMobTheme.addEventListener('change', toggleTheme);
 
-  function toggleTheme() {
-   const body = document.body;
-   const backdrop = document.querySelector('.backdrop');
-    body.classList.toggle('dark-theme');
-   body.classList.toggle('light-theme');
-  
-    // нинішня тема
-    const isDarkTheme = body.classList.contains('dark-theme');
-   localStorage.setItem('theme', isDarkTheme ? 'dark' : 'light')
-  }
+function toggleTheme() {
+const body = document.body;
+body.classList.toggle('dark-theme'); 
+body.classList.toggle('light-theme'); 
 
-  const savedTheme = localStorage.getItem('theme');
- if (savedTheme === 'dark') {
-    toggleTheme();
-   changeTheme.checked = true;
-  }
+// нинішня тема
+const isDarkTheme = body.classList.contains('dark-theme');
+localStorage.setItem('theme', isDarkTheme ? 'dark' : 'light');
+}
 
-
+const savedTheme = localStorage.getItem('theme');
+if (savedTheme === 'dark') {
+toggleTheme();
+changeTheme.checked = true;
+}
 
 
   
