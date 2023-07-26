@@ -42,7 +42,7 @@ recipeApiSeriсe.getRecipe().then(response => {
     const { _id, title, category, rating, preview, description } = arr[i];
     for (let j = 0; j < 5; j++) {
       toStorage.push({
-        _id,
+        id: _id,
         title,
         category,
         rating,
