@@ -29,7 +29,7 @@ function modifyClassesOnLoad() {
 // Вызываем функцию при загрузке страницы
 window.addEventListener('load', modifyClassesOnLoad);
 
-function onFavoritesReload() {
+export function onFavoritesReload() {
   showLoader();
 
   const categoryMarkup = createCategoryList();
@@ -121,9 +121,6 @@ function handleRecipeButtonEvent({ target }) {
     removeFavorite(currentBtn);
     updateCategoryList(target);
   }
-  // if (currentBtn.name === 'details') {
-  //   console.log('modal here');
-  // }
 }
 
 // Add event listeners to the corresponding elements when the DOM is fully loaded.

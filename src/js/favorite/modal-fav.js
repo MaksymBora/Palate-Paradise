@@ -1,4 +1,6 @@
 import axios from 'axios';
+
+import { onFavoritesReload } from './favorite-main';
 let recipe;
 const backdrop = document.querySelector('.backdrop-recipes');
 const closeButton = document.querySelector('.modal-close-btn');
@@ -221,7 +223,7 @@ function removeFromFavorites(recipe) {
 
   saveFavoriteRecipes(updatedFavorites);
 
-  onRemoveReload();
+  onFavoritesReload();
 }
 
 // Чіпляємося до кнопки "Add to favorite"
