@@ -1,5 +1,5 @@
 import axios from 'axios';
-
+let recipe;
 const backdrop = document.querySelector('.backdrop-recipes');
 const closeButton = document.querySelector('.modal-close-btn');
 const modal = document.querySelector('.modal-recipes');
@@ -62,7 +62,6 @@ recipesContainer.addEventListener('click', async event => {
   if (!seeRecipeBtn) return;
 
   const recipeId = seeRecipeBtn.dataset.id;
-  console.log(recipeId);
   try {
     const fetchedRecipe = await fetchRecipe(recipeId);
     if (fetchedRecipe) {
@@ -77,7 +76,6 @@ recipesContainer.addEventListener('click', async event => {
 
 // Отримую дані про конкретний рецепт з API по ID
 async function fetchRecipe(recipeId) {
-  console.log(recipeId);
   const url = `https://tasty-treats-backend.p.goit.global/api/recipes/${recipeId}`;
   try {
     const response = await axios.get(url);
