@@ -287,18 +287,14 @@ document.addEventListener('click', function (event) {
 
 async function onClickAddToFavRec(event, button) {
   const recipeId = event.target.dataset.info; // Get the recipe ID from the button
-  console.log(recipeId);
+
   // Check if the recipe is in favorites and add or remove it accordingly
   if (!isRecipeInFavorites(recipeId)) {
-    try {
-      const recipe = await fetchRecipe(recipeId);
-      if (recipe) {
-        // Add the new recipe to favorites
-        addToFavorites(recipe);
-        button.classList.add('on-active');
-      }
-    } catch (error) {
-      console.log(error);
+    const recipe = await fetchRecipeData(recipeId);
+    if (recipe) {
+      // Add the new recipe to favorites
+      addToFavorites(recipe);
+      button.classList.add('on-active');
     }
   } else {
     // Remove the recipe from favorites
@@ -308,7 +304,7 @@ async function onClickAddToFavRec(event, button) {
 }
 
 // Function to fetch the recipe from the API by ID
-async function fetchRecipe(recipeId) {
+async function fetchRecipeData(recipeId) {
   const url = `https://tasty-treats-backend.p.goit.global/api/recipes/${recipeId}`;
   try {
     const response = await axios.get(url);
@@ -355,3 +351,6 @@ function isRecipeInFavorites(recipeId) {
   const favoriteRecipes = getFavoriteRecipes();
   return favoriteRecipes.some(recipe => recipe.id === recipeId);
 }
+// =====================================
+// Heart || Add to favorite
+// =====================================
