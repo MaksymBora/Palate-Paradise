@@ -7,6 +7,7 @@ const cartWrapper = document.querySelector('.cart-recipe-list');
 
 apiRecipe.limit = 9;
 
+//Add master classes
 async function fillCartWrap() {
   try {
       const recipe = await apiRecipe.getRecipe();
@@ -19,6 +20,8 @@ async function fillCartWrap() {
 
 fillCartWrap();
 
+
+//Make markUp in cart
 function fillCart(resp) {
   const takeValues = ({ thumb, area, rating, description, title, category }) => {
       return `<li class="cart-recipe-item">
@@ -38,3 +41,4 @@ function fillCart(resp) {
     const markUpCart = results.map(obj => takeValues(obj)).join('');
   cartWrapper.innerHTML = markUpCart;
 }
+
