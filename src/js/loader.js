@@ -1,5 +1,5 @@
 export function showLoader() {
-  const loader = document.querySelector('.loader-spinner');
+  const loader = document.getElementById('loader');
   if (loader) {
     loader.style.display = 'block';
   }
