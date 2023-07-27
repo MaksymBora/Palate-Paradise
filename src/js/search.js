@@ -24,23 +24,6 @@ let data = [];
 // ===========================================================//
 // Function to fetch data from the API and render the markup
 //  ========================================================//
-// export async function getApi() {
-//   try {
-//     const results = await recipeApiService.getRecipe();
-//     data = results.results;
-
-//     renderMarkup(results.results);
-
-//     hideLoader();
-//     return {
-//       perPage: results.perPage,
-//       totalPages: results.totalPages,
-//     };
-//   } catch (error) {
-//     console.error('Error fetching data:', error);
-//   }
-// }
-
 export async function getApi() {
   try {
     const results = await recipeApiService.getRecipe();

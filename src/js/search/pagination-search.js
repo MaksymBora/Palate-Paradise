@@ -2,19 +2,16 @@ import Pagination from 'tui-pagination';
 import 'tui-pagination/dist/tui-pagination.css';
 import { getApi } from '../search';
 import RecipeApiService from '../service/service-api';
-import { apiConstructorReset } from './handle-selects';
 import { renderMarkup } from '../search/renderingrecipes';
 import { showLoader, hideLoader } from '../loader';
 
 const URL = 'https://tasty-treats-backend.p.goit.global/api/recipes';
 const container = document.getElementById('pagination');
 
-const recipeList = document.querySelector('.image-container');
-
 const recipeApiService = new RecipeApiService();
 
-const windowWidth = document.documentElement.clientWidth;
 let limitCount = 0;
+
 function resizeVisPage() {
   const screenWidth = window.innerWidth;
   return screenWidth < 768 ? 2 : 3;
@@ -65,6 +62,7 @@ async function createPagination(url, params) {
     recipeApiService.page = currentPage;
 
     async function getCards() {
+      showLoader();
       try {
         const results = await recipeApiService.getRecipe();
 
