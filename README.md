@@ -15,7 +15,7 @@
 ![GitHub top language](https://img.shields.io/github/languages/top/MaksymBora/Palate-Paradise?style=flat-square)
 ![GitHub contributors](https://img.shields.io/github/contributors/MaksymBora/Palate-Paradise?style=flat-square)
 <a href="https://maksymbora.github.io/group-20-project/">
-<img src="./assets/card.jpg" /> </a>
+<img style="border-radius: 8px;" src="./assets/card.jpg" /> </a>
 
 ### Technologies
 
