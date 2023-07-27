@@ -314,9 +314,6 @@ a {
     transition: color 250ms ease-in-out;
   }
 
-  .menu-nav-links .dark-theme {
-  }
-
   .header-accent {
     color: var(--accent-color);
   }

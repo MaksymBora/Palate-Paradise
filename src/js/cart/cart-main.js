@@ -1,5 +1,6 @@
 import RecipeApiService from '../service/service-api';
 import { notifyError } from '../notifications';
+import '../../js/theme-switch';
 // import '../modals/modal-order';
 const apiRecipe = new RecipeApiService();
 

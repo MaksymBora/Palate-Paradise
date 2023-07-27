@@ -18,9 +18,16 @@
             <use href="./images/sprite.svg#cart"></use>
           </svg>
         </button>
-        <!-- Switcher -->
-        <label class="toggle header-toggle-checkbox" data-switch>
-          <input class="toggle-checkbox" type="checkbox" name="switch-theme" />
+        <!-- Switcher  name="switch-theme" data-switch-->
+        <label
+          class="toggle header-toggle-checkbox switcher"
+          for="desktop-theme-switcher"
+        >
+          <input
+            class="toggle-checkbox theme-switcher"
+            type="checkbox"
+            id="desktop-theme-switcher"
+          />
           <span class="toggle-switch"></span>
           <span class="toggle-label"></span>
         </label>
@@ -50,11 +57,18 @@
             >
           </li>
         </ul>
-        <label class="toggle header-toggle-checkbox" for="mobile-switch-theme" data-switch-mobile>
-          <input class="toggle-checkbox" type="checkbox" id="mobile-switch-theme" name="switch-theme" />
+        <!-- data-switch-mobile -->
+        <label
+          class="toggle header-toggle-checkbox switcher"
+          for="mobile-theme-switcher"
+        >
+          <input
+            class="toggle-checkbox theme-switcher"
+            type="checkbox"
+            id="mobile-theme-switcher"
+          />
           <span class="toggle-switch"></span>
           <span class="toggle-label"></span>
-        </label>
         </label>
       </div>
     </div>

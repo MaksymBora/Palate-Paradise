@@ -4,3 +4,4 @@ import './js/cart/cart';
 import './js/favorits-scroll';
 import './js/favorite/modal-fav';
 import './js/modals/open-rating';
+import './js/theme-switch';
