@@ -74,6 +74,11 @@
   border-radius: 15px;
 }
 
+.dark-theme .selected-option:visited {
+   color: rgba(255, 255, 255, 0.5); 
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 15px;}
+
 .dark-theme .cart-recipe-wrapper {
   background-color: var(--primary-white-color);
 }
@@ -220,4 +225,9 @@
 .dark-theme .cart-main-title,
 .dark-theme .cart-recipe-btn {
   color: var(--primaty-black-color);
+}
+
+
+.dark-theme .fav-hero{
+  border-radius: 15px;
 }
