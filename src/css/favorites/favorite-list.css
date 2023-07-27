@@ -46,6 +46,10 @@
   margin-right: auto;
 }
 
+.image-container {
+  align-content: flex-start;
+}
+
 .rec-item {
   position: relative;
   display: flex;
