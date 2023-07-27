@@ -58,7 +58,7 @@ async function generateIventsMarkup() {
 function createMarkup(ivent) {
   const { name, imgWebpUrl, area } = ivent.topic;
   const cookName = ivent.cook.name;
-  const cookImgUrl = ivent.cook.imgUrl;
+  const cookImgUrl = ivent.cook.imgWebpUrl;
   return `<div class="swiper-slide">
     <div class="slide-item">
       <img
