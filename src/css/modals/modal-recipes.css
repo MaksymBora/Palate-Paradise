@@ -79,6 +79,10 @@
   height: 100%;
 }
 
+iframe {
+  border: none;
+}
+
 .recipes-title {
   text-transform: uppercase;
   font-size: 18px;
