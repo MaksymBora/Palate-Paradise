@@ -100,13 +100,19 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 });
 
+let currentRecipeId; // Global variable to store the current recipeId
+
+// Function to set the recipeId
+export function setRecipeId(recipeId) {
+  currentRecipeId = recipeId;
+}
 // Отримую дані про конкретний рецепт з API по ID
 async function fetchRecipe(recipeId) {
   const url = `https://tasty-treats-backend.p.goit.global/api/recipes/${recipeId}`;
   try {
     const response = await axios.get(url);
     const recipe = response.data;
-
+    setRecipeId(recipeId);
     displayRecipeVideo(recipe);
     displayRecipeTitle(recipe);
     displayRecipeDescription(recipe);
@@ -283,3 +289,5 @@ function updateFavoriteButtonStatus(recipe) {
     ? 'Remove from favorite'
     : 'Add to favorite';
 }
+
+export { currentRecipeId };
