@@ -31,8 +31,6 @@
 
 ### Contributors
 
-<!-- markdownlint-disable -->
-<!-- readme: contributors,ImgBotApp/- -start -->
 <table>
 <tr>
     <td align="center">
@@ -119,6 +117,5 @@
             <sub><b>🇺🇦</b></sub>
         </a>
     </td>
-    
     </tr>
 </table>
