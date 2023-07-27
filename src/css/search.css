@@ -147,7 +147,7 @@
 .reset {
   display: inline-flex;
   align-items: center;
-  padding-left: 230px;
+  margin-left: auto;
   margin-bottom: 20px;
   cursor: pointer;
   transition-duration: 250ms;
@@ -307,7 +307,7 @@
   }
 
   .reset {
-    padding-left: 391px;
+ 
     margin-bottom: 14px;
   }
 
@@ -342,13 +342,12 @@
     min-height: 728px;
   }
 
-  .reset {
-    padding-left: 677px;
-  }
+  
 
   .image-container {
     min-height: 908px;
-
+    display: flex;
     row-gap: 32px;
+    align-items: flex-start;
   }
 }
