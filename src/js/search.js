@@ -61,7 +61,7 @@ export async function getApi() {
 // Paint Heats on load
 setTimeout(() => {
   const buttons = document.querySelectorAll('.heart-btn[data-ids]');
-  console.log(buttons);
+
   const storedData = localStorage.getItem('favoriteRecipes');
   const allObj = JSON.parse(storedData);
 
