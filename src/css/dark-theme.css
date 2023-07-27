@@ -29,8 +29,8 @@
   color: var(--primary-white-color);
 }
 
-.dark-theme .block-body .swiper-pagination-bullet{
-   background-color: var(--primary-white-color);
+.dark-theme .block-body .swiper-pagination-bullet {
+  background-color: var(--primary-white-color);
 }
 
 .dark-theme .all-cat-select-btn {
@@ -38,32 +38,29 @@
 }
 
 .dark-theme .all-cat-main-btn {
-    color: rgba(255, 255, 255, 0.5);
-    border-color: rgba(255, 255, 255, 0.2);
+  color: rgba(255, 255, 255, 0.5);
+  border-color: rgba(255, 255, 255, 0.2);
 }
 
-.dark-theme .scrollbar-thumb{
-    background-color: rgba(255, 255, 255, 0.2);
-    
+.dark-theme .scrollbar-thumb {
+  background-color: rgba(255, 255, 255, 0.2);
 }
 
-.dark-theme .scrollbar-track{
-    background-color: transparent;
+.dark-theme .scrollbar-track {
+  background-color: transparent;
 }
 
-.dark-theme .form-input{
-   border: 1px solid rgba(255, 255, 255, 0.2);
-   color: rgba(255, 255, 255, 0.5);
-   
+.dark-theme .form-input {
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: rgba(255, 255, 255, 0.5);
 }
 
 .dark-theme .form-input::placeholder {
-    color: rgba(255, 255, 255, 0.5);
-    
-  }
+  color: rgba(255, 255, 255, 0.5);
+}
 
-.dark-theme .label-text{
-    color: rgba(255, 255, 255, 0.5);
+.dark-theme .label-text {
+  color: rgba(255, 255, 255, 0.5);
 }
 
 /* .dark-theme .selected-option,
@@ -71,32 +68,33 @@
     color: rgba(255, 255, 255, 0.5);
 } */
 
-.dark-theme .custom-dropdown{
-    /* color: rgba(255, 255, 255, 0.5); */
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    border-radius: 15px;
+.dark-theme .custom-dropdown {
+  /* color: rgba(255, 255, 255, 0.5); */
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 15px;
 }
 
-
-
-.dark-theme .selected-option{
-    color: rgba(255, 255, 255, 0.5); 
-    border:1px solid rgba(255, 255, 255, 0.2);
-    border-radius: 15px;
+.dark-theme .cart-recipe-wrapper {
+  background-color: var(--primary-white-color);
 }
 
-.dark-theme .search_recipes{
-    color:rgba(255, 255, 255, 0.5) ;
+.dark-theme .selected-option {
+  color: rgba(255, 255, 255, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 15px;
 }
 
-.dark-theme .custom-dropdown  .dropdown-list{
-   background-color: var(--primaty-black-color);
-   color:rgba(255, 255, 255, 0.3) ;
+.dark-theme .search_recipes {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.dark-theme .custom-dropdown .dropdown-list {
+  background-color: var(--primaty-black-color);
+  color: rgba(255, 255, 255, 0.3);
 }
 
 .dark-theme .custom-dropdown {
-
-  color:rgba(30, 22, 22, 0.3) ;
+  color: rgba(30, 22, 22, 0.3);
 }
 
 /* .dark-theme .selected-option,
@@ -104,93 +102,88 @@
   color: rgba(255, 255, 255, 0.5) ;
 } */
 
-.dark-theme 
-.custom-dropdown .dropdown-list li:hover {
-  color:var(--primary-white-color) ;
+.dark-theme .custom-dropdown .dropdown-list li:hover {
+  color: var(--primary-white-color);
 }
 
-
-.dark-theme .fav-button{
-    background-color: transparent;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    color: rgba(255, 255, 255, 0.3);
+.dark-theme .fav-button {
+  background-color: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: rgba(255, 255, 255, 0.3);
 }
 
-
-.dark-theme .modal-order__close-button{
+.dark-theme .modal-order__close-button {
   color: var(--primary-white-color);
 }
 
 .dark-theme .modal-order {
-   background-color: var(--primaty-black-color); 
-
+  background-color: var(--primaty-black-color);
 }
 
 .dark-theme .modal-order-form__input {
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    color:rgba(255, 255, 255, 0.5) ; ;
-} 
-
-.dark-theme .modal-order-form__label{
-  color:rgba(255, 255, 255, 0.5) ;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: rgba(255, 255, 255, 0.5);
 }
 
- .dark-theme .modal-order-form__text{
-  border: 1px solid rgba(110, 110, 110, 0.2) ;
-} 
+.dark-theme .modal-order-form__label {
+  color: rgba(255, 255, 255, 0.5);
+}
 
-.dark-theme .modal-order-form__button{
-background-color: var(--accent-color);
-} 
+.dark-theme .modal-order-form__text {
+  border: 1px solid rgba(110, 110, 110, 0.2);
+}
 
-.dark-theme .cart-recipe-wrapper{
+.dark-theme .modal-order-form__button {
+  background-color: var(--accent-color);
+}
+
+.dark-theme .cart-recipe-wrapper {
   background-color: var(--primaty-black-color);
 }
 
-.dark-theme .modal-recipes{
+.dark-theme .modal-recipes {
   background-color: var(--primaty-black-color);
 }
 
-.dark-theme .modal-close-btn{
+.dark-theme .modal-close-btn {
   background-color: transparent;
   color: var(--primary-white-color);
 }
 
-.dark-theme .ratinng-value{
-  color: rgba(255, 255, 255, 0.5) ;
+.dark-theme .ratinng-value {
+  color: rgba(255, 255, 255, 0.5);
 }
 .dark-theme .recipes-cooking-time,
-.dark-theme .time-text{
-  color: rgba(255, 255, 255, 0.5) ;
+.dark-theme .time-text {
+  color: rgba(255, 255, 255, 0.5);
 }
 
-.dark-theme .recipes-components-item_quantity{
-  color: rgba(255, 255, 255, 0.5) ;
+.dark-theme .recipes-components-item_quantity {
+  color: rgba(255, 255, 255, 0.5);
   opacity: 1;
-} 
-
-.dark-theme .recipes-hashtags-item{
-  border: 1px solid rgba(255, 255, 255, 0.5) ;
 }
 
-.dark-theme .recipes-description{
+.dark-theme .recipes-hashtags-item {
+  border: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+.dark-theme .recipes-description {
   color: rgba(255, 255, 255, 0.8);
-  ;
 }
 
-.dark-theme .btn-give-rating{
+.dark-theme .btn-give-rating {
   color: var(--primary-white-color);
   background-color: transparent;
   border: 1px solid var(--accent-color);
 }
 
 .dark-theme .btn-add-favorite:hover,
-.dark-theme .btn-add-favorite:focus{
+.dark-theme .btn-add-favorite:focus {
   color: var(--primaty-black-color);
   background-color: var(--accent-color);
 }
 
-.dark-theme .modal-rating{
+.dark-theme .modal-rating {
   background-color: var(--primaty-black-color);
 }
 
@@ -199,16 +192,32 @@ background-color: var(--accent-color);
   color: var(--primary-white-color);
 }
 
-.dark-theme .rating-button-send{
+.dark-theme .rating-button-send {
   background-color: var(--accent-color);
   color: var(--primary-white-color);
 }
 
 .dark-theme .rating-button-send:hover,
-.dark-theme .rating-button-send:focus{
+.dark-theme .rating-button-send:focus {
   color: var(--primaty-black-color);
 }
 
-.dark-theme .rating-email{
-  border: 1px solid rgba(110, 110, 110, 0.3) ;
+.dark-theme .rating-email {
+  border: 1px solid rgba(110, 110, 110, 0.3);
+}
+
+.dark-theme .cart-recipe-wrapper {
+  background-color: var(--primary-white-color);
+}
+
+.dark-theme .cart-recipe-title,
+.dark-theme .cart-recipe-area,
+.dark-theme .cart-recipe-descr,
+.dark-theme .cart-recipe-rating {
+  color: var(--primaty-black-color);
+}
+
+.dark-theme .cart-main-title,
+.dark-theme .cart-recipe-btn {
+  color: var(--primaty-black-color);
 }
