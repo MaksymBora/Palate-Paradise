@@ -348,6 +348,6 @@
     min-height: 908px;
     display: flex;
     row-gap: 32px;
-    align-items: flex-start;
+    
   }
 }
