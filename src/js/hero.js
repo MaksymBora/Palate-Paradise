@@ -64,7 +64,7 @@ function createMarkup(ivent) {
       <img
         class="slider-cook"
         src="${cookImgUrl}"
-        alt="${cookName}"
+        alt="${cookName}" width="200" height="280"
       />
       <div class="slide-event-box">
         <img
