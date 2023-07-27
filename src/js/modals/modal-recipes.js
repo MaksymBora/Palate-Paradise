@@ -283,3 +283,5 @@ function updateFavoriteButtonStatus(recipe) {
     ? 'Remove from favorite'
     : 'Add to favorite';
 }
+
+
