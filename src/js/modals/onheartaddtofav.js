@@ -2,6 +2,7 @@ import axios from 'axios';
 
 document.addEventListener('click', function (event) {
   const button = event.target.closest('.heart-btn');
+
   if (button) {
     onClickAddToFavRec(event, button); // Pass the button to the function
   }

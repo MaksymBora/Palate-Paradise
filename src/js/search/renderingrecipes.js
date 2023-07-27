@@ -27,7 +27,7 @@ export function renderingRecipes(
       style="background: linear-gradient(0deg, rgba(5, 5, 5, 0.6), rgba(5, 5, 5, 0)),
       url(${preview}); background-position: center; background-size: cover;">
       <div class="upper-part">
-        <button type="button" class="heart-btn"  name="favorite" data-ids="${id}">
+        <button id="heart-btn-add-fav" type="button" class="heart-btn"  name="favorite" data-ids="${id}">
           <svg data-info="${id}"  class="icon-heart" width="22" height="22" >
             <use href="${sprite}#heart" ></use>
           </svg>
@@ -43,26 +43,6 @@ export function renderingRecipes(
     </div>
   `;
 }
-
-// Function to render the markup for all filtered recipes
-// export function renderMarkup(data) {
-//   const post = document.querySelector('.image-container');
-
-//   const markup = data
-//     .map(recipe =>
-//       renderingRecipes(
-//         recipe.title,
-//         recipe.description,
-//         recipe.preview,
-//         recipe.rating,
-//         recipe._id,
-//         recipe.category
-//       )
-//     )
-//     .join('');
-
-//   post.innerHTML = markup;
-// }
 
 export function renderMarkup(data) {
   const post = document.querySelector('.image-container');

@@ -67,7 +67,6 @@ setTimeout(() => {
 
   buttons.forEach(button => {
     const dataIdsValue = button.getAttribute('data-ids');
-    console.log(dataIdsValue);
 
     const favButton = allObj.find(obj => obj.id === dataIdsValue);
     if (favButton) {
