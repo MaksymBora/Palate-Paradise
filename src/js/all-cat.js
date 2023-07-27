@@ -62,7 +62,18 @@ const selectBtn = document.querySelector('.all-cat-main-btn');
 const imageContainer = document.querySelector('.image-container');
 const formSearch = document.querySelector('.form_search');
 
-selectBtn.addEventListener('click', renderingOnClick);
+document.addEventListener('click', event => {
+  if (event.target.matches('.all-cat-main-btn')) {
+    // Your code for handling the button click here
+    recipeApiService.category = '';
+    renderingOnClick();
+  }
+});
+
+selectBtn.addEventListener('click', () => {
+  recipeApiService.category = ''; // Reset the category to an empty string
+  renderingOnClick(); // Call the renderingOnClick function after resetting the category
+});
 
 // Rendering by Categories
 function renderingOnClick() {
@@ -74,12 +85,13 @@ function renderingOnClick() {
     imageContainer.innerHTML = '';
     const recipesMarkup = response.results.map(recipe => {
       const { title, description, preview, rating, _id, category } = recipe;
+      const id = _id;
       return renderingAllRecips(
         title,
         description,
         preview,
         rating,
-        _id,
+        id,
         category
       ); // Make sure the ID property is correct here
     });
