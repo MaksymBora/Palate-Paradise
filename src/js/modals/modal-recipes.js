@@ -257,21 +257,6 @@ function addToFavorites(recipe) {
 }
 
 //  Слухач події для кнопки "Add to favorite", який для додавання/видалення обраного рецепту з масиву localStorage
-// addToFavoriteButton.addEventListener('click', () => {
-//   const heartBtn = document.querySelectorAll(
-//     '.heart-btn[data-id="${recipe.id}"]'
-//   );
-//   const isFavorite = isRecipeInFavorites(recipe);
-//   if (isFavorite) {
-//     removeFromFavorites(recipe);
-//     addToFavoriteButton.textContent = 'Add to favorite';
-//     heartBtn.classList.remove('on-active');
-//   } else {
-//     addToFavorites(recipe);
-//     heartBtn.classList.add('on-active');
-//     addToFavoriteButton.textContent = 'Remove from favorite';
-//   }
-// });
 
 addToFavoriteButton.addEventListener('click', () => {
   const heartIcon = document.querySelector(

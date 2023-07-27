@@ -24,6 +24,23 @@ let data = [];
 // ===========================================================//
 // Function to fetch data from the API and render the markup
 //  ========================================================//
+// export async function getApi() {
+//   try {
+//     const results = await recipeApiService.getRecipe();
+//     data = results.results;
+
+//     renderMarkup(results.results);
+
+//     hideLoader();
+//     return {
+//       perPage: results.perPage,
+//       totalPages: results.totalPages,
+//     };
+//   } catch (error) {
+//     console.error('Error fetching data:', error);
+//   }
+// }
+
 export async function getApi() {
   try {
     const results = await recipeApiService.getRecipe();
@@ -40,6 +57,24 @@ export async function getApi() {
     console.error('Error fetching data:', error);
   }
 }
+
+// Paint Heats on load
+setTimeout(() => {
+  const buttons = document.querySelectorAll('.heart-btn[data-ids]');
+  console.log(buttons);
+  const storedData = localStorage.getItem('favoriteRecipes');
+  const allObj = JSON.parse(storedData);
+
+  buttons.forEach(button => {
+    const dataIdsValue = button.getAttribute('data-ids');
+    console.log(dataIdsValue);
+
+    const favButton = allObj.find(obj => obj.id === dataIdsValue);
+    if (favButton) {
+      button.classList.add('on-active');
+    }
+  });
+}, 1000);
 
 const dropdownContainer = document.querySelector('.custom-dropdown');
 
