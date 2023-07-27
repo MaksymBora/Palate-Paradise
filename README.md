@@ -1,4 +1,5 @@
-# Palate Paradise
+<div align="center"><img  src="./assets/chef.png" alt="logo" width="100"/></div>
+<h1 align="center">Palate Paradise</h1>
 
 ## GoIT Team "The BugBusters" Project Palate-Paradise
 
