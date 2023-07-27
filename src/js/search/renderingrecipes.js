@@ -27,7 +27,7 @@ export function renderingRecipes(
       style="background: linear-gradient(0deg, rgba(5, 5, 5, 0.6), rgba(5, 5, 5, 0)),
       url(${preview}); background-position: center; background-size: cover;">
       <div class="upper-part">
-        <button type="button" class="heart-btn"  name="favorite">
+        <button type="button" class="heart-btn"  name="favorite" data-ids="${id}">
           <svg data-info="${id}"  class="icon-heart" width="22" height="22" >
             <use href="${sprite}#heart" ></use>
           </svg>
