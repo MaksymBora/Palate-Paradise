@@ -131,14 +131,30 @@ async function fetchRecipe(recipeId) {
 
 // Відображаю відео на сторінці
 
-let currentVideoId = ''
+// let currentVideoId = ''
+
+// Створюю об'єкт для збереження в ньому посилання на відео з Id 
+const videoCache = {};
+
 function displayRecipeVideo(recipe) {
   const recipeVideoIframe = document.querySelector('.recipes-iframe-video');
   const youtubeLink = recipe.youtube;
   const videoId = getVideoIdFromLink(youtubeLink);
 
-if (videoId !== currentVideoId) {recipeVideoIframe.src = `https://www.youtube.com/embed/${videoId}`;
-}}
+  // if (videoId !== currentVideoId) {recipeVideoIframe.src = `https://www.youtube.com/embed/${videoId}`;
+  //   }
+
+  // Додаю умову завантаження з перевіркою наяності посилання на відео в кеші 
+  if (videoCache[youtubeLink]) {
+
+    recipeVideoIframe.src = videoCache[youtubeLink];
+  } else {
+    recipeVideoIframe.src = `https://www.youtube.com/embed/${videoId}`;
+     videoCache[youtubeLink] = `https://www.youtube.com/embed/${videoId}`;
+
+  }
+}
+
 
 // Функція для отримання ID відео з URL YouTube
 function getVideoIdFromLink(link) {
