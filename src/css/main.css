@@ -16,15 +16,11 @@
 @import './modals/modal-order.css';
 @import './modals/modal-rating.css';
 @import './modals/modal-recipes.css';
-
 @import './modals/backdrop.css';
 
+/* Misc */
 @import './favorites/pagination.css';
-
 @import './cart.css';
-
 @import './dark-theme.css';
-
 @import './loader.css';
-
 @import './scroll.css';
