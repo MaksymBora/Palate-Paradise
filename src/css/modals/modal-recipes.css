@@ -55,6 +55,7 @@
 }
 
 .modal-close-btn-icon {
+  stroke: var(--primaty-black-color);
   transition: transform var(--transition-property),
     stroke var(--transition-property);
 }
