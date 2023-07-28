@@ -112,9 +112,7 @@ async function fetchRecipe(recipeId) {
   try {
     const response = await axios.get(url);
     const recipe = response.data;
-    setTimeout(() => {
       displayRecipeVideo(recipe);
-    }, 200);
 
     setRecipeId(recipeId);
     displayRecipeVideo(recipe);
@@ -134,14 +132,14 @@ async function fetchRecipe(recipeId) {
 
 // Відображаю відео на сторінці
 
-
+let currentVideoId = ''
 function displayRecipeVideo(recipe) {
   const recipeVideoIframe = document.querySelector('.recipes-iframe-video');
-  recipeVideoIframe.src = '';
   const youtubeLink = recipe.youtube;
   const videoId = getVideoIdFromLink(youtubeLink);
-    recipeVideoIframe.src = `https://www.youtube.com/embed/${videoId}`;
-}
+
+if (videoId !== currentVideoId) {recipeVideoIframe.src = `https://www.youtube.com/embed/${videoId}`;
+}}
 
 // Функція для отримання ID відео з URL YouTube
 function getVideoIdFromLink(link) {
