@@ -114,7 +114,7 @@ async function fetchRecipe(recipeId) {
     const recipe = response.data;
     setTimeout(() => {
       displayRecipeVideo(recipe);
-    }, 500);
+    }, 200);
 
     setRecipeId(recipeId);
     displayRecipeVideo(recipe);
