@@ -62,6 +62,7 @@ function createMarkup(ivent) {
   return `<div class="swiper-slide">
     <div class="slide-item">
       <img
+      srcset="${cookImgUrl}"
         class="slider-cook"
         src="${cookImgUrl}"
         alt="${cookName}" width="80"
@@ -69,6 +70,7 @@ function createMarkup(ivent) {
       />
       <div class="slide-event-box">
         <img
+        srcset="${cookImgUrl}"
           class="slider-event"
           src="${imgWebpUrl}"
           alt="" width="200"

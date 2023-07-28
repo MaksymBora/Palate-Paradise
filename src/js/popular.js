@@ -30,7 +30,7 @@ function createPopularMarkupMobile(data) {
     .map(
       ({ description, preview, title, _id }) => `
       <li class="popular-list-item" data-id="${_id}">
-        <img src="${preview}" alt="${title}" class="popular-img" loading="lazy" />
+        <img srcset="${preview}" src="${preview}" alt="${title}" class="popular-img" loading="lazy" />
         <div class="popular-list-item-box">
           <h3 class="popular-subtitle">${title}</h3>
           <p class="popular-description">${description}</p>
@@ -48,7 +48,7 @@ function createPopularMarkup(data) {
     .map(
       ({ description, preview, title, _id }) => `
     <li class="popular-list-item" data-id="${_id}">
-      <img src="${preview}" alt="${title}" class="popular-img" loading="lazy" />
+      <img srcset="${preview}" src="${preview}" alt="${title}" class="popular-img" loading="lazy" />
             <div class="popular-list-item-box"><h3 class="popular-subtitle">${title}</h3>
             <p class="popular-description">${description}</p></div>
     </li>`
