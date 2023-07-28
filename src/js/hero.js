@@ -95,3 +95,4 @@ function createMarkup(ivent) {
 function addIventsInSlick(markup) {
   refs.swiper.insertAdjacentHTML('beforeend', markup);
 }
+//
