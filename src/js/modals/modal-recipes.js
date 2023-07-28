@@ -112,8 +112,13 @@ async function fetchRecipe(recipeId) {
   try {
     const response = await axios.get(url);
     const recipe = response.data;
+    setTimeout(() => {
+      displayRecipeVideo(recipe);
+    }, 500);
+
     setRecipeId(recipeId);
     displayRecipeVideo(recipe);
+
     displayRecipeTitle(recipe);
     displayRecipeDescription(recipe);
     displayRecipeTimeCooking(recipe);
@@ -128,12 +133,14 @@ async function fetchRecipe(recipeId) {
 }
 
 // Відображаю відео на сторінці
+
+
 function displayRecipeVideo(recipe) {
   const recipeVideoIframe = document.querySelector('.recipes-iframe-video');
   recipeVideoIframe.src = '';
   const youtubeLink = recipe.youtube;
   const videoId = getVideoIdFromLink(youtubeLink);
-  recipeVideoIframe.src = `https://www.youtube.com/embed/${videoId}`;
+    recipeVideoIframe.src = `https://www.youtube.com/embed/${videoId}`;
 }
 
 // Функція для отримання ID відео з URL YouTube
@@ -290,4 +297,7 @@ function updateFavoriteButtonStatus(recipe) {
     : 'Add to favorite';
 }
 
+
+
 export { currentRecipeId };
+
