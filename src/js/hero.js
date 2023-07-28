@@ -65,7 +65,7 @@ function createMarkup(ivent) {
       srcset="${cookImgUrl}"
         class="slider-cook"
         src="${cookImgUrl}"
-        alt="${cookName}" width="80"
+        alt="${cookName}" 
         load="lazy"
       />
       <div class="slide-event-box">
@@ -73,7 +73,7 @@ function createMarkup(ivent) {
         srcset="${cookImgUrl}"
           class="slider-event"
           src="${imgWebpUrl}"
-          alt="" width="200"
+          alt="" 
           load="lazy"
         />
         <div class="event-info-box">
