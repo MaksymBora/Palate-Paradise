@@ -1,6 +1,6 @@
 import './js/mobile-menu';
 import './js/theme-switch';
-// import './js/hero';
+import './js/hero';
 import './js/all-cat';
 import './js/popular';
 
