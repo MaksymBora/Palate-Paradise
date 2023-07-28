@@ -1,21 +1,21 @@
 import RecipeApiService from '../service/service-api';
 import { notifyError } from '../notifications';
 import '../../js/theme-switch';
-// import '../modals/modal-order';
+import './modal-order';
 const apiRecipe = new RecipeApiService();
 
 const cartWrapper = document.querySelector('.cart-recipe-list');
 
 apiRecipe.limit = 9;
 
-//Add master classes
+// Rendering cards
 async function fillCartWrap() {
   try {
     const recipe = await apiRecipe.getRecipe();
-    console.log(recipe);
+
     return fillCart(recipe);
   } catch (error) {
-    console.log(error);
+    notifyError();
   }
 }
 
@@ -39,7 +39,7 @@ function fillCart(resp) {
         <p class="cart-recipe-descr"><b>Description:</b> ${description}</p>
         <p class="cart-recipe-rating"><b>Rating:</b> ${rating}</p>
         </div>
-        <button type="button" class="hero__button button cart-recipe-btn" data-modal-order-open>
+        <button id="cart-order" type="button" class="hero__button button cart-recipe-btn" data-modal-order-cart>
         Order now
         </button>
       </li>`;
