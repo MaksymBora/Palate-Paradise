@@ -112,11 +112,10 @@ async function fetchRecipe(recipeId) {
   try {
     const response = await axios.get(url);
     const recipe = response.data;
-      displayRecipeVideo(recipe);
 
     setRecipeId(recipeId);
-    displayRecipeVideo(recipe);
 
+    displayRecipeVideo(recipe);
     displayRecipeTitle(recipe);
     displayRecipeDescription(recipe);
     displayRecipeTimeCooking(recipe);
