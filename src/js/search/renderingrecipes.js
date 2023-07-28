@@ -8,7 +8,8 @@ export function renderingRecipes(
   preview,
   rating,
   id,
-  category
+  category,
+  thumb
 ) {
   // Create an object with recipe information.
   const infoRecipe = {
@@ -18,6 +19,7 @@ export function renderingRecipes(
     rating,
     id,
     category,
+    thumb,
   };
 
   const fixedRating = Math.min(rating, 5).toFixed(1);
@@ -25,7 +27,7 @@ export function renderingRecipes(
   return `
     <div data-category="${category}" class="rec-search-item" 
       style="background: linear-gradient(0deg, rgba(5, 5, 5, 0.6), rgba(5, 5, 5, 0)),
-      url(${preview}); background-position: center; background-size: cover;">
+      url(${thumb}); background-position: center; background-size: cover;">
       <div class="upper-part">
         <button id="heart-btn-add-fav" type="button" class="heart-btn"  name="favorite" data-ids="${id}">
           <svg data-info="${id}"  class="icon-heart" width="22" height="22" >
@@ -60,7 +62,8 @@ export function renderMarkup(data) {
         recipe.preview,
         recipe.rating,
         recipe._id,
-        recipe.category
+        recipe.category,
+        recipe.thumb
       )
     )
     .join('');
