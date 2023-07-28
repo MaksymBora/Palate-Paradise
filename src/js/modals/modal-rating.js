@@ -1,5 +1,7 @@
 import throttle from 'lodash.throttle';
 import Notiflix from 'notiflix';
+import { currentRecipeId } from './modal-recipes.js';
+import axios from 'axios';
 
 const refs = {
   openModalRatingBtn: document.querySelector('[data-modal-rating-open]'),
@@ -22,16 +24,27 @@ refs.modalRatingForm.addEventListener('submit', onFormSubmit);
 // Open and close modal-rating modal window
 function onToggleModalRating() {
   refs.modalRating.classList.toggle('is-hidden');
+  if (refs.modalRating.classList.contains('is-hidden')) {
+    refs.modalRatingForm.elements.email.value = '';
+    refs.modalRatingForm.elements.rating.value = '';
+    resetStars();
+  }
 }
 
-refs.modalRatingSubmitBtn.disabled = true;
+// Function to reset star colors to their initial state
+function resetStars() {
+  refs.ratings.forEach(rateEl => {
+    rateEl.nextElementSibling.classList.remove('is-active');
+  });
+  refs.modalRatingValue.textContent = 0;
+}
+
 onClickPageReload();
 
 function onRatingChange(evt) {
   const { rating, email } = evt.currentTarget.elements;
-
   const ratingFormState = {
-    rating: rating.value,
+    rating: Number(rating.value),
     email: email.value.trim(),
   };
 
@@ -67,20 +80,82 @@ function onClickPageReload() {
     refs.modalRatingSubmitBtn.disabled = true;
   }
 }
+
 //Clean localStorage and form inputs after form submit
 function onFormSubmit(evt) {
   evt.preventDefault();
 
-  onSuccessMes();
-  refs.modalRatingSubmitBtn.disabled = true;
-  localStorage.removeItem(RATING_FORM_KEY);
-  // Clear data from form inputs
-  evt.currentTarget.reset();
+  const { rating, email } = evt.currentTarget.elements;
+
+  // Validate rating: Rating should be between 1 and 5
+  const ratingValue = Number(rating.value);
+
+  if (ratingValue < 1 || ratingValue > 5) {
+    Notiflix.Report.failure(
+      'Error',
+      'Please enter a rating between 1 and 5.',
+      'Ok'
+    );
+    refs.modalRatingSubmitBtn.disabled = true;
+    return;
+  }
+
+  const emailValue = email.value.trim();
+  // Validate email: Use regular expression for email format
+  const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!emailPattern.test(emailValue)) {
+    // Invalid email format
+    Notiflix.Report.failure(
+      'Error',
+      'Please enter a valid email address.',
+      'Ok'
+    );
+    resetStars();
+    refs.modalRatingSubmitBtn.disabled = true;
+    return;
+  }
+
+  const requestData = {
+    rate: ratingValue,
+    email: emailValue,
+  };
+
+  // Id of current Recipe
+  const recipeIdFromModalRecipes = currentRecipeId;
+
+  // Send rating
+  patchRating(requestData, recipeIdFromModalRecipes);
 }
-//Show notification after form sending
-function onSuccessMes() {
-  Notiflix.Report.success('Thank you for your feedback!', '', 'Ok', {
-    position: 'center-top',
-    titleMaxLength: '100',
-  });
+
+// Send Rating to Backend
+async function patchRating(requestData, recipeIdFromModalRecipes) {
+  const patchUrl = `https://tasty-treats-backend.p.goit.global/api/recipes/${recipeIdFromModalRecipes}/rating`;
+
+  try {
+    Notiflix.Loading.pulse('Sending...');
+
+    const response = await axios.patch(patchUrl, requestData, {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+
+    if (response.data) {
+      setTimeout(() => {
+        Notiflix.Notify.success('Thanks for your feedback!');
+      }, 500);
+      setTimeout(() => {
+        Notiflix.Loading.remove();
+      }, 1500);
+    }
+    onToggleModalRating();
+
+    return response.data;
+  } catch (error) {
+    console.error('Error:', error);
+    Notiflix.Loading.remove();
+    Notiflix.Report.warning('Ooops, failed request', 'Try again later', 'Ok');
+
+    onToggleModalRating();
+  }
 }

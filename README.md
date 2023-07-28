@@ -3,8 +3,6 @@
 
 ## GoIT Team "The BugBusters" Project Palate-Paradise
 
-## [ JavaScript | HTML | CSS | Parcel ]
-
 ![GitHub](https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white)
 ![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)
 ![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white)
@@ -16,6 +14,8 @@
 ![Lines of code](https://img.shields.io/tokei/lines/github/MaksymBora/Palate-Paradise?style=flat-square&color=orange)
 ![GitHub top language](https://img.shields.io/github/languages/top/MaksymBora/Palate-Paradise?style=flat-square)
 ![GitHub contributors](https://img.shields.io/github/contributors/MaksymBora/Palate-Paradise?style=flat-square)
+<a href="https://maksymbora.github.io/group-20-project/">
+<img style="border-radius: 8px;" src="./assets/card.jpg" /> </a>
 
 ### Technologies
 
@@ -28,6 +28,7 @@
 - Notiflix
 - Pagination
 - Github Actions
+- Parcel
 
 ### Contributors
 

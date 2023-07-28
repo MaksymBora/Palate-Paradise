@@ -56,21 +56,23 @@ async function generateIventsMarkup() {
 }
 
 function createMarkup(ivent) {
-  const { name, previewUrl, area } = ivent.topic;
+  const { name, imgWebpUrl, area } = ivent.topic;
   const cookName = ivent.cook.name;
-  const cookImgUrl = ivent.cook.imgUrl;
+  const cookImgUrl = ivent.cook.imgWebpUrl;
   return `<div class="swiper-slide">
     <div class="slide-item">
       <img
         class="slider-cook"
         src="${cookImgUrl}"
-        alt="${cookName}"
+        alt="${cookName}" width="80"
+        load="lazy"
       />
       <div class="slide-event-box">
         <img
           class="slider-event"
-          src="${previewUrl}"
-          alt=""
+          src="${imgWebpUrl}"
+          alt="" width="200"
+          load="lazy"
         />
         <div class="event-info-box">
         <p class="event-title">${name}</p>
@@ -80,7 +82,7 @@ function createMarkup(ivent) {
       <div
         class="dish-box"
         style="
-          background-image: url('${previewUrl}');
+          background-image: url('${imgWebpUrl}');
         ">
         </div>
     </div>
