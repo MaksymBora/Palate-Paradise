@@ -18,7 +18,6 @@ refs.modalOrderForm.addEventListener('submit', onFormSubmit);
 setTimeout(() => {
   const modalOrder = document.querySelectorAll('button[data-modal-order-cart]');
   modalOrder.forEach(button => {
-    console.log(button);
     button.addEventListener('click', onToggleModalOrder);
   });
 
