@@ -1,18 +1,6 @@
 <section id="search-section" class="search_recipes">
   <h2 class="visually-hidden">Recipes Cards</h2>
   <div class="recipes_box">
-    <form class="form_search">
-      <label class="form-label">
-        <span class="label-text">Search</span>
-        <input
-          type="search"
-          class="form-input"
-          name="username"
-          placeholder="Enter Text"
-        />
-      </label>
-    </form>
-
     <!-- Filters -->
     <!-- <div class="form__time">
       <label class="time">Time</label>
@@ -44,17 +32,40 @@
       </div>
     </div> -->
 
-    <select id="filter-time">
-      <option value="value1">Value 1</option>
-    </select>
+    <div class="all-filters">
+      <form class="form_search">
+        <label class="form-label">
+          <span class="label-text">Search</span>
+          <input
+            type="search"
+            class="form-input"
+            name="username"
+            placeholder="Enter Text"
+          />
+        </label>
+      </form>
 
-    <select id="filter-area">
-      <option value="value1">Value 1</option>
-    </select>
+      <div class="form__time">
+        <span class="form-time-text">Time</span>
+        <select id="filter-time">
+          <option value="value1">Value 1</option>
+        </select>
+      </div>
 
-    <select id="filter-items">
-      <option value="value1">Value 1</option>
-    </select>
+      <div class="form__area">
+        <span>Area</span>
+        <select id="filter-area">
+          <option value="value1">Value 1</option>
+        </select>
+      </div>
+
+      <div class="form__form__ingredients">
+        <span>Ingredients</span>
+        <select id="filter-items">
+          <option value="value1">Value 1</option>
+        </select>
+      </div>
+    </div>
 
     <div class="reset">
       <svg class="icon-x" width="16" height="16">

@@ -47,6 +47,27 @@
   line-height: calc(18 / 14);
 }
 
+/* FILTERS */
+.all-filters {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  justify-content: center;
+}
+
+.form__time > .ss-main {
+  width: 125px;
+  height: 48px;
+  border-radius: 15px;
+  margin-top: 7px;
+  padding-left: 18px;
+  border: 1px solid #05050533;
+}
+
+.form__time > .ss-main:focus {
+  box-shadow: 0 0 5px var(--accent-color);
+}
+
 /* Стилизация обертки для выпадающего меню */
 .custom-dropdown {
   position: relative;
@@ -228,6 +249,12 @@
 }
 
 @media screen and (min-width: 768px) {
+  /* Filters */
+
+  .form__time > .form-time-text {
+    font-size: 14;
+    line-height: 1.3;
+  }
   .rec-search-item {
     width: 240px;
     height: 264px;
@@ -307,7 +334,6 @@
   }
 
   .reset {
- 
     margin-bottom: 14px;
   }
 
@@ -342,12 +368,9 @@
     min-height: 728px;
   }
 
-  
-
   .image-container {
     min-height: 908px;
     display: flex;
     row-gap: 32px;
-    
   }
 }
