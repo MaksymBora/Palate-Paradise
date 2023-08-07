@@ -62,6 +62,7 @@ export default class RecipeApiService {
       notifyError(error);
     }
   }
+
   async getRecByIngredient() {
     const url = `${this.BASE_URL}/recipes?ingredient=${
       this.ingredients
