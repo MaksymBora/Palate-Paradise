@@ -136,4 +136,8 @@ export default class RecipeApiService {
       notifyError(error);
     }
   }
+
+  set otherArea(newArea) {
+    this.area = newArea;
+  }
 }

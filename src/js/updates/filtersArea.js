@@ -56,7 +56,7 @@ selectArea.addEventListener('change', filteredByArea);
 async function filteredByArea(e) {
   const { value } = e.target;
 
-  recipeApiService.area = value;
+  recipeApiService.otherArea = value;
 
   try {
     const result = await recipeApiService.getRecipe();
