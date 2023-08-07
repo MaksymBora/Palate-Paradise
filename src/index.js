@@ -1,6 +1,7 @@
 import './js/mobile-menu';
 import './js/theme-switch';
 import './js/hero';
+import './js/updates/image-container';
 import './js/all-cat';
 import './js/popular';
 

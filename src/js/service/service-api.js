@@ -35,7 +35,7 @@ export default class RecipeApiService {
       const response = await axios.get(url);
       return response.data;
     } catch (error) {
-      notifyError(error);
+      notifyError();
     }
   }
 
@@ -45,7 +45,7 @@ export default class RecipeApiService {
       const response = await axios.get(url);
       return response.data;
     } catch (error) {
-      notifyError(error);
+      notifyError();
     }
   }
 
@@ -59,7 +59,7 @@ export default class RecipeApiService {
       const response = await axios.get(url);
       return response.data;
     } catch (error) {
-      notifyError(error);
+      notifyError();
     }
   }
 
@@ -71,7 +71,7 @@ export default class RecipeApiService {
       const response = await axios.get(url);
       return response.data;
     } catch (error) {
-      notifyError(error);
+      notifyError();
     }
   }
 
@@ -81,7 +81,7 @@ export default class RecipeApiService {
       const response = await axios.get(url);
       return response.data;
     } catch (error) {
-      notifyError(error);
+      notifyError();
     }
   }
 
@@ -91,7 +91,7 @@ export default class RecipeApiService {
       const response = await axios.get(url);
       return response.data;
     } catch (error) {
-      notifyError(error);
+      notifyError();
     }
   }
 
@@ -102,7 +102,7 @@ export default class RecipeApiService {
       const response = await axios.patch(url);
       return response.data;
     } catch (error) {
-      notifyError(error);
+      notifyError();
     }
   }
 
@@ -112,7 +112,7 @@ export default class RecipeApiService {
       const response = await axios.get(url);
       return response.data;
     } catch (error) {
-      notifyError(error);
+      notifyError();
     }
   }
 
@@ -122,7 +122,7 @@ export default class RecipeApiService {
       const response = await axios.get(url);
       return response.data;
     } catch (error) {
-      notifyError(error);
+      notifyError();
     }
   }
 
@@ -133,7 +133,7 @@ export default class RecipeApiService {
       const response = await axios.post(url);
       return response.data;
     } catch (error) {
-      notifyError(error);
+      notifyError();
     }
   }
 
