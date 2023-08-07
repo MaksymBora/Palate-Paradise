@@ -140,4 +140,8 @@ export default class RecipeApiService {
   set otherArea(newArea) {
     this.area = newArea;
   }
+
+  set otherIngredients(newItem) {
+    this.ingredients = newItem;
+  }
 }

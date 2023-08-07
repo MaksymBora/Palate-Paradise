@@ -5,17 +5,17 @@ import { renderMarkup } from '../search/renderingrecipes';
 const recipeApiService = new RecipeApiService();
 
 // ====================================== //
-// Rendering Areas in Select #filter-area //
+// Rendering Ingredients in Select #filter-area //
 // ====================================== //
 
-async function getAreas() {
+async function getIngredients() {
   try {
-    const result = await recipeApiService.getRecipe();
+    const result = await recipeApiService.getIngredients();
 
-    renderOptions(result.results);
+    renderOptions(result);
 
     const slimSelect = new SlimSelect({
-      select: '#filter-area',
+      select: '#filter-items',
       settings: {
         showSearch: false,
       },
@@ -26,41 +26,41 @@ async function getAreas() {
 }
 
 // ======================================== //
-// Rendering Options in Select #filter-area //
+// Rendering Options in Select #filter-items //
 // ======================================== //
 function renderOptions(data) {
-  const areaFilter = document.querySelector('#filter-area');
+  const areaFilter = document.querySelector('#filter-items');
   areaFilter.innerHTML = '';
 
   const defaultOption = document.createElement('option');
-  defaultOption.value = 'Country';
-  defaultOption.textContent = 'Country';
+  defaultOption.value = 'Ingredients';
+  defaultOption.textContent = 'Ingredients';
   areaFilter.appendChild(defaultOption);
 
   data.forEach(result => {
     const option = document.createElement('option');
-    option.value = result.area;
-    option.textContent = result.area;
+    option.value = result._id;
+    option.textContent = result.name;
     areaFilter.appendChild(option);
   });
 }
 
-getAreas();
+getIngredients();
 
-// =============================== //
-// Rendering Card filtered by Area //
-// =============================== //
-const selectArea = document.querySelector('#filter-area');
+// =======================================//
+// Rendering Card filtered by Ingredients //
+// ====================================== //
+const selectArea = document.querySelector('#filter-items');
 
-selectArea.addEventListener('change', filteredByArea);
+selectArea.addEventListener('change', filteredByIngredients);
 
-async function filteredByArea(e) {
+async function filteredByIngredients(e) {
   const { value } = e.target;
-
-  recipeApiService.otherArea = value;
+  console.log(value);
+  recipeApiService.otherIngredients = value;
 
   try {
-    const result = await recipeApiService.getRecipe();
+    const result = await recipeApiService.getRecByIngredient();
     renderMarkup(result.results);
   } catch (error) {
     console.log(error);

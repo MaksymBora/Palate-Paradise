@@ -7,7 +7,11 @@ import './js/modals/modal-rating';
 import './js/modals/modal-order';
 import './js/modals/modal-recipes';
 // import './js/search';
+
+// Filters
 import './js/updates/filtersArea';
+import './js/updates/filterIngredients';
+
 import './js/cart/cart';
 import './js/all-cat/reset';
 import './js/scroll';
