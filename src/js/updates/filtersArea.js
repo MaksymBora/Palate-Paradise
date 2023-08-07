@@ -4,6 +4,7 @@ import { renderMarkup } from '../search/renderingrecipes';
 
 const recipeApiService = new RecipeApiService();
 
+export let slimSelectArea;
 // ====================================== //
 // Rendering Areas in Select #filter-area //
 // ====================================== //
@@ -14,7 +15,7 @@ async function getAreas() {
 
     renderOptions(result.results);
 
-    const slimSelect = new SlimSelect({
+    slimSelectArea = new SlimSelect({
       select: '#filter-area',
       settings: {
         showSearch: false,

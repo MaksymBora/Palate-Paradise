@@ -144,4 +144,8 @@ export default class RecipeApiService {
   set otherIngredients(newItem) {
     this.ingredients = newItem;
   }
+
+  set otherTime(newTime) {
+    this.time = newTime;
+  }
 }

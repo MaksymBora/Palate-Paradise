@@ -4,6 +4,7 @@ import { renderMarkup } from '../search/renderingrecipes';
 
 const recipeApiService = new RecipeApiService();
 
+export let slimSelectItems;
 // ====================================== //
 // Rendering Ingredients in Select #filter-area //
 // ====================================== //
@@ -14,7 +15,7 @@ async function getIngredients() {
 
     renderOptions(result);
 
-    const slimSelect = new SlimSelect({
+    slimSelectItems = new SlimSelect({
       select: '#filter-items',
       settings: {
         showSearch: false,
@@ -50,13 +51,13 @@ getIngredients();
 // =======================================//
 // Rendering Card filtered by Ingredients //
 // ====================================== //
-const selectArea = document.querySelector('#filter-items');
+const selectItems = document.querySelector('#filter-items');
 
-selectArea.addEventListener('change', filteredByIngredients);
+selectItems.addEventListener('change', filteredByIngredients);
 
 async function filteredByIngredients(e) {
   const { value } = e.target;
-  console.log(value);
+
   recipeApiService.otherIngredients = value;
 
   try {
