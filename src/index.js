@@ -9,7 +9,6 @@ import './js/popular';
 import './js/modals/modal-rating';
 import './js/modals/modal-order';
 import './js/modals/modal-recipes';
-// import './js/search';
 
 // Filters
 import './js/updates/filtersArea';
