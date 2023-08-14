@@ -110,6 +110,7 @@ export default class RecipeApiService {
     const url = `${this.BASE_URL}/ingredients`;
     try {
       const response = await axios.get(url);
+
       return response.data;
     } catch (error) {
       notifyError();

@@ -173,11 +173,6 @@
   }
 }
 
-#heart-btn-add-fav {
-  width: 45px;
-  height: 45px;
-}
-
 @media screen and (max-width: 767px) {
   .search_recipes {
     width: 335px;
