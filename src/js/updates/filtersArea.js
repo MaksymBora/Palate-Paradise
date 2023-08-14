@@ -11,9 +11,9 @@ export let slimSelectArea;
 
 async function getAreas() {
   try {
-    const result = await recipeApiService.getRecipe();
+    const result = await recipeApiService.getAreas();
 
-    renderOptions(result.results);
+    renderOptions(result);
 
     slimSelectArea = new SlimSelect({
       select: '#filter-area',
@@ -40,8 +40,8 @@ function renderOptions(data) {
 
   data.forEach(result => {
     const option = document.createElement('option');
-    option.value = result.area;
-    option.textContent = result.area;
+    option.value = result.name;
+    option.textContent = result.name;
     areaFilter.appendChild(option);
   });
 }

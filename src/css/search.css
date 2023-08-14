@@ -7,7 +7,6 @@
   display: flex;
   flex-wrap: wrap;
   gap: 14px;
-  margin-bottom: 14px;
 }
 
 .label-text,
@@ -50,22 +49,66 @@
 /* FILTERS */
 .all-filters {
   display: flex;
+  flex-wrap: wrap;
   align-items: baseline;
-  gap: 16px;
-  justify-content: center;
+  gap: 14px;
+}
+
+.form-time-text {
+  margin-bottom: 8px;
+  font-size: 12px;
+  line-height: 1.16667;
+  display: block;
 }
 
 .form__time > .ss-main {
-  width: 125px;
-  height: 48px;
+  width: 160px;
+  height: 46px;
   border-radius: 15px;
-  margin-top: 7px;
-  padding-left: 18px;
+  padding: 14px 18px 14px 18px;
   border: 1px solid #05050533;
+  font-size: 14px;
+  line-height: 1.28;
+  color: #05050580;
+  font-weight: 500;
 }
 
 .form__time > .ss-main:focus {
   box-shadow: 0 0 5px var(--accent-color);
+}
+
+.form-area-text {
+  margin-bottom: 8px;
+  font-size: 12px;
+  line-height: 1.16667;
+  display: block;
+}
+
+.form__area > .ss-main {
+  width: 161px;
+  height: 46px;
+  border-radius: 15px;
+  border: 1px solid #05050533;
+  padding: 14px 18px 14px 18px;
+  font-size: 14px;
+  color: #05050580;
+}
+
+.form-ing-text {
+  margin-bottom: 8px;
+  font-size: 12px;
+  line-height: 1.16667;
+  display: block;
+}
+
+.form__form__ingredients > .ss-main {
+  width: 188px;
+  height: 46px;
+  border-radius: 15px;
+  border: 1px solid #05050533;
+  padding: 14px 18px 14px 18px;
+  font-size: 14px;
+  color: #05050580;
 }
 
 /* Стилизация обертки для выпадающего меню */
@@ -278,7 +321,6 @@
   .recipes_box {
     align-items: center;
     gap: 16px;
-    margin-bottom: 14px;
   }
 
   .label-text,
