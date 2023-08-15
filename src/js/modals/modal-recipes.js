@@ -133,7 +133,7 @@ async function fetchRecipe(recipeId) {
 
 // let currentVideoId = ''
 
-// Створюю об'єкт для збереження в ньому посилання на відео з Id 
+// Створюю об'єкт для збереження в ньому посилання на відео з Id
 const videoCache = {};
 
 function displayRecipeVideo(recipe) {
@@ -144,17 +144,14 @@ function displayRecipeVideo(recipe) {
   // if (videoId !== currentVideoId) {recipeVideoIframe.src = `https://www.youtube.com/embed/${videoId}`;
   //   }
 
-  // Додаю умову завантаження з перевіркою наяності посилання на відео в кеші 
+  // Додаю умову завантаження з перевіркою наяності посилання на відео в кеші
   if (videoCache[youtubeLink]) {
-
     recipeVideoIframe.src = videoCache[youtubeLink];
   } else {
     recipeVideoIframe.src = `https://www.youtube.com/embed/${videoId}`;
-     videoCache[youtubeLink] = `https://www.youtube.com/embed/${videoId}`;
-
+    videoCache[youtubeLink] = `https://www.youtube.com/embed/${videoId}`;
   }
 }
-
 
 // Функція для отримання ID відео з URL YouTube
 function getVideoIdFromLink(link) {
@@ -264,9 +261,9 @@ function isRecipeInFavorites(recipe) {
 // Функція для додавання/видалення обраного рецепту з масиву localStorage
 function addToFavorites(recipe) {
   const favoriteRecipes = getFavoriteRecipes();
-  const { _id, title, category, rating, preview, description } = recipe;
+  const { _id, title, category, rating, thumb, description } = recipe;
 
-  const newRecipe = { id: _id, title, category, rating, preview, description };
+  const newRecipe = { id: _id, title, category, rating, thumb, description };
 
   const isDuplicate = isRecipeInFavorites(recipe);
   if (!isDuplicate) {
@@ -310,7 +307,4 @@ function updateFavoriteButtonStatus(recipe) {
     : 'Add to favorite';
 }
 
-
-
 export { currentRecipeId };
-

@@ -14,9 +14,8 @@
   filter: blur(0.2px);
   display: none;
   background-image: url('/src/images/scrollupp.png');
-  background-size: 64px;
+  background-size: 60px;
   opacity: 0.6;
-  transition: opacity 0.3s ease-in-out;
   animation: bounce 1s infinite;
   transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
 }

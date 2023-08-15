@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { notifyError } from '../notifications';
+import { notifyError } from '../utils/notifications';
 
 export default class RecipeApiService {
   constructor() {
@@ -11,6 +11,7 @@ export default class RecipeApiService {
     this.area = '';
     this.ingredients = '';
     this.recipeId = '';
+    this.filterData = [];
   }
 
   resizePage() {
@@ -35,7 +36,7 @@ export default class RecipeApiService {
       const response = await axios.get(url);
       return response.data;
     } catch (error) {
-      notifyError(error);
+      notifyError();
     }
   }
 
@@ -45,7 +46,7 @@ export default class RecipeApiService {
       const response = await axios.get(url);
       return response.data;
     } catch (error) {
-      notifyError(error);
+      notifyError();
     }
   }
 
@@ -55,13 +56,29 @@ export default class RecipeApiService {
     }&${this.resizePage()}&time=${this.time}&area=${this.area}&ingredients=${
       this.ingredients
     }`;
+
     try {
       const response = await axios.get(url);
       return response.data;
     } catch (error) {
-      notifyError(error);
+      notifyError();
     }
   }
+
+  async getRecipeByPage(page) {
+    const url = `${this.BASE_URL}/recipes?category=${
+      this.category
+    }&page=${page}&${this.resizePage()}&time=${this.time}&area=${
+      this.area
+    }&ingredients=${this.ingredients}`;
+    try {
+      const response = await axios.get(url);
+      return response.data;
+    } catch (error) {
+      notifyError();
+    }
+  }
+
   async getRecByIngredient() {
     const url = `${this.BASE_URL}/recipes?ingredient=${
       this.ingredients
@@ -70,7 +87,7 @@ export default class RecipeApiService {
       const response = await axios.get(url);
       return response.data;
     } catch (error) {
-      notifyError(error);
+      notifyError();
     }
   }
 
@@ -80,7 +97,7 @@ export default class RecipeApiService {
       const response = await axios.get(url);
       return response.data;
     } catch (error) {
-      notifyError(error);
+      notifyError();
     }
   }
 
@@ -90,7 +107,7 @@ export default class RecipeApiService {
       const response = await axios.get(url);
       return response.data;
     } catch (error) {
-      notifyError(error);
+      notifyError();
     }
   }
 
@@ -101,7 +118,7 @@ export default class RecipeApiService {
       const response = await axios.patch(url);
       return response.data;
     } catch (error) {
-      notifyError(error);
+      notifyError();
     }
   }
 
@@ -109,9 +126,10 @@ export default class RecipeApiService {
     const url = `${this.BASE_URL}/ingredients`;
     try {
       const response = await axios.get(url);
+
       return response.data;
     } catch (error) {
-      notifyError(error);
+      notifyError();
     }
   }
 
@@ -121,7 +139,7 @@ export default class RecipeApiService {
       const response = await axios.get(url);
       return response.data;
     } catch (error) {
-      notifyError(error);
+      notifyError();
     }
   }
 
@@ -132,7 +150,39 @@ export default class RecipeApiService {
       const response = await axios.post(url);
       return response.data;
     } catch (error) {
-      notifyError(error);
+      notifyError();
     }
+  }
+
+  set otherArea(newArea) {
+    this.area = newArea;
+  }
+
+  set otherIngredients(newItem) {
+    this.ingredients = newItem;
+  }
+
+  set otherTime(newTime) {
+    this.time = newTime;
+  }
+
+  set currentPage(newPage) {
+    this.page = newPage;
+  }
+
+  get currentPage() {
+    return this.page;
+  }
+
+  set filter(newFilterData) {
+    this.filterData = newFilterData;
+  }
+
+  get filter() {
+    return this.filterData;
+  }
+
+  set updatedCategory(newCategory) {
+    this.category = newCategory;
   }
 }

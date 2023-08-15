@@ -2,24 +2,6 @@
 
 @import './dark-theme.css';
 
-@font-face {
-  font-family: 'Inter';
-  src: url('../fonts/Inter-Regular.woff2'), url('../fonts/Inter-Regular.woff');
-  font-weight: normal;
-}
-
-@font-face {
-  font-family: 'Inter';
-  src: url('../fonts/Inter-Medium.woff2'), url('../fonts/Inter-Medium.woff');
-  font-weight: 500;
-}
-
-@font-face {
-  font-family: 'Inter';
-  src: url('../fonts/Inter-SemiBold.woff2'), url('../fonts/Inter-SemiBold.woff');
-  font-weight: 600;
-}
-
 :root {
   /* Light Theme */
   --primary-white-color: #ffffff;
@@ -34,7 +16,7 @@
 }
 
 body {
-  font-family: 'Inter';
+  font-family: 'Inter', sans-serif;
   font-size: 20px;
   color: #050505;
   font-size: 16px;
@@ -66,6 +48,7 @@ svg {
 
 button {
   cursor: pointer;
+  padding: 0;
 }
 
 .visually-hidden {
@@ -95,6 +78,7 @@ footer {
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-bottom: 20px;
 }
 
 .copy {

@@ -21,11 +21,12 @@
     "ajax": "^0.0.4",
     "axios": "^1.4.0",
     "choices.js": "^10.2.0",
-    "lodash.debounce": "^4.0.8",
     "lodash.throttle": "^4.1.1",
     "modern-normalize": "^1.1.0",
     "notiflix": "^3.2.6",
     "overlayscrollbars": "^2.2.1",
+    "remove": "^0.1.5",
+    "slim-select": "^2.6.0",
     "smooth-scrollbar": "^8.8.4",
     "swiper": "^9.4.1",
     "tui-pagination": "^3.4.1"

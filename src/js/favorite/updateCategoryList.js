@@ -1,5 +1,5 @@
 import { getFromLocalStorage } from '../favorite/localStorageUtils';
-import { showLoader, hideLoader } from '../loader';
+import { showLoader, hideLoader } from '../utils/loader';
 
 /**
  * Generates the markup for a category button.

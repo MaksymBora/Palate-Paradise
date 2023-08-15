@@ -7,13 +7,9 @@
   display: flex;
   flex-wrap: wrap;
   gap: 14px;
-  margin-bottom: 14px;
 }
 
-.label-text,
-.time,
-.area,
-.ingredients {
+.label-text {
   font-size: 12px;
   line-height: calc(14 / 12);
   margin-bottom: 8px;
@@ -47,101 +43,77 @@
   line-height: calc(18 / 14);
 }
 
-/* Стилизация обертки для выпадающего меню */
-.custom-dropdown {
-  position: relative;
-  display: inline-block;
-}
-
-.choice__time {
-  width: 160px;
-}
-
-.choice__area {
-  width: 161px;
-}
-
-.choice__ingredients {
-  width: 188px;
-}
-
-.selected-option,
-.dropdown-list {
-  color: rgba(5, 5, 5, 0.5);
-  font-size: 14px;
-  line-height: calc(18 / 14);
-}
-
-.custom-dropdown ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-.custom-dropdown .selected-option {
+/* FILTERS */
+.all-filters {
   display: flex;
-  border: 1px solid rgba(5, 5, 5, 0.2);
-  border-radius: 15px;
-  background: url('../images/chevron-down.svg') no-repeat right center;
-  background-position-x: calc(100% - 18px);
-  height: 46px;
-  padding-left: 18px;
-  align-items: center;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 14px;
 }
 
-.custom-dropdown .dropdown-list {
-  display: none;
-  position: absolute;
-  top: 100%;
-  left: 0;
-  z-index: 1;
-  width: 100%;
-  overflow-y: auto;
-  border-radius: 14px;
-  background-color: rgba(255, 255, 255, 1);
-}
-
-.choice__time .dropdown-list {
-  max-height: 124px;
-}
-
-.choice__area .dropdown-list {
-  max-height: 176px;
-}
-
-.choice__ingredients .dropdown-list {
-  max-height: 176px;
-}
-
-.custom-dropdown:hover .dropdown-list,
-.custom-dropdown.active .dropdown-list {
-  display: block;
-  padding-left: 18px;
-  padding-top: 18px;
-  padding-bottom: 14px;
-}
-
-.custom-dropdown .dropdown-list li {
+.form-time-text {
   margin-bottom: 8px;
-  cursor: pointer;
+  font-size: 12px;
+  line-height: 1.16667;
+  display: block;
 }
 
-.custom-dropdown .dropdown-list li:last-child {
-  margin-bottom: 0;
+.form__time > .ss-main {
+  width: 160px;
+  height: 46px;
+  border-radius: 15px;
+  padding: 14px 18px 14px 18px;
+  border: 1px solid #05050533;
+  font-size: 14px;
+  line-height: 1.28;
+  color: #05050580;
+  font-weight: 500;
 }
 
-.custom-dropdown .dropdown-list li:hover {
-  color: rgba(5, 5, 5, 1);
+.form__time > .ss-main:focus {
+  box-shadow: 0 0 5px var(--accent-color);
 }
 
-.custom-dropdown .dropdown-list::-webkit-scrollbar-thumb {
-  background-color: rgba(5, 5, 5, 0.1);
-  border-radius: 12px;
+.form-area-text {
+  margin-bottom: 8px;
+  font-size: 12px;
+  line-height: 1.16667;
+  display: block;
 }
 
-.custom-dropdown .dropdown-list::-moz-scrollbar-thumb {
-  background-color: rgba(5, 5, 5, 0.1);
-  border-radius: 12px;
+.form__area > .ss-main {
+  width: 161px;
+  height: 46px;
+  border-radius: 15px;
+  border: 1px solid #05050533;
+  padding: 14px 18px 14px 18px;
+  font-size: 14px;
+  color: #05050580;
+}
+
+.form__area > .ss-main:focus {
+  box-shadow: 0 0 5px var(--accent-color);
+}
+
+.form-ing-text {
+  margin-bottom: 8px;
+  font-size: 12px;
+  line-height: 1.16667;
+  display: block;
+}
+
+.form__form__ingredients > .ss-main {
+  width: 188px;
+  height: 46px;
+  border-radius: 15px;
+  border: 1px solid #05050533;
+  padding: 14px 18px 14px 18px;
+  font-size: 14px;
+  color: #05050580;
+}
+
+.form__form__ingredients > .ss-main:focus {
+  box-shadow: 0 0 5px var(--accent-color);
 }
 
 .reset {
@@ -201,11 +173,6 @@
   }
 }
 
-#heart-btn-add-fav {
-  width: 45px;
-  height: 45px;
-}
-
 @media screen and (max-width: 767px) {
   .search_recipes {
     width: 335px;
@@ -228,6 +195,27 @@
 }
 
 @media screen and (min-width: 768px) {
+  /* Filters */
+
+  .form__time > .form-time-text {
+    font-size: 14;
+    line-height: 1.3;
+  }
+
+  .form__time > .ss-main {
+    width: 125px;
+    height: 48px;
+  }
+
+  .form__area > .ss-main {
+    width: 141px;
+    height: 48px;
+  }
+
+  .form__form__ingredients > .ss-main {
+    height: 48px;
+  }
+
   .rec-search-item {
     width: 240px;
     height: 264px;
@@ -251,22 +239,11 @@
   .recipes_box {
     align-items: center;
     gap: 16px;
-    margin-bottom: 14px;
   }
 
-  .label-text,
-  .time,
-  .area,
-  .ingredients {
+  .label-text {
     font-size: 14px;
     line-height: calc(18 / 14);
-  }
-
-  .form-input,
-  .selected-option,
-  .dropdown-list {
-    font-size: 16px;
-    line-height: calc(20 / 16);
   }
 
   .form-input {
@@ -274,40 +251,40 @@
     height: 48px;
   }
 
+  .form-input {
+    font-size: 16px;
+  }
+
+  .form__time > .ss-main {
+    font-size: 16px;
+  }
+
+  .form__area > .ss-main {
+    font-size: 16px;
+  }
+
+  .form__form__ingredients > .ss-main {
+    font-size: 16px;
+  }
+
+  .form-time-text {
+    font-size: 14px;
+  }
+
+  .form-area-text {
+    font-size: 14px;
+  }
+
+  .form-ing-text {
+    font-size: 14px;
+  }
+
   .form-input::placeholder {
     font-size: 16px;
     line-height: calc(20 / 16);
   }
 
-  .choice__time {
-    width: 125px;
-  }
-
-  .choice__area {
-    width: 141px;
-  }
-
-  .choice__ingredients {
-    width: 188px;
-  }
-  .custom-dropdown .selected-option {
-    height: 48px;
-  }
-
-  .choice__time .dropdown-list {
-    max-height: 128px;
-  }
-
-  .choice__area .dropdown-list {
-    max-height: 188px;
-  }
-
-  .choice__ingredients .dropdown-list {
-    max-height: 188x;
-  }
-
   .reset {
- 
     margin-bottom: 14px;
   }
 
@@ -342,12 +319,9 @@
     min-height: 728px;
   }
 
-  
-
   .image-container {
     min-height: 908px;
     display: flex;
     row-gap: 32px;
-    
   }
 }

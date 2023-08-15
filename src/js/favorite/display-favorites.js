@@ -3,7 +3,7 @@ import { getFromLocalStorage } from '../favorite/localStorageUtils';
 import { countPage, groupArrayIntoChunks } from '../favorite/utils';
 import createPagination from '../favorite/pagination';
 import { renderingFavRec } from '../favorite/rendering-fav';
-import { showLoader, hideLoader } from '../loader';
+import { showLoader, hideLoader } from '../utils/loader';
 
 export function displayFavorites(pageSet = 1) {
   showLoader();
@@ -30,8 +30,8 @@ export function displayFavorites(pageSet = 1) {
   createPagination(pageSet, perPage, totalPages, displayFavorites);
 
   const listMarkup = objData[pageSet]
-    .map(({ title, description, preview, rating, id, category }) =>
-      renderingFavRec(title, description, preview, rating, id, category)
+    .map(({ title, description, thumb, rating, id, category }) =>
+      renderingFavRec(title, description, thumb, rating, id, category)
     )
     .join('');
 

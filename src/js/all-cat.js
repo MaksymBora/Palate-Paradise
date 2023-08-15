@@ -1,12 +1,16 @@
 import RecipeApiService from './service/service-api';
 import Scrollbar from 'smooth-scrollbar';
-import { notifyInfo } from './notifications';
-import { renderingAllRecips } from './all-cat/all-cat-render';
-import { showLoader, hideLoader } from './loader';
+import { notifyInfo } from './utils/notifications';
+import { showLoader, hideLoader } from './utils/loader';
+import createPagination from './favorite/pagination';
+import { renderByPage } from './search/image-container';
+import { renderMarkup } from './search/renderingrecipes';
 
 const selectListEl = document.querySelector('.all-cat-select-list');
 
 const recipeApiService = new RecipeApiService();
+
+const paginationElm = document.getElementById('pagination');
 
 //Add categories on page
 recipeApiService
@@ -62,49 +66,37 @@ const selectBtn = document.querySelector('.all-cat-main-btn');
 const imageContainer = document.querySelector('.image-container');
 const formSearch = document.querySelector('.form_search');
 
-document.addEventListener('click', event => {
-  if (event.target.matches('.all-cat-main-btn')) {
-    // Your code for handling the button click here
-    recipeApiService.category = '';
-    renderingOnClick();
-  }
-});
-
 selectBtn.addEventListener('click', () => {
   recipeApiService.category = ''; // Reset the category to an empty string
   renderingOnClick(); // Call the renderingOnClick function after resetting the category
 });
 
 // Rendering by Categories
-function renderingOnClick() {
+async function renderingOnClick() {
   formSearch.querySelector('.form-input').value = '';
-
   showLoader();
+  try {
+    const result = await recipeApiService.getRecipe();
+    recipeApiService.filter = [...result.results];
 
-  recipeApiService.getRecipe().then(response => {
-    imageContainer.innerHTML = '';
-    const recipesMarkup = response.results.map(recipe => {
-      const { title, description, preview, rating, _id, category } = recipe;
-      const id = _id;
-      return renderingAllRecips(
-        title,
-        description,
-        preview,
-        rating,
-        id,
-        category
-      ); // Make sure the ID property is correct here
-    });
-    imageContainer.innerHTML = recipesMarkup.join('');
+    if (result) {
+      renderMarkup(result.results);
+      const perPage = result.perPage;
+      const totalPages = result.totalPages;
 
+      paginationElm.style.display = totalPages > 1 ? 'block' : 'none';
+      createPagination(1, perPage, totalPages, renderByPage);
+    }
+  } catch (error) {
+    notifyInfo();
     hideLoader();
-  });
+  }
 }
 
 function handleCategoryClick(event) {
   const selectedCategory = event.target.dataset.name;
 
-  recipeApiService.category = selectedCategory;
+  recipeApiService.updatedCategory = selectedCategory;
 
   renderingOnClick();
 }
