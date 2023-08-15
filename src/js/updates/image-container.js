@@ -2,10 +2,11 @@ import RecipeApiService from '../service/service-api';
 import { renderMarkup } from '../search/renderingrecipes';
 import { showLoader, hideLoader } from '../utils/loader';
 import { notifyInfo } from '../utils/notifications';
-
-import createPagination from './pagination-rec';
+import createPagination from '../favorite/pagination';
 
 const recipeApiService = new RecipeApiService();
+
+const paginationElm = document.getElementById('pagination');
 
 async function renderImageContainerOnLoad() {
   showLoader();
@@ -17,6 +18,7 @@ async function renderImageContainerOnLoad() {
       const perPage = result.perPage;
       const totalPages = result.totalPages;
 
+      paginationElm.style.display = totalPages > 1 ? 'block' : 'none';
       createPagination(1, perPage, totalPages, renderByPage);
     }
 
@@ -27,7 +29,7 @@ async function renderImageContainerOnLoad() {
   }
 }
 
-async function renderByPage(page) {
+export async function renderByPage(page) {
   try {
     const result = await recipeApiService.getRecipeByPage(page);
     if (result) {

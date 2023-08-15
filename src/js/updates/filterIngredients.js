@@ -1,8 +1,12 @@
 import SlimSelect from 'slim-select';
 import RecipeApiService from '../service/service-api';
 import { renderMarkup } from '../search/renderingrecipes';
+import createPagination from '../favorite/pagination';
+import { renderByPage } from './image-container';
 
 const recipeApiService = new RecipeApiService();
+
+const paginationElm = document.getElementById('pagination');
 
 export let slimSelectItems;
 // ====================================== //
@@ -62,7 +66,15 @@ async function filteredByIngredients(e) {
 
   try {
     const result = await recipeApiService.getRecByIngredient();
-    renderMarkup(result.results);
+
+    if (result) {
+      renderMarkup(result.results);
+      const perPage = result.perPage;
+      const totalPages = result.totalPages;
+
+      paginationElm.style.display = totalPages > 1 ? 'block' : 'none';
+      createPagination(1, perPage, totalPages, renderByPage);
+    }
   } catch (error) {
     console.log(error);
   }
