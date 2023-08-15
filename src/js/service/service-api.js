@@ -11,6 +11,7 @@ export default class RecipeApiService {
     this.area = '';
     this.ingredients = '';
     this.recipeId = '';
+    this.filterData = [];
   }
 
   resizePage() {
@@ -55,6 +56,7 @@ export default class RecipeApiService {
     }&${this.resizePage()}&time=${this.time}&area=${this.area}&ingredients=${
       this.ingredients
     }`;
+
     try {
       const response = await axios.get(url);
       return response.data;
@@ -170,5 +172,17 @@ export default class RecipeApiService {
 
   get currentPage() {
     return this.page;
+  }
+
+  set filter(newFilterData) {
+    this.filterData = newFilterData;
+  }
+
+  get filter() {
+    return this.filterData;
+  }
+
+  set updatedCategory(newCategory) {
+    this.category = newCategory;
   }
 }

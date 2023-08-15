@@ -3,7 +3,7 @@ import Scrollbar from 'smooth-scrollbar';
 import { notifyInfo } from './utils/notifications';
 import { showLoader, hideLoader } from './utils/loader';
 import createPagination from './favorite/pagination';
-import { renderByPage } from './updates/image-container';
+import { renderByPage } from './search/image-container';
 import { renderMarkup } from './search/renderingrecipes';
 
 const selectListEl = document.querySelector('.all-cat-select-list');
@@ -77,6 +77,7 @@ async function renderingOnClick() {
   showLoader();
   try {
     const result = await recipeApiService.getRecipe();
+    recipeApiService.filter = [...result.results];
 
     if (result) {
       renderMarkup(result.results);
@@ -95,7 +96,7 @@ async function renderingOnClick() {
 function handleCategoryClick(event) {
   const selectedCategory = event.target.dataset.name;
 
-  recipeApiService.category = selectedCategory;
+  recipeApiService.updatedCategory = selectedCategory;
 
   renderingOnClick();
 }

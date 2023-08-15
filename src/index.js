@@ -1,7 +1,7 @@
 import './js/utils/mobile-menu';
 import './js/utils/theme-switch';
 import './js/hero';
-import './js/updates/image-container';
+import './js/search/image-container';
 import './js/all-cat';
 import './js/popular';
 
@@ -11,10 +11,10 @@ import './js/modals/modal-order';
 import './js/modals/modal-recipes';
 
 // Filters
-import './js/updates/filtersArea';
-import './js/updates/filterIngredients';
-import './js/updates/filterTime';
-import './js/updates/resetFilters';
+import './js/search/filtersArea';
+import './js/search/filterIngredients';
+import './js/search/filterTime';
+import './js/search/resetFilters';
 
 // *** Misc ***
 import './js/cart/cart';

@@ -22,6 +22,7 @@ async function resetFilterTime() {
   slimSelectItems.setSelected([0]);
   try {
     const result = await recipeApiService.getRecipe();
+    recipeApiService.filter = [...result.results];
 
     if (result) {
       renderMarkup(result.results);

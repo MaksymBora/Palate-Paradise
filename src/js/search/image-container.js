@@ -3,15 +3,21 @@ import { renderMarkup } from '../search/renderingrecipes';
 import { showLoader, hideLoader } from '../utils/loader';
 import { notifyInfo } from '../utils/notifications';
 import createPagination from '../favorite/pagination';
+import { filterByTitle } from '../search/filter-by-title';
 
 const recipeApiService = new RecipeApiService();
 
 const paginationElm = document.getElementById('pagination');
 
+//==============================================================
+// Rendering all Cards on page load & Pagination
+// =============================================================
+
 async function renderImageContainerOnLoad() {
   showLoader();
   try {
     const result = await recipeApiService.getRecipe();
+    recipeApiService.filter = [...result.results];
 
     if (result) {
       renderMarkup(result.results);
@@ -41,6 +47,20 @@ export async function renderByPage(page) {
 }
 
 renderImageContainerOnLoad();
+
+//==============================================================
+// Event listener for search input to filter recipes
+// =============================================================
+const searchInput = document.querySelector('.form-input');
+
+searchInput.addEventListener('input', () => {
+  const filterValue = searchInput.value.trim();
+  console.log(recipeApiService.filter);
+  const filteredData = filterValue
+    ? filterByTitle(filterValue, recipeApiService.filter)
+    : recipeApiService.filter;
+  renderMarkup(filteredData);
+});
 
 // Paint Heats on load
 setTimeout(() => {

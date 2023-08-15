@@ -60,6 +60,8 @@ async function filteredByTime(e) {
 
   try {
     const result = await recipeApiService.getRecipe();
+    recipeApiService.filter = [...result.results];
+
     if (result) {
       renderMarkup(result.results);
       const perPage = result.perPage;

@@ -65,6 +65,7 @@ async function filteredByArea(e) {
 
   try {
     const result = await recipeApiService.getRecipe();
+    recipeApiService.filter = [...result.results];
 
     if (result) {
       renderMarkup(result.results);

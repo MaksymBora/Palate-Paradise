@@ -1,6 +1,6 @@
 import SlimSelect from 'slim-select';
 import RecipeApiService from '../service/service-api';
-import { renderMarkup } from '../search/renderingrecipes';
+import { renderMarkup } from './renderingrecipes';
 import createPagination from '../favorite/pagination';
 import { renderByPage } from './image-container';
 
@@ -66,6 +66,7 @@ async function filteredByIngredients(e) {
 
   try {
     const result = await recipeApiService.getRecByIngredient();
+    recipeApiService.filter = [...result.results];
 
     if (result) {
       renderMarkup(result.results);
