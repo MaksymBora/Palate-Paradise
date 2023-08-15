@@ -7,7 +7,7 @@ import {
   updateCategoryList,
   renderCategories,
 } from '../favorite/updateCategoryList';
-import { showLoader, hideLoader } from '../loader';
+import { showLoader, hideLoader } from '../utils/loader';
 
 const recipeApiSeriсe = new RecipeApiService();
 

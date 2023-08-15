@@ -37,7 +37,7 @@ async function fetchRecipeData(recipeId) {
       title: recipe.title,
       category: recipe.category,
       rating: recipe.rating,
-      preview: recipe.preview,
+      thumb: recipe.thumb,
       description: recipe.description,
       // Add other recipe properties if needed
     };

@@ -1,7 +1,9 @@
 import RecipeApiService from '../service/service-api';
 import { renderMarkup } from '../search/renderingrecipes';
-import { showLoader, hideLoader } from '../loader';
-import { notifyInfo } from '../notifications';
+import { showLoader, hideLoader } from '../utils/loader';
+import { notifyInfo } from '../utils/notifications';
+
+import createPagination from './pagination-rec';
 
 const recipeApiService = new RecipeApiService();
 
@@ -12,12 +14,27 @@ async function renderImageContainerOnLoad() {
 
     if (result) {
       renderMarkup(result.results);
+      const perPage = result.perPage;
+      const totalPages = result.totalPages;
+
+      createPagination(1, perPage, totalPages, renderByPage);
     }
 
     hideLoader();
   } catch (error) {
     notifyInfo();
     hideLoader();
+  }
+}
+
+async function renderByPage(page) {
+  try {
+    const result = await recipeApiService.getRecipeByPage(page);
+    if (result) {
+      renderMarkup(result.results);
+    }
+  } catch {
+    notifyInfo();
   }
 }
 

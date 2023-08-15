@@ -1,5 +1,5 @@
-import './js/mobile-menu';
-import './js/theme-switch';
+import './js/utils/mobile-menu';
+import './js/utils/theme-switch';
 import './js/hero';
 import './js/updates/image-container';
 import './js/all-cat';
@@ -18,6 +18,6 @@ import './js/updates/resetFilters';
 
 // *** Misc ***
 import './js/cart/cart';
-import './js/scroll';
+import './js/utils/scroll';
 import './js/modals/open-rating';
 // import './js/search/pagination-search';

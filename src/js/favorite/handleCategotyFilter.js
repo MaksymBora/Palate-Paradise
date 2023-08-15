@@ -3,7 +3,7 @@ import { countPage, groupArrayIntoChunks } from '../favorite/utils';
 import { renderingFavRec } from '../favorite/rendering-fav';
 import createPagination from '../favorite/pagination';
 import { displayFavorites } from '../favorite/display-favorites';
-import { showLoader, hideLoader } from '../loader';
+import { showLoader, hideLoader } from '../utils/loader';
 
 let currentBtn = '';
 

@@ -1,8 +1,8 @@
 import RecipeApiService from './service/service-api';
 import Scrollbar from 'smooth-scrollbar';
-import { notifyInfo } from './notifications';
+import { notifyInfo } from './utils/notifications';
 import { renderingAllRecips } from './all-cat/all-cat-render';
-import { showLoader, hideLoader } from './loader';
+import { showLoader, hideLoader } from './utils/loader';
 
 const selectListEl = document.querySelector('.all-cat-select-list');
 

@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { notifyError } from '../notifications';
+import { notifyError } from '../utils/notifications';
 
 export default class RecipeApiService {
   constructor() {
@@ -55,6 +55,20 @@ export default class RecipeApiService {
     }&${this.resizePage()}&time=${this.time}&area=${this.area}&ingredients=${
       this.ingredients
     }`;
+    try {
+      const response = await axios.get(url);
+      return response.data;
+    } catch (error) {
+      notifyError();
+    }
+  }
+
+  async getRecipeByPage(page) {
+    const url = `${this.BASE_URL}/recipes?category=${
+      this.category
+    }&page=${page}&${this.resizePage()}&time=${this.time}&area=${
+      this.area
+    }&ingredients=${this.ingredients}`;
     try {
       const response = await axios.get(url);
       return response.data;
@@ -148,5 +162,13 @@ export default class RecipeApiService {
 
   set otherTime(newTime) {
     this.time = newTime;
+  }
+
+  set currentPage(newPage) {
+    this.page = newPage;
+  }
+
+  get currentPage() {
+    return this.page;
   }
 }

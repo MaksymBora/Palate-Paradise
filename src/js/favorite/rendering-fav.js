@@ -7,10 +7,7 @@ import sprite from '../../images/sprite.svg';
  * returns string HTML markup representing the star rating.
  */
 export function getRating(rating) {
-  // Ensure the rating is capped at a maximum of 5 stars.
   const roundedRating = rating > 5 ? 5 : rating;
-
-  // Create an array of five elements representing the five stars.
   const stars = Array.from({ length: 5 }, (_, index) => index + 1);
 
   // Generate the HTML for the star rating.
@@ -40,13 +37,9 @@ export function getRating(rating) {
  *  Returns 'active' if the recipe is in favorites, or an empty string if not.
  */
 export function checkForFav(id) {
-  // Retrieve the favorites data from localStorage.
   const storage = localStorage.getItem('favoriteRecipes');
 
-  // Parse the favorites data into an array of recipe objects.
   const data = JSON.parse(storage);
-
-  // Check if the recipe with the specified ID exists in the favorites data.
 
   return storage && data.find(el => el.id === id) ? 'active' : '';
 }
@@ -65,16 +58,15 @@ export function checkForFav(id) {
 export function renderingFavRec(
   title,
   description,
-  preview,
+  thumb,
   rating,
   id,
   category
 ) {
-  // Create an object with recipe information.
   const infoRecipe = {
     title,
     description: description.replace("'", ''),
-    preview,
+    thumb,
     rating,
     id,
     category,
@@ -87,7 +79,7 @@ export function renderingFavRec(
   return `
     <div data-category="${category}" class="rec-item" 
       style="background: linear-gradient(0deg, rgba(5, 5, 5, 0.6), rgba(5, 5, 5, 0)),
-      url(${preview}); background-position: center; background-size: cover;">
+      url(${thumb}); background-position: center; background-size: cover;">
       <div class="upper-part">
         <button type="button" class="heart-btn ${checkForFav(
           id

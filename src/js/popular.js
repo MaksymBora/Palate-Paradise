@@ -1,5 +1,5 @@
 import RecipeApiService from './service/service-api';
-import { notifyInfo } from './notifications';
+import { notifyInfo } from './utils/notifications';
 
 const recipeApiSeriсe = new RecipeApiService();
 
